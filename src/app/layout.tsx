@@ -25,8 +25,8 @@ export const metadata: Metadata = {
 		"Site officiel d'Aurélia Desvaux, thérapies brèves et accompagnement.",
 	icons: {
 		icon: "/favicon.ico",
-		apple: "/favicon-apple.png",
 		shortcut: "/favicon.ico",
+		apple: "/favicon-apple.png", // iOS touch icon
 	},
 	openGraph: {
 		title: "Aurélia Desvaux | Thérapies Brèves",
@@ -67,7 +67,7 @@ export default function RootLayout({
 	return (
 		<html lang="fr">
 			<head>
-				{/* Preconnect pour Google Analytics */}
+				{/* Preconnect / dns-prefetch pour GA4 */}
 				<link
 					rel="preconnect"
 					href="https://www.googletagmanager.com"
@@ -76,23 +76,22 @@ export default function RootLayout({
 					rel="dns-prefetch"
 					href="https://www.google-analytics.com"
 				/>
-
-				{/* Favicon */}
-				<link rel="icon" href="/favicon.ico" />
-				<link rel="shortcut icon" href="/favicon.ico" />
-				<link rel="apple-touch-icon" href="/favicon-apple.png" />
 			</head>
 			<body className={inter.className}>
 				<Providers>
 					<Suspense fallback={<div className="h-20" />}>
 						<Header />
 					</Suspense>
+
 					{children}
+
 					<Footer />
 					<FloatingCTA />
+
 					<Suspense fallback={null}>
 						<ScrollToTop />
 					</Suspense>
+
 					<CookieBanner />
 
 					{/* JSON-LD Schema */}
