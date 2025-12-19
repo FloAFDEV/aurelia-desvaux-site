@@ -1,0 +1,35 @@
+{
+	"compilerOptions": {
+		"target": "ES2020",
+		"lib": ["DOM", "DOM.Iterable", "ES2020"],
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		"isolatedModules": true,
+		"moduleDetection": "force",
+		"noEmit": true,
+		"jsx": "react-jsx",
+
+		/* Strictness & linting */
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitAny": true,
+		"noFallthroughCasesInSwitch": true,
+
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+
+		/* Base url & paths */
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"]
+		}
+	},
+
+	/* Inclure tout ce qui est dans src/app et types Next.js */
+	"include": ["next-env.d.ts", "src/**/*", ".next/types/**/*.ts"],
+
+	/* Exclure node_modules seulement */
+	"exclude": ["node_modules", "src/pages"]
+}
