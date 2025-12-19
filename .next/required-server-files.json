@@ -24,7 +24,7 @@
       "jsx",
       "js"
     ],
-    "poweredByHeader": true,
+    "poweredByHeader": false,
     "compress": true,
     "images": {
       "deviceSizes": [
@@ -33,9 +33,7 @@
         828,
         1080,
         1200,
-        1920,
-        2048,
-        3840
+        1920
       ],
       "imageSizes": [
         16,
@@ -54,10 +52,11 @@
       "disableStaticImages": false,
       "minimumCacheTTL": 60,
       "formats": [
+        "image/avif",
         "image/webp"
       ],
-      "dangerouslyAllowSVG": false,
-      "contentSecurityPolicy": "script-src 'none'; frame-src 'none'; sandbox;",
+      "dangerouslyAllowSVG": true,
+      "contentSecurityPolicy": "default-src 'self'; script-src 'none'; sandbox;",
       "contentDispositionType": "attachment",
       "remotePatterns": [],
       "unoptimized": false
@@ -81,7 +80,7 @@
     "serverRuntimeConfig": {},
     "publicRuntimeConfig": {},
     "reactProductionProfiling": false,
-    "reactStrictMode": null,
+    "reactStrictMode": true,
     "reactMaxHeadersLength": 6000,
     "httpAgentOptions": {
       "keepAlive": true

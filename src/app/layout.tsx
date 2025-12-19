@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -9,8 +9,15 @@ import { FloatingCTA } from "@/components/FloatingCTA";
 import { CookieBanner } from "@/components/CookieBanner";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
-const inter = Inter({ subsets: ["latin"] });
+// Font optimisée avec display swap
+const inter = Inter({
+	subsets: ["latin"],
+	display: "swap",
+	preload: true,
+	variable: "--font-inter",
+});
 
+// ----- Metadata SEO -----
 export const metadata: Metadata = {
 	metadataBase: new URL("https://aurelia-desvaux.fr"),
 	title: { default: "Aurélia Desvaux", template: "%s | Aurélia Desvaux" },
@@ -38,6 +45,15 @@ export const metadata: Metadata = {
 	},
 };
 
+// ----- Viewport global (Next 15+) -----
+export const viewport: Viewport = {
+	width: "device-width",
+	initialScale: 1,
+	maximumScale: 5,
+	themeColor: "#E8D5D5",
+};
+
+// ----- Layout -----
 export default function RootLayout({
 	children,
 }: {
@@ -45,12 +61,23 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="fr">
+			<head>
+				{/* Preconnect pour Google Analytics */}
+				<link
+					rel="preconnect"
+					href="https://www.googletagmanager.com"
+				/>
+				<link
+					rel="dns-prefetch"
+					href="https://www.google-analytics.com"
+				/>
+			</head>
 			<body className={inter.className}>
 				<Providers>
 					<Suspense fallback={<div className="h-20" />}>
 						<Header />
 					</Suspense>
-					<main>{children}</main>
+					{children}
 					<Footer />
 					<FloatingCTA />
 					<Suspense fallback={null}>

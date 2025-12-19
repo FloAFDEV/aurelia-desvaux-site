@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useScrollPosition } from "@/hooks/useScrollPosition";
 import Image from "next/image";
 import aureliaPortrait from "@/assets/aurelia-portrait-nature.webp";
 import treeLogo from "@/assets/tree-logo.webp";
@@ -9,36 +9,42 @@ import { MedoucineBadge } from "@/components/MedoucineBadge";
 import { trackBookingClick } from "@/hooks/useGoogleAnalytics";
 
 export const Hero = () => {
-	const [scrollY, setScrollY] = useState(0);
-
-	useEffect(() => {
-		const handleScroll = () => setScrollY(window.scrollY);
-		window.addEventListener("scroll", handleScroll, { passive: true });
-		return () => window.removeEventListener("scroll", handleScroll);
-	}, []);
+	const scrollY = useScrollPosition(); // Hook centralisé optimisé
 
 	return (
 		<section
 			id="accueil"
 			className="relative flex items-center pt-16 min-h-screen pb-32 gradient-hero overflow-visible"
 		>
-			{/* Blobs décoratifs */}
+			{/* Blobs décoratifs - Optimisés avec will-change */}
 			<div className="absolute inset-0 -z-10 pointer-events-none">
 				<div
 					className="hidden sm:block absolute top-20 left-10 w-40 h-40 bg-blush/40 rounded-full blur-3xl transition-transform duration-300 ease-out"
-					style={{ transform: `translateY(${scrollY * 0.1}px)` }}
+					style={{
+						transform: `translate3d(0, ${scrollY * 0.1}px, 0)`,
+						willChange: "transform",
+					}}
 				/>
 				<div
 					className="absolute bottom-40 right-20 w-40 h-40 sm:w-56 sm:h-56 bg-soft-pink/50 rounded-full blur-3xl transition-transform duration-300 ease-out"
-					style={{ transform: `translateY(${scrollY * -0.15}px)` }}
+					style={{
+						transform: `translate3d(0, ${scrollY * -0.15}px, 0)`,
+						willChange: "transform",
+					}}
 				/>
 				<div
 					className="hidden md:block absolute top-1/3 right-1/4 w-32 h-32 bg-rose-gold/30 rounded-full blur-2xl transition-transform duration-300 ease-out"
-					style={{ transform: `translateY(${scrollY * 0.08}px)` }}
+					style={{
+						transform: `translate3d(0, ${scrollY * 0.08}px, 0)`,
+						willChange: "transform",
+					}}
 				/>
 				<div
 					className="hidden sm:block absolute bottom-1/4 left-1/4 w-28 h-28 bg-primary/20 rounded-full blur-2xl transition-transform duration-300 ease-out"
-					style={{ transform: `translateY(${scrollY * -0.12}px)` }}
+					style={{
+						transform: `translate3d(0, ${scrollY * -0.12}px, 0)`,
+						willChange: "transform",
+					}}
 				/>
 			</div>
 
@@ -59,7 +65,10 @@ export const Hero = () => {
 						</div>
 
 						<div className="inline-flex items-center gap-2 justify-center lg:justify-start mb-3 animate-fade-in-up opacity-0 delay-250 px-3 py-1.5 rounded-full bg-background/30 backdrop-blur-sm transition-all duration-300 hover:bg-background/50 hover:scale-105 hover:shadow-soft cursor-default group">
-							<MapPin className="w-4 h-4 text-primary transition-transform duration-300 group-hover:scale-110" />
+							<MapPin
+								className="w-4 h-4 text-primary transition-transform duration-300 group-hover:scale-110"
+								aria-hidden="true"
+							/>
 							<p className="font-body text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
 								Valbonne • Sophia-Antipolis
 							</p>
@@ -79,7 +88,10 @@ export const Hero = () => {
 
 						<div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-6">
 							<div className="inline-flex items-center gap-2 animate-fade-in-up opacity-0 delay-450 px-3 py-1.5 rounded-full bg-primary-light/10 backdrop-blur-sm transition-all duration-300 hover:bg-primary-light/20 hover:scale-105 hover:shadow-soft cursor-default group">
-								<Award className="w-4 h-4 text-primary transition-all duration-300 group-hover:scale-110" />
+								<Award
+									className="w-4 h-4 text-primary transition-all duration-300 group-hover:scale-110"
+									aria-hidden="true"
+								/>
 								<p className="font-body text-sm text-primary font-medium">
 									Praticienne certifiée
 								</p>
@@ -96,15 +108,17 @@ export const Hero = () => {
 								target="_blank"
 								rel="noopener noreferrer"
 								onClick={() => trackBookingClick("hero")}
-								className="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-primary/90 to-primary/70 text-primary-foreground font-body text-lg font-medium rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 hover:-translate-y-1"
+								aria-label="Prendre rendez-vous avec Aurélia Desvaux"
+								className="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-primary/90 to-primary/70 text-primary-foreground font-body text-lg font-medium rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
 							>
-								<Calendar className="w-5 h-5" />
+								<Calendar className="w-5 h-5" aria-hidden="true" />
 								Prise de rendez-vous
 								<svg
 									className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
 									fill="none"
 									viewBox="0 0 24 24"
 									stroke="currentColor"
+									aria-hidden="true"
 								>
 									<path
 										strokeLinecap="round"
@@ -121,16 +135,24 @@ export const Hero = () => {
 					<div className="order-1 lg:order-2 flex justify-center">
 						<div className="relative animate-scale-in opacity-0 group w-[22rem] h-[22rem] md:w-80 md:h-80 lg:w-[22rem] lg:h-[22rem]">
 							{/* Cercles décoratifs */}
-							<div className="absolute -top-4 -right-4 w-full h-full border-2 border-primary-light/30 rounded-full transform rotate-12 transition-transform duration-700 group-hover:rotate-6" />
-							<div className="absolute -bottom-4 -left-4 w-full h-full border border-blush/40 rounded-full transform -rotate-6 transition-transform duration-700 group-hover:-rotate-3" />
+							<div
+								className="absolute -top-4 -right-4 w-full h-full border-2 border-primary-light/30 rounded-full transform rotate-12 transition-transform duration-700 group-hover:rotate-6"
+								aria-hidden="true"
+							/>
+							<div
+								className="absolute -bottom-4 -left-4 w-full h-full border border-blush/40 rounded-full transform -rotate-6 transition-transform duration-700 group-hover:-rotate-3"
+								aria-hidden="true"
+							/>
 
-							{/* Portrait principal */}
+							{/* Portrait principal - Optimisé avec sizes */}
 							<div className="relative w-full h-full rounded-full overflow-hidden shadow-card transition-all duration-500 group-hover:shadow-glow">
 								<Image
 									src={aureliaPortrait}
-									alt="Portrait d'Aurélia Desvaux"
+									alt="Portrait d'Aurélia Desvaux, thérapeute en thérapies brèves"
 									fill
 									priority
+									sizes="(max-width: 768px) 352px, (max-width: 1024px) 320px, 352px"
+									quality={85}
 									className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
 								/>
 							</div>
@@ -140,10 +162,10 @@ export const Hero = () => {
 								<div className="relative w-full h-full rounded-full overflow-hidden bg-background shadow-soft flex items-center justify-center animate-float transition-shadow duration-300 hover:shadow-glow">
 									<Image
 										src={treeLogo}
-										alt=""
-										aria-hidden="true"
+										alt="Logo Aurélia Desvaux"
 										fill
 										priority
+										sizes="80px"
 										className="object-cover transition-transform duration-300 hover:scale-110"
 									/>
 								</div>
@@ -153,9 +175,10 @@ export const Hero = () => {
 				</div>
 			</div>
 
-			{/* Scroll indicator */}
-			<div
-				className="hidden sm:flex absolute bottom-24 md:bottom-20 lg:bottom-12 right-8 md:right-12 lg:left-1/2 lg:-translate-x-1/2 lg:right-auto cursor-pointer group flex-col items-center gap-2 transition-transform duration-300"
+			{/* Scroll indicator - Accessible au clavier */}
+			<button
+				type="button"
+				className="hidden sm:flex absolute bottom-24 md:bottom-20 lg:bottom-12 right-8 md:right-12 lg:left-1/2 lg:-translate-x-1/2 lg:right-auto cursor-pointer group flex-col items-center gap-2 transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-full"
 				onClick={() => {
 					const element = document.getElementById("therapies");
 					if (element) {
@@ -171,11 +194,12 @@ export const Hero = () => {
 						});
 					}
 				}}
+				aria-label="Défiler vers la section thérapies"
 			>
 				<div className="w-7 h-11 border-2 border-rose-gold rounded-full flex justify-center pt-2 transition-all duration-300 hover:shadow-soft group-hover:scale-110">
 					<div className="w-2 h-2 rounded-full bg-rose-gold animate-scroll-guide shadow-sm group-hover:bg-primary transition-colors duration-300" />
 				</div>
-			</div>
+			</button>
 		</section>
 	);
 };

@@ -2,17 +2,17 @@
   "/_not-found/page": "/_not-found",
   "/sitemap.xml/route": "/sitemap.xml",
   "/ressources/page": "/ressources",
+  "/eft/page": "/eft",
   "/dream-machine/page": "/dream-machine",
   "/cgu/page": "/cgu",
   "/contact/page": "/contact",
-  "/eft/page": "/eft",
   "/pnl/page": "/pnl",
   "/hypnose/page": "/hypnose",
   "/page": "/",
   "/preparation-mentale/page": "/preparation-mentale",
-  "/pratiques/page": "/pratiques",
-  "/tarifs/page": "/tarifs",
   "/mentions-legales/page": "/mentions-legales",
+  "/tarifs/page": "/tarifs",
   "/therapies/page": "/therapies",
-  "/politique-confidentialite/page": "/politique-confidentialite"
+  "/politique-confidentialite/page": "/politique-confidentialite",
+  "/pratiques/page": "/pratiques"
 }
