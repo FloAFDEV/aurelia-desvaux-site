@@ -7,9 +7,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependency directories
 node_modules
+
+# Build output
+.next
 dist
 dist-ssr
+
+# Local environment files
 *.local
 
 # Editor directories and files
@@ -22,3 +28,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Optional: Mac / Linux / Windows
+*.bak
+*.tmp
+*.swp
