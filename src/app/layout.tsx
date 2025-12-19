@@ -23,6 +23,11 @@ export const metadata: Metadata = {
 	title: { default: "Aurélia Desvaux", template: "%s | Aurélia Desvaux" },
 	description:
 		"Site officiel d'Aurélia Desvaux, thérapies brèves et accompagnement.",
+	icons: {
+		icon: "/favicon.ico",
+		apple: "/favicon-apple.png",
+		shortcut: "/favicon.ico",
+	},
 	openGraph: {
 		title: "Aurélia Desvaux | Thérapies Brèves",
 		description: "Accompagnement en Hypnose, PNL et EFT à Valbonne.",
