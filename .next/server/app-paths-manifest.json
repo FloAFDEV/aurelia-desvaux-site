@@ -1,18 +1,18 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
   "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/ressources/page": "app/ressources/page.js",
-  "/eft/page": "app/eft/page.js",
-  "/dream-machine/page": "app/dream-machine/page.js",
   "/cgu/page": "app/cgu/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/pnl/page": "app/pnl/page.js",
+  "/dream-machine/page": "app/dream-machine/page.js",
+  "/eft/page": "app/eft/page.js",
   "/hypnose/page": "app/hypnose/page.js",
   "/page": "app/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/pratiques/page": "app/pratiques/page.js",
+  "/pnl/page": "app/pnl/page.js",
   "/preparation-mentale/page": "app/preparation-mentale/page.js",
   "/mentions-legales/page": "app/mentions-legales/page.js",
-  "/tarifs/page": "app/tarifs/page.js",
-  "/therapies/page": "app/therapies/page.js",
   "/politique-confidentialite/page": "app/politique-confidentialite/page.js",
-  "/pratiques/page": "app/pratiques/page.js"
+  "/therapies/page": "app/therapies/page.js",
+  "/tarifs/page": "app/tarifs/page.js"
 }

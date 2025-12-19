@@ -24,6 +24,8 @@ const nextConfig = {
 		contentDispositionType: "attachment",
 		contentSecurityPolicy:
 			"default-src 'self'; script-src 'none'; sandbox;",
+		// Niveaux de qualité utilisés par l'optimiseur d'images (du très compressé au sans perte) pour couvrir les cas d'usage courants et équilibrer performance / qualité visuelle.
+		qualities: [10, 25, 50, 75, 85, 100],
 	},
 
 	// Compression Gzip/Brotli

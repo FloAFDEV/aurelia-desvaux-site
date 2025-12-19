@@ -33,6 +33,14 @@
     "contentSecurityPolicy": "default-src 'self'; script-src 'none'; sandbox;",
     "contentDispositionType": "attachment",
     "remotePatterns": [],
+    "qualities": [
+      10,
+      25,
+      50,
+      75,
+      85,
+      100
+    ],
     "unoptimized": false,
     "sizes": [
       640,
