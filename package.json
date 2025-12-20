@@ -5,10 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:analyze": "ANALYZE=true next build",
     "build:dev": "vite build --mode development",
     "lint": "next lint",
     "start": "next start",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "check:lighthouse": "bash scripts/check-optimizations.sh",
+    "lighthouse": "bash scripts/test-lighthouse.sh",
+    "lighthouse:local": "npm run build && npm run start & sleep 5 && lighthouse http://localhost:3000 --view && kill %1"
   },
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.2.11",
@@ -71,6 +75,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
+    "@next/bundle-analyzer": "^15.0.0",
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^20.0.0",
     "@types/react": "^18.0.0",

@@ -14,18 +14,27 @@ const nextConfig = {
 	// OPTIMISATIONS LIGHTHOUSE PERFORMANCE
 	// ========================================
 
+	// ✅ Compiler optimisé pour production
+	compiler: {
+		removeConsole: process.env.NODE_ENV === 'production' ? {
+			exclude: ['error', 'warn'],
+		} : false,
+	},
+
 	// Optimisation des images
 	images: {
-		formats: ["image/avif", "image/webp"], // Formats modernes
-		deviceSizes: [640, 750, 828, 1080, 1200, 1920], // Breakpoints optimisés
-		imageSizes: [16, 32, 48, 64, 96, 128, 256, 384], // Tailles icônes/thumbs
-		minimumCacheTTL: 60, // Cache 60s minimum
+		formats: ["image/avif", "image/webp"],
+		deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+		imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+		minimumCacheTTL: 31536000, // 1 an au lieu de 60s
 		dangerouslyAllowSVG: true,
 		contentDispositionType: "attachment",
 		contentSecurityPolicy:
 			"default-src 'self'; script-src 'none'; sandbox;",
-		// Niveaux de qualité utilisés par l'optimiseur d'images (du très compressé au sans perte) pour couvrir les cas d'usage courants et équilibrer performance / qualité visuelle.
-		qualities: [10, 25, 50, 75, 85, 100],
+		// Optimisation : moins de variants de qualité pour réduire le build
+		quality: 85, // Qualité par défaut
+		// Désactivation du remotePatterns si non utilisé
+		remotePatterns: [],
 	},
 
 	// Compression Gzip/Brotli
@@ -34,11 +43,78 @@ const nextConfig = {
 	// Supprime le header X-Powered-By
 	poweredByHeader: false,
 
+	// Optimisation du build
+	swcMinify: true,
+	
+	// Désactivation des sourcemaps en production pour réduire la taille
+	productionBrowserSourceMaps: false,
+
+	// Optimisation des modules - Modernisé
+	modularizeImports: {
+		'lucide-react': {
+			transform: 'lucide-react/dist/esm/icons/{{kebabCase member}}',
+		},
+	},
+
+	// ✅ Experimental features pour la performance (mis à jour)
+	experimental: {
+		optimizePackageImports: [
+			'lucide-react',
+			'@radix-ui/react-icons',
+			'@radix-ui/react-dialog',
+			'@radix-ui/react-accordion',
+			'recharts',
+		],
+		// Optimiser les CSS
+		optimizeCss: true,
+	},
+
+	// ✅ Webpack optimisations avancées
+	webpack: (config, { isServer }) => {
+		// Optimiser les imports de lucide-react
+		config.resolve.alias = {
+			...config.resolve.alias,
+		};
+
+		// Split chunks optimisé pour réduire le JS initial
+		if (!isServer) {
+			config.optimization = {
+				...config.optimization,
+				splitChunks: {
+					chunks: 'all',
+					cacheGroups: {
+						default: false,
+						vendors: false,
+						// Vendor chunk pour les libs lourdes
+						vendor: {
+							name: 'vendor',
+							chunks: 'all',
+							test: /node_modules/,
+							priority: 20,
+						},
+						// Chunk séparé pour les composants communs
+						common: {
+							name: 'common',
+							minChunks: 2,
+							chunks: 'all',
+							priority: 10,
+							reuseExistingChunk: true,
+							enforce: true,
+						},
+					},
+				},
+			};
+		}
+
+		return config;
+	},
+
 	// Headers de sécurité et performance
 	async headers() {
 		return [
 			{
-				source: "/:all*(svg|jpg|jpeg|png|webp|avif|gif|ico|woff|woff2)",
+				// Assets statiques (images, fonts)
+				source: "/:all*(svg|jpg|jpeg|png|webp|avif|gif|ico|woff|woff2|ttf|eot)",
 				headers: [
 					{
 						key: "Cache-Control",
@@ -47,11 +123,43 @@ const nextConfig = {
 				],
 			},
 			{
+				// Build Next.js
 				source: "/_next/static/:path*",
 				headers: [
 					{
 						key: "Cache-Control",
 						value: "public, max-age=31536000, immutable",
+					},
+				],
+			},
+			{
+				// Pages HTML - cache court avec revalidation
+				source: "/:path*",
+				headers: [
+					{
+						key: "Cache-Control",
+						value: "public, max-age=0, must-revalidate",
+					},
+					// Headers de sécurité
+					{
+						key: "X-DNS-Prefetch-Control",
+						value: "on",
+					},
+					{
+						key: "X-Frame-Options",
+						value: "SAMEORIGIN",
+					},
+					{
+						key: "X-Content-Type-Options",
+						value: "nosniff",
+					},
+					{
+						key: "Referrer-Policy",
+						value: "origin-when-cross-origin",
+					},
+					{
+						key: "Permissions-Policy",
+						value: "camera=(), microphone=(), geolocation=()",
 					},
 				],
 			},

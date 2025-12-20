@@ -4,6 +4,7 @@ import { useInView } from "@/hooks/useInView";
 import { useParallax } from "@/hooks/useParallax";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import treeLogo from "@/assets/tree-logo.webp";
 import {
 	trackPhoneClick,
@@ -11,6 +12,19 @@ import {
 	trackAddressClick,
 	trackBookingClick,
 } from "@/hooks/useGoogleAnalytics";
+
+// ✅ Lazy load Google Maps pour réduire le TBT
+const GoogleMapIframe = dynamic(
+	() => import('./GoogleMapIframe').then(mod => ({ default: mod.GoogleMapIframe })),
+	{
+		ssr: false,
+		loading: () => (
+			<div className="h-[300px] bg-muted animate-pulse rounded-2xl flex items-center justify-center">
+				<p className="text-sm text-muted-foreground">Chargement de la carte...</p>
+			</div>
+		),
+	}
+);
 
 export const Contact = () => {
 	const { ref, isInView } = useInView();
@@ -151,19 +165,12 @@ export const Contact = () => {
 						style={{ transitionDelay: isInView ? "300ms" : "0ms" }}
 					>
 						<div className="space-y-6">
-							{/* Google Maps Embed */}
-							<div className="rounded-2xl overflow-hidden shadow-card">
-								<iframe
-									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.2777140812454!2d7.037384376175118!3d43.6215784711036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cc2baff0228cab%3A0x117aec399987c98b!2s1%20Pl.%20Joseph%20Bermond%2C%2006560%20Valbonne%2C%20France!5e0!3m2!1sfr!2smg!4v1727422331244!5m2!1sfr!2smg"
-									width="100%"
-									height="300"
-									style={{ border: 0 }}
-									allowFullScreen
-									loading="lazy"
-									referrerPolicy="no-referrer-when-downgrade"
-									title="Localisation du cabinet à Valbonne"
-								/>
-							</div>
+							{/* ✅ Google Maps Embed avec lazy loading optimisé */}
+							<GoogleMapIframe
+								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.2777140812454!2d7.037384376175118!3d43.6215784711036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cc2baff0228cab%3A0x117aec399987c98b!2s1%20Pl.%20Joseph%20Bermond%2C%2006560%20Valbonne%2C%20France!5e0!3m2!1sfr!2smg!4v1727422331244!5m2!1sfr!2smg"
+								title="Localisation du cabinet à Valbonne"
+								className="shadow-card"
+							/>
 
 							{/* CTA Card */}
 							<div className="bg-soft-pink/50 rounded-2xl p-8 flex flex-col justify-center items-center text-center overflow-hidden">
@@ -172,7 +179,7 @@ export const Contact = () => {
 									alt=""
 									width={80}
 									height={80}
-									priority
+									loading="lazy"
 									aria-hidden="true"
 									className="w-20 h-20 mb-4 animate-float rounded-full"
 								/>

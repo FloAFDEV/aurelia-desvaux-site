@@ -9,12 +9,13 @@ import { FloatingCTA } from "@/components/FloatingCTA";
 import { CookieBanner } from "@/components/CookieBanner";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
-// Font optimisée avec display swap
+// Font optimisée avec display swap et préchargement
 const inter = Inter({
 	subsets: ["latin"],
 	display: "swap",
 	preload: true,
 	variable: "--font-inter",
+	adjustFontFallback: true, // Optimisation CLS
 });
 
 // ----- Metadata SEO -----
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
 	icons: {
 		icon: "/favicon.ico",
 		shortcut: "/favicon.ico",
-		apple: "/favicon-apple.png", // iOS touch icon
+		apple: "/favicon-apple.png",
 	},
 	openGraph: {
 		title: "Aurélia Desvaux | Thérapies Brèves",
@@ -48,6 +49,18 @@ export const metadata: Metadata = {
 		description: "Thérapies brèves et accompagnement à Valbonne.",
 		images: ["https://aurelia-desvaux.fr/og-image.webp"],
 	},
+	// Optimisation pour les moteurs de recherche
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+			"max-image-preview": "large",
+			"max-snippet": -1,
+			"max-video-preview": -1,
+		},
+	},
 };
 
 // ----- Viewport global (Next 15+) -----
@@ -55,7 +68,10 @@ export const viewport: Viewport = {
 	width: "device-width",
 	initialScale: 1,
 	maximumScale: 5,
-	themeColor: "#E8D5D5",
+	themeColor: [
+		{ media: "(prefers-color-scheme: light)", color: "#E8D5D5" },
+		{ media: "(prefers-color-scheme: dark)", color: "#2D2420" },
+	],
 };
 
 // ----- Layout -----
@@ -67,34 +83,60 @@ export default function RootLayout({
 	return (
 		<html lang="fr">
 			<head>
-				{/* Preconnect / dns-prefetch pour GA4 */}
+				{/* Preconnect critiques - Déplacé dans <head> pour priorité max */}
 				<link
 					rel="preconnect"
 					href="https://www.googletagmanager.com"
+					crossOrigin="anonymous"
 				/>
 				<link
 					rel="dns-prefetch"
 					href="https://www.google-analytics.com"
 				/>
+				{/* Preload des fonts critiques */}
+				<link
+					rel="preload"
+					href="/fonts/cormorant-garamond-latin-400-normal.woff2"
+					as="font"
+					type="font/woff2"
+					crossOrigin="anonymous"
+				/>
 			</head>
 			<body className={inter.className}>
 				<Providers>
-					<Suspense fallback={<div className="h-20" />}>
+					{/* Header avec Suspense et fallback optimisé */}
+					<Suspense 
+						fallback={
+							<div className="h-20 bg-background/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50" />
+						}
+					>
 						<Header />
 					</Suspense>
 
-					{children}
+					{/* Main content */}
+					<main id="main-content">
+						{children}
+					</main>
 
+					{/* Footer sans Suspense car non critique */}
 					<Footer />
-					<FloatingCTA />
+					
+					{/* CTA flottant - Lazy */}
+					<Suspense fallback={null}>
+						<FloatingCTA />
+					</Suspense>
 
+					{/* Scroll to top - Lazy */}
 					<Suspense fallback={null}>
 						<ScrollToTop />
 					</Suspense>
 
-					<CookieBanner />
+					{/* Cookie banner - Lazy */}
+					<Suspense fallback={null}>
+						<CookieBanner />
+					</Suspense>
 
-					{/* JSON-LD Schema */}
+					{/* JSON-LD Schema - Optimisé avec script defer */}
 					<script
 						type="application/ld+json"
 						dangerouslySetInnerHTML={{

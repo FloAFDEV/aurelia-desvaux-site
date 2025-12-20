@@ -9,41 +9,40 @@ import { MedoucineBadge } from "@/components/MedoucineBadge";
 import { trackBookingClick } from "@/hooks/useGoogleAnalytics";
 
 export const Hero = () => {
-	const scrollY = useScrollPosition(); // Hook centralisé optimisé
+	const scrollY = useScrollPosition();
+
+	// Optimisation: Limite la parallaxe à 100px max pour éviter les calculs inutiles
+	const parallaxOffset = Math.min(scrollY * 0.3, 100);
 
 	return (
 		<section
 			id="accueil"
 			className="relative flex items-center pt-16 min-h-screen pb-32 gradient-hero overflow-visible"
 		>
-			{/* Blobs décoratifs - Optimisés avec will-change */}
-			<div className="absolute inset-0 -z-10 pointer-events-none">
+			{/* Blobs décoratifs - Optimisés avec transform: translate3d et will-change limité */}
+			<div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
 				<div
 					className="hidden sm:block absolute top-20 left-10 w-40 h-40 bg-blush/40 rounded-full blur-3xl transition-transform duration-300 ease-out"
 					style={{
-						transform: `translate3d(0, ${scrollY * 0.1}px, 0)`,
-						willChange: "transform",
+						transform: `translate3d(0, ${parallaxOffset * 0.1}px, 0)`,
 					}}
 				/>
 				<div
 					className="absolute bottom-40 right-20 w-40 h-40 sm:w-56 sm:h-56 bg-soft-pink/50 rounded-full blur-3xl transition-transform duration-300 ease-out"
 					style={{
-						transform: `translate3d(0, ${scrollY * -0.15}px, 0)`,
-						willChange: "transform",
+						transform: `translate3d(0, ${parallaxOffset * -0.15}px, 0)`,
 					}}
 				/>
 				<div
 					className="hidden md:block absolute top-1/3 right-1/4 w-32 h-32 bg-rose-gold/30 rounded-full blur-2xl transition-transform duration-300 ease-out"
 					style={{
-						transform: `translate3d(0, ${scrollY * 0.08}px, 0)`,
-						willChange: "transform",
+						transform: `translate3d(0, ${parallaxOffset * 0.08}px, 0)`,
 					}}
 				/>
 				<div
 					className="hidden sm:block absolute bottom-1/4 left-1/4 w-28 h-28 bg-primary/20 rounded-full blur-2xl transition-transform duration-300 ease-out"
 					style={{
-						transform: `translate3d(0, ${scrollY * -0.12}px, 0)`,
-						willChange: "transform",
+						transform: `translate3d(0, ${parallaxOffset * -0.12}px, 0)`,
 					}}
 				/>
 			</div>
@@ -57,11 +56,11 @@ export const Hero = () => {
 						</h1>
 
 						<div className="flex items-center gap-4 justify-center lg:justify-start mb-2 animate-fade-in-up opacity-0 delay-200">
-							<div className="hidden lg:block w-12 h-px bg-primary-light/60" />
+							<div className="hidden lg:block w-12 h-px bg-primary-light/60" aria-hidden="true" />
 							<p className="font-display text-2xl md:text-3xl lg:text-4xl text-muted-foreground break-words max-w-full">
 								Thérapies Brèves
 							</p>
-							<div className="hidden lg:block w-12 h-px bg-primary-light/60" />
+							<div className="hidden lg:block w-12 h-px bg-primary-light/60" aria-hidden="true" />
 						</div>
 
 						<div className="inline-flex items-center gap-2 justify-center lg:justify-start mb-3 animate-fade-in-up opacity-0 delay-250 px-3 py-1.5 rounded-full bg-background/30 backdrop-blur-sm transition-all duration-300 hover:bg-background/50 hover:scale-105 hover:shadow-soft cursor-default group">
@@ -108,8 +107,8 @@ export const Hero = () => {
 								target="_blank"
 								rel="noopener noreferrer"
 								onClick={() => trackBookingClick("hero")}
-								aria-label="Prendre rendez-vous avec Aurélia Desvaux"
-								className="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-primary/90 to-primary/70 text-primary-foreground font-body text-lg font-medium rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+								aria-label="Prendre rendez-vous avec Aurélia Desvaux sur Medoucine"
+								className="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-primary/90 to-primary/70 text-primary-foreground font-body text-lg font-medium rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-100"
 							>
 								<Calendar className="w-5 h-5" aria-hidden="true" />
 								Prise de rendez-vous
@@ -144,28 +143,31 @@ export const Hero = () => {
 								aria-hidden="true"
 							/>
 
-							{/* Portrait principal - Optimisé avec sizes */}
+							{/* Portrait principal - Optimisé avec fetchPriority et sizes précis */}
 							<div className="relative w-full h-full rounded-full overflow-hidden shadow-card transition-all duration-500 group-hover:shadow-glow">
 								<Image
 									src={aureliaPortrait}
-									alt="Portrait d'Aurélia Desvaux, thérapeute en thérapies brèves"
+									alt="Portrait d'Aurélia Desvaux, thérapeute en thérapies brèves à Valbonne"
 									fill
 									priority
+									fetchPriority="high"
 									sizes="(max-width: 768px) 352px, (max-width: 1024px) 320px, 352px"
-									quality={85}
-									className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+									quality={90}
+									className="object-cover transition-transform duration-700 group-hover:scale-105"
+									placeholder="blur"
 								/>
 							</div>
 
-							{/* Logo flottant */}
+							{/* Logo flottant - Optimisé avec loading="eager" car visible */}
 							<div className="absolute -bottom-4 -right-4 w-16 h-16 md:w-20 md:h-20">
 								<div className="relative w-full h-full rounded-full overflow-hidden bg-background shadow-soft flex items-center justify-center animate-float transition-shadow duration-300 hover:shadow-glow">
 									<Image
 										src={treeLogo}
 										alt="Logo Aurélia Desvaux"
 										fill
-										priority
+										loading="eager"
 										sizes="80px"
+										quality={85}
 										className="object-cover transition-transform duration-300 hover:scale-110"
 									/>
 								</div>
@@ -175,18 +177,16 @@ export const Hero = () => {
 				</div>
 			</div>
 
-			{/* Scroll indicator - Accessible au clavier */}
+			{/* Scroll indicator - Optimisé pour l'accessibilité */}
 			<button
 				type="button"
-				className="hidden sm:flex absolute bottom-24 md:bottom-20 lg:bottom-12 right-8 md:right-12 lg:left-1/2 lg:-translate-x-1/2 lg:right-auto cursor-pointer group flex-col items-center gap-2 transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-full"
+				className="hidden sm:flex absolute bottom-24 md:bottom-20 lg:bottom-12 right-8 md:right-12 lg:left-1/2 lg:-translate-x-1/2 lg:right-auto cursor-pointer group flex-col items-center gap-2 transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-full p-2"
 				onClick={() => {
 					const element = document.getElementById("therapies");
 					if (element) {
-						const headerOffset = 50;
-						const elementPosition =
-							element.getBoundingClientRect().top;
-						const offsetPosition =
-							elementPosition + window.scrollY - headerOffset;
+						const headerOffset = 80;
+						const elementPosition = element.getBoundingClientRect().top;
+						const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
 						window.scrollTo({
 							top: offsetPosition,

@@ -1,6 +1,6 @@
 # 🌿 Aurélia Desvaux — Site de Thérapies Brèves
 
-Made with love 🌊 by Flo-AFDEV
+Made 🌊 by Flo-AFDEV
 
 [![License](https://img.shields.io/badge/License-Proprietary-red.svg)](#)
 
@@ -13,10 +13,10 @@ Ce dépôt contient le code source du site vitrine, développé pour présenter 
 
 Fournir un site clair, esthétique et accessible permettant de :
 
-- présenter les différentes thérapies proposées,
-- offrir une navigation fluide,
-- valoriser l’approche bienveillante et professionnelle d’Aurélia Desvaux,
-- faciliter la prise de contact et d’informations.
+-   présenter les différentes thérapies proposées,
+-   offrir une navigation fluide,
+-   valoriser l’approche bienveillante et professionnelle d’Aurélia Desvaux,
+-   faciliter la prise de contact et d’informations.
 
 ---
 
@@ -24,10 +24,10 @@ Fournir un site clair, esthétique et accessible permettant de :
 
 Aurélia Desvaux est thérapeute spécialisée dans l’accompagnement brève et les techniques modernes de mieux-être :
 
-- **Hypnose Ericksonienne**
-- **Programmation Neuro-Linguistique (PNL)**
-- **EFT (Emotional Freedom Technique)**
-- **Dream Machine**
+-   **Hypnose Ericksonienne**
+-   **Programmation Neuro-Linguistique (PNL)**
+-   **EFT (Emotional Freedom Technique)**
+-   **Dream Machine**
 
 Localisation : **Valbonne – Sophia-Antipolis (06)**.  
 Elle propose un accompagnement bienveillant, personnalisé et respectueux du rythme de chacun.
@@ -36,11 +36,11 @@ Elle propose un accompagnement bienveillant, personnalisé et respectueux du ryt
 
 ## 🧰 Stack technique
 
-- **Framework** : React / Next.js
-- **Styles** : TailwindCSS
-- **SEO** : react-helmet-async
-- **Déploiement** : Vercel
-- **CI/CD** : GitHub
+-   **Framework** : Next.js (App Router)
+-   **Styles** : TailwindCSS
+-   **SEO** : Next.js Metadata API
+-   **Déploiement** : Vercel
+-   **CI/CD** : GitHub
 
 ---
 
@@ -48,7 +48,7 @@ Elle propose un accompagnement bienveillant, personnalisé et respectueux du ryt
 
 /src
 /components → UI et sections du site
-/pages → Pages principales
+/app → Pages principales (App Router)
 /public → Images et assets statiques
 README.md → Documentation du projet
 LICENSE → Licence propriétaire
