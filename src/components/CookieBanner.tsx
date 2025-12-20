@@ -175,13 +175,14 @@ export const CookieBanner = () => {
 								</strong>
 								.{" "}
 								<Link
-									href="/politique-confidentialite"
-									className="text-primary hover:underline font-medium inline-flex items-center gap-1"
-									onClick={() => setIsVisible(false)}
+								href="/politique-confidentialite"
+								className="text-primary hover:underline font-medium inline-flex items-center gap-1"
+								target="_blank"
+								 rel="noopener noreferrer"
 								>
-									En savoir plus
-									<span aria-hidden="true">→</span>
-								</Link>
+								En savoir plus
+								 <span aria-hidden="true">→</span>
+						</Link>
 							</p>
 
 							{/* Panel détails */}
