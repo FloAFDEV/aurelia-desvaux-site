@@ -75,7 +75,8 @@ export default function PolitiqueConfidentialitePage() {
 											Cookies techniques :
 										</strong>{" "}
 										Nécessaires au bon fonctionnement du
-										site (mémorisation du choix cookies)
+										site (mémorisation du choix cookies
+										pendant 6 mois)
 									</li>
 									<li>
 										<strong className="text-foreground">
