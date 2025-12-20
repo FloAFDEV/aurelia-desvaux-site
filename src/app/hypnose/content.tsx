@@ -83,6 +83,7 @@ export default function Hypnose() {
 								width={80}
 								height={80}
 								priority
+								quality={85}
 								className="w-20 h-20 rounded-full shadow-md"
 							/>
 						</div>
@@ -160,6 +161,7 @@ export default function Hypnose() {
 										alt=""
 										aria-hidden="true"
 										fill
+										quality={85}
 										className="object-cover"
 										priority
 									/>
@@ -193,6 +195,7 @@ export default function Hypnose() {
 												src={hypnosePenduleImg}
 												alt="Pendule hypnose"
 												fill
+												quality={85}
 												className="object-cover"
 											/>
 										</div>
@@ -255,6 +258,7 @@ export default function Hypnose() {
 												src={img.src}
 												alt={img.alt}
 												fill
+												quality={85}
 												className="object-cover"
 											/>
 										</div>
@@ -299,6 +303,7 @@ export default function Hypnose() {
 												src={imgObj.src}
 												alt={imgObj.alt}
 												fill
+												quality={85}
 												className="object-cover object-center rounded-2xl transition-transform duration-500 group-hover:scale-110"
 												loading="lazy"
 											/>
@@ -414,6 +419,7 @@ export default function Hypnose() {
 									src={hypnoseBeneficesImg}
 									alt="Femme sereine contemplant un paysage de montagnes au coucher du soleil, symbolisant la liberté et le bien-être après une thérapie"
 									fill
+									quality={85}
 									className="object-cover transition-transform duration-500 group-hover:scale-110"
 									loading="lazy"
 								/>
@@ -461,6 +467,7 @@ export default function Hypnose() {
 							src={aureliaPortrait}
 							alt="Aurélia Desvaux, hypnothérapeute certifiée à Valbonne"
 							fill
+							quality={90}
 							className="object-cover transition-transform duration-500 group-hover:scale-110"
 							loading="lazy"
 						/>

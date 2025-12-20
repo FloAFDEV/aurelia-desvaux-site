@@ -70,6 +70,7 @@ export default function Content() {
 									src={treeLogo}
 									alt=""
 									fill
+									quality={85}
 									className="object-cover rounded-full"
 									aria-hidden="true"
 								/>
@@ -142,6 +143,7 @@ export default function Content() {
 										src={treeLogo}
 										alt=""
 										fill
+										quality={85}
 										className="object-cover rounded-full"
 										aria-hidden="true"
 									/>
@@ -173,6 +175,7 @@ export default function Content() {
 												src={pnlBilanImg}
 												alt="Bilan PNL"
 												fill
+												quality={85}
 												className="object-cover"
 											/>
 										</div>
@@ -207,6 +210,7 @@ export default function Content() {
 												src={img}
 												alt=""
 												fill
+												quality={85}
 												className="object-cover"
 											/>
 										</div>
@@ -239,6 +243,7 @@ export default function Content() {
 												src={img}
 												alt=""
 												fill
+												quality={85}
 												className="object-cover object-center rounded-2xl transition-transform duration-500 group-hover:scale-110"
 											/>
 										</div>
@@ -375,6 +380,7 @@ export default function Content() {
 										src={pnlAmpouleImg}
 										alt="Silhouette de tête avec une ampoule colorée en forme de cerveau"
 										fill
+										quality={85}
 										className="object-cover object-[center_80%] transition-transform duration-500 hover:scale-110"
 									/>
 								</div>
@@ -416,6 +422,7 @@ export default function Content() {
 								src={pnlCerveauArtImg}
 								alt="Représentation artistique du cerveau"
 								fill
+								quality={85}
 								className="object-cover transition-transform duration-500 hover:scale-110"
 							/>
 						</div>

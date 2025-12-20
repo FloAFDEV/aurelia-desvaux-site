@@ -16,9 +16,12 @@ const nextConfig = {
 
 	// ✅ Compiler optimisé pour production
 	compiler: {
-		removeConsole: process.env.NODE_ENV === 'production' ? {
-			exclude: ['error', 'warn'],
-		} : false,
+		removeConsole:
+			process.env.NODE_ENV === "production"
+				? {
+						exclude: ["error", "warn"],
+				  }
+				: false,
 	},
 
 	// Optimisation des images
@@ -26,15 +29,13 @@ const nextConfig = {
 		formats: ["image/avif", "image/webp"],
 		deviceSizes: [640, 750, 828, 1080, 1200, 1920],
 		imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-		minimumCacheTTL: 31536000, // 1 an au lieu de 60s
+		minimumCacheTTL: 31536000, // 1 an
 		dangerouslyAllowSVG: true,
 		contentDispositionType: "attachment",
 		contentSecurityPolicy:
 			"default-src 'self'; script-src 'none'; sandbox;",
-		// Optimisation : moins de variants de qualité pour réduire le build
-		quality: 85, // Qualité par défaut
-		// Désactivation du remotePatterns si non utilisé
 		remotePatterns: [],
+		// ❌ SUPPRIMÉ: quality (n'est plus supporté dans images)
 	},
 
 	// Compression Gzip/Brotli
@@ -43,60 +44,53 @@ const nextConfig = {
 	// Supprime le header X-Powered-By
 	poweredByHeader: false,
 
-	// Optimisation du build
-	swcMinify: true,
-	
-	// Désactivation des sourcemaps en production pour réduire la taille
+	// ❌ SUPPRIMÉ: swcMinify (activé par défaut dans Next.js 15)
+
+	// Désactivation des sourcemaps en production
 	productionBrowserSourceMaps: false,
 
-	// Optimisation des modules - Modernisé
+	// Optimisation des modules
 	modularizeImports: {
-		'lucide-react': {
-			transform: 'lucide-react/dist/esm/icons/{{kebabCase member}}',
+		"lucide-react": {
+			transform: "lucide-react/dist/esm/icons/{{kebabCase member}}",
 		},
 	},
 
-	// ✅ Experimental features pour la performance (mis à jour)
+	// ✅ Experimental features pour la performance
 	experimental: {
 		optimizePackageImports: [
-			'lucide-react',
-			'@radix-ui/react-icons',
-			'@radix-ui/react-dialog',
-			'@radix-ui/react-accordion',
-			'recharts',
+			"lucide-react",
+			"@radix-ui/react-icons",
+			"@radix-ui/react-dialog",
+			"@radix-ui/react-accordion",
+			"recharts",
 		],
-		// Optimiser les CSS
-		optimizeCss: true,
+		// ❌ SUPPRIMÉ: optimizeCss n'existe plus dans Next.js 15
 	},
 
 	// ✅ Webpack optimisations avancées
 	webpack: (config, { isServer }) => {
-		// Optimiser les imports de lucide-react
-		config.resolve.alias = {
-			...config.resolve.alias,
-		};
-
 		// Split chunks optimisé pour réduire le JS initial
 		if (!isServer) {
 			config.optimization = {
 				...config.optimization,
 				splitChunks: {
-					chunks: 'all',
+					chunks: "all",
 					cacheGroups: {
 						default: false,
 						vendors: false,
 						// Vendor chunk pour les libs lourdes
 						vendor: {
-							name: 'vendor',
-							chunks: 'all',
+							name: "vendor",
+							chunks: "all",
 							test: /node_modules/,
 							priority: 20,
 						},
 						// Chunk séparé pour les composants communs
 						common: {
-							name: 'common',
+							name: "common",
 							minChunks: 2,
-							chunks: 'all',
+							chunks: "all",
 							priority: 10,
 							reuseExistingChunk: true,
 							enforce: true,

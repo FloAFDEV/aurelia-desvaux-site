@@ -100,6 +100,7 @@ export default function EFTContent() {
 								aria-hidden="true"
 								width={80}
 								height={80}
+								quality={85}
 								className="w-20 h-20 rounded-full shadow-md"
 							/>
 						</div>
@@ -174,6 +175,7 @@ export default function EFTContent() {
 									aria-hidden="true"
 									width={48}
 									height={48}
+									quality={85}
 									className="w-10 h-10 md:w-12 md:h-12 rounded-full"
 								/>
 								<span className="font-display text-lg text-primary">
@@ -206,6 +208,7 @@ export default function EFTContent() {
 												alt="Liberté émotionnelle"
 												width={56}
 												height={56}
+												quality={85}
 												className="w-full h-full object-cover"
 											/>
 										</div>
@@ -241,6 +244,7 @@ export default function EFTContent() {
 											alt="Technique EFT"
 											width={64}
 											height={64}
+											quality={85}
 											className="w-full h-full object-cover"
 										/>
 									</div>
@@ -250,6 +254,7 @@ export default function EFTContent() {
 											alt="Liberté émotionnelle"
 											width={80}
 											height={80}
+											quality={85}
 											className="w-full h-full object-cover"
 										/>
 									</div>
@@ -259,6 +264,7 @@ export default function EFTContent() {
 											alt="Bienfaits EFT"
 											width={56}
 											height={56}
+											quality={85}
 											className="w-full h-full object-cover"
 										/>
 									</div>
@@ -285,6 +291,7 @@ export default function EFTContent() {
 												src={imgObj.src}
 												alt={imgObj.alt}
 												fill
+												quality={85}
 												className="object-cover object-center rounded-2xl transition-transform duration-500 group-hover:scale-110"
 											/>
 										</div>
@@ -409,6 +416,7 @@ export default function EFTContent() {
 										src={eftNatureImg}
 										alt="Femme assise paisiblement face à un panorama montagneux, symbolisant la sérénité retrouvée après une thérapie EFT"
 										fill
+										quality={85}
 										className="object-cover transition-transform duration-500 hover:scale-110"
 									/>
 								</div>
@@ -450,6 +458,7 @@ export default function EFTContent() {
 								src={eftLiberteImg}
 								alt="Symbole de liberté émotionnelle"
 								fill
+								quality={85}
 								className="object-cover transition-transform duration-500 hover:scale-110"
 							/>
 						</div>

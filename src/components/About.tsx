@@ -51,6 +51,7 @@ export const About = () => {
 								alt="Aurélia Desvaux souriante dans son cabinet de thérapies brèves à Valbonne"
 								className="w-full h-auto object-cover rounded-lg shadow-card"
 								priority
+								quality={90}
 							/>
 						</div>
 					</figure>
