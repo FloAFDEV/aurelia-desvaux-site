@@ -79,13 +79,14 @@ export const Header = () => {
 		document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
 	}, [isMobileMenuOpen]);
 
+	// BACKDROP-BLUR SUPPRIMÉ pour éviter contexte de stacking
 	const headerBg = isHomePage
 		? isScrolled
-			? "bg-background/95 backdrop-blur-md shadow-soft py-2"
+			? "bg-background/95 shadow-soft py-2"
 			: "bg-transparent py-4"
 		: isScrolled
-		? "bg-background/95 backdrop-blur-md shadow-soft py-2"
-		: "bg-background/80 backdrop-blur-sm py-4";
+		? "bg-background/95 shadow-soft py-2"
+		: "bg-background/80 py-4";
 
 	const handleContactClick = (e: React.MouseEvent) => {
 		e.preventDefault();
@@ -175,7 +176,7 @@ export const Header = () => {
 													: "opacity-0 invisible -translate-y-3 scale-95 pointer-events-none"
 											}`}
 										>
-											<div className="bg-soft-pink/95 backdrop-blur-md rounded-xl shadow-card border border-primary/20 overflow-hidden">
+											<div className="bg-soft-pink/95 rounded-xl shadow-card border border-primary/20 overflow-hidden">
 												<div className="py-2">
 													{therapiesSubmenu.map(
 														(item, index) => (
@@ -285,9 +286,9 @@ export const Header = () => {
 			{/* Mobile overlay */}
 			{mounted && (
 				<ClientPortal>
-					{/* Overlay */}
+					{/* Overlay - BACKDROP-BLUR SUPPRIMÉ */}
 					<div
-						className={`fixed inset-0 bg-black/10 backdrop-blur-sm lg:hidden transition-opacity duration-300 ${
+						className={`fixed inset-0 bg-black/10 lg:hidden transition-opacity duration-300 ${
 							isMobileMenuOpen
 								? "opacity-100 visible z-[9998]"
 								: "opacity-0 invisible pointer-events-none"
@@ -295,9 +296,9 @@ export const Header = () => {
 						onClick={() => setIsMobileMenuOpen(false)}
 					/>
 
-					{/* Drawer */}
+					{/* Drawer - BACKDROP-BLUR SUPPRIMÉ */}
 					<div
-						className={`fixed top-0 right-0 h-full w-3/4 max-w-[320px] bg-soft-pink/70 backdrop-blur-sm shadow-lg border-l border-primary/20 lg:hidden z-[9999] transition-transform duration-300 ${
+						className={`fixed top-0 right-0 h-full w-3/4 max-w-[320px] bg-soft-pink/95 shadow-lg border-l border-primary/20 lg:hidden z-[9999] transition-transform duration-300 ${
 							isMobileMenuOpen
 								? "translate-x-0 animate-slide-in-drawer"
 								: "translate-x-full animate-slide-out-drawer"

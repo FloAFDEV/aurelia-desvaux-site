@@ -153,9 +153,7 @@
     font-family: var(--font-body);
     line-height: 1.7;
     letter-spacing: 0.01em;
-    /* Optimisation GPU */
-    transform: translateZ(0);
-    backface-visibility: hidden;
+    /* SUPPRIMÉ : transform et backface-visibility qui créaient un contexte de stacking */
   }
 
   /* WCAG: Optimal line length 45-75 characters */
@@ -253,7 +251,7 @@
     background-clip: text;
   }
 
-  /* Parallax optimization avec transform au lieu de top/left */
+  /* Parallax optimization - SEULEMENT sur les éléments parallax, PAS sur body */
   .parallax-element {
     will-change: transform;
     backface-visibility: hidden;
@@ -265,7 +263,7 @@
   /* Respect prefers-reduced-motion */
   @media (prefers-reduced-motion: no-preference) {
     .animate-fade-in {
-      animation: fade-in 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+      animation: fade-in 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
     }
 
     .animate-fade-in-up {
@@ -282,6 +280,10 @@
 
     .animate-scale-in {
       animation: scale-in 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    }
+
+    .animate-slide-up {
+      animation: slide-up 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
 
     .animate-float {
@@ -312,6 +314,7 @@
     .animate-fade-in-left,
     .animate-fade-in-right,
     .animate-scale-in,
+    .animate-slide-up,
     .animate-float,
     .animate-pulse-soft,
     .animate-scroll-guide {
@@ -384,6 +387,17 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

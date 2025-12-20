@@ -62,7 +62,7 @@ export const FloatingCTA = () => {
 	return (
 		<div
 			className={`
-				fixed bottom-6 right-6 z-50
+				fixed bottom-6 right-6 z-[9990]
 				transition-all duration-150 motion-safe:duration-300 ease-in-out
 				${
 					isVisible
@@ -111,7 +111,7 @@ export const FloatingCTA = () => {
 						rounded-full
 						bg-primary/20
 						blur-xl
-						motion-safe:animate-pulse
+						motion-safe:animate-pulse-soft
 					"
 				/>
 			</div>

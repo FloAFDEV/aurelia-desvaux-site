@@ -15,7 +15,7 @@ const inter = Inter({
 	display: "swap",
 	preload: true,
 	variable: "--font-inter",
-	adjustFontFallback: true, // Optimisation CLS
+	adjustFontFallback: true,
 });
 
 // ----- Metadata SEO -----
@@ -105,89 +105,86 @@ export default function RootLayout({
 			<body className={inter.className}>
 				<Providers>
 					{/* Header avec Suspense et fallback optimisé */}
-					<Suspense 
+					<Suspense
 						fallback={
-							<div className="h-20 bg-background/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50" />
+							<div className="h-20 bg-background/80 fixed top-0 left-0 right-0 z-50" />
 						}
 					>
 						<Header />
 					</Suspense>
 
 					{/* Main content */}
-					<main id="main-content">
-						{children}
-					</main>
+					<main id="main-content">{children}</main>
 
 					{/* Footer sans Suspense car non critique */}
 					<Footer />
-					
-					{/* CTA flottant - Lazy */}
-					<Suspense fallback={null}>
-						<FloatingCTA />
-					</Suspense>
-
-					{/* Scroll to top - Lazy */}
-					<Suspense fallback={null}>
-						<ScrollToTop />
-					</Suspense>
-
-					{/* Cookie banner - Lazy */}
-					<Suspense fallback={null}>
-						<CookieBanner />
-					</Suspense>
-
-					{/* JSON-LD Schema - Optimisé avec script defer */}
-					<script
-						type="application/ld+json"
-						dangerouslySetInnerHTML={{
-							__html: JSON.stringify({
-								"@context": "https://schema.org",
-								"@type": "ProfessionalService",
-								name: "Aurélia Desvaux",
-								url: "https://aurelia-desvaux.fr",
-								logo: "https://aurelia-desvaux.fr/tree-logo.webp",
-								image: "https://aurelia-desvaux.fr/og-image.webp",
-								description:
-									"Thérapeute en Hypnose Ericksonienne, PNL et EFT à Valbonne Sophia‑Antipolis. Accompagnement bienveillant pour stress, anxiété, traumas et bien‑être.",
-								telephone: "+33 6 12 34 56 78",
-								email: "contact@aurelia-desvaux.fr",
-								priceRange: "€€",
-								address: {
-									"@type": "PostalAddress",
-									streetAddress: "123 Rue de l'Énergie",
-									addressLocality: "Valbonne",
-									addressRegion: "Provence‑Alpes‑Côte d'Azur",
-									postalCode: "06560",
-									addressCountry: "FR",
-								},
-								geo: {
-									"@type": "GeoCoordinates",
-									latitude: 43.6197,
-									longitude: 7.0713,
-								},
-								openingHoursSpecification: [
-									{
-										"@type": "OpeningHoursSpecification",
-										dayOfWeek: [
-											"Monday",
-											"Tuesday",
-											"Wednesday",
-											"Thursday",
-											"Friday",
-										],
-										opens: "09:00",
-										closes: "19:00",
-									},
-								],
-								sameAs: [
-									"https://www.facebook.com/AureliaDesvauxPsychopraticienne/",
-									"https://www.instagram.com/aurelia_desvaux_therapiebreve/",
-									"https://www.linkedin.com/in/aur%C3%A9lia-desvaux-876459a/?originalSubdomain=fr",
-								],
-							}),
-						}}
-					/>
 				</Providers>
+
+				{/* TOUS LES COMPOSANTS FIXED EN DEHORS DE PROVIDERS */}
+				{/* CTA flottant */}
+				<Suspense fallback={null}>
+					<FloatingCTA />
+				</Suspense>
+
+				{/* Scroll to top */}
+				<Suspense fallback={null}>
+					<ScrollToTop />
+				</Suspense>
+
+				{/* Cookie banner */}
+				<CookieBanner />
+
+				{/* JSON-LD Schema - Optimisé avec script defer */}
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify({
+							"@context": "https://schema.org",
+							"@type": "ProfessionalService",
+							name: "Aurélia Desvaux",
+							url: "https://aurelia-desvaux.fr",
+							logo: "https://aurelia-desvaux.fr/tree-logo.webp",
+							image: "https://aurelia-desvaux.fr/og-image.webp",
+							description:
+								"Thérapeute en Hypnose Ericksonienne, PNL et EFT à Valbonne Sophia‑Antipolis. Accompagnement bienveillant pour stress, anxiété, traumas et bien‑être.",
+							telephone: "+33 6 12 34 56 78",
+							email: "contact@aurelia-desvaux.fr",
+							priceRange: "€€",
+							address: {
+								"@type": "PostalAddress",
+								streetAddress: "123 Rue de l'Énergie",
+								addressLocality: "Valbonne",
+								addressRegion: "Provence‑Alpes‑Côte d'Azur",
+								postalCode: "06560",
+								addressCountry: "FR",
+							},
+							geo: {
+								"@type": "GeoCoordinates",
+								latitude: 43.6197,
+								longitude: 7.0713,
+							},
+							openingHoursSpecification: [
+								{
+									"@type": "OpeningHoursSpecification",
+									dayOfWeek: [
+										"Monday",
+										"Tuesday",
+										"Wednesday",
+										"Thursday",
+										"Friday",
+									],
+									opens: "09:00",
+									closes: "19:00",
+								},
+							],
+							sameAs: [
+								"https://www.facebook.com/AureliaDesvauxPsychopraticienne/",
+								"https://www.instagram.com/aurelia_desvaux_therapiebreve/",
+								"https://www.linkedin.com/in/aur%C3%A9lia-desvaux-876459a/?originalSubdomain=fr",
+							],
+						}),
+					}}
+				/>
 			</body>
 		</html>
 	);

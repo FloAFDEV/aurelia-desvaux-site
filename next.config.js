@@ -35,7 +35,8 @@ const nextConfig = {
 		contentSecurityPolicy:
 			"default-src 'self'; script-src 'none'; sandbox;",
 		remotePatterns: [],
-		// ❌ SUPPRIMÉ: quality (n'est plus supporté dans images)
+		// Définir les qualités d'image utilisées (requis pour Next.js 16+)
+		qualities: [75, 80, 85, 90, 100],
 	},
 
 	// Compression Gzip/Brotli
@@ -43,8 +44,6 @@ const nextConfig = {
 
 	// Supprime le header X-Powered-By
 	poweredByHeader: false,
-
-	// ❌ SUPPRIMÉ: swcMinify (activé par défaut dans Next.js 15)
 
 	// Désactivation des sourcemaps en production
 	productionBrowserSourceMaps: false,
@@ -65,7 +64,6 @@ const nextConfig = {
 			"@radix-ui/react-accordion",
 			"recharts",
 		],
-		// ❌ SUPPRIMÉ: optimizeCss n'existe plus dans Next.js 15
 	},
 
 	// ✅ Webpack optimisations avancées

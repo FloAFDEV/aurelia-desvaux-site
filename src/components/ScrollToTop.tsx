@@ -39,7 +39,7 @@ export const ScrollToTop = () => {
 	return (
 		<button
 			onClick={scrollToTop}
-			className={`fixed bottom-24 right-6 z-50 w-12 h-12 rounded-full bg-background border border-border text-primary shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-primary hover:text-primary-foreground hover:border-primary ${
+			className={`fixed bottom-24 right-6 z-[9990] w-12 h-12 rounded-full bg-background border border-border text-primary shadow-lg flex items-center justify-center transition-all duration-300 motion-safe:hover:scale-110 hover:bg-primary hover:text-primary-foreground hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
 				isVisible
 					? "opacity-100 translate-y-0"
 					: "opacity-0 translate-y-4 pointer-events-none"
