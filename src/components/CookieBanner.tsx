@@ -33,7 +33,8 @@ export const CookieBanner = () => {
 			if (storedConsent) {
 				const consentData: ConsentData = JSON.parse(storedConsent);
 				const now = Date.now();
-				const expirationDate = consentData.timestamp + CONSENT_DURATION_MS;
+				const expirationDate =
+					consentData.timestamp + CONSENT_DURATION_MS;
 
 				// Si le consentement a expiré (plus de 6 mois), on le supprime
 				if (now > expirationDate) {
@@ -53,7 +54,10 @@ export const CookieBanner = () => {
 		}
 	}, []);
 
-	const saveConsent = (choice: "all" | "essential" | "custom", prefs?: { analytics: boolean; marketing: boolean }) => {
+	const saveConsent = (
+		choice: "all" | "essential" | "custom",
+		prefs?: { analytics: boolean; marketing: boolean }
+	) => {
 		const consentData: ConsentData = {
 			choice,
 			timestamp: Date.now(),
@@ -117,17 +121,17 @@ export const CookieBanner = () => {
 
 			{/* Cookie Banner */}
 			<div
-				className="fixed bottom-0 left-0 right-0 z-[9999] px-4 pb-4 sm:pb-6 pointer-events-none"
+				className="fixed inset-x-0 bottom-0 z-[9999] px-3 pb-3 sm:px-4 sm:pb-6 pointer-events-none"
 				role="dialog"
 				aria-modal="true"
 				aria-labelledby="cookie-banner-title"
 				aria-describedby="cookie-banner-description"
 			>
 				<div className="container mx-auto max-w-4xl pointer-events-auto">
-					<div className="bg-background border-2 border-border rounded-2xl shadow-2xl overflow-hidden animate-slide-up">
+					<div className="bg-background border-2 border-border rounded-2xl shadow-2xl overflow-hidden animate-slide-up max-h-[85vh] flex flex-col">
 						{/* Header avec logo */}
-						<div className="bg-gradient-to-r from-soft-pink to-blush px-6 sm:px-8 py-4 flex items-center gap-4">
-							<div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden shadow-md flex-shrink-0 bg-white">
+						<div className="bg-gradient-to-r from-soft-pink to-blush px-3 py-3 sm:px-8 sm:py-4 flex items-center gap-2 sm:gap-4 flex-shrink-0">
+							<div className="relative w-10 h-10 sm:w-14 sm:h-14 rounded-full overflow-hidden shadow-md flex-shrink-0 bg-white">
 								<Image
 									src={treeLogo}
 									alt=""
@@ -136,35 +140,40 @@ export const CookieBanner = () => {
 									aria-hidden="true"
 								/>
 							</div>
-							<div className="flex-1">
+							<div className="flex-1 min-w-0">
 								<h3
 									id="cookie-banner-title"
-									className="font-display text-xl sm:text-2xl text-foreground font-semibold"
+									className="font-display text-base sm:text-2xl text-foreground font-semibold"
 								>
 									Protection de vos données
 								</h3>
-								<p className="text-sm text-foreground/70 mt-0.5">
+								<p className="text-xs sm:text-sm text-foreground/70 mt-0.5 hidden sm:block">
 									Votre confidentialité nous tient à cœur
 								</p>
 							</div>
 							<button
 								onClick={handleRejectAll}
-								className="text-foreground/60 hover:text-foreground transition-colors p-2 hover:bg-white/30 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary flex-shrink-0"
+								className="text-foreground/60 hover:text-foreground transition-colors p-1.5 sm:p-2 hover:bg-white/30 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary flex-shrink-0"
 								aria-label="Tout rejeter et fermer"
 							>
-								<X className="w-5 h-5" />
+								<X className="w-4 h-4 sm:w-5 sm:h-5" />
 							</button>
 						</div>
 
-						{/* Contenu principal */}
-						<div className="p-6 sm:p-8">
+						{/* Contenu principal - SCROLLABLE */}
+						<div className="p-3 sm:p-8 overflow-y-auto flex-1">
 							<p
 								id="cookie-banner-description"
-								className="font-body text-sm sm:text-base text-muted-foreground leading-relaxed mb-6"
+								className="font-body text-xs sm:text-base text-muted-foreground leading-relaxed mb-3 sm:mb-6"
 							>
-								Nous utilisons des cookies pour améliorer votre expérience de navigation, 
-								analyser le trafic du site et personnaliser le contenu. 
-								Votre choix sera conservé pendant <strong className="text-foreground">6 mois</strong>.{" "}
+								Nous utilisons des cookies pour améliorer votre
+								expérience de navigation, analyser le trafic du
+								site et personnaliser le contenu. Votre choix
+								sera conservé pendant{" "}
+								<strong className="text-foreground">
+									6 mois
+								</strong>
+								.{" "}
 								<Link
 									href="/politique-confidentialite"
 									className="text-primary hover:underline font-medium inline-flex items-center gap-1"
@@ -177,96 +186,137 @@ export const CookieBanner = () => {
 
 							{/* Panel détails */}
 							{showDetails && (
-								<div className="mb-6 space-y-4 border-t border-border pt-6 animate-fade-in">
+								<div className="mb-3 sm:mb-6 space-y-2.5 sm:space-y-4 border-t border-border pt-3 sm:pt-6 animate-fade-in">
 									{/* Cookies nécessaires */}
-									<div className="flex items-start gap-3 p-4 bg-muted/30 rounded-xl">
-										<div className="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0">
-											<Shield className="w-5 h-5 text-green-600 dark:text-green-400" aria-hidden="true" />
+									<div className="flex items-start gap-2 sm:gap-3 p-2.5 sm:p-4 bg-muted/30 rounded-lg sm:rounded-xl">
+										<div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0">
+											<Shield
+												className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 dark:text-green-400"
+												aria-hidden="true"
+											/>
 										</div>
 										<div className="flex-1 min-w-0">
-											<div className="flex items-center justify-between gap-2 mb-1">
-												<h4 className="font-semibold text-foreground">
+											<div className="flex items-center justify-between gap-1.5 sm:gap-2 mb-1">
+												<h4 className="font-semibold text-xs sm:text-base text-foreground">
 													Cookies nécessaires
 												</h4>
-												<span className="text-xs px-2.5 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full font-medium whitespace-nowrap">
+												<span className="text-[9px] sm:text-xs px-1.5 sm:px-2.5 py-0.5 sm:py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full font-medium whitespace-nowrap">
 													Toujours actifs
 												</span>
 											</div>
-											<p className="text-sm text-muted-foreground">
-												Essentiels au fonctionnement du site (navigation, sécurité, préférences).
+											<p className="text-[11px] sm:text-sm text-muted-foreground leading-snug sm:leading-normal">
+												Essentiels au fonctionnement du
+												site (navigation, sécurité,
+												préférences).
 											</p>
 										</div>
 									</div>
 
 									{/* Cookies analytiques */}
-									<div className="flex items-start gap-3 p-4 bg-muted/30 rounded-xl">
-										<div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-											<BarChart3 className="w-5 h-5 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+									<div className="flex items-start gap-2 sm:gap-3 p-2.5 sm:p-4 bg-muted/30 rounded-lg sm:rounded-xl">
+										<div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+											<BarChart3
+												className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 dark:text-blue-400"
+												aria-hidden="true"
+											/>
 										</div>
 										<div className="flex-1 min-w-0">
-											<div className="flex items-center justify-between gap-2 mb-2">
-												<label htmlFor="analytics" className="font-semibold text-foreground cursor-pointer">
+											<div className="flex items-center justify-between gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
+												<label
+													htmlFor="analytics"
+													className="font-semibold text-xs sm:text-base text-foreground cursor-pointer"
+												>
 													Cookies analytiques
 												</label>
 												<input
 													type="checkbox"
 													id="analytics"
-													checked={preferences.analytics}
-													onChange={(e) => setPreferences({ ...preferences, analytics: e.target.checked })}
-													className="w-5 h-5 rounded border-gray-300 text-primary focus:ring-2 focus:ring-primary cursor-pointer"
+													checked={
+														preferences.analytics
+													}
+													onChange={(e) =>
+														setPreferences({
+															...preferences,
+															analytics:
+																e.target
+																	.checked,
+														})
+													}
+													className="w-4 h-4 sm:w-5 sm:h-5 rounded border-gray-300 text-primary focus:ring-2 focus:ring-primary cursor-pointer flex-shrink-0"
 												/>
 											</div>
-											<p className="text-sm text-muted-foreground">
-												Nous aident à comprendre comment les visiteurs utilisent notre site via Google Analytics.
+											<p className="text-[11px] sm:text-sm text-muted-foreground leading-snug sm:leading-normal">
+												Nous aident à comprendre comment
+												les visiteurs utilisent notre
+												site via Google Analytics.
 											</p>
 										</div>
 									</div>
 
 									{/* Cookies marketing */}
-									<div className="flex items-start gap-3 p-4 bg-muted/30 rounded-xl">
-										<div className="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center flex-shrink-0">
-											<Cookie className="w-5 h-5 text-purple-600 dark:text-purple-400" aria-hidden="true" />
+									<div className="flex items-start gap-2 sm:gap-3 p-2.5 sm:p-4 bg-muted/30 rounded-lg sm:rounded-xl">
+										<div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center flex-shrink-0">
+											<Cookie
+												className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600 dark:text-purple-400"
+												aria-hidden="true"
+											/>
 										</div>
 										<div className="flex-1 min-w-0">
-											<div className="flex items-center justify-between gap-2 mb-2">
-												<label htmlFor="marketing" className="font-semibold text-foreground cursor-pointer">
+											<div className="flex items-center justify-between gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
+												<label
+													htmlFor="marketing"
+													className="font-semibold text-xs sm:text-base text-foreground cursor-pointer"
+												>
 													Cookies marketing
 												</label>
 												<input
 													type="checkbox"
 													id="marketing"
-													checked={preferences.marketing}
-													onChange={(e) => setPreferences({ ...preferences, marketing: e.target.checked })}
-													className="w-5 h-5 rounded border-gray-300 text-primary focus:ring-2 focus:ring-primary cursor-pointer"
+													checked={
+														preferences.marketing
+													}
+													onChange={(e) =>
+														setPreferences({
+															...preferences,
+															marketing:
+																e.target
+																	.checked,
+														})
+													}
+													className="w-4 h-4 sm:w-5 sm:h-5 rounded border-gray-300 text-primary focus:ring-2 focus:ring-primary cursor-pointer flex-shrink-0"
 												/>
 											</div>
-											<p className="text-sm text-muted-foreground">
-												Utilisés pour afficher des publicités pertinentes et personnalisées.
+											<p className="text-[11px] sm:text-sm text-muted-foreground leading-snug sm:leading-normal">
+												Utilisés pour afficher des
+												publicités pertinentes et
+												personnalisées.
 											</p>
 										</div>
 									</div>
 								</div>
 							)}
+						</div>
 
-							{/* Boutons d'action */}
-							<div className="flex flex-col sm:flex-row gap-3">
+						{/* Boutons d'action - FIXED en bas */}
+						<div className="p-3 sm:p-6 sm:pt-0 flex-shrink-0 border-t sm:border-0 border-border/50">
+							<div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
 								{!showDetails ? (
 									<>
 										<button
 											onClick={handleRejectAll}
-											className="w-full sm:w-auto px-6 py-3.5 border-2 border-border hover:border-primary text-foreground font-body text-sm sm:text-base font-medium rounded-full transition-all duration-300 hover:bg-muted motion-safe:hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+											className="w-full sm:w-auto px-4 py-2.5 sm:px-6 sm:py-3.5 border-2 border-border hover:border-primary text-foreground font-body text-xs sm:text-base font-medium rounded-full transition-all duration-300 hover:bg-muted motion-safe:hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
 										>
 											Tout rejeter
 										</button>
 										<button
 											onClick={() => setShowDetails(true)}
-											className="w-full sm:w-auto px-6 py-3.5 border-2 border-primary text-primary font-body text-sm sm:text-base font-medium rounded-full transition-all duration-300 hover:bg-primary/5 motion-safe:hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+											className="w-full sm:w-auto px-4 py-2.5 sm:px-6 sm:py-3.5 border-2 border-primary text-primary font-body text-xs sm:text-base font-medium rounded-full transition-all duration-300 hover:bg-primary/5 motion-safe:hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
 										>
 											Personnaliser
 										</button>
 										<button
 											onClick={handleAcceptAll}
-											className="w-full sm:w-auto px-6 py-3.5 bg-primary text-primary-foreground font-body text-sm sm:text-base font-medium rounded-full shadow-lg transition-all duration-300 hover:shadow-xl motion-safe:hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2"
+											className="w-full sm:w-auto px-4 py-2.5 sm:px-6 sm:py-3.5 bg-primary text-primary-foreground font-body text-xs sm:text-base font-medium rounded-full shadow-lg transition-all duration-300 hover:shadow-xl motion-safe:hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2"
 										>
 											Tout accepter
 										</button>
@@ -274,14 +324,16 @@ export const CookieBanner = () => {
 								) : (
 									<>
 										<button
-											onClick={() => setShowDetails(false)}
-											className="w-full sm:w-auto px-6 py-3.5 border-2 border-border text-foreground font-body text-sm sm:text-base font-medium rounded-full transition-all duration-300 hover:bg-muted motion-safe:hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+											onClick={() =>
+												setShowDetails(false)
+											}
+											className="w-full sm:w-auto px-4 py-2.5 sm:px-6 sm:py-3.5 border-2 border-border text-foreground font-body text-xs sm:text-base font-medium rounded-full transition-all duration-300 hover:bg-muted motion-safe:hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
 										>
 											← Retour
 										</button>
 										<button
 											onClick={handleSavePreferences}
-											className="w-full sm:flex-1 px-6 py-3.5 bg-primary text-primary-foreground font-body text-sm sm:text-base font-medium rounded-full shadow-lg transition-all duration-300 hover:shadow-xl motion-safe:hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2"
+											className="w-full sm:flex-1 px-4 py-2.5 sm:px-6 sm:py-3.5 bg-primary text-primary-foreground font-body text-xs sm:text-base font-medium rounded-full shadow-lg transition-all duration-300 hover:shadow-xl motion-safe:hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2"
 										>
 											Enregistrer mes préférences
 										</button>
