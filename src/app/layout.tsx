@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
+import Script from "next/script";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -17,6 +18,10 @@ const inter = Inter({
 	variable: "--font-inter",
 	adjustFontFallback: true,
 });
+
+// ----- Configuration Google Analytics 4 -----
+// 🔧 REMPLACER PAR VOTRE ID GA4 (format: G-XXXXXXXXXX)
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-XXXXXXXXXX";
 
 // ----- Metadata SEO -----
 export const metadata: Metadata = {
@@ -61,6 +66,11 @@ export const metadata: Metadata = {
 			"max-video-preview": -1,
 		},
 	},
+	// Google Search Console - Balise de vérification
+	// 🔧 REMPLACER PAR VOTRE CODE GSC (optionnel si vous utilisez DNS ou fichier)
+	verification: {
+		google: "VOTRE_CODE_GSC_ICI",
+	},
 };
 
 // ----- Viewport global (Next 15+) -----
@@ -103,6 +113,34 @@ export default function RootLayout({
 				/>
 			</head>
 			<body className={inter.className}>
+				{/* Google Analytics 4 - Chargé après interaction */}
+				{GA_MEASUREMENT_ID !== "G-XXXXXXXXXX" && (
+					<>
+						<Script
+							src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+							strategy="afterInteractive"
+						/>
+						<Script id="google-analytics" strategy="afterInteractive">
+							{`
+								window.dataLayer = window.dataLayer || [];
+								function gtag(){dataLayer.push(arguments);}
+								gtag('js', new Date());
+								
+								// Configuration par défaut avec consentement refusé
+								gtag('consent', 'default', {
+									'analytics_storage': 'denied',
+									'ad_storage': 'denied',
+									'wait_for_update': 500
+								});
+								
+								gtag('config', '${GA_MEASUREMENT_ID}', {
+									page_path: window.location.pathname,
+								});
+							`}
+						</Script>
+					</>
+				)}
+
 				<Providers>
 					{/* Header avec Suspense et fallback optimisé */}
 					<Suspense

@@ -6,6 +6,18 @@ import { useState, useEffect } from "react";
 import { X, Cookie, Shield, BarChart3 } from "lucide-react";
 import treeLogo from "@/assets/tree-logo.webp";
 
+// Durée de conservation du consentement : 6 mois (conforme CNIL)
+const CONSENT_DURATION_MS = 6 * 30 * 24 * 60 * 60 * 1000; // 6 mois en millisecondes
+
+interface ConsentData {
+	choice: "all" | "essential" | "custom";
+	timestamp: number;
+	preferences?: {
+		analytics: boolean;
+		marketing: boolean;
+	};
+}
+
 export const CookieBanner = () => {
 	const [isVisible, setIsVisible] = useState(false);
 	const [showDetails, setShowDetails] = useState(false);
@@ -15,17 +27,50 @@ export const CookieBanner = () => {
 	});
 
 	useEffect(() => {
-		const consent = localStorage.getItem("cookie-consent");
-		if (!consent) {
-			const timer = setTimeout(() => setIsVisible(true), 800);
-			return () => clearTimeout(timer);
+		// Vérifier si un consentement existe et s'il est toujours valide
+		try {
+			const storedConsent = localStorage.getItem("cookie-consent");
+			if (storedConsent) {
+				const consentData: ConsentData = JSON.parse(storedConsent);
+				const now = Date.now();
+				const expirationDate = consentData.timestamp + CONSENT_DURATION_MS;
+
+				// Si le consentement a expiré (plus de 6 mois), on le supprime
+				if (now > expirationDate) {
+					localStorage.removeItem("cookie-consent");
+					localStorage.removeItem("cookie-preferences");
+					setIsVisible(true);
+				}
+				// Sinon, le consentement est toujours valide
+			} else {
+				// Aucun consentement enregistré, afficher le banner après un délai
+				const timer = setTimeout(() => setIsVisible(true), 800);
+				return () => clearTimeout(timer);
+			}
+		} catch (e) {
+			console.error("Erreur lors de la lecture du consentement:", e);
+			setIsVisible(true);
 		}
 	}, []);
 
+	const saveConsent = (choice: "all" | "essential" | "custom", prefs?: { analytics: boolean; marketing: boolean }) => {
+		const consentData: ConsentData = {
+			choice,
+			timestamp: Date.now(),
+			...(prefs && { preferences: prefs }),
+		};
+
+		localStorage.setItem("cookie-consent", JSON.stringify(consentData));
+		if (prefs) {
+			localStorage.setItem("cookie-preferences", JSON.stringify(prefs));
+		}
+	};
+
 	const handleAcceptAll = () => {
-		localStorage.setItem("cookie-consent", "all");
-		localStorage.setItem("cookie-preferences", JSON.stringify({ analytics: true, marketing: true }));
+		saveConsent("all", { analytics: true, marketing: true });
 		setIsVisible(false);
+
+		// Mettre à jour le consentement Google Analytics
 		if (typeof window !== "undefined" && (window as any).gtag) {
 			(window as any).gtag("consent", "update", {
 				analytics_storage: "granted",
@@ -35,9 +80,10 @@ export const CookieBanner = () => {
 	};
 
 	const handleRejectAll = () => {
-		localStorage.setItem("cookie-consent", "essential");
-		localStorage.setItem("cookie-preferences", JSON.stringify({ analytics: false, marketing: false }));
+		saveConsent("essential");
 		setIsVisible(false);
+
+		// Refuser les cookies Google Analytics
 		if (typeof window !== "undefined" && (window as any).gtag) {
 			(window as any).gtag("consent", "update", {
 				analytics_storage: "denied",
@@ -47,9 +93,10 @@ export const CookieBanner = () => {
 	};
 
 	const handleSavePreferences = () => {
-		localStorage.setItem("cookie-consent", "custom");
-		localStorage.setItem("cookie-preferences", JSON.stringify(preferences));
+		saveConsent("custom", preferences);
 		setIsVisible(false);
+
+		// Mettre à jour selon les préférences
 		if (typeof window !== "undefined" && (window as any).gtag) {
 			(window as any).gtag("consent", "update", {
 				analytics_storage: preferences.analytics ? "granted" : "denied",
@@ -117,7 +164,7 @@ export const CookieBanner = () => {
 							>
 								Nous utilisons des cookies pour améliorer votre expérience de navigation, 
 								analyser le trafic du site et personnaliser le contenu. 
-								Vous pouvez choisir d'accepter tous les cookies ou personnaliser vos préférences.{" "}
+								Votre choix sera conservé pendant <strong className="text-foreground">6 mois</strong>.{" "}
 								<Link
 									href="/politique-confidentialite"
 									className="text-primary hover:underline font-medium inline-flex items-center gap-1"
