@@ -7,14 +7,14 @@ import { X, Cookie, Shield, BarChart3 } from "lucide-react";
 import treeLogo from "@/assets/tree-logo.webp";
 
 // Durée de conservation du consentement : 6 mois (conforme CNIL)
-const CONSENT_DURATION_MS = 6 * 30 * 24 * 60 * 60 * 1000; // 6 mois en millisecondes
+const CONSENT_DURATION_MS = 6 * 30 * 24 * 60 * 60 * 1000; // 6 mois
 
 interface ConsentData {
 	choice: "all" | "essential" | "custom";
 	timestamp: number;
 	preferences?: {
 		analytics: boolean;
-		marketing: boolean;
+		functional: boolean;
 	};
 }
 
@@ -23,11 +23,10 @@ export const CookieBanner = () => {
 	const [showDetails, setShowDetails] = useState(false);
 	const [preferences, setPreferences] = useState({
 		analytics: true,
-		marketing: true,
+		functional: true,
 	});
 
 	useEffect(() => {
-		// Vérifier si un consentement existe et s'il est toujours valide
 		try {
 			const storedConsent = localStorage.getItem("cookie-consent");
 			if (storedConsent) {
@@ -36,15 +35,12 @@ export const CookieBanner = () => {
 				const expirationDate =
 					consentData.timestamp + CONSENT_DURATION_MS;
 
-				// Si le consentement a expiré (plus de 6 mois), on le supprime
 				if (now > expirationDate) {
 					localStorage.removeItem("cookie-consent");
 					localStorage.removeItem("cookie-preferences");
 					setIsVisible(true);
 				}
-				// Sinon, le consentement est toujours valide
 			} else {
-				// Aucun consentement enregistré, afficher le banner après un délai
 				const timer = setTimeout(() => setIsVisible(true), 800);
 				return () => clearTimeout(timer);
 			}
@@ -56,14 +52,13 @@ export const CookieBanner = () => {
 
 	const saveConsent = (
 		choice: "all" | "essential" | "custom",
-		prefs?: { analytics: boolean; marketing: boolean }
+		prefs?: { analytics: boolean; functional: boolean }
 	) => {
 		const consentData: ConsentData = {
 			choice,
 			timestamp: Date.now(),
 			...(prefs && { preferences: prefs }),
 		};
-
 		localStorage.setItem("cookie-consent", JSON.stringify(consentData));
 		if (prefs) {
 			localStorage.setItem("cookie-preferences", JSON.stringify(prefs));
@@ -71,14 +66,13 @@ export const CookieBanner = () => {
 	};
 
 	const handleAcceptAll = () => {
-		saveConsent("all", { analytics: true, marketing: true });
+		saveConsent("all", { analytics: true, functional: true });
 		setIsVisible(false);
 
-		// Mettre à jour le consentement Google Analytics
 		if (typeof window !== "undefined" && (window as any).gtag) {
 			(window as any).gtag("consent", "update", {
 				analytics_storage: "granted",
-				ad_storage: "granted",
+				ad_storage: "denied", // pas de pub
 			});
 		}
 	};
@@ -87,7 +81,6 @@ export const CookieBanner = () => {
 		saveConsent("essential");
 		setIsVisible(false);
 
-		// Refuser les cookies Google Analytics
 		if (typeof window !== "undefined" && (window as any).gtag) {
 			(window as any).gtag("consent", "update", {
 				analytics_storage: "denied",
@@ -100,11 +93,10 @@ export const CookieBanner = () => {
 		saveConsent("custom", preferences);
 		setIsVisible(false);
 
-		// Mettre à jour selon les préférences
 		if (typeof window !== "undefined" && (window as any).gtag) {
 			(window as any).gtag("consent", "update", {
 				analytics_storage: preferences.analytics ? "granted" : "denied",
-				ad_storage: preferences.marketing ? "granted" : "denied",
+				ad_storage: "denied", // pas de pub
 			});
 		}
 	};
@@ -113,7 +105,7 @@ export const CookieBanner = () => {
 
 	return (
 		<>
-			{/* Overlay bloquant - empêche toute interaction */}
+			{/* Overlay bloquant */}
 			<div
 				className="fixed inset-0 bg-black/40 z-[9998] backdrop-blur-[2px]"
 				aria-hidden="true"
@@ -129,7 +121,7 @@ export const CookieBanner = () => {
 			>
 				<div className="container mx-auto max-w-4xl pointer-events-auto">
 					<div className="bg-background border-2 border-border rounded-2xl shadow-2xl overflow-hidden animate-slide-up max-h-[85vh] flex flex-col">
-						{/* Header avec logo */}
+						{/* Header */}
 						<div className="bg-gradient-to-r from-soft-pink to-blush px-3 py-3 sm:px-8 sm:py-4 flex items-center gap-2 sm:gap-4 flex-shrink-0">
 							<div className="relative w-10 h-10 sm:w-14 sm:h-14 rounded-full overflow-hidden shadow-md flex-shrink-0 bg-white">
 								<Image
@@ -160,32 +152,30 @@ export const CookieBanner = () => {
 							</button>
 						</div>
 
-						{/* Contenu principal - SCROLLABLE */}
+						{/* Contenu principal */}
 						<div className="p-3 sm:p-8 overflow-y-auto flex-1">
 							<p
 								id="cookie-banner-description"
 								className="font-body text-xs sm:text-base text-muted-foreground leading-relaxed mb-3 sm:mb-6"
 							>
 								Nous utilisons des cookies pour améliorer votre
-								expérience de navigation, analyser le trafic du
-								site et personnaliser le contenu. Votre choix
-								sera conservé pendant{" "}
+								expérience de navigation et analyser le trafic
+								du site. Votre choix sera conservé pendant{" "}
 								<strong className="text-foreground">
 									6 mois
 								</strong>
 								.{" "}
 								<Link
-								href="/politique-confidentialite"
-								className="text-primary hover:underline font-medium inline-flex items-center gap-1"
-								target="_blank"
-								 rel="noopener noreferrer"
+									href="/politique-confidentialite"
+									className="text-primary hover:underline font-medium inline-flex items-center gap-1"
+									target="_blank"
+									rel="noopener noreferrer"
 								>
-								En savoir plus
-								 <span aria-hidden="true">→</span>
-						</Link>
+									En savoir plus{" "}
+									<span aria-hidden="true">→</span>
+								</Link>
 							</p>
 
-							{/* Panel détails */}
 							{showDetails && (
 								<div className="mb-3 sm:mb-6 space-y-2.5 sm:space-y-4 border-t border-border pt-3 sm:pt-6 animate-fade-in">
 									{/* Cookies nécessaires */}
@@ -254,7 +244,7 @@ export const CookieBanner = () => {
 										</div>
 									</div>
 
-									{/* Cookies marketing */}
+									{/* Cookies fonctionnels optionnels */}
 									<div className="flex items-start gap-2 sm:gap-3 p-2.5 sm:p-4 bg-muted/30 rounded-lg sm:rounded-xl">
 										<div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center flex-shrink-0">
 											<Cookie
@@ -265,21 +255,22 @@ export const CookieBanner = () => {
 										<div className="flex-1 min-w-0">
 											<div className="flex items-center justify-between gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
 												<label
-													htmlFor="marketing"
+													htmlFor="functional"
 													className="font-semibold text-xs sm:text-base text-foreground cursor-pointer"
 												>
-													Cookies marketing
+													Cookies fonctionnels
+													optionnels
 												</label>
 												<input
 													type="checkbox"
-													id="marketing"
+													id="functional"
 													checked={
-														preferences.marketing
+														preferences.functional
 													}
 													onChange={(e) =>
 														setPreferences({
 															...preferences,
-															marketing:
+															functional:
 																e.target
 																	.checked,
 														})
@@ -288,9 +279,10 @@ export const CookieBanner = () => {
 												/>
 											</div>
 											<p className="text-[11px] sm:text-sm text-muted-foreground leading-snug sm:leading-normal">
-												Utilisés pour afficher des
-												publicités pertinentes et
-												personnalisées.
+												Permettent d’activer certains
+												services externes (cartes,
+												vidéos, contenus intégrés).
+												Aucun usage publicitaire.
 											</p>
 										</div>
 									</div>
@@ -298,7 +290,7 @@ export const CookieBanner = () => {
 							)}
 						</div>
 
-						{/* Boutons d'action - FIXED en bas */}
+						{/* Boutons */}
 						<div className="p-3 sm:p-6 sm:pt-0 flex-shrink-0 border-t sm:border-0 border-border/50">
 							<div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
 								{!showDetails ? (
