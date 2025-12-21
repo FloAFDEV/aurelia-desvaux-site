@@ -138,9 +138,15 @@ export const CookieBanner = () => {
 								</p>
 							</div>
 							<button
-								onClick={handleRejectAll}
+								onClick={() => {
+									if (showDetails) {
+										setShowDetails(false);
+									} else {
+										handleRejectAll();
+									}
+								}}
 								className="text-foreground/60 hover:text-foreground transition-colors p-2 hover:bg-white/30 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary flex-shrink-0"
-								aria-label="Tout rejeter et fermer"
+								aria-label={showDetails ? "Fermer les détails" : "Tout rejeter et fermer"}
 							>
 								<X className="w-5 h-5" />
 							</button>
@@ -155,13 +161,14 @@ export const CookieBanner = () => {
 								analyser le trafic du site et personnaliser le contenu. 
 								Votre choix sera conservé pendant <strong className="text-foreground">6 mois</strong>.{" "}
 								<Link
-									href="/politique-confidentialite"
-									className="text-primary hover:underline font-medium inline-flex items-center gap-1"
-									onClick={() => setIsVisible(false)}
+								href="/politique-confidentialite"
+								target="_blank"
+								rel="noopener noreferrer"
+								 className="text-primary hover:underline font-medium inline-flex items-center gap-1"
 								>
-									En savoir plus
-									<span aria-hidden="true">→</span>
-								</Link>
+								En savoir plus
+								 <span aria-hidden="true">↗</span>
+							</Link>
 							</p>
 
 							{showDetails && (
