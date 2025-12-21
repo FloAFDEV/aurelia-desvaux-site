@@ -108,14 +108,14 @@ export const CookieBanner = () => {
 			/>
 
 			<div
-				className="fixed bottom-0 left-0 right-0 z-[9999] px-4 pb-4 sm:pb-6 pointer-events-none"
+				className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center p-4 sm:pb-6 pointer-events-none overflow-y-auto"
 				role="dialog"
 				aria-modal="true"
 				aria-labelledby="cookie-banner-title"
 				aria-describedby="cookie-banner-description"
 			>
-				<div className="container mx-auto max-w-4xl pointer-events-auto">
-					<div className="bg-background border-2 border-border rounded-2xl shadow-2xl overflow-hidden animate-slide-up">
+				<div className="w-full max-w-4xl pointer-events-auto my-auto">
+					<div className="bg-background border-2 border-border rounded-2xl shadow-2xl overflow-hidden animate-slide-up max-h-[90vh] sm:max-h-[85vh] flex flex-col">
 						<div className="bg-gradient-to-r from-soft-pink to-blush px-6 sm:px-8 py-4 flex items-center gap-4">
 							<div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden shadow-md flex-shrink-0 bg-white">
 								<Image
@@ -146,7 +146,7 @@ export const CookieBanner = () => {
 							</button>
 						</div>
 
-						<div className="p-6 sm:p-8">
+						<div className="p-6 sm:p-8 overflow-y-auto flex-1">
 							<p
 								id="cookie-banner-description"
 								className="font-body text-sm sm:text-base text-muted-foreground leading-relaxed mb-6"
@@ -199,7 +199,7 @@ export const CookieBanner = () => {
 													id="analytics"
 													checked={preferences.analytics}
 													onChange={(e) => setPreferences({ ...preferences, analytics: e.target.checked })}
-													className="w-5 h-5 rounded border-gray-300 text-primary focus:ring-2 focus:ring-primary cursor-pointer"
+													className="w-5 h-5 rounded border-gray-300 text-primary focus:ring-2 focus:ring-primary cursor-pointer flex-shrink-0"
 												/>
 											</div>
 											<p className="text-sm text-muted-foreground">
@@ -208,7 +208,6 @@ export const CookieBanner = () => {
 										</div>
 									</div>
 
-									{/* ✅ AMÉLIORATION 1: Renommé "Cookies marketing" + icône Megaphone */}
 									<div className="flex items-start gap-3 p-4 bg-muted/30 rounded-xl">
 										<div className="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center flex-shrink-0">
 											<Megaphone className="w-5 h-5 text-purple-600 dark:text-purple-400" aria-hidden="true" />
@@ -223,7 +222,7 @@ export const CookieBanner = () => {
 													id="marketing"
 													checked={preferences.marketing}
 													onChange={(e) => setPreferences({ ...preferences, marketing: e.target.checked })}
-													className="w-5 h-5 rounded border-gray-300 text-primary focus:ring-2 focus:ring-primary cursor-pointer"
+													className="w-5 h-5 rounded border-gray-300 text-primary focus:ring-2 focus:ring-primary cursor-pointer flex-shrink-0"
 												/>
 											</div>
 											<p className="text-sm text-muted-foreground">
@@ -237,7 +236,6 @@ export const CookieBanner = () => {
 							<div className="flex flex-col sm:flex-row gap-3">
 								{!showDetails ? (
 									<>
-										{/* ✅ AMÉLIORATION 2: Meilleur contraste + hover visible sur "Tout rejeter" */}
 										<button
 											onClick={handleRejectAll}
 											className="w-full sm:w-auto px-6 py-3.5 border-2 border-primary/30 hover:border-primary text-foreground font-body text-sm sm:text-base font-medium rounded-full transition-all duration-300 hover:bg-primary/5 hover:shadow-sm motion-safe:hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
@@ -259,15 +257,16 @@ export const CookieBanner = () => {
 									</>
 								) : (
 									<>
+										{/* ✅ FIX RESPONSIVE : Les deux boutons ont maintenant la même largeur sur mobile et desktop */}
 										<button
 											onClick={() => setShowDetails(false)}
-											className="w-full sm:w-auto px-6 py-3.5 border-2 border-primary/30 hover:border-primary text-foreground font-body text-sm sm:text-base font-medium rounded-full transition-all duration-300 hover:bg-primary/5 hover:shadow-sm motion-safe:hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+											className="w-full sm:w-auto sm:flex-1 px-6 py-3.5 border-2 border-primary/30 hover:border-primary text-foreground font-body text-sm sm:text-base font-medium rounded-full transition-all duration-300 hover:bg-primary/5 hover:shadow-sm motion-safe:hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
 										>
 											← Retour
 										</button>
 										<button
 											onClick={handleSavePreferences}
-											className="w-full sm:flex-1 px-6 py-3.5 bg-primary text-primary-foreground font-body text-sm sm:text-base font-medium rounded-full shadow-lg transition-all duration-300 hover:shadow-xl hover:bg-primary/90 motion-safe:hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2"
+											className="w-full sm:w-auto sm:flex-1 px-6 py-3.5 bg-primary text-primary-foreground font-body text-sm sm:text-base font-medium rounded-full shadow-lg transition-all duration-300 hover:shadow-xl hover:bg-primary/90 motion-safe:hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2"
 										>
 											Enregistrer mes préférences
 										</button>
