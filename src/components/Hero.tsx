@@ -15,10 +15,10 @@ export const Hero = () => {
 	const parallaxOffset = Math.min(scrollY * 0.3, 100);
 
 	return (
-		<section
-			id="accueil"
-			className="relative flex items-center pt-16 min-h-screen pb-32 gradient-hero overflow-visible"
-		>
+	<section
+	id="accueil"
+	className="relative flex items-center pt-16 min-h-screen pb-32 gradient-hero overflow-hidden"
+	>
 			{/* Blobs décoratifs - Optimisés avec transform: translate3d et will-change limité */}
 			<div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
 				<div

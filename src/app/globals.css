@@ -140,8 +140,21 @@
     @apply border-border;
   }
 
+  /* Prévenir le défilement horizontal sur tous les éléments */
+  body, #__next, main {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* Empêcher les images et vidéos de déborder */
+  img, video, iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
     /* Optimisation du rendu */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -153,6 +166,7 @@
     font-family: var(--font-body);
     line-height: 1.7;
     letter-spacing: 0.01em;
+    overflow-x: hidden;
     /* SUPPRIMÉ : transform et backface-visibility qui créaient un contexte de stacking */
   }
 
@@ -173,6 +187,9 @@
     max-width: 1280px;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
   }
 
   @media (min-width: 768px) {
