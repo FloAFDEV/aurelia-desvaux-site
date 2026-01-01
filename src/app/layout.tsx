@@ -93,20 +93,23 @@ export default function RootLayout({
 	return (
 		<html lang="fr">
 			<head>
-				{/* Preconnect critiques - Déplacé dans <head> pour priorité max */}
-				<link
-					rel="preconnect"
-					href="https://www.googletagmanager.com"
-					crossOrigin="anonymous"
-				/>
+				{/* DNS prefetch uniquement pour Google Analytics (pas de preconnect inutile) */}
 				<link
 					rel="dns-prefetch"
 					href="https://www.google-analytics.com"
 				/>
-				{/* Preload des fonts critiques */}
+
+				{/* Preload des fonts critiques pour éviter FOIT */}
 				<link
 					rel="preload"
-					href="/fonts/cormorant-garamond-latin-400-normal.woff2"
+					href="/_next/static/media/cormorant-garamond-latin-400-normal.0e4e8436.woff2"
+					as="font"
+					type="font/woff2"
+					crossOrigin="anonymous"
+				/>
+				<link
+					rel="preload"
+					href="/_next/static/media/lora-latin-400-normal.1245abf6.woff2"
 					as="font"
 					type="font/woff2"
 					crossOrigin="anonymous"

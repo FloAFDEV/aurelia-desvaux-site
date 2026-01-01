@@ -1,0 +1,12 @@
+# Browsers supportés (modernes uniquement pour réduire les polyfills)
+# Cela éliminera les polyfills inutiles détectés par Lighthouse
+
+# Navigateurs modernes uniquement
+>0.5%
+last 2 versions
+not dead
+not IE 11
+not op_mini all
+
+# Support des fonctionnalités ES2020+
+supports es6-module

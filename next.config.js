@@ -77,12 +77,28 @@ const nextConfig = {
 					cacheGroups: {
 						default: false,
 						vendors: false,
+						// React/Next core (toujours utilisé)
+						framework: {
+							name: "framework",
+							test: /[\\/]node_modules[\\/](react|react-dom|next|scheduler)[\\/]/,
+							priority: 40,
+							enforce: true,
+						},
+						// Radix UI séparé (lourd)
+						radixui: {
+							name: "radix",
+							test: /[\\/]node_modules[\\/]@radix-ui[\\/]/,
+							priority: 30,
+							enforce: true,
+						},
 						// Vendor chunk pour les libs lourdes
 						vendor: {
 							name: "vendor",
 							chunks: "all",
 							test: /node_modules/,
 							priority: 20,
+							minSize: 20000,
+							maxSize: 150000,
 						},
 						// Chunk séparé pour les composants communs
 						common: {
@@ -95,6 +111,7 @@ const nextConfig = {
 						},
 					},
 				},
+				minimize: true,
 			};
 		}
 

@@ -59,18 +59,16 @@ export const FloatingCTA = () => {
 		return () => window.removeEventListener("scroll", requestTick);
 	}, [handleScroll]);
 
+	// Ne pas rendre le composant si masqué (au lieu de aria-hidden)
+	if (!isVisible) return null;
+
 	return (
 		<div
-			className={`
+			className="
 				fixed bottom-6 right-6 z-[9990]
 				transition-all duration-150 motion-safe:duration-300 ease-in-out
-				${
-					isVisible
-						? "opacity-100 translate-y-0 scale-100"
-						: "opacity-0 translate-y-8 scale-95 pointer-events-none"
-				}
-			`}
-			aria-hidden={!isVisible}
+				opacity-100 translate-y-0 scale-100
+			"
 		>
 			<div className="relative group">
 				{/* CTA principal */}
