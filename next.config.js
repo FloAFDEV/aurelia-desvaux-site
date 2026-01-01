@@ -2,10 +2,6 @@
 const nextConfig = {
 	typedRoutes: true,
 	reactStrictMode: true,
-	// Force Vercel rebuild - v2
-	generateBuildId: async () => {
-		return `build-${Date.now()}`;
-	},
 
 	typescript: {
 		ignoreBuildErrors: process.env.NODE_ENV === "production",
