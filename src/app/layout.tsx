@@ -27,9 +27,12 @@ const GA_MEASUREMENT_ID =
 // ----- Metadata SEO -----
 export const metadata: Metadata = {
 	metadataBase: new URL("https://aurelia-desvaux.fr"),
-	title: { default: "Aurélia Desvaux", template: "%s | Aurélia Desvaux" },
+	title: {
+		default: "Aurélia Desvaux – Hypnose, PNL et EFT à Valbonne",
+		template: "%s | Aurélia Desvaux",
+	},
 	description:
-		"Site officiel d'Aurélia Desvaux, thérapies brèves et accompagnement.",
+		"Aurélia Desvaux, spécialiste en Hypnose, PNL et EFT à Valbonne Sophia-Antipolis. Accompagnement pour stress, anxiété et bien-être.",
 	icons: {
 		icon: "/favicon.ico",
 		shortcut: "/favicon.ico",
@@ -70,7 +73,7 @@ export const metadata: Metadata = {
 	// Google Search Console - Balise de vérification
 	// 🔧 REMPLACER PAR VOTRE CODE GSC (optionnel si vous utilisez DNS ou fichier)
 	verification: {
-		google: "VOTRE_CODE_GSC_ICI",
+		google: "gPrvdkmyVI58aWqULwTaBE9XR6TvimLmVk7XHnqvChI",
 	},
 };
 
