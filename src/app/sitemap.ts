@@ -14,8 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		{ path: "/pnl", changefreq: "monthly", priority: 0.9 },
 		{ path: "/eft", changefreq: "monthly", priority: 0.9 },
 		{ path: "/preparation-mentale", changefreq: "monthly", priority: 0.9 },
-		{ path: "/dream-machine", changefreq: "monthly", priority: 0.8 },
-		{ path: "/ressources", changefreq: "monthly", priority: 0.7 },
+		{ path: "/dream-machine", changefreq: "yearly", priority: 0.7 },
+		{ path: "/ressources", changefreq: "weekly", priority: 0.7 },
 	];
 
 	// Pages légales
