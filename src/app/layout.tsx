@@ -21,7 +21,8 @@ const inter = Inter({
 
 // ----- Configuration Google Analytics 4 -----
 // 🔧 REMPLACER PAR VOTRE ID GA4 (format: G-XXXXXXXXXX)
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-XXXXXXXXXX";
+const GA_MEASUREMENT_ID =
+	process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-MX1M09SLT5";
 
 // ----- Metadata SEO -----
 export const metadata: Metadata = {
@@ -137,7 +138,10 @@ export default function RootLayout({
 							src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
 							strategy="afterInteractive"
 						/>
-						<Script id="google-analytics" strategy="afterInteractive">
+						<Script
+							id="google-analytics"
+							strategy="afterInteractive"
+						>
 							{`
 								window.dataLayer = window.dataLayer || [];
 								function gtag(){dataLayer.push(arguments);}

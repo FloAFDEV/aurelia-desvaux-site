@@ -4,7 +4,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
 // Remplacez G-XXXXXXXXXX par votre Measurement ID GA4
-const GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
+const GA_MEASUREMENT_ID = "G-MX1M09SLT5";
 
 declare global {
 	interface Window {
