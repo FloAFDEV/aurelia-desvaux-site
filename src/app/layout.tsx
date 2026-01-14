@@ -132,7 +132,7 @@ export default function RootLayout({
 			</head>
 			<body className={inter.className}>
 				{/* Google Analytics 4 - Chargé après interaction */}
-				{GA_MEASUREMENT_ID !== "G-XXXXXXXXXX" && (
+				{GA_MEASUREMENT_ID !== "G-MX1M09SLT5" && (
 					<>
 						<Script
 							src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
