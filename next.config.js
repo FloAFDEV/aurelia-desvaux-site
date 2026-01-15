@@ -147,6 +147,38 @@ const nextConfig = {
 						key: "Permissions-Policy",
 						value: "camera=(), microphone=(), geolocation=()",
 					},
+					// HSTS - Force HTTPS pendant 2 ans
+					{
+						key: "Strict-Transport-Security",
+						value: "max-age=63072000; includeSubDomains; preload",
+					},
+					// COOP - Isolation de l'origine pour sécurité XSS
+					{
+						key: "Cross-Origin-Opener-Policy",
+						value: "same-origin",
+					},
+					// CORP - Contrôle des ressources cross-origin
+					{
+						key: "Cross-Origin-Resource-Policy",
+						value: "same-origin",
+					},
+					// CSP - Content Security Policy stricte
+					{
+						key: "Content-Security-Policy",
+						value:
+							"default-src 'self'; " +
+							"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; " +
+							"style-src 'self' 'unsafe-inline'; " +
+							"img-src 'self' data: https: blob:; " +
+							"font-src 'self' data:; " +
+							"connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; " +
+							"frame-src 'self' https://www.medoucine.com; " +
+							"object-src 'none'; " +
+							"base-uri 'self'; " +
+							"form-action 'self' https://www.medoucine.com; " +
+							"frame-ancestors 'self'; " +
+							"upgrade-insecure-requests;",
+					},
 				],
 			},
 		];
