@@ -480,3 +480,13 @@
   outline: 2px solid hsl(var(--primary));
   outline-offset: 2px;
 }
+
+/* Protection anti-flash menu mobile (SSR/hydration safety) */
+[data-open] {
+  transform: translateX(100%);
+  will-change: transform;
+}
+
+[data-open="true"] {
+  transform: translateX(0);
+}

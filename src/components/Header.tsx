@@ -298,6 +298,7 @@ export const Header = () => {
 
 					{/* Drawer - BACKDROP-BLUR SUPPRIMÉ */}
 					<div
+						data-open={isMobileMenuOpen}
 						className={`fixed top-0 right-0 h-full w-3/4 max-w-[320px] bg-soft-pink/95 shadow-lg border-l border-primary/20 lg:hidden z-[9999] transition-transform duration-300 ${
 							isMobileMenuOpen
 								? "translate-x-0 animate-slide-in-drawer"

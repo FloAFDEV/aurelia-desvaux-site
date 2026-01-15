@@ -1,0 +1,17 @@
+# Cible moderne ES2020+ - Évite les polyfills inutiles
+# https://github.com/browserslist/browserslist
+
+# Navigateurs modernes qui supportent:
+# - ES6 modules
+# - ES2020+ features (Array.at, Object.fromEntries, etc.)
+# - Modern CSS (grid, flexbox, custom properties)
+
+defaults and fully supports es6-module
+maintained node versions
+
+# Équivalent à:
+# - Chrome >= 91
+# - Edge >= 91
+# - Firefox >= 90
+# - Safari >= 15
+# - iOS Safari >= 15

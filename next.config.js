@@ -56,7 +56,15 @@ const nextConfig = {
 		],
 	},
 
+	// Cibler ES2020+ pour éviter les polyfills inutiles
+	transpilePackages: [],
+
 	webpack: (config, { isServer }) => {
+		// Configuration pour éviter les polyfills inutiles
+		config.resolve.alias = {
+			...config.resolve.alias,
+		};
+
 		if (!isServer) {
 			config.optimization = {
 				...config.optimization,
