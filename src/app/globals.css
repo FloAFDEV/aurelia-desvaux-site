@@ -482,11 +482,14 @@
 }
 
 /* Protection anti-flash menu mobile (SSR/hydration safety) */
-[data-open] {
-  transform: translateX(100%);
-  will-change: transform;
-}
+/* Force le menu à rester fermé par défaut, même pendant l'hydration */
+/* Priorité maximale avec !important pour override Tailwind */
+@media (max-width: 1023px) {
+  [data-open] {
+    transform: translateX(100%) !important;
+  }
 
-[data-open="true"] {
-  transform: translateX(0);
+  [data-open="true"] {
+    transform: translateX(0) !important;
+  }
 }

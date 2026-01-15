@@ -299,10 +299,13 @@ export const Header = () => {
 					{/* Drawer - BACKDROP-BLUR SUPPRIMÉ */}
 					<div
 						data-open={isMobileMenuOpen}
+						style={{
+							transform: isMobileMenuOpen ? "translateX(0)" : "translateX(100%)",
+						}}
 						className={`fixed top-0 right-0 h-full w-3/4 max-w-[320px] bg-soft-pink/95 shadow-lg border-l border-primary/20 lg:hidden z-[9999] transition-transform duration-300 ${
 							isMobileMenuOpen
-								? "translate-x-0 animate-slide-in-drawer"
-								: "translate-x-full animate-slide-out-drawer"
+								? "animate-slide-in-drawer"
+								: "animate-slide-out-drawer"
 						}`}
 					>
 						<nav className="p-6 flex flex-col gap-3">
