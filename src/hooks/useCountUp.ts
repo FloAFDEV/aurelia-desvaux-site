@@ -18,7 +18,10 @@ export const useCountUp = (end: number, duration: number = 2000, start: boolean 
       
       // Easing function for smooth animation
       const easeOutQuart = 1 - Math.pow(1 - percentage, 4);
-      setCount(Math.floor(easeOutQuart * end));
+      const currentCount = Math.floor(easeOutQuart * end);
+
+      // S'assurer d'atteindre exactement la valeur finale
+      setCount(percentage === 1 ? end : currentCount);
 
       if (percentage < 1) {
         animationFrame = requestAnimationFrame(animate);

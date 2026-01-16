@@ -71,10 +71,10 @@ export const MedoucineBadge = ({
 	const profileUrl =
 		"https://www.medoucine.com/consultation/valbonne/aurelia-desvaux/1951";
 
-	// Format rating : afficher tel quel (pas d'arrondi si nombre entier)
+	// Format rating : afficher tel quel sans arrondir (4.95 reste 4.95, pas 5.0)
 	const formattedRating = displayData.rating % 1 === 0
 		? displayData.rating.toString()
-		: displayData.rating.toFixed(1);
+		: displayData.rating.toString();
 
 	const ariaLabel = `Voir le profil Médoucine d'Aurélia Desvaux (${formattedRating} étoiles, ${animatedCount} avis)`;
 
