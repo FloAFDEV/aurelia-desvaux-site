@@ -33,7 +33,7 @@ interface Prestation {
 	link?: string;
 }
 
-// Données par défaut (fallback) si le tableau Google Sheets renvoi une erreur ou est vide
+// Données par défaut (fallback)
 const DEFAULT_PRESTATIONS: Prestation[] = [
 	{
 		icon: Heart,
