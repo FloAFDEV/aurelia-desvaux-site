@@ -17,8 +17,8 @@ interface MedoucineData {
 }
 
 const FALLBACK_DATA: MedoucineData = {
-	rating: 5,
-	reviewCount: 85,
+	rating: 4.95,
+	reviewCount: 178,
 	lastUpdated: "16/01/2025",
 };
 
