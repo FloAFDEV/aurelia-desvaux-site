@@ -1,10 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	// ===============================
-	// ROOT EXPLICIT POUR OUTPUT TRACING
-	// ===============================
-	outputFileTracingRoot: __dirname, // ← ajoute cette ligne
-
 	typedRoutes: true,
 	reactStrictMode: true,
 
