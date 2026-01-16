@@ -93,19 +93,25 @@ export async function GET() {
 	}
 
 	try {
-		// URL CSV
-		const csvUrl = sheetId.startsWith("2PACX-")
-			? `https://docs.google.com/spreadsheets/d/e/${sheetId}/pub?output=csv`
-			: `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv`;
+		const isPublishedSheet = sheetId.startsWith("2PACX-");
 
-		// Récupération du CSV
-		const response = await fetch(csvUrl, { next: { revalidate: 0 } });
-		if (!response.ok) throw new Error(`HTTP ${response.status}`);
+		const csvUrl = isPublishedSheet
+			? `https://docs.google.com/spreadsheets/d/e/${sheetId}/pub?output=csv`
+			: `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=0`;
+
+		if (process.env.NODE_ENV !== "production") {
+			console.log("📄 CSV URL utilisée:", csvUrl);
+		}
+
+		const response = await fetch(csvUrl, { cache: "no-store" });
+
+		if (!response.ok) {
+			throw new Error(`HTTP ${response.status}`);
+		}
 
 		const csv = await response.text();
 		const rows = parseCSV(csv);
 
-		// Séparer Médoucine (note globale) des autres prestations
 		const medoucineRow = rows.find(
 			(row) => row.rating != null && row.reviewCount != null
 		);
@@ -118,7 +124,6 @@ export async function GET() {
 			  }
 			: FALLBACK_DATA.medoucine;
 
-		// Toutes les lignes sont renvoyées côté front, avec leurs rating/reviewCount si présents
 		const tarifs = rows
 			.filter((row) => row.tarif > 0)
 			.map((row) => ({
@@ -131,9 +136,7 @@ export async function GET() {
 
 		return NextResponse.json({ tarifs, medoucine });
 	} catch (error) {
-		if (process.env.NODE_ENV !== "production") {
-			console.error("❌ Erreur récupération Google Sheet:", error);
-		}
+		console.error("❌ Erreur récupération Google Sheet:", error);
 		return NextResponse.json(FALLBACK_DATA);
 	}
 }
