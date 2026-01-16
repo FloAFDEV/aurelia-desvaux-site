@@ -44,6 +44,18 @@ export default function MentionsLegales() {
 								</p>
 								<p className="font-body text-muted-foreground mb-2">
 									<strong className="text-foreground">
+										Statut :
+									</strong>{" "}
+									Auto-entrepreneur
+								</p>
+								<p className="font-body text-muted-foreground mb-2">
+									<strong className="text-foreground">
+										SIRET :
+									</strong>{" "}
+									890 745 276 00018
+								</p>
+								<p className="font-body text-muted-foreground mb-2">
+									<strong className="text-foreground">
 										Profession :
 									</strong>{" "}
 									Thérapeute en Hypnose, PNL et EFT
@@ -76,13 +88,40 @@ export default function MentionsLegales() {
 							<div className="bg-card rounded-xl p-6 mb-8 shadow-soft">
 								<p className="font-body text-muted-foreground mb-2">
 									<strong className="text-foreground">
-										Hébergeur :
+										Hébergeur du site :
 									</strong>{" "}
-									Vercel
+									Vercel Inc.
+								</p>
+								<p className="font-body text-muted-foreground mb-2">
+									<strong className="text-foreground">
+										Adresse :
+									</strong>{" "}
+									340 S Lemon Ave #4133, Walnut, CA 91789, USA
+								</p>
+								<p className="font-body text-muted-foreground mb-4">
+									<strong className="text-foreground">
+										Site web :
+									</strong>{" "}
+									<a
+										href="https://vercel.com"
+										target="_blank"
+										rel="noopener noreferrer"
+										className="text-primary hover:underline"
+									>
+										vercel.com
+									</a>
+								</p>
+								<p className="font-body text-muted-foreground mb-2">
+									<strong className="text-foreground">
+										Nom de domaine :
+									</strong>{" "}
+									aurelia-desvaux.com
 								</p>
 								<p className="font-body text-muted-foreground">
-									Ce site est hébergé sur une infrastructure
-									cloud sécurisée.
+									<strong className="text-foreground">
+										Registrar :
+									</strong>{" "}
+									OVH SAS
 								</p>
 							</div>
 

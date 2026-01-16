@@ -30,7 +30,7 @@ export default function PolitiqueConfidentialitePage() {
 					<div className="container mx-auto px-4 max-w-3xl">
 						<div className="prose prose-lg max-w-none">
 							<p className="font-body text-muted-foreground mb-8">
-								<em>Dernière mise à jour : Décembre 2024</em>
+								<em>Dernière mise à jour : Janvier 2025</em>
 							</p>
 
 							<h2 className="font-display text-2xl text-foreground mb-4">
@@ -187,6 +187,12 @@ export default function PolitiqueConfidentialitePage() {
 										Aurélia Desvaux
 									</p>
 									<p className="font-body text-muted-foreground">
+										Auto-entrepreneur
+									</p>
+									<p className="font-body text-muted-foreground">
+										SIRET : 890 745 276 00018
+									</p>
+									<p className="font-body text-muted-foreground mt-2">
 										1, Place Joseph BERMOND
 									</p>
 									<p className="font-body text-muted-foreground">

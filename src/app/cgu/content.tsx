@@ -20,7 +20,7 @@ export default function CGUContent() {
 							<div className="prose prose-lg max-w-none">
 								<p className="font-body text-muted-foreground mb-8">
 									<em>
-										Dernière mise à jour : Décembre 2024
+										Dernière mise à jour : Janvier 2025
 									</em>
 								</p>
 
