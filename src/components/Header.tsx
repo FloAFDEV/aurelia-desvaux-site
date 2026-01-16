@@ -129,6 +129,7 @@ export const Header = () => {
 								src={treeLogo}
 								alt="Aurélia Desvaux - Accueil"
 								fill
+								sizes="(max-width: 1024px) 56px, 64px"
 								className="object-cover"
 								priority
 							/>
@@ -300,7 +301,9 @@ export const Header = () => {
 					<div
 						data-open={isMobileMenuOpen}
 						style={{
-							transform: isMobileMenuOpen ? "translateX(0)" : "translateX(100%)",
+							transform: isMobileMenuOpen
+								? "translateX(0)"
+								: "translateX(100%)",
 						}}
 						className={`fixed top-0 right-0 h-full w-3/4 max-w-[320px] bg-soft-pink/95 shadow-lg border-l border-primary/20 lg:hidden z-[9999] transition-transform duration-300 ${
 							isMobileMenuOpen

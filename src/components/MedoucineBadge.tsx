@@ -1,7 +1,7 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Star, ExternalLink } from "lucide-react";
-import { medoucineConfig } from "@/config/medoucine";
 import { useInView } from "@/hooks/useInView";
 import { useCountUp } from "@/hooks/useCountUp";
 
@@ -10,20 +10,51 @@ interface MedoucineBadgeProps {
 	className?: string;
 }
 
+interface MedoucineData {
+	rating: number;
+	reviewCount: number;
+	lastUpdated: string;
+}
+
+const FALLBACK_DATA: MedoucineData = {
+	rating: 5,
+	reviewCount: 85,
+	lastUpdated: "16/01/2025",
+};
+
 export const MedoucineBadge = ({
 	variant = "default",
 	className = "",
 }: MedoucineBadgeProps) => {
-	const { rating, reviewCount, profileUrl, lastUpdated } = medoucineConfig;
+	const [data, setData] = useState<MedoucineData>(FALLBACK_DATA);
 	const { ref, isInView } = useInView<HTMLAnchorElement>(0.1);
-	const animatedCount = useCountUp(reviewCount, 2000, isInView);
+	const animatedCount = useCountUp(data.reviewCount, 2000, isInView);
 
-	const formattedDate = new Date(lastUpdated).toLocaleDateString("fr-FR", {
+	// Récupérer les données depuis l'API
+	useEffect(() => {
+		fetch("/api/sheet")
+			.then((res) => res.json())
+			.then((json) => {
+				if (json.medoucine) {
+					setData(json.medoucine);
+				}
+			})
+			.catch((err) => {
+				console.error("Erreur récupération données Médoucine:", err);
+			});
+	}, []);
+
+	const formattedDate = new Date(
+		data.lastUpdated.split("/").reverse().join("-")
+	).toLocaleDateString("fr-FR", {
 		month: "long",
 		year: "numeric",
 	});
 
-	const ariaLabel = `Voir le profil Médoucine d’Aurélia Desvaux (${rating.toFixed(
+	const profileUrl =
+		"https://www.medoucine.com/consultation/valbonne/aurelia-desvaux/1951";
+
+	const ariaLabel = `Voir le profil Médoucine d'Aurélia Desvaux (${data.rating.toFixed(
 		1
 	)} étoiles, ${animatedCount} avis)`;
 
@@ -46,7 +77,7 @@ export const MedoucineBadge = ({
 					))}
 				</div>
 				<span className="font-body text-xs font-medium text-amber-900 dark:text-amber-200">
-					{rating} • {animatedCount} avis
+					{data.rating} • {animatedCount} avis
 				</span>
 				<ExternalLink className="w-3 h-3 text-amber-600 dark:text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity" />
 			</a>
@@ -81,7 +112,7 @@ export const MedoucineBadge = ({
 				</div>
 				<div className="flex flex-col items-center">
 					<span className="font-display text-2xl font-bold text-amber-900 dark:text-amber-100">
-						{rating.toFixed(1)}
+						{data.rating.toFixed(1)}
 					</span>
 					<span className="font-body text-xs text-amber-600 dark:text-amber-400 flex items-center gap-1">
 						Médoucine
@@ -112,7 +143,7 @@ export const MedoucineBadge = ({
 			</div>
 			<div className="flex flex-col">
 				<span className="font-display text-sm font-bold text-amber-900 dark:text-amber-100">
-					{rating.toFixed(1)}
+					{data.rating.toFixed(1)}
 				</span>
 				<span className="font-body text-xs text-amber-700 dark:text-amber-300">
 					{animatedCount} avis

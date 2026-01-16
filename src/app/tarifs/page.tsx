@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import TarifsContent from "@/components/Tarifs";
+import Tarifs from "@/components/Tarifs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 export default function TarifsPage() {
 	return (
 		<div className={inter.className}>
-			<TarifsContent />
+			<Tarifs />
 		</div>
 	);
 }

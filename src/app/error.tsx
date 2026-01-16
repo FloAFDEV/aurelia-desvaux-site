@@ -25,7 +25,7 @@ export default function Error({
 						src={treeLogo}
 						alt="Aurélia Desvaux"
 						fill
-						sizes="96px"
+						sizes="(max-width: 768px) 100vw, 96px"
 						className="object-cover rounded-full"
 					/>
 				</div>
