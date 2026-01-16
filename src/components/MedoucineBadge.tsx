@@ -26,26 +26,43 @@ export const MedoucineBadge = ({
 	variant = "default",
 	className = "",
 }: MedoucineBadgeProps) => {
-	const [data, setData] = useState<MedoucineData>(FALLBACK_DATA);
+	const [data, setData] = useState<MedoucineData | null>(null);
+	const [isLoading, setIsLoading] = useState(true);
 	const { ref, isInView } = useInView<HTMLAnchorElement>(0.1);
-	const animatedCount = useCountUp(data.reviewCount, 2000, isInView);
 
-	// Récupérer les données depuis l'API
+	// Utiliser data ou fallback selon la réussite du fetch
+	const displayData = data || FALLBACK_DATA;
+	const animatedCount = useCountUp(displayData.reviewCount, 2000, isInView);
+
+	// Récupérer les données depuis l'API APRÈS le montage initial (pas de pénalité perf)
 	useEffect(() => {
-		fetch("/api/sheet")
-			.then((res) => res.json())
-			.then((json) => {
-				if (json.medoucine) {
-					setData(json.medoucine);
-				}
-			})
-			.catch((err) => {
-				console.error("Erreur récupération données Médoucine:", err);
-			});
+		// Utiliser setTimeout pour différer le fetch après le montage
+		const timer = setTimeout(() => {
+			fetch("/api/sheet")
+				.then((res) => {
+					if (!res.ok) {
+						throw new Error(`HTTP ${res.status}`);
+					}
+					return res.json();
+				})
+				.then((json) => {
+					if (json.medoucine) {
+						setData(json.medoucine);
+						setIsLoading(false);
+					}
+				})
+				.catch((err) => {
+					console.warn("⚠️ Médoucine Badge : utilisation des données par défaut", err.message);
+					// En cas d'erreur, garder data = null pour utiliser FALLBACK_DATA
+					setIsLoading(false);
+				});
+		}, 100); // 100ms après le montage pour ne pas bloquer le rendu initial
+
+		return () => clearTimeout(timer);
 	}, []);
 
 	const formattedDate = new Date(
-		data.lastUpdated.split("/").reverse().join("-")
+		displayData.lastUpdated.split("/").reverse().join("-")
 	).toLocaleDateString("fr-FR", {
 		month: "long",
 		year: "numeric",
@@ -54,9 +71,12 @@ export const MedoucineBadge = ({
 	const profileUrl =
 		"https://www.medoucine.com/consultation/valbonne/aurelia-desvaux/1951";
 
-	const ariaLabel = `Voir le profil Médoucine d'Aurélia Desvaux (${data.rating.toFixed(
-		1
-	)} étoiles, ${animatedCount} avis)`;
+	// Format rating : afficher tel quel (pas d'arrondi si nombre entier)
+	const formattedRating = displayData.rating % 1 === 0
+		? displayData.rating.toString()
+		: displayData.rating.toFixed(1);
+
+	const ariaLabel = `Voir le profil Médoucine d'Aurélia Desvaux (${formattedRating} étoiles, ${animatedCount} avis)`;
 
 	if (variant === "compact") {
 		return (
@@ -77,7 +97,7 @@ export const MedoucineBadge = ({
 					))}
 				</div>
 				<span className="font-body text-xs font-medium text-amber-900 dark:text-amber-200">
-					{data.rating} • {animatedCount} avis
+					{formattedRating} • {animatedCount} avis
 				</span>
 				<ExternalLink className="w-3 h-3 text-amber-600 dark:text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity" />
 			</a>
@@ -112,7 +132,7 @@ export const MedoucineBadge = ({
 				</div>
 				<div className="flex flex-col items-center">
 					<span className="font-display text-2xl font-bold text-amber-900 dark:text-amber-100">
-						{data.rating.toFixed(1)}
+						{formattedRating}
 					</span>
 					<span className="font-body text-xs text-amber-600 dark:text-amber-400 flex items-center gap-1">
 						Médoucine
@@ -143,7 +163,7 @@ export const MedoucineBadge = ({
 			</div>
 			<div className="flex flex-col">
 				<span className="font-display text-sm font-bold text-amber-900 dark:text-amber-100">
-					{data.rating.toFixed(1)}
+					{formattedRating}
 				</span>
 				<span className="font-body text-xs text-amber-700 dark:text-amber-300">
 					{animatedCount} avis
