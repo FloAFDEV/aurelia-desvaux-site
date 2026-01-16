@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 export interface SheetRow {
 	prestation: string;
 	tarif: number;
+	description?: string;
 	rating?: number;
 	reviewCount?: number;
 	lastUpdated?: string;
@@ -63,7 +64,7 @@ function parseCSV(csv: string): SheetRow[] {
 			}
 			values.push(current.trim().replace(/^\uFEFF/, ""));
 
-			const [prestation, tarif, rating, reviewCount, lastUpdated] =
+			const [prestation, tarif, description, rating, reviewCount, lastUpdated] =
 				values;
 
 			// Ignorer les lignes vides
@@ -72,6 +73,7 @@ function parseCSV(csv: string): SheetRow[] {
 			return {
 				prestation,
 				tarif: tarif ? parseFloat(tarif) : 0,
+				description: description || undefined,
 				rating: rating ? parseFloat(rating) : undefined,
 				reviewCount: reviewCount
 					? parseInt(reviewCount, 10)
@@ -128,6 +130,7 @@ export async function GET() {
 			.map((row) => ({
 				prestation: row.prestation,
 				tarif: row.tarif,
+				description: row.description,
 				rating: row.rating,
 				reviewCount: row.reviewCount,
 				lastUpdated: row.lastUpdated,

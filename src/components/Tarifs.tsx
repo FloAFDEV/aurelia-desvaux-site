@@ -97,7 +97,7 @@ export default function Tarifs() {
 			.then((data) => {
 				if (data.tarifs && data.tarifs.length > 0) {
 					const updated: Prestation[] = data.tarifs.map(
-						(row: { prestation: string; tarif: number }) => {
+						(row: { prestation: string; tarif: number; description?: string }) => {
 							const defaultItem = DEFAULT_PRESTATIONS.find(
 								(d) =>
 									d.title.toLowerCase() ===
@@ -107,7 +107,7 @@ export default function Tarifs() {
 							return {
 								icon: defaultItem?.icon || Heart,
 								title: row.prestation,
-								description: defaultItem?.description || "",
+								description: row.description || defaultItem?.description || "",
 								tarif: row.tarif,
 								unit: defaultItem?.unit || "/ séance",
 								badge: defaultItem?.badge,
