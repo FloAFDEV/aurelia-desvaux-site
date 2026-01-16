@@ -100,7 +100,6 @@ export async function GET() {
 			: `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=0`;
 
 		if (process.env.NODE_ENV !== "production") {
-			console.log("📄 CSV URL utilisée:", csvUrl);
 		}
 
 		const response = await fetch(csvUrl, { cache: "no-store" });

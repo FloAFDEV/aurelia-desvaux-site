@@ -73,8 +73,9 @@ const nextConfig = {
 					cacheGroups: {
 						default: false,
 						vendors: false,
-						framework: {
-							name: "framework",
+						// CORRECTION: Renommé "framework" en "react-framework" pour éviter conflit MIME avec framework.css
+						"react-framework": {
+							name: "react-framework",
 							test: /[\\/]node_modules[\\/](react|react-dom|next|scheduler)[\\/]/,
 							priority: 40,
 							enforce: true,
@@ -90,7 +91,7 @@ const nextConfig = {
 							chunks: "all",
 							test: /node_modules/,
 							priority: 20,
-							minSize: 20000,
+			minSize: 20000,
 							maxSize: 150000,
 						},
 						common: {
@@ -167,12 +168,12 @@ const nextConfig = {
 						key: "Content-Security-Policy",
 						value:
 							"default-src 'self'; " +
-							"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; " +
+							"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://docs.google.com; " +
 							"style-src 'self' 'unsafe-inline'; " +
 							"img-src 'self' data: https: blob:; " +
 							"font-src 'self' data:; " +
-							"connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; " +
-							"frame-src 'self' https://www.medoucine.com; " +
+							"connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://docs.google.com; " +
+							"frame-src 'self' https://www.medoucine.com https://www.google.com https://docs.google.com; " +
 							"object-src 'none'; " +
 							"base-uri 'self'; " +
 							"form-action 'self' https://www.medoucine.com; " +
