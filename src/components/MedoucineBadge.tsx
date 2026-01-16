@@ -14,9 +14,14 @@ export const MedoucineBadge = ({
 	variant = "default",
 	className = "",
 }: MedoucineBadgeProps) => {
-	const { rating, reviewCount, profileUrl } = medoucineConfig;
+	const { rating, reviewCount, profileUrl, lastUpdated } = medoucineConfig;
 	const { ref, isInView } = useInView<HTMLAnchorElement>(0.1);
 	const animatedCount = useCountUp(reviewCount, 2000, isInView);
+
+	const formattedDate = new Date(lastUpdated).toLocaleDateString("fr-FR", {
+		month: "long",
+		year: "numeric",
+	});
 
 	const ariaLabel = `Voir le profil Médoucine d’Aurélia Desvaux (${rating.toFixed(
 		1
@@ -70,8 +75,11 @@ export const MedoucineBadge = ({
 					<span className="font-body text-xs text-amber-700 dark:text-amber-300">
 						{animatedCount} avis vérifiés
 					</span>
+					<span className="font-body text-[10px] text-amber-600 dark:text-amber-400">
+						Dernière mise à jour : {formattedDate}
+					</span>
 				</div>
-				<div className="flex flex-col items-end">
+				<div className="flex flex-col items-center">
 					<span className="font-display text-2xl font-bold text-amber-900 dark:text-amber-100">
 						{rating.toFixed(1)}
 					</span>
@@ -108,6 +116,9 @@ export const MedoucineBadge = ({
 				</span>
 				<span className="font-body text-xs text-amber-700 dark:text-amber-300">
 					{animatedCount} avis
+				</span>
+				<span className="font-body text-xs text-amber-600 dark:text-amber-400">
+					Dernière mise à jour : {formattedDate}
 				</span>
 			</div>
 			<ExternalLink className="w-4 h-4 text-amber-600 dark:text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity" />
