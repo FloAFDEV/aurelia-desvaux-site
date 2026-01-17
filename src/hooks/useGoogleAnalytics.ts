@@ -4,7 +4,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
 // Remplacez G-XXXXXXXXXX par votre Measurement ID GA4
-const GA_MEASUREMENT_ID = "G-MX1M09SLT5";
+const GA_MEASUREMENT_ID = "G-V96H9MXTZ6";
 
 declare global {
 	interface Window {
@@ -31,7 +31,7 @@ export const usePageTracking = () => {
 // Fonction pour envoyer des événements personnalisés
 export const trackEvent = (
 	eventName: string,
-	eventParams?: Record<string, unknown>
+	eventParams?: Record<string, unknown>,
 ) => {
 	if (typeof window.gtag === "function") {
 		window.gtag("event", eventName, eventParams);

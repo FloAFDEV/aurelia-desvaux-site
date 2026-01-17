@@ -22,7 +22,7 @@ const inter = Inter({
 // ----- Configuration Google Analytics 4 -----
 // 🔧 REMPLACER PAR VOTRE ID GA4 (format: G-XXXXXXXXXX)
 const GA_MEASUREMENT_ID =
-	process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-MX1M09SLT5";
+	process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-V96H9MXTZ6";
 
 // ----- Metadata SEO -----
 export const metadata: Metadata = {
@@ -135,7 +135,7 @@ export default function RootLayout({
 			</head>
 			<body className={inter.className}>
 				{/* Google Analytics 4 - Chargé après interaction */}
-				{GA_MEASUREMENT_ID !== "G-MX1M09SLT5" && (
+				{GA_MEASUREMENT_ID !== "G-V96H9MXTZ6" && (
 					<>
 						<Script
 							src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
