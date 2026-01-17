@@ -135,7 +135,7 @@ export default function RootLayout({
 			</head>
 			<body className={inter.className}>
 				{/* Google Analytics 4 - Chargé après interaction */}
-				{GA_MEASUREMENT_ID !== "G-V96H9MXTZ6" && (
+				{GA_MEASUREMENT_ID && (
 					<>
 						<Script
 							src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
@@ -149,14 +149,14 @@ export default function RootLayout({
 								window.dataLayer = window.dataLayer || [];
 								function gtag(){dataLayer.push(arguments);}
 								gtag('js', new Date());
-								
+
 								// Configuration par défaut avec consentement refusé
 								gtag('consent', 'default', {
 									'analytics_storage': 'denied',
 									'ad_storage': 'denied',
 									'wait_for_update': 500
 								});
-								
+
 								gtag('config', '${GA_MEASUREMENT_ID}', {
 									page_path: window.location.pathname,
 								});
