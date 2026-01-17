@@ -150,15 +150,22 @@ export default function RootLayout({
 								function gtag(){dataLayer.push(arguments);}
 								gtag('js', new Date());
 
-								// Configuration par défaut avec consentement refusé
+								// Google Consent Mode V2 - Collecte de données anonymes par défaut (conforme RGPD)
 								gtag('consent', 'default', {
 									'analytics_storage': 'denied',
 									'ad_storage': 'denied',
+									'ad_user_data': 'denied',
+									'ad_personalization': 'denied',
 									'wait_for_update': 500
 								});
 
+								// Configuration GA4 avec mode de consentement V2
+								// Envoie des pings anonymes même sans consentement (pas de cookies)
 								gtag('config', '${GA_MEASUREMENT_ID}', {
 									page_path: window.location.pathname,
+									'anonymize_ip': true,
+									'allow_google_signals': false,
+									'allow_ad_personalization_signals': false
 								});
 							`}
 						</Script>
