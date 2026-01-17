@@ -34,7 +34,7 @@ export default function CGUContent() {
 										d'utilisation (CGU) ont pour objet de
 										définir les modalités d'accès et
 										d'utilisation du site
-										aurelia-desvaux.com. L'accès au site
+										aurelia-desvaux.fr. L'accès au site
 										implique l'acceptation pleine et entière
 										des présentes CGU.
 									</p>
@@ -46,7 +46,7 @@ export default function CGUContent() {
 								</h2>
 								<div className="bg-card rounded-xl p-6 mb-8 shadow-soft transition-all duration-300 hover:shadow-lg">
 									<p className="font-body text-muted-foreground mb-4">
-										Le site aurelia-desvaux.com est
+										Le site aurelia-desvaux.fr est
 										accessible gratuitement à tout
 										utilisateur disposant d'un accès à
 										Internet. Tous les coûts afférents à
@@ -70,7 +70,7 @@ export default function CGUContent() {
 								</h2>
 								<div className="bg-card rounded-xl p-6 mb-8 shadow-soft transition-all duration-300 hover:shadow-lg">
 									<p className="font-body text-muted-foreground mb-4">
-										Le site aurelia-desvaux.com est un site
+										Le site aurelia-desvaux.fr est un site
 										exclusivement informatif. Il a pour
 										objet de présenter les services de
 										thérapies brèves proposés par Aurélia

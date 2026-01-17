@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 		"Politique de confidentialité et gestion des cookies du site Aurélia Desvaux - Thérapies Brèves à Valbonne.",
 	robots: "noindex, follow",
 	alternates: {
-		canonical: "https://aurelia-desvaux.com/politique-confidentialite",
+		canonical: "https://aurelia-desvaux.fr/politique-confidentialite",
 	},
 };
 
@@ -38,7 +38,7 @@ export default function PolitiqueConfidentialitePage() {
 							</h2>
 							<div className="bg-card rounded-xl p-6 mb-8 shadow-soft">
 								<p className="font-body text-muted-foreground mb-4">
-									Le site aurelia-desvaux.com est un site
+									Le site aurelia-desvaux.fr est un site
 									exclusivement informatif qui{" "}
 									<strong className="text-foreground">
 										ne collecte aucune donnée personnelle

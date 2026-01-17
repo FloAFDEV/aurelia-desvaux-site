@@ -18,19 +18,19 @@ export const metadata: Metadata = {
 		"Aurélia Desvaux",
 	],
 	alternates: {
-		canonical: "https://aurelia-desvaux.com/dream-machine",
+		canonical: "https://aurelia-desvaux.fr/dream-machine",
 	},
 	openGraph: {
 		title: "Dream Machine – Voyage intérieur par la lumière",
 		description:
 			"Explorez des états de conscience profonds grâce à la Dream Machine. Une expérience unique de relaxation et de méditation par stimulation lumineuse à Valbonne.",
-		url: "https://aurelia-desvaux.com/dream-machine",
+		url: "https://aurelia-desvaux.fr/dream-machine",
 		siteName: "Aurélia Desvaux – Thérapies brèves & bien-être",
 		locale: "fr_FR",
 		type: "website",
 		images: [
 			{
-				url: "https://aurelia-desvaux.com/og-image.webp",
+				url: "https://aurelia-desvaux.fr/og-image.webp",
 				width: 1200,
 				height: 630,
 				alt: "Dream Machine – Luminothérapie méditative à Valbonne",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 		title: "Dream Machine – Aurélia Desvaux",
 		description:
 			"Luminothérapie méditative pour relaxation profonde, créativité et exploration intérieure. Séances Dream Machine à Valbonne.",
-		images: ["https://aurelia-desvaux.com/og-image.webp"],
+		images: ["https://aurelia-desvaux.fr/og-image.webp"],
 	},
 	robots: {
 		index: true,

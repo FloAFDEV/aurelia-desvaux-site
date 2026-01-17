@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 		type: "website",
 		images: [
 			{
-				url: "https://aurelia-desvaux.com/og-image.webp",
+				url: "https://aurelia-desvaux.fr/og-image.webp",
 				width: 1200,
 				height: 630,
 				alt: "Aurélia Desvaux - Thérapeute à Valbonne",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 		title: "Aurélia Desvaux | Hypnose, PNL & EFT à Valbonne",
 		description:
 			"Thérapeute en Hypnose, PNL & EFT. Accompagnement bienveillant pour votre bien-être à Valbonne Sophia-Antipolis.",
-		images: ["https://aurelia-desvaux.com/og-image.webp"],
+		images: ["https://aurelia-desvaux.fr/og-image.webp"],
 	},
 	metadataBase: new URL("https://aurelia-desvaux.fr"),
 	robots: {

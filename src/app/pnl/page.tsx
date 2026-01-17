@@ -12,7 +12,7 @@ export default function PNLPage() {
 	return (
 		<>
 			<Head>
-				<link rel="canonical" href="https://aurelia-desvaux.com/pnl" />
+				<link rel="canonical" href="https://aurelia-desvaux.fr/pnl" />
 
 				{/* JSON-LD Structured Data */}
 				<script
@@ -30,7 +30,7 @@ export default function PNLPage() {
 								jobTitle: "Praticienne PNL",
 							},
 							areaServed: "Valbonne, Sophia-Antipolis, France",
-							url: "https://aurelia-desvaux.com/pnl",
+							url: "https://aurelia-desvaux.fr/pnl",
 						}),
 					}}
 				/>

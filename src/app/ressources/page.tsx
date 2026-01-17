@@ -18,7 +18,7 @@ export default function RessourcesPage() {
 				/>
 				<link
 					rel="canonical"
-					href="https://aurelia-desvaux.com/ressources"
+					href="https://aurelia-desvaux.fr/ressources"
 				/>
 
 				{/* Open Graph */}
@@ -33,7 +33,7 @@ export default function RessourcesPage() {
 				<meta property="og:type" content="website" />
 				<meta
 					property="og:url"
-					content="https://aurelia-desvaux.com/ressources"
+					content="https://aurelia-desvaux.fr/ressources"
 				/>
 				<meta property="og:locale" content="fr_FR" />
 				<meta
@@ -42,7 +42,7 @@ export default function RessourcesPage() {
 				/>
 				<meta
 					property="og:image"
-					content="https://aurelia-desvaux.com/og-image.webp"
+					content="https://aurelia-desvaux.fr/og-image.webp"
 				/>
 				<meta property="og:image:width" content="1200" />
 				<meta property="og:image:height" content="630" />
@@ -63,7 +63,7 @@ export default function RessourcesPage() {
 				/>
 				<meta
 					name="twitter:image"
-					content="https://aurelia-desvaux.com/og-image.webp"
+					content="https://aurelia-desvaux.fr/og-image.webp"
 				/>
 				<meta
 					name="twitter:image:alt"

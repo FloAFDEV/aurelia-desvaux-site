@@ -4,13 +4,13 @@ import { Header } from "@/components/Header";
 export const metadata: Metadata = {
 	title: "Mentions Légales | Aurélia Desvaux - Thérapeute à Valbonne",
 	description:
-		"Mentions légales du site aurelia-desvaux.com - Informations sur l'éditeur et l'hébergeur du site.",
+		"Mentions légales du site aurelia-desvaux.fr - Informations sur l'éditeur et l'hébergeur du site.",
 	robots: {
 		index: false,
 		follow: true,
 	},
 	alternates: {
-		canonical: "https://aurelia-desvaux.com/mentions-legales",
+		canonical: "https://aurelia-desvaux.fr/mentions-legales",
 	},
 };
 
@@ -115,7 +115,7 @@ export default function MentionsLegales() {
 									<strong className="text-foreground">
 										Nom de domaine :
 									</strong>{" "}
-									aurelia-desvaux.com
+									aurelia-desvaux.fr
 								</p>
 								<p className="font-body text-muted-foreground">
 									<strong className="text-foreground">

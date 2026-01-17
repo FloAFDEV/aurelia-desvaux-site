@@ -26,7 +26,7 @@ export const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
 			"@type": "ListItem",
 			position: index + 1,
 			name: item.label,
-			item: `https://aurelia-desvaux.com${item.href}`,
+			item: `https://aurelia-desvaux.fr${item.href}`,
 		})),
 	};
 

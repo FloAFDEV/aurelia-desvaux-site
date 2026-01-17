@@ -21,19 +21,19 @@ export const metadata: Metadata = {
     "phobies",
   ],
   alternates: {
-    canonical: "https://aurelia-desvaux.com/eft",
+    canonical: "https://aurelia-desvaux.fr/eft",
   },
   openGraph: {
     title: "EFT Emotional Freedom Techniques à Valbonne | Aurélia Desvaux",
     description:
       "Séances d'EFT à Valbonne Sophia-Antipolis. Libérez vos émotions bloquées, stress, anxiété. Praticienne EFT certifiée.",
     type: "website",
-    url: "https://aurelia-desvaux.com/eft",
+    url: "https://aurelia-desvaux.fr/eft",
     locale: "fr_FR",
     siteName: "Aurélia Desvaux - Thérapies Brèves",
     images: [
       {
-        url: "https://aurelia-desvaux.com/og-image.webp",
+        url: "https://aurelia-desvaux.fr/og-image.webp",
         width: 1200,
         height: 630,
         alt: "Aurélia Desvaux - EFT à Valbonne",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "EFT à Valbonne | Aurélia Desvaux",
     description: "Séances d'EFT. Libérez vos émotions et retrouvez l'équilibre à Valbonne Sophia-Antipolis.",
-    images: ["https://aurelia-desvaux.com/og-image.webp"],
+    images: ["https://aurelia-desvaux.fr/og-image.webp"],
   },
   robots: {
     index: true,
