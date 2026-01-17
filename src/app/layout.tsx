@@ -32,15 +32,29 @@ export const metadata: Metadata = {
 		template: "%s | Aurélia Desvaux",
 	},
 	description:
-		"Aurélia Desvaux, spécialiste en Hypnose, PNL et EFT à Valbonne Sophia-Antipolis. Accompagnement pour stress, anxiété et bien-être.",
+		"Aurélia Desvaux, praticienne en Hypnose Ericksonienne, PNL et EFT à Valbonne Sophia-Antipolis (06). Thérapies brèves pour stress, anxiété, phobies et développement personnel. Consultations sur rendez-vous.",
+	keywords: [
+		"hypnose Valbonne",
+		"PNL Sophia-Antipolis",
+		"EFT Alpes-Maritimes",
+		"thérapeute Valbonne",
+		"hypnothérapeute 06",
+		"préparation mentale",
+		"gestion du stress",
+		"thérapies brèves",
+		"Aurélia Desvaux",
+	],
 	icons: {
 		icon: "/favicon.ico",
 		shortcut: "/favicon.ico",
 		apple: "/favicon-apple.png",
 	},
 	openGraph: {
-		title: "Aurélia Desvaux | Thérapies Brèves",
-		description: "Accompagnement en Hypnose, PNL et EFT à Valbonne.",
+		type: "website",
+		locale: "fr_FR",
+		title: "Aurélia Desvaux | Hypnose, PNL et EFT à Valbonne",
+		description:
+			"Praticienne en Hypnose Ericksonienne, PNL et EFT. Accompagnement thérapeutique pour stress, anxiété et bien-être à Valbonne Sophia-Antipolis.",
 		url: "https://aurelia-desvaux.fr",
 		siteName: "Aurélia Desvaux",
 		images: [
@@ -48,15 +62,21 @@ export const metadata: Metadata = {
 				url: "https://aurelia-desvaux.fr/og-image.webp",
 				width: 1200,
 				height: 630,
-				alt: "Aurélia Desvaux - Thérapeute à Valbonne",
+				alt: "Aurélia Desvaux - Praticienne en Hypnose, PNL et EFT à Valbonne",
+				type: "image/webp",
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Aurélia Desvaux",
-		description: "Thérapies brèves et accompagnement à Valbonne.",
+		title: "Aurélia Desvaux | Hypnose, PNL et EFT",
+		description:
+			"Praticienne en thérapies brèves à Valbonne. Accompagnement pour stress, anxiété et développement personnel.",
 		images: ["https://aurelia-desvaux.fr/og-image.webp"],
+		creator: "@aurelia_desvaux",
+	},
+	alternates: {
+		canonical: "https://aurelia-desvaux.fr",
 	},
 	// Optimisation pour les moteurs de recherche
 	robots: {
@@ -134,6 +154,96 @@ export default function RootLayout({
 				/>
 			</head>
 			<body className={inter.className}>
+				{/* Données structurées Schema.org pour le SEO */}
+				<Script
+					id="schema-org"
+					type="application/ld+json"
+					strategy="beforeInteractive"
+				>
+					{`
+						{
+							"@context": "https://schema.org",
+							"@type": "Psychologist",
+							"name": "Aurélia Desvaux",
+							"url": "https://aurelia-desvaux.fr",
+							"logo": "https://aurelia-desvaux.fr/favicon-apple.png",
+							"image": "https://aurelia-desvaux.fr/og-image.webp",
+							"description": "Praticienne en Hypnose Ericksonienne, PNL et EFT. Accompagnement thérapeutique pour gérer le stress, l'anxiété et améliorer votre bien-être.",
+							"address": {
+								"@type": "PostalAddress",
+								"addressLocality": "Valbonne Sophia-Antipolis",
+								"addressRegion": "Alpes-Maritimes",
+								"postalCode": "06560",
+								"addressCountry": "FR"
+							},
+							"geo": {
+								"@type": "GeoCoordinates",
+								"latitude": "43.6282",
+								"longitude": "7.0458"
+							},
+							"areaServed": {
+								"@type": "GeoCircle",
+								"geoMidpoint": {
+									"@type": "GeoCoordinates",
+									"latitude": "43.6282",
+									"longitude": "7.0458"
+								},
+								"geoRadius": "50000"
+							},
+							"priceRange": "€€",
+							"availableService": [
+								{
+									"@type": "Service",
+									"name": "Hypnose Ericksonienne",
+									"description": "Thérapie par hypnose pour traiter stress, anxiété, phobies et troubles du comportement",
+									"provider": {
+										"@type": "Psychologist",
+										"name": "Aurélia Desvaux"
+									}
+								},
+								{
+									"@type": "Service",
+									"name": "PNL - Programmation Neuro-Linguistique",
+									"description": "Techniques de communication et développement personnel",
+									"provider": {
+										"@type": "Psychologist",
+										"name": "Aurélia Desvaux"
+									}
+								},
+								{
+									"@type": "Service",
+									"name": "EFT - Emotional Freedom Techniques",
+									"description": "Libération émotionnelle par tapotements sur points d'acupuncture",
+									"provider": {
+										"@type": "Psychologist",
+										"name": "Aurélia Desvaux"
+									}
+								},
+								{
+									"@type": "Service",
+									"name": "Préparation Mentale",
+									"description": "Coaching mental pour athlètes et professionnels",
+									"provider": {
+										"@type": "Psychologist",
+										"name": "Aurélia Desvaux"
+									}
+								}
+							],
+							"openingHoursSpecification": [
+								{
+									"@type": "OpeningHoursSpecification",
+									"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+									"opens": "09:00",
+									"closes": "19:00"
+								}
+							],
+							"sameAs": [
+								"https://www.medoucine.com/praticien/aurelia-desvaux"
+							]
+						}
+					`}
+				</Script>
+
 				{/* Google Analytics 4 - Chargé après interaction */}
 				{GA_MEASUREMENT_ID && (
 					<>
