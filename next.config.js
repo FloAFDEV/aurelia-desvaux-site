@@ -19,7 +19,7 @@ const nextConfig = {
 			process.env.NODE_ENV === "production"
 				? {
 						exclude: ["error", "warn"],
-				  }
+					}
 				: false,
 	},
 
@@ -29,7 +29,7 @@ const nextConfig = {
 		imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
 		minimumCacheTTL: 31536000,
 		dangerouslyAllowSVG: true,
-		contentDispositionType: "attachment",
+		contentDispositionType: "inline",
 		contentSecurityPolicy:
 			"default-src 'self'; script-src 'none'; sandbox;",
 		remotePatterns: [],
@@ -91,7 +91,7 @@ const nextConfig = {
 							chunks: "all",
 							test: /node_modules/,
 							priority: 20,
-			minSize: 20000,
+							minSize: 20000,
 							maxSize: 150000,
 						},
 						common: {
@@ -168,15 +168,15 @@ const nextConfig = {
 						key: "Content-Security-Policy",
 						value:
 							"default-src 'self'; " +
-							"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://docs.google.com; " +
+							"script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; " +
+							"connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net; " +
+							"img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net; " +
 							"style-src 'self' 'unsafe-inline'; " +
-							"img-src 'self' data: https: blob:; " +
 							"font-src 'self' data:; " +
-							"connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.googletagmanager.com https://docs.google.com; " +
-							"frame-src 'self' https://www.medoucine.com https://www.google.com https://docs.google.com; " +
+							"frame-src 'self' https://www.googletagmanager.com; " +
 							"object-src 'none'; " +
 							"base-uri 'self'; " +
-							"form-action 'self' https://www.medoucine.com; " +
+							"form-action 'self'; " +
 							"frame-ancestors 'self'; " +
 							"upgrade-insecure-requests;",
 					},
