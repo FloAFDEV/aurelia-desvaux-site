@@ -9,6 +9,7 @@ import { Footer } from "@/components/Footer";
 import { FloatingCTA } from "@/components/FloatingCTA";
 import { CookieBanner } from "@/components/CookieBanner";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { WebVitals } from "@/components/analytics/WebVitals";
 
 // Font optimisée avec display swap et préchargement
 const inter = Inter({
@@ -281,6 +282,9 @@ export default function RootLayout({
 						</Script>
 					</>
 				)}
+
+				{/* Core Web Vitals tracking */}
+				<WebVitals />
 
 				<Providers>
 					{/* Header avec Suspense et fallback optimisé */}
