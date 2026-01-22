@@ -169,11 +169,11 @@ const nextConfig = {
 						value:
 							"default-src 'self'; " +
 							"script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; " +
-							"connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net; " +
+							"connect-src 'self' https://*.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net; " +
 							"img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net; " +
 							"style-src 'self' 'unsafe-inline'; " +
 							"font-src 'self' data:; " +
-							"frame-src 'self' https://www.googletagmanager.com; " +
+							"frame-src 'self' https://www.google.com https://www.googletagmanager.com; " +
 							"object-src 'none'; " +
 							"base-uri 'self'; " +
 							"form-action 'self'; " +
