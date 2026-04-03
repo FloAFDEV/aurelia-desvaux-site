@@ -179,15 +179,15 @@ export default function RootLayout({
 							},
 							"geo": {
 								"@type": "GeoCoordinates",
-								"latitude": "43.6282",
-								"longitude": "7.0458"
+								"latitude": "43.6216",
+								"longitude": "7.0374"
 							},
 							"areaServed": {
 								"@type": "GeoCircle",
 								"geoMidpoint": {
 									"@type": "GeoCoordinates",
-									"latitude": "43.6282",
-									"longitude": "7.0458"
+									"latitude": "43.6216",
+									"longitude": "7.0374"
 								},
 								"geoRadius": "50000"
 							},
@@ -234,7 +234,7 @@ export default function RootLayout({
 								{
 									"@type": "OpeningHoursSpecification",
 									"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-									"opens": "09:00",
+									"opens": "08:15",
 									"closes": "19:00"
 								}
 							],
@@ -330,21 +330,21 @@ export default function RootLayout({
 							image: "https://aurelia-desvaux.fr/og-image.webp",
 							description:
 								"Thérapeute en Hypnose Ericksonienne, PNL et EFT à Valbonne Sophia‑Antipolis. Accompagnement bienveillant pour stress, anxiété, traumas et bien‑être.",
-							telephone: "+33 6 12 34 56 78",
-							email: "contact@aurelia-desvaux.fr",
+							telephone: "+33620145306",
+							email: "desvauxaurelia@gmail.com",
 							priceRange: "€€",
 							address: {
 								"@type": "PostalAddress",
-								streetAddress: "123 Rue de l'Énergie",
-								addressLocality: "Valbonne",
-								addressRegion: "Provence‑Alpes‑Côte d'Azur",
+								streetAddress: "1 Place Joseph BERMOND, Bat OPHIRA 1 - 2e étage",
+								addressLocality: "Valbonne Sophia-Antipolis",
+								addressRegion: "Provence-Alpes-Côte d'Azur",
 								postalCode: "06560",
 								addressCountry: "FR",
 							},
 							geo: {
 								"@type": "GeoCoordinates",
-								latitude: 43.6197,
-								longitude: 7.0713,
+								latitude: 43.6216,
+								longitude: 7.0374,
 							},
 							openingHoursSpecification: [
 								{
@@ -356,7 +356,7 @@ export default function RootLayout({
 										"Thursday",
 										"Friday",
 									],
-									opens: "09:00",
+									opens: "08:15",
 									closes: "19:00",
 								},
 							],

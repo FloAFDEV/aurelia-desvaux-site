@@ -16,6 +16,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		{ path: "/preparation-mentale", changefreq: "monthly", priority: 0.9 },
 		{ path: "/dream-machine", changefreq: "yearly", priority: 0.7 },
 		{ path: "/ressources", changefreq: "weekly", priority: 0.7 },
+		// Pages SEO locales
+		{ path: "/hypnose-antibes", changefreq: "monthly", priority: 0.85 },
+		{ path: "/hypnose-biot", changefreq: "monthly", priority: 0.85 },
+		// Page service transversale
+		{ path: "/gestion-du-stress", changefreq: "monthly", priority: 0.85 },
 	];
 
 	// Pages légales

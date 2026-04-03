@@ -13,32 +13,34 @@ import dreamMachineImg from "@/assets/dream-machine.webp";
    SEO / METADATA
 ========================= */
 export const metadata: Metadata = {
-	title: "Pratiques | Aurélia Desvaux",
+	title: "Mes Pratiques | Aurélia Desvaux – Thérapies Brèves à Valbonne",
 	description:
-		"Découvrez les thérapies brèves et accompagnements spécialisés proposés par Aurélia Desvaux à Valbonne et en ligne.",
+		"Découvrez les thérapies brèves proposées par Aurélia Desvaux à Valbonne Sophia-Antipolis : Hypnose Ericksonienne, PNL, EFT, Préparation Mentale et Dream Machine.",
 	alternates: {
-		canonical: "https://www.aureliadesvaux.com/pratiques",
+		canonical: "https://aurelia-desvaux.fr/pratiques",
 	},
 	openGraph: {
-		title: "Pratiques | Aurélia Desvaux",
+		title: "Mes Pratiques | Aurélia Desvaux – Thérapies Brèves à Valbonne",
 		description:
-			"Découvrez les thérapies brèves et accompagnements spécialisés proposés par Aurélia Desvaux.",
-		url: "https://www.aureliadesvaux.com/pratiques",
+			"Hypnose, PNL, EFT, Préparation Mentale et Dream Machine à Valbonne Sophia-Antipolis. Accompagnement bienveillant par Aurélia Desvaux.",
+		url: "https://aurelia-desvaux.fr/pratiques",
 		siteName: "Aurélia Desvaux",
 		type: "website",
+		locale: "fr_FR",
 		images: [
 			{
-				url: "https://www.aureliadesvaux.com/og/pratiques.png",
+				url: "https://aurelia-desvaux.fr/og-image.webp",
 				width: 1200,
 				height: 630,
+				alt: "Aurélia Desvaux – Thérapies Brèves à Valbonne",
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Pratiques | Aurélia Desvaux",
-		description: "Thérapies brèves et accompagnements spécialisés",
-		images: ["https://www.aureliadesvaux.com/og/pratiques.png"],
+		title: "Mes Pratiques | Aurélia Desvaux",
+		description: "Hypnose, PNL, EFT et thérapies brèves à Valbonne Sophia-Antipolis",
+		images: ["https://aurelia-desvaux.fr/og-image.webp"],
 	},
 };
 
@@ -91,15 +93,23 @@ export default function PratiquesPage() {
 				dangerouslySetInnerHTML={{
 					__html: JSON.stringify({
 						"@context": "https://schema.org",
-						"@type": "MedicalBusiness",
-						name: "Aurélia Desvaux",
-						url: "https://www.aureliadesvaux.com",
-						department: therapiesBreves.map((p) => ({
-							"@type": "MedicalProcedure",
-							name: p.title,
-							description: p.description,
-							url: `https://www.aureliadesvaux.com${p.link}`,
-						})),
+						"@type": "ProfessionalService",
+						name: "Aurélia Desvaux – Thérapies Brèves",
+						url: "https://aurelia-desvaux.fr",
+						hasOfferCatalog: {
+							"@type": "OfferCatalog",
+							name: "Thérapies Brèves",
+							itemListElement: therapiesBreves.map((p) => ({
+								"@type": "Service",
+								name: p.title,
+								description: p.description,
+								url: `https://aurelia-desvaux.fr${p.link}`,
+								provider: {
+									"@type": "ProfessionalService",
+									name: "Aurélia Desvaux",
+								},
+							})),
+						},
 					}),
 				}}
 			/>
