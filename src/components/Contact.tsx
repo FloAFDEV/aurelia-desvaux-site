@@ -128,6 +128,9 @@ export const Contact = () => {
 										<br />
 										06560 Valbonne Sophia-Antipolis
 									</p>
+									<p className="font-body text-sm text-muted-foreground/70 mt-1">
+										À 15 min d&apos;Antibes · 10 min de Biot
+									</p>
 								</div>
 							</a>
 

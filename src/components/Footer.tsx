@@ -126,6 +126,12 @@ export const Footer = () => {
 									</span>
 								</a>
 							</li>
+							<li>
+								<p className="font-body text-xs text-muted-foreground/60 pl-6">
+									Consultations à Valbonne, accessible depuis
+									Antibes, Biot et Sophia-Antipolis.
+								</p>
+							</li>
 						</ul>
 					</div>
 
