@@ -185,7 +185,8 @@ export default function DreamMachine() {
 							<strong className="text-foreground">
 								états de conscience modifiés
 							</strong>
-							.
+							. Les sessions sont disponibles en cabinet à
+							Valbonne, à proximité d&apos;Antibes et de Biot.
 						</p>
 					</div>
 

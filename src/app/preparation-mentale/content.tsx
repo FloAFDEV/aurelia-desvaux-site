@@ -216,7 +216,9 @@ export default function PreparationMentaleContent() {
 									vous accompagner dans cette démarche, en
 									vous offrant un cadre sécurisant et
 									bienveillant pour atteindre vos objectifs
-									avec sérénité.
+									avec sérénité. Je vous reçois à Valbonne,
+									facilement accessible depuis Antibes, Biot
+									et les communes de Sophia-Antipolis.
 								</p>
 							</div>
 							<div

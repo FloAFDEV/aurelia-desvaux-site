@@ -192,7 +192,9 @@ export default function Content() {
 									Quel que soit votre besoin, je me tiens à
 									votre disposition pour effectuer ce chemin à
 									vos côtés, en vous apportant mon expertise
-									et ma bienveillance.
+									et ma bienveillance. Mon cabinet est situé
+									à Valbonne, à quelques minutes d&apos;Antibes,
+									Biot et Sophia-Antipolis.
 								</p>
 
 								{/* Mini galerie mobile */}
