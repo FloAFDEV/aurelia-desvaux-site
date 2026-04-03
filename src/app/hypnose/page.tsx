@@ -3,9 +3,12 @@ import { Suspense } from "react";
 import HypnoseContent from "./content";
 
 export const metadata: Metadata = {
-	title: "Hypnose Ericksonienne à Valbonne | Aurélia Desvaux - Hypnothérapeute",
+	title: {
+		absolute:
+			"Hypnose à Valbonne – Stress, anxiété, phobies | Aurélia Desvaux",
+	},
 	description:
-		"Séances d'hypnose Ericksonienne à Valbonne Sophia-Antipolis. Libérez-vous du stress, anxiété, phobies. Hypnothérapeute certifiée, accompagnement bienveillant.",
+		"Séances d'hypnose Ericksonienne à Valbonne Sophia-Antipolis. Libérez-vous du stress, de l'anxiété et des phobies. Hypnothérapeute certifiée, accompagnement bienveillant.",
 	keywords: [
 		"hypnose ericksonienne",
 		"hypnothérapeute",
@@ -20,9 +23,9 @@ export const metadata: Metadata = {
 		canonical: "https://aurelia-desvaux.fr/hypnose",
 	},
 	openGraph: {
-		title: "Hypnose Ericksonienne à Valbonne | Aurélia Desvaux - Hypnothérapeute",
+		title: "Hypnose à Valbonne – Stress, anxiété, phobies | Aurélia Desvaux",
 		description:
-			"Séances d'hypnose Ericksonienne à Valbonne Sophia-Antipolis. Libérez-vous du stress, anxiété, phobies. Hypnothérapeute certifiée.",
+			"Séances d'hypnose Ericksonienne à Valbonne. Libérez-vous du stress, de l'anxiété et des phobies. Hypnothérapeute certifiée.",
 		type: "website",
 		url: "https://aurelia-desvaux.fr/hypnose",
 		locale: "fr_FR",

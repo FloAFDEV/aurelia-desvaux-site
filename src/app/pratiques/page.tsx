@@ -2,18 +2,13 @@ import type { Metadata } from "next";
 import ClientWrappers from "@/components/ClientWrappers";
 import { Practices } from "@/components/Practices";
 
-// Images pour JSON-LD
-import hypnoseImg from "@/assets/escalier-spirale.webp";
-import pnlImg from "@/assets/pnl-cerveau.webp";
-import eftImg from "@/assets/eft-tapping-mains.webp";
-import prepaMentaleImg from "@/assets/prepa-mentale.webp";
-import dreamMachineImg from "@/assets/dream-machine.webp";
-
 /* =========================
    SEO / METADATA
 ========================= */
 export const metadata: Metadata = {
-	title: "Mes Pratiques | Aurélia Desvaux – Thérapies Brèves à Valbonne",
+	title: {
+		absolute: "Thérapies Brèves à Valbonne – Hypnose, PNL, EFT | Aurélia Desvaux",
+	},
 	description:
 		"Découvrez les thérapies brèves proposées par Aurélia Desvaux à Valbonne Sophia-Antipolis : Hypnose Ericksonienne, PNL, EFT, Préparation Mentale et Dream Machine.",
 	alternates: {
