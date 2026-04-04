@@ -319,6 +319,10 @@ export default function Tarifs() {
 												<br />
 												06560 Valbonne Sophia-Antipolis
 											</p>
+											<p className="font-body text-sm text-muted-foreground/70 mt-1">
+												Accessible depuis Antibes, Biot
+												et Sophia-Antipolis.
+											</p>
 										</div>
 									</a>
 								</div>

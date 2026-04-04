@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact | Aurélia Desvaux - Thérapeute à Valbonne",
+  title: {
+    absolute: "Contact & Rendez-vous – Cabinet à Valbonne | Aurélia Desvaux",
+  },
   description:
     "Contactez Aurélia Desvaux pour prendre rendez-vous. Cabinet à Valbonne Sophia-Antipolis. Téléphone, email et adresse disponibles.",
   keywords: [

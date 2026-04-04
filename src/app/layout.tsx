@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import Script from "next/script";
 import { Inter } from "next/font/google";
+import { StructuredData } from "@/components/SEO/StructuredData";
 import "./globals.css";
 import { Providers } from "./providers";
 import { Header } from "@/components/Header";
@@ -155,95 +156,8 @@ export default function RootLayout({
 				/>
 			</head>
 			<body className={inter.className}>
-				{/* Données structurées Schema.org pour le SEO */}
-				<Script
-					id="schema-org"
-					type="application/ld+json"
-					strategy="beforeInteractive"
-				>
-					{`
-						{
-							"@context": "https://schema.org",
-							"@type": "Psychologist",
-							"name": "Aurélia Desvaux",
-							"url": "https://aurelia-desvaux.fr",
-							"logo": "https://aurelia-desvaux.fr/favicon-apple.png",
-							"image": "https://aurelia-desvaux.fr/og-image.webp",
-							"description": "Praticienne en Hypnose Ericksonienne, PNL et EFT. Accompagnement thérapeutique pour gérer le stress, l'anxiété et améliorer votre bien-être.",
-							"address": {
-								"@type": "PostalAddress",
-								"addressLocality": "Valbonne Sophia-Antipolis",
-								"addressRegion": "Alpes-Maritimes",
-								"postalCode": "06560",
-								"addressCountry": "FR"
-							},
-							"geo": {
-								"@type": "GeoCoordinates",
-								"latitude": "43.6282",
-								"longitude": "7.0458"
-							},
-							"areaServed": {
-								"@type": "GeoCircle",
-								"geoMidpoint": {
-									"@type": "GeoCoordinates",
-									"latitude": "43.6282",
-									"longitude": "7.0458"
-								},
-								"geoRadius": "50000"
-							},
-							"priceRange": "€€",
-							"availableService": [
-								{
-									"@type": "Service",
-									"name": "Hypnose Ericksonienne",
-									"description": "Thérapie par hypnose pour traiter stress, anxiété, phobies et troubles du comportement",
-									"provider": {
-										"@type": "Psychologist",
-										"name": "Aurélia Desvaux"
-									}
-								},
-								{
-									"@type": "Service",
-									"name": "PNL - Programmation Neuro-Linguistique",
-									"description": "Techniques de communication et développement personnel",
-									"provider": {
-										"@type": "Psychologist",
-										"name": "Aurélia Desvaux"
-									}
-								},
-								{
-									"@type": "Service",
-									"name": "EFT - Emotional Freedom Techniques",
-									"description": "Libération émotionnelle par tapotements sur points d'acupuncture",
-									"provider": {
-										"@type": "Psychologist",
-										"name": "Aurélia Desvaux"
-									}
-								},
-								{
-									"@type": "Service",
-									"name": "Préparation Mentale",
-									"description": "Coaching mental pour athlètes et professionnels",
-									"provider": {
-										"@type": "Psychologist",
-										"name": "Aurélia Desvaux"
-									}
-								}
-							],
-							"openingHoursSpecification": [
-								{
-									"@type": "OpeningHoursSpecification",
-									"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-									"opens": "09:00",
-									"closes": "19:00"
-								}
-							],
-							"sameAs": [
-								"https://www.medoucine.com/praticien/aurelia-desvaux"
-							]
-						}
-					`}
-				</Script>
+				{/* JSON-LD LocalBusiness — SSR, visible dans view-source */}
+				<StructuredData />
 
 				{/* Google Analytics 4 - Chargé après interaction */}
 				{GA_MEASUREMENT_ID && (
@@ -316,58 +230,6 @@ export default function RootLayout({
 
 				{/* Cookie banner */}
 				<CookieBanner />
-
-				{/* JSON-LD Schema - Optimisé avec script defer */}
-				<script
-					type="application/ld+json"
-					dangerouslySetInnerHTML={{
-						__html: JSON.stringify({
-							"@context": "https://schema.org",
-							"@type": "ProfessionalService",
-							name: "Aurélia Desvaux",
-							url: "https://aurelia-desvaux.fr",
-							logo: "https://aurelia-desvaux.fr/tree-logo.webp",
-							image: "https://aurelia-desvaux.fr/og-image.webp",
-							description:
-								"Thérapeute en Hypnose Ericksonienne, PNL et EFT à Valbonne Sophia‑Antipolis. Accompagnement bienveillant pour stress, anxiété, traumas et bien‑être.",
-							telephone: "+33 6 12 34 56 78",
-							email: "contact@aurelia-desvaux.fr",
-							priceRange: "€€",
-							address: {
-								"@type": "PostalAddress",
-								streetAddress: "123 Rue de l'Énergie",
-								addressLocality: "Valbonne",
-								addressRegion: "Provence‑Alpes‑Côte d'Azur",
-								postalCode: "06560",
-								addressCountry: "FR",
-							},
-							geo: {
-								"@type": "GeoCoordinates",
-								latitude: 43.6197,
-								longitude: 7.0713,
-							},
-							openingHoursSpecification: [
-								{
-									"@type": "OpeningHoursSpecification",
-									dayOfWeek: [
-										"Monday",
-										"Tuesday",
-										"Wednesday",
-										"Thursday",
-										"Friday",
-									],
-									opens: "09:00",
-									closes: "19:00",
-								},
-							],
-							sameAs: [
-								"https://www.facebook.com/AureliaDesvauxPsychopraticienne/",
-								"https://www.instagram.com/aurelia_desvaux_therapiebreve/",
-								"https://www.linkedin.com/in/aur%C3%A9lia-desvaux-876459a/?originalSubdomain=fr",
-							],
-						}),
-					}}
-				/>
 			</body>
 		</html>
 	);

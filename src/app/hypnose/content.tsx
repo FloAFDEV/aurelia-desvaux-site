@@ -219,7 +219,9 @@ export default function Hypnose() {
 									Quel que soit votre besoin, je me tiens à
 									votre disposition pour effectuer ce chemin à
 									vos côtés, en vous apportant mon expertise
-									et ma bienveillance.
+									et ma bienveillance. Je vous accueille en
+									cabinet à Valbonne, au cœur de
+									Sophia-Antipolis.
 								</p>
 
 								{/* Mini galerie de badges ronds sur mobile */}

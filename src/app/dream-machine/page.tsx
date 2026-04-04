@@ -1,7 +1,10 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Dream Machine – Luminothérapie méditative | Aurélia Desvaux",
+	title: {
+		absolute:
+			"Dream Machine à Valbonne – Relaxation par la lumière | Aurélia Desvaux",
+	},
 	description:
 		"Découvrez la Dream Machine, une expérience immersive de luminothérapie méditative pour explorer des états modifiés de conscience, réduire le stress et stimuler la créativité. Séances à Valbonne et Sophia-Antipolis.",
 	keywords: [

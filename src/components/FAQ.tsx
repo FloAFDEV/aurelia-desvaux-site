@@ -1,6 +1,5 @@
 "use client";
 
-import Script from "next/script";
 import { useInView } from "@/hooks/useInView";
 import {
 	Accordion,
@@ -61,14 +60,10 @@ export const FAQ = () => {
 
 	return (
 		<>
-			{/* JSON-LD FAQ — SEO Rich Results */}
-			<Script
-				id="faq-jsonld"
+			{/* JSON-LD FAQPage — SSR, visible dans view-source */}
+			<script
 				type="application/ld+json"
-				strategy="afterInteractive"
-				dangerouslySetInnerHTML={{
-					__html: JSON.stringify(structuredData),
-				}}
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
 			/>
 
 			<section

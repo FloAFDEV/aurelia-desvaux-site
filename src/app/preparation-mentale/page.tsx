@@ -3,9 +3,12 @@ import { Metadata } from "next";
 import PreparationMentaleContent from "./content";
 
 export const metadata: Metadata = {
-	title: "Préparation Mentale | Aurélia Desvaux - Hypnose, PNL & EFT",
+	title: {
+		absolute:
+			"Préparation Mentale à Valbonne – Performance & Confiance | Aurélia Desvaux",
+	},
 	description:
-		"Mobilisez vos ressources internes pour vos examens, compétitions sportives, entretiens d'embauche ou prises de parole en public. Transformez le stress en énergie positive avec l'hypnose, la PNL et l'EFT.",
+		"Mobilisez vos ressources internes pour vos examens, compétitions ou entretiens. Transformez le stress en énergie positive grâce à l'hypnose, la PNL et l'EFT. Cabinet à Valbonne.",
 	keywords: [
 		"préparation mentale",
 		"gestion du stress",

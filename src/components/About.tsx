@@ -96,7 +96,10 @@ export const About = () => {
 						<p className="font-body text-muted-foreground leading-relaxed mb-6 md:mb-8 text-sm sm:text-base">
 							Quel que soit votre besoin, je me tiens à votre
 							disposition pour effectuer ce chemin à vos côtés, en
-							vous apportant mon expertise et ma bienveillance.
+							vous apportant mon expertise et ma bienveillance. Mon
+							cabinet est situé à Valbonne Sophia-Antipolis,
+							accessible depuis Antibes, Biot et les communes
+							voisines.
 						</p>
 
 						<ul
