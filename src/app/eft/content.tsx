@@ -467,10 +467,17 @@ export default function EFTContent() {
 						<h2 className="font-script text-4xl md:text-5xl text-foreground mb-4">
 							Libérez-vous émotionnellement
 						</h2>
-						<p className="font-body text-muted-foreground mb-8">
+						<p className="font-body text-muted-foreground mb-4">
 							L'EFT est une technique douce et efficace pour vous
 							libérer de ce qui vous pèse. Je vous guide avec
 							bienveillance dans ce processus de libération.
+						</p>
+						<p className="font-body text-sm text-muted-foreground mb-8">
+							Séance à partir de <span className="font-medium text-foreground">70€</span>
+							{" "}·{" "}
+							<Link href="/tarifs" className="underline underline-offset-2 hover:text-foreground transition-colors duration-200">
+								Voir les tarifs
+							</Link>
 						</p>
 						<div className="flex flex-col sm:flex-row gap-4 justify-center">
 							<a

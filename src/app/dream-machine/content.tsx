@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { useInView } from "@/hooks/useInView";
 import {
@@ -386,6 +387,11 @@ export default function DreamMachine() {
 								</span>
 							</div>
 
+							<p className="font-body text-sm text-muted-foreground mb-4">
+								<Link href="/tarifs" className="underline underline-offset-2 hover:text-foreground transition-colors duration-200">
+									Voir les tarifs
+								</Link>
+							</p>
 							<a
 								href="https://www.medoucine.com/consultation/valbonne/aurelia-desvaux/1951"
 								target="_blank"

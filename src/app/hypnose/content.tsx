@@ -2,6 +2,7 @@
 
 import { Suspense } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { useInView } from "@/hooks/useInView";
 import { useParallax } from "@/hooks/useParallax";
@@ -459,9 +460,17 @@ export default function Hypnose() {
 					<h2 className="font-script text-4xl md:text-5xl mb-6">
 						Prendre rendez-vous avec Aurélia
 					</h2>
-					<p className="font-body text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
+					<p className="font-body text-lg text-muted-foreground mb-4 max-w-xl mx-auto">
 						Un accompagnement personnalisé et bienveillant pour
 						votre bien-être.
+					</p>
+
+					<p className="font-body text-sm text-muted-foreground mb-8">
+						Séance à partir de <span className="font-medium text-foreground">70€</span>
+						{" "}·{" "}
+						<Link href="/tarifs" className="underline underline-offset-2 hover:text-foreground transition-colors duration-200">
+							Voir les tarifs
+						</Link>
 					</p>
 
 					<div className="w-32 h-32 relative mx-auto mb-8 rounded-full shadow-card overflow-hidden group">

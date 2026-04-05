@@ -431,10 +431,17 @@ export default function Content() {
 						<h2 className="font-script text-4xl md:text-5xl text-foreground mb-4">
 							Développez votre potentiel
 						</h2>
-						<p className="font-body text-muted-foreground mb-8">
+						<p className="font-body text-muted-foreground mb-4">
 							La PNL vous offre des outils concrets pour
 							transformer votre vie. Ensemble, nous définirons vos
 							objectifs et travaillerons à les atteindre.
+						</p>
+						<p className="font-body text-sm text-muted-foreground mb-8">
+							Séance à partir de <span className="font-medium text-foreground">70€</span>
+							{" "}·{" "}
+							<Link href="/tarifs" className="underline underline-offset-2 hover:text-foreground transition-colors duration-200">
+								Voir les tarifs
+							</Link>
 						</p>
 						<div className="flex flex-col sm:flex-row gap-4 justify-center">
 							<Link

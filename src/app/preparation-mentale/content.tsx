@@ -369,10 +369,17 @@ export default function PreparationMentaleContent() {
 								<h2 className="font-script text-4xl md:text-5xl text-foreground mb-4">
 									Prêt(e) à relever votre défi ?
 								</h2>
-								<p className="font-body text-muted-foreground mb-8">
+								<p className="font-body text-muted-foreground mb-4">
 									Prenez rendez-vous pour un accompagnement
 									personnalisé en préparation mentale et
 									activez vos ressources.
+								</p>
+								<p className="font-body text-sm text-muted-foreground mb-8">
+									Séance à <span className="font-medium text-foreground">90€</span>
+									{" "}·{" "}
+									<Link href="/tarifs" className="underline underline-offset-2 hover:text-foreground transition-colors duration-200">
+										Voir les tarifs
+									</Link>
 								</p>
 								<div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
 									<a
