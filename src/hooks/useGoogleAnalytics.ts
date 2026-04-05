@@ -3,15 +3,8 @@
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
-// Remplacez G-XXXXXXXXXX par votre Measurement ID GA4
+// Mesurement ID GA4 — voir src/types/gtag.d.ts pour les types window.gtag
 const GA_MEASUREMENT_ID = "G-V96H9MXTZ6";
-
-declare global {
-	interface Window {
-		gtag: (...args: unknown[]) => void;
-		dataLayer: unknown[];
-	}
-}
 
 // Hook pour tracker les pageviews dans une SPA
 export const usePageTracking = () => {
