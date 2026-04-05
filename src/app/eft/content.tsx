@@ -14,16 +14,16 @@ import eftBeneficesImg from "@/assets/eft-benefices.webp";
 import treeLogo from "@/assets/tree-logo.webp";
 
 const benefits = [
-	"Arrêt du tabac",
-	"Gestion du stress",
-	"Burn-out",
-	"Anxiété",
-	"Confiance en soi",
-	"Perte de poids",
-	"Préparation aux examens",
 	"Libération des traumas",
-	"Colère et frustration",
-	"Peurs et phobies",
+	"Colère & frustration",
+	"Peurs & phobies",
+	"Anxiété profonde",
+	"Deuil & blessures émotionnelles",
+	"Gestion du stress",
+	"Confiance en soi",
+	"Burn-out émotionnel",
+	"Blocages relationnels",
+	"Arrêt du tabac",
 ];
 
 const galleryImages = [
@@ -122,7 +122,7 @@ export default function EFTContent() {
 									: "opacity-0 translate-y-4"
 							}`}
 						>
-							Thérapies Brèves — PNL - Hypnose - EFT
+							Libérez vos émotions bloquées, retrouvez votre équilibre
 						</p>
 
 						<p

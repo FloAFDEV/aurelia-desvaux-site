@@ -16,16 +16,16 @@ import pnlPracticeImg from "@/assets/pnl-cerveau2.webp";
 import treeLogo from "@/assets/tree-logo.webp";
 
 const benefits = [
-	"Arrêt du tabac",
+	"Confiance en soi",
+	"Évolution professionnelle",
+	"Prise de parole en public",
+	"Entretien d'embauche",
+	"Communication interpersonnelle",
 	"Gestion du stress",
 	"Burn-out",
 	"Anxiété",
-	"Confiance en soi",
-	"Perte de poids",
+	"Schémas de pensée limitants",
 	"Préparation aux examens",
-	"Évolution professionnelle",
-	"Prise de parole",
-	"Entretien d'embauche",
 ];
 
 export default function Content() {
@@ -93,7 +93,7 @@ export default function Content() {
 									: "opacity-0 translate-y-4"
 							}`}
 						>
-							Thérapies Brèves — PNL - Hypnose - EFT
+							Changez votre perception, transformez vos résultats
 						</p>
 						<p
 							className={`font-body text-lg text-muted-foreground/80 max-w-xl mx-auto mb-8 transition-all duration-500 delay-150 ${

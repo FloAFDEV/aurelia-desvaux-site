@@ -18,15 +18,15 @@ import treeLogo from "@/assets/tree-logo.webp";
 
 const benefits = [
 	"Arrêt du tabac",
+	"Anxiété & phobies",
+	"Insomnie & sommeil",
 	"Gestion du stress",
-	"Burn-out",
-	"Anxiété",
 	"Confiance en soi",
 	"Perte de poids",
-	"Préparation aux examens",
-	"Prise de parole",
-	"Entretien d'embauche",
+	"Burn-out",
 	"Gestion de la douleur",
+	"Préparation aux examens",
+	"Deuil & transitions",
 ];
 
 // Composant Breadcrumbs avec Suspense
@@ -106,7 +106,7 @@ export default function Hypnose() {
 									: "opacity-0 translate-y-4"
 							}`}
 						>
-							Thérapies Brèves — PNL - Hypnose - EFT
+							Accédez à vos ressources inconscientes pour vous libérer
 						</p>
 
 						<p
@@ -409,12 +409,12 @@ export default function Hypnose() {
 							</p>
 
 							<p className="font-body text-muted-foreground mb-8 text-center">
-								Ce travail permet de changer votre perception
-								d'une situation, et donc de son impact sur vous.
-								C'est comme si pendant toute une période de
-								votre vie vous n'aviez vu qu'une seule porte et
-								tout à coup il y avait plusieurs portes et des
-								choix possibles pour atteindre vos objectifs.
+								En état de conscience modifiée, votre esprit
+								reste actif et lucide. C'est cette disponibilité
+								intérieure qui permet d'accéder à des ressources
+								souvent insoupçonnées — et d'opérer des
+								changements durables, là où la volonté seule
+								ne suffit pas.
 							</p>
 
 							<div className="relative w-full h-56 rounded-2xl overflow-hidden shadow-card group">
