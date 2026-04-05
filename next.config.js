@@ -4,10 +4,7 @@ const nextConfig = {
 	reactStrictMode: true,
 
 	typescript: {
-		ignoreBuildErrors: process.env.NODE_ENV === "production",
-	},
-	eslint: {
-		ignoreDuringBuilds: process.env.NODE_ENV === "production",
+		ignoreBuildErrors: false,
 	},
 
 	// ========================================

@@ -58,14 +58,3 @@ export function WebVitals() {
 
 	return null; // Composant invisible (analytics only)
 }
-
-// Augmenter le type Window pour TypeScript
-declare global {
-	interface Window {
-		gtag?: (
-			command: string,
-			eventName: string,
-			params?: Record<string, unknown>
-		) => void;
-	}
-}
