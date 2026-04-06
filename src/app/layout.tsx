@@ -124,36 +124,8 @@ export default function RootLayout({
 					rel="dns-prefetch"
 					href="https://www.google-analytics.com"
 				/>
-
-				{/* Preload des fonts critiques pour éviter FOIT */}
-				<link
-					rel="preload"
-					href="/_next/static/media/cormorant-garamond-latin-400-normal.92f9a759.woff2"
-					as="font"
-					type="font/woff2"
-					crossOrigin="anonymous"
-				/>
-				<link
-					rel="preload"
-					href="/_next/static/media/cormorant-garamond-latin-600-normal.0e4e8436.woff2"
-					as="font"
-					type="font/woff2"
-					crossOrigin="anonymous"
-				/>
-				<link
-					rel="preload"
-					href="/_next/static/media/lora-latin-400-normal.1245abf6.woff2"
-					as="font"
-					type="font/woff2"
-					crossOrigin="anonymous"
-				/>
-				<link
-					rel="preload"
-					href="/_next/static/media/great-vibes-latin-400-normal.c27321a0.woff2"
-					as="font"
-					type="font/woff2"
-					crossOrigin="anonymous"
-				/>
+				{/* Les fonts sont optimisées par next/font — pas de preload manuel
+				    (les hashes changent à chaque build et génèrent des 404) */}
 			</head>
 			<body className={inter.className}>
 				{/* JSON-LD LocalBusiness — SSR, visible dans view-source */}

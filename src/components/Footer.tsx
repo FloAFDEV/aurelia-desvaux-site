@@ -94,6 +94,14 @@ export const Footer = () => {
 						</h3>
 						<ul className="space-y-3">
 							<li>
+								<Link
+									href="/contact"
+									className="font-body text-sm text-muted-foreground hover:text-primary transition-colors"
+								>
+									Page contact & rendez-vous
+								</Link>
+							</li>
+							<li>
 								<a
 									href="tel:+33620145306"
 									className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-primary transition-colors"
