@@ -71,14 +71,6 @@ export default function HomePage() {
 			<Hero />
 			<Therapies />
 			<Practices />
-			<div className="text-center py-6 bg-soft-pink/30">
-				<a
-					href="/pratiques"
-					className="inline-flex items-center gap-2 font-body text-sm text-primary hover:text-primary/80 underline underline-offset-4 transition-colors"
-				>
-					Découvrir toutes mes thérapies brèves →
-				</a>
-			</div>
 			<About />
 			<Testimonials />
 			<FAQ />

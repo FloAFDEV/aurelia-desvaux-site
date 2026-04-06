@@ -187,13 +187,11 @@ const nextConfig = {
 	// ========================================
 	async redirects() {
 		return [
-			// /therapies → /pratiques (301 permanent)
-			// Raison : /therapies est du thin content dupliqué de la homepage.
-			// /pratiques est la page hub officielle avec schema, liens services et contenu unique.
+			// /therapies → homepage (301 permanent)
 			{
 				source: "/therapies",
 				permanent: true,
-				destination: "/pratiques",
+				destination: "/",
 			},
 			// Domaine canonical : Vercel preview → apex
 			{

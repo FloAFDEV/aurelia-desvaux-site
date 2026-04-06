@@ -11,8 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		{ path: "", changefreq: "monthly", priority: 1.0 },
 		{ path: "/tarifs", changefreq: "monthly", priority: 0.9 },
 		{ path: "/contact", changefreq: "yearly", priority: 0.9 },
-		{ path: "/pratiques", changefreq: "monthly", priority: 0.8 },
-		// /therapies redirige en 301 vers /pratiques — exclue du sitemap
+		// /therapies et /pratiques redirigent vers / — exclues du sitemap
 		{ path: "/hypnose", changefreq: "monthly", priority: 0.9 },
 		{ path: "/pnl", changefreq: "monthly", priority: 0.9 },
 		{ path: "/eft", changefreq: "monthly", priority: 0.9 },

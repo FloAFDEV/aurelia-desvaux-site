@@ -490,10 +490,10 @@ export default function EFTContent() {
 								<ArrowRight className="w-4 h-4" />
 							</a>
 							<Link
-								href="/pratiques"
+								href="/"
 								className="inline-flex items-center justify-center px-8 py-4 border border-primary text-primary font-body rounded-full transition-all duration-300 hover:bg-primary/5"
 							>
-								Toutes les thérapies brèves
+								Retour à l'accueil
 							</Link>
 						</div>
 					</div>
