@@ -17,6 +17,7 @@ const therapiesBrèves = [
 		description:
 			"L'hypnose Ericksonienne permet d'aller chercher des ressources inconscientes aidantes, permettant une réorganisation des perceptions.",
 		link: "/hypnose" as const,
+		linkLabel: "Découvrir l'Hypnose Ericksonienne",
 	},
 	{
 		image: pnlImg,
@@ -24,6 +25,7 @@ const therapiesBrèves = [
 		description:
 			"La PNL permet d'accéder à une autre perception d'une situation, parfois de façon conversationnelle, d'autres fois par des protocoles dynamiques, en accédant à nos ressources internes.",
 		link: "/pnl" as const,
+		linkLabel: "En savoir plus sur la PNL",
 	},
 	{
 		image: eftImg,
@@ -31,6 +33,7 @@ const therapiesBrèves = [
 		description:
 			"L'EFT permet, par la stimulation de points énergétiques situés sur les méridiens associée à une verbalisation de nos émotions, à se libérer des émotions coincées en nous.",
 		link: "/eft" as const,
+		linkLabel: "Découvrir l'EFT (Tapping)",
 	},
 ];
 
@@ -41,6 +44,7 @@ const accompagnements = [
 		description:
 			"Mobilisez vos ressources internes pour aborder compétitions, examens et défis professionnels avec calme, clarté et confiance durable.",
 		link: "/preparation-mentale" as const,
+		linkLabel: "En savoir plus sur la Préparation mentale",
 	},
 	{
 		image: dreamMachineImg,
@@ -48,6 +52,7 @@ const accompagnements = [
 		description:
 			"Explorez des états modifiés de conscience et atteignez une relaxation profonde grâce à cette technologie de stimulation lumineuse.",
 		link: "/dream-machine" as const,
+		linkLabel: "Découvrir la Dream Machine",
 	},
 ];
 
@@ -148,7 +153,7 @@ export const Practices = () => {
 										href={practice.link}
 										className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-all group-hover:gap-3"
 									>
-										En savoir plus <span>→</span>
+										{practice.linkLabel} <span>→</span>
 									</Link>
 								</div>
 							</div>
@@ -246,7 +251,7 @@ export const Practices = () => {
 										href={practice.link}
 										className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-all group-hover:gap-3"
 									>
-										En savoir plus <span>→</span>
+										{practice.linkLabel} <span>→</span>
 									</Link>
 								</div>
 							</div>

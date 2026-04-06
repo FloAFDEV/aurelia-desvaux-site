@@ -392,14 +392,22 @@ export default function DreamMachine() {
 									Voir les tarifs
 								</Link>
 							</p>
-							<a
-								href="https://www.medoucine.com/consultation/valbonne/aurelia-desvaux/1951"
-								target="_blank"
-								rel="noopener noreferrer"
-								className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary/90 to-primary/70 text-primary-foreground font-body rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-100"
-							>
-								Réserver ma session
-							</a>
+							<div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+								<a
+									href="https://www.medoucine.com/consultation/valbonne/aurelia-desvaux/1951"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary/90 to-primary/70 text-primary-foreground font-body rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-100"
+								>
+									Réserver ma session
+								</a>
+								<Link
+									href="/pratiques"
+									className="inline-flex items-center justify-center px-8 py-4 border border-primary text-primary font-body rounded-full transition-all duration-300 hover:bg-primary/5"
+								>
+									Toutes les thérapies brèves
+								</Link>
+							</div>
 						</div>
 					</div>
 				</div>

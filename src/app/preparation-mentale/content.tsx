@@ -392,10 +392,10 @@ export default function PreparationMentaleContent() {
 										<ArrowRight className="w-4 h-4" />
 									</a>
 									<Link
-										href="/"
+										href="/pratiques"
 										className="inline-flex items-center justify-center px-8 py-4 border border-primary text-primary font-body rounded-full transition-all duration-300 hover:bg-primary/5"
 									>
-										Retour à l'accueil
+										Toutes les thérapies brèves
 									</Link>
 								</div>
 							</div>

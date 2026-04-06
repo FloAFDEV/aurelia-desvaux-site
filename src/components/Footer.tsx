@@ -46,6 +46,14 @@ export const Footer = () => {
 						<ul className="space-y-2">
 							<li>
 								<Link
+									href="/pratiques"
+									className="font-body text-sm text-muted-foreground hover:text-primary transition-colors"
+								>
+									Toutes les thérapies brèves
+								</Link>
+							</li>
+							<li>
+								<Link
 									href="/hypnose"
 									className="font-body text-sm text-muted-foreground hover:text-primary transition-colors"
 								>

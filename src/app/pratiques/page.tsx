@@ -73,6 +73,34 @@ const therapiesBreves = [
 	},
 ];
 
+const faqItems = [
+	{
+		question: "Qu'est-ce que les thérapies brèves ?",
+		answer:
+			"Les thérapies brèves sont des approches orientées solution qui visent à produire des changements durables en un nombre limité de séances. Contrairement aux thérapies analytiques longues, elles s'appuient sur les ressources présentes chez chaque personne pour dépasser rapidement les blocages. Hypnose Ericksonienne, PNL et EFT en sont les exemples les plus répandus.",
+	},
+	{
+		question: "Quelle différence entre l'hypnose et la PNL ?",
+		answer:
+			"L'hypnose Ericksonienne travaille en état de conscience modifiée pour accéder directement aux ressources de l'inconscient. La PNL (Programmation Neuro-Linguistique) agit plutôt en état éveillé, en modifiant les représentations mentales et les schémas de pensée via des protocoles conversationnels ou dynamiques. Les deux sont complémentaires et peuvent être combinées selon les besoins.",
+	},
+	{
+		question: "Combien de séances sont nécessaires ?",
+		answer:
+			"Le nombre de séances varie selon la problématique et la personne. En général, 3 à 6 séances suffisent pour des problématiques ciblées (phobies, stress ponctuel, confiance en soi). Des objectifs plus profonds ou des traumas anciens peuvent nécessiter un accompagnement plus long. Un premier échange permet d'estimer un cadre adapté à votre situation.",
+	},
+	{
+		question: "L'EFT est-elle efficace pour les traumatismes ?",
+		answer:
+			"Oui, l'EFT (Emotional Freedom Techniques) est reconnue pour son efficacité sur les traumas, les états de stress post-traumatique et les émotions bloquées. La stimulation des points d'acupuncture associée à la verbalisation permet de désactiver la charge émotionnelle liée aux souvenirs douloureux, sans avoir à les revivre intensément.",
+	},
+	{
+		question: "Les séances se font-elles en présentiel ou en ligne ?",
+		answer:
+			"Les séances ont lieu en présentiel au cabinet à Valbonne (06560), accessible depuis Antibes, Biot et Sophia-Antipolis. Certaines séances peuvent être proposées à distance selon la thérapie choisie. Contactez Aurélia pour convenir du format le mieux adapté.",
+	},
+];
+
 export default function PratiquesPage() {
 	return (
 		<>
@@ -92,7 +120,32 @@ export default function PratiquesPage() {
 			{/* Contenu principal */}
 			<Practices />
 
-			{/* JSON-LD */}
+			{/* FAQ différenciante */}
+			<section className="py-20 bg-soft-pink/20">
+				<div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-3xl">
+					<div className="text-center mb-12">
+						<h2 className="font-script text-4xl md:text-5xl mb-4">
+							Questions fréquentes
+						</h2>
+						<div className="w-24 h-px bg-primary mx-auto" />
+					</div>
+
+					<dl className="space-y-8">
+						{faqItems.map((item) => (
+							<div key={item.question} className="bg-background rounded-2xl p-6 shadow-card">
+								<dt className="font-display text-lg text-foreground mb-3">
+									{item.question}
+								</dt>
+								<dd className="font-body text-muted-foreground leading-relaxed">
+									{item.answer}
+								</dd>
+							</div>
+						))}
+					</dl>
+				</div>
+			</section>
+
+			{/* JSON-LD ProfessionalService + OfferCatalog */}
 			<script
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{
@@ -115,6 +168,25 @@ export default function PratiquesPage() {
 								},
 							})),
 						},
+					}),
+				}}
+			/>
+
+			{/* JSON-LD FAQPage */}
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify({
+						"@context": "https://schema.org",
+						"@type": "FAQPage",
+						mainEntity: faqItems.map((item) => ({
+							"@type": "Question",
+							name: item.question,
+							acceptedAnswer: {
+								"@type": "Answer",
+								text: item.answer,
+							},
+						})),
 					}),
 				}}
 			/>
