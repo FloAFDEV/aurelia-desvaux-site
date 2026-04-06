@@ -187,6 +187,15 @@ const nextConfig = {
 	// ========================================
 	async redirects() {
 		return [
+			// /therapies → /pratiques (301 permanent)
+			// Raison : /therapies est du thin content dupliqué de la homepage.
+			// /pratiques est la page hub officielle avec schema, liens services et contenu unique.
+			{
+				source: "/therapies",
+				permanent: true,
+				destination: "/pratiques",
+			},
+			// Domaine canonical : Vercel preview → apex
 			{
 				source: "/:path*",
 				has: [
@@ -198,6 +207,7 @@ const nextConfig = {
 				permanent: true,
 				destination: "https://aurelia-desvaux.fr/:path*",
 			},
+			// www → non-www
 			{
 				source: "/:path*",
 				has: [

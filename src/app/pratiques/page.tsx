@@ -79,6 +79,16 @@ export default function PratiquesPage() {
 			{/* Hooks client globaux */}
 			<ClientWrappers />
 
+			{/* H1 SEO — visuellement intégré au hero de la page */}
+			<div className="pt-28 pb-2 text-center bg-soft-pink/30">
+				<h1 className="font-script text-5xl md:text-6xl text-foreground">
+					Mes Pratiques
+				</h1>
+				<p className="font-body text-muted-foreground mt-2 text-lg">
+					Thérapies Brèves à Valbonne — Hypnose, PNL, EFT
+				</p>
+			</div>
+
 			{/* Contenu principal */}
 			<Practices />
 
