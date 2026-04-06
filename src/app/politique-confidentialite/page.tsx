@@ -1,11 +1,13 @@
 import { Metadata } from "next";
-import { Header } from "@/components/Header";
 
 export const metadata: Metadata = {
 	title: "Politique de Confidentialité | Aurélia Desvaux",
 	description:
 		"Politique de confidentialité et gestion des cookies du site Aurélia Desvaux - Thérapies Brèves à Valbonne.",
-	robots: "noindex, follow",
+	robots: {
+		index: false,
+		follow: true,
+	},
 	alternates: {
 		canonical: "https://aurelia-desvaux.fr/politique-confidentialite",
 	},
@@ -14,7 +16,6 @@ export const metadata: Metadata = {
 export default function PolitiqueConfidentialitePage() {
 	return (
 		<>
-			<Header />
 			<main className="pt-24">
 				{/* Hero */}
 				<section className="py-20 gradient-hero">

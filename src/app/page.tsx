@@ -8,7 +8,9 @@ import { FAQ } from "@/components/FAQ";
 import { Contact } from "@/components/Contact";
 
 export const metadata: Metadata = {
-	title: "Aurélia Desvaux | Hypnose, PNL & EFT à Valbonne Sophia-Antipolis",
+	title: {
+		absolute: "Aurélia Desvaux | Hypnose, PNL & EFT à Valbonne Sophia-Antipolis",
+	},
 	description:
 		"Thérapeute en Hypnose Ericksonienne, PNL et EFT à Valbonne. Libérez-vous du stress, anxiété, traumas. Accompagnement bienveillant pour votre bien-être.",
 	keywords: [

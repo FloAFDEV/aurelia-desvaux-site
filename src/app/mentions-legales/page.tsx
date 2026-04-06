@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { Header } from "@/components/Header";
 
 export const metadata: Metadata = {
 	title: "Mentions Légales | Aurélia Desvaux - Thérapeute à Valbonne",
@@ -17,8 +16,6 @@ export const metadata: Metadata = {
 export default function MentionsLegales() {
 	return (
 		<>
-			<Header />
-
 			<main className="pt-24">
 				<section className="py-20 gradient-hero">
 					<div className="container mx-auto px-4 text-center">
