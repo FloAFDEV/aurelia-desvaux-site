@@ -4,7 +4,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 	const baseUrl = "https://aurelia-desvaux.fr";
 
 	// Date de dernière mise à jour réelle du contenu (à mettre à jour manuellement lors d'une modification)
-	const contentLastUpdated = new Date("2026-04-06");
+	const contentLastUpdated = new Date("2026-04-24");
 	const legalLastUpdated = new Date("2025-01-01");
 
 	const primaryPages = [
