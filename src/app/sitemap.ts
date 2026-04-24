@@ -20,24 +20,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		{ path: "/ressources", changefreq: "monthly", priority: 0.7 },
 	];
 
-	const legalPages = [
-		{ path: "/mentions-legales", changefreq: "yearly", priority: 0.3 },
-		{ path: "/cgu", changefreq: "yearly", priority: 0.3 },
-		{ path: "/politique-confidentialite", changefreq: "yearly", priority: 0.3 },
-	];
+	// Pages légales exclues : elles ont robots noindex, les inclure dans le sitemap
+	// créerait une contradiction et gaspillerait le crawl budget.
+	// Aucune page locale ajoutée : le SEO local est géré via le schema LocalBusiness
+	// (areaServed), le contenu des pages existantes et Google Business Profile.
 
-	return [
-		...primaryPages.map((page) => ({
-			url: `${baseUrl}${page.path}`,
-			lastModified: contentLastUpdated,
-			changeFrequency: page.changefreq as "monthly" | "yearly",
-			priority: page.priority,
-		})),
-		...legalPages.map((page) => ({
-			url: `${baseUrl}${page.path}`,
-			lastModified: legalLastUpdated,
-			changeFrequency: page.changefreq as "yearly",
-			priority: page.priority,
-		})),
-	];
+	return primaryPages.map((page) => ({
+		url: `${baseUrl}${page.path}`,
+		lastModified: contentLastUpdated,
+		changeFrequency: page.changefreq as "monthly" | "yearly",
+		priority: page.priority,
+	}));
 }

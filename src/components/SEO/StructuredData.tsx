@@ -50,9 +50,15 @@ const localBusiness = {
 	],
 	areaServed: [
 		{ "@type": "City", name: "Valbonne" },
+		{ "@type": "City", name: "Sophia-Antipolis" },
 		{ "@type": "City", name: "Antibes" },
 		{ "@type": "City", name: "Biot" },
-		{ "@type": "City", name: "Sophia-Antipolis" },
+		{ "@type": "City", name: "Mougins" },
+		{ "@type": "City", name: "Cannes" },
+		{ "@type": "City", name: "Nice" },
+		{ "@type": "City", name: "Grasse" },
+		{ "@type": "City", name: "Villeneuve-Loubet" },
+		{ "@type": "City", name: "Roquefort-les-Pins" },
 	],
 	sameAs: [
 		"https://www.facebook.com/AureliaDesvauxPsychopraticienne/",
