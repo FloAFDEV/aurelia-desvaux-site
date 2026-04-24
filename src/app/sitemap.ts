@@ -23,13 +23,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 	// Pages légales exclues : elles ont robots noindex, les inclure dans le sitemap
 	// créerait une contradiction et gaspillerait le crawl budget.
 
-	const localPages = [
-		{ path: "/valbonne", changefreq: "monthly", priority: 0.8 },
-		{ path: "/sophia-antipolis", changefreq: "monthly", priority: 0.8 },
-		{ path: "/antibes", changefreq: "monthly", priority: 0.8 },
-		{ path: "/biot", changefreq: "monthly", priority: 0.7 },
-		{ path: "/mougins", changefreq: "monthly", priority: 0.7 },
-	];
+	// /valbonne = page d'accès physique au cabinet (intention navigation, pas service).
+	// Seule page locale légitime : unique dans son contenu (adresse, parking, itinéraires).
+	// Les pages /antibes, /biot, /mougins, /sophia-antipolis ont été supprimées :
+	// elles constituaient des doorway pages (structure identique, seul le nom de ville changeait).
 
 	return [
 		...primaryPages.map((page) => ({
@@ -38,11 +35,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			changeFrequency: page.changefreq as "monthly" | "yearly",
 			priority: page.priority,
 		})),
-		...localPages.map((page) => ({
-			url: `${baseUrl}${page.path}`,
+		{
+			url: `${baseUrl}/valbonne`,
 			lastModified: contentLastUpdated,
-			changeFrequency: page.changefreq as "monthly",
-			priority: page.priority,
-		})),
+			changeFrequency: "yearly" as const,
+			priority: 0.6,
+		},
 	];
 }
