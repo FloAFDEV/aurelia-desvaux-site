@@ -20,10 +20,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		{ path: "/ressources", changefreq: "monthly", priority: 0.7 },
 	];
 
-	const legalPages = [
-		{ path: "/mentions-legales", changefreq: "yearly", priority: 0.3 },
-		{ path: "/cgu", changefreq: "yearly", priority: 0.3 },
-		{ path: "/politique-confidentialite", changefreq: "yearly", priority: 0.3 },
+	// Pages légales exclues : elles ont robots noindex, les inclure dans le sitemap
+	// créerait une contradiction et gaspillerait le crawl budget.
+
+	const localPages = [
+		{ path: "/valbonne", changefreq: "monthly", priority: 0.8 },
+		{ path: "/sophia-antipolis", changefreq: "monthly", priority: 0.8 },
+		{ path: "/antibes", changefreq: "monthly", priority: 0.8 },
+		{ path: "/biot", changefreq: "monthly", priority: 0.7 },
+		{ path: "/mougins", changefreq: "monthly", priority: 0.7 },
 	];
 
 	return [
@@ -33,10 +38,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			changeFrequency: page.changefreq as "monthly" | "yearly",
 			priority: page.priority,
 		})),
-		...legalPages.map((page) => ({
+		...localPages.map((page) => ({
 			url: `${baseUrl}${page.path}`,
-			lastModified: legalLastUpdated,
-			changeFrequency: page.changefreq as "yearly",
+			lastModified: contentLastUpdated,
+			changeFrequency: page.changefreq as "monthly",
 			priority: page.priority,
 		})),
 	];

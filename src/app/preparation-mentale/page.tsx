@@ -2,6 +2,28 @@
 import { Metadata } from "next";
 import PreparationMentaleContent from "./content";
 
+const serviceSchema = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	name: "Préparation Mentale à Valbonne",
+	description:
+		"Accompagnement en préparation mentale à Valbonne Sophia-Antipolis. Hypnose, PNL et EFT pour examens, compétitions sportives, prises de parole et développement de la confiance en soi.",
+	provider: {
+		"@type": "LocalBusiness",
+		name: "Aurélia Desvaux",
+		url: "https://aurelia-desvaux.fr",
+	},
+	areaServed: [
+		{ "@type": "City", name: "Valbonne" },
+		{ "@type": "City", name: "Sophia-Antipolis" },
+		{ "@type": "City", name: "Antibes" },
+		{ "@type": "City", name: "Biot" },
+		{ "@type": "City", name: "Mougins" },
+	],
+	url: "https://aurelia-desvaux.fr/preparation-mentale",
+	serviceType: "Préparation Mentale",
+};
+
 export const metadata: Metadata = {
 	title: {
 		absolute:
@@ -53,5 +75,13 @@ export const metadata: Metadata = {
 };
 
 export default function PreparationMentalePage() {
-	return <PreparationMentaleContent />;
+	return (
+		<>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+			/>
+			<PreparationMentaleContent />
+		</>
+	);
 }
