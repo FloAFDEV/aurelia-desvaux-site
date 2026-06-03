@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		{ url: `${baseUrl}/pnl`,                            lastModified: now, changeFrequency: "monthly", priority: 0.8 },
 		{ url: `${baseUrl}/eft`,                            lastModified: now, changeFrequency: "monthly", priority: 0.8 },
 		{ url: `${baseUrl}/preparation-mentale`,            lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-		{ url: `${baseUrl}/a-propos`,                       lastModified: now, changeFrequency: "yearly",  priority: 0.7 },
+		{ url: `${baseUrl}/a-propos`,                       lastModified: now, changeFrequency: "monthly", priority: 0.8 },
 		{ url: `${baseUrl}/ressources`,                     lastModified: now, changeFrequency: "monthly", priority: 0.6 },
 		{ url: `${baseUrl}/dream-machine`,                  lastModified: now, changeFrequency: "yearly",  priority: 0.3 },
 	];
