@@ -46,6 +46,14 @@ export const Footer = () => {
 						<ul className="space-y-2">
 							<li>
 								<Link
+									href="/a-propos"
+									className="font-body text-sm text-muted-foreground hover:text-primary transition-colors"
+								>
+									À propos d'Aurélia Desvaux
+								</Link>
+							</li>
+							<li>
+								<Link
 									href="/hypnose"
 									className="font-body text-sm text-muted-foreground hover:text-primary transition-colors"
 								>
@@ -233,12 +241,6 @@ export const Footer = () => {
 						>
 							Confidentialité
 						</a>
-						<Link
-							href="/a-propos"
-							className="font-body text-sm text-muted-foreground hover:text-primary transition-colors"
-						>
-							À propos d'Aurélia Desvaux
-						</Link>
 						<Link
 							href="/tarifs"
 							className="font-body text-sm text-muted-foreground hover:text-primary transition-colors"

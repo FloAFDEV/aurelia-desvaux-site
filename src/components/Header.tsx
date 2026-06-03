@@ -11,7 +11,7 @@ import treeLogo from "@/assets/tree-logo.webp";
 // Helper pour le label de menu
 const MenuLabel = ({ label }: { label: string }) => (
 	<span className="inline-flex items-baseline">
-		<span className="font-script text-[1.4em] leading-none -mr-0.5">
+		<span className={`font-script text-[1.4em] leading-none ${label.charAt(1) === " " ? "" : "-mr-0.5"}`}>
 			{label.charAt(0)}
 		</span>
 		<span>{label.slice(1)}</span>
