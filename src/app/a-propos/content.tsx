@@ -204,11 +204,11 @@ export default function AProposContent() {
 								}`}
 							>
 								{[
-									{ year: "2023", title: "Havening Techniques®", organisme: "Certified Havening Practitioner", description: "Techniques psychosensorielles pour la libération des traumatismes, la gestion du stress et des phobies." },
-									{ year: "2022", title: "Maître Praticien PNL", organisme: "Psynapse – École de psychothérapie", description: "Programmation neuro-linguistique avancée : accompagnement au changement, confiance en soi, communication thérapeutique." },
-									{ year: "2021", title: "Praticien EFT / TFT", organisme: "Institut Français d'EFT", description: "Emotional Freedom Techniques et Thought Field Therapy pour la libération émotionnelle, l'anxiété et les blocages." },
-									{ year: "2020", title: "Hypnose Ericksonienne", organisme: "Institut de Formation en Hypnose", description: "Hypnose Ericksonienne appliquée : arrêt du tabac, perte de poids, gestion du stress, phobies, insomnie et préparation mentale." },
-									{ year: "2006–2022", title: "Management & Gestion de projets", organisme: "Expérience en entreprise – 15 ans", description: "Pilotage d'équipes, conduite du changement et accompagnement humain en environnement professionnel exigeant." },
+									{ year: "2020", title: "Maître Praticien en PNL", organisme: "Psynapse – École de psychothérapie", description: "Programmation neuro-linguistique : accompagnement au changement, confiance en soi, communication thérapeutique." },
+									{ year: "2020", title: "Spécialisation Anneau Gastrique Hypnotique", organisme: "Psynapse – École de psychothérapie", description: "Technique hypnotique spécialisée dans la perte de poids durable par reprogrammation des comportements alimentaires." },
+									{ year: "2020", title: "Spécialisation Perte de Poids & Arrêt du Tabac", organisme: "Psynapse – École de psychothérapie", description: "Protocoles hypnothérapeutiques dédiés à la perte de poids et à l'arrêt du tabac par hypnose Ericksonienne." },
+									{ year: "2020", title: "Praticien en Hypnose Ericksonienne", organisme: "Psynapse – École de psychothérapie", description: "Hypnose Ericksonienne appliquée : gestion du stress, phobies, insomnie, arrêt du tabac et accompagnement thérapeutique." },
+									{ year: "2020", title: "EFT / TFT Tapping Practitioner", organisme: "The Priority Academy", description: "Emotional Freedom Techniques et Thought Field Therapy pour la libération émotionnelle, l'anxiété et les blocages." },
 								].map((item, index) => (
 									<div key={index} className="flex gap-4 sm:gap-6 group" style={{ transitionDelay: `${150 + index * 60}ms` }}>
 										<div className="flex-shrink-0 w-20 sm:w-24 text-right pt-1">

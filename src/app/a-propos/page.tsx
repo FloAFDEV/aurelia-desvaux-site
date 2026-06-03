@@ -12,7 +12,58 @@ const personSchema = {
 	email: "desvauxaurelia@gmail.com",
 	telephone: "+33620145306",
 	description:
-		"Aurélia Desvaux est praticienne certifiée en Hypnose Ericksonienne, PNL et EFT à Valbonne Sophia-Antipolis. Après 15 ans en gestion de projets et management, elle se consacre à l'accompagnement thérapeutique bienveillant.",
+		"Aurélia Desvaux est praticienne certifiée en Hypnose Ericksonienne, PNL et EFT à Valbonne Sophia-Antipolis. Spécialisée dans l'arrêt du tabac, la perte de poids et la gestion du stress, elle accompagne adultes et sportifs grâce aux thérapies brèves.",
+	knowsAbout: [
+		"Hypnose Ericksonienne",
+		"PNL – Programmation Neuro-Linguistique",
+		"EFT / TFT – Emotional Freedom Techniques",
+		"Arrêt du tabac",
+		"Perte de poids",
+		"Gestion du stress",
+		"Phobies",
+		"Accompagnement thérapeutique",
+	],
+	hasCredential: [
+		{
+			"@type": "EducationalOccupationalCredential",
+			name: "Formation de Maître Praticien en PNL",
+			credentialCategory: "certification",
+			dateCreated: "2020",
+			recognizedBy: { "@type": "Organization", name: "Psynapse – École de psychothérapie" },
+		},
+		{
+			"@type": "EducationalOccupationalCredential",
+			name: "Spécialisation Anneau Gastrique Hypnotique",
+			credentialCategory: "certification",
+			dateCreated: "2020",
+			recognizedBy: { "@type": "Organization", name: "Psynapse – École de psychothérapie" },
+		},
+		{
+			"@type": "EducationalOccupationalCredential",
+			name: "Formation de Spécialisation en Perte de Poids et Arrêt du Tabac",
+			credentialCategory: "certification",
+			dateCreated: "2020",
+			recognizedBy: { "@type": "Organization", name: "Psynapse – École de psychothérapie" },
+		},
+		{
+			"@type": "EducationalOccupationalCredential",
+			name: "Formation de Praticien en Hypnose Ericksonienne",
+			credentialCategory: "certification",
+			dateCreated: "2020",
+			recognizedBy: { "@type": "Organization", name: "Psynapse – École de psychothérapie" },
+		},
+		{
+			"@type": "EducationalOccupationalCredential",
+			name: "Accreditation of EFT / TFT Tapping Practitioner",
+			credentialCategory: "certification",
+			dateCreated: "2020",
+			recognizedBy: { "@type": "Organization", name: "The Priority Academy" },
+		},
+	],
+	alumniOf: [
+		{ "@type": "Organization", name: "Psynapse – École de psychothérapie" },
+		{ "@type": "Organization", name: "The Priority Academy" },
+	],
 	worksFor: {
 		"@type": "LocalBusiness",
 		name: "Aurélia Desvaux – Thérapies Brèves",
@@ -34,17 +85,17 @@ const personSchema = {
 
 export const metadata: Metadata = {
 	title: {
-		absolute: "À propos – Aurélia Desvaux, Hypnothérapeute à Valbonne",
+		absolute: "Aurélia Desvaux – Hypnothérapeute, PNL & EFT à Valbonne Sophia-Antipolis",
 	},
 	description:
-		"Découvrez le parcours d'Aurélia Desvaux, praticienne certifiée en Hypnose Ericksonienne, PNL et EFT à Valbonne Sophia-Antipolis. Formations, certifications et approche thérapeutique.",
+		"Praticienne certifiée en Hypnose Ericksonienne, PNL et EFT à Valbonne. Spécialisée dans l'arrêt du tabac, la perte de poids et la gestion du stress. Découvrez son parcours et ses certifications.",
 	alternates: {
 		canonical: "/a-propos",
 	},
 	openGraph: {
-		title: "À propos – Aurélia Desvaux | Hypnothérapeute à Valbonne",
+		title: "Aurélia Desvaux – Hypnothérapeute certifiée à Valbonne Sophia-Antipolis",
 		description:
-			"Parcours, certifications et approche d'Aurélia Desvaux, praticienne en thérapies brèves à Valbonne Sophia-Antipolis.",
+			"Hypnose Ericksonienne, PNL, EFT à Valbonne. Spécialisée arrêt du tabac, perte de poids, gestion du stress. Praticienne certifiée, formations Psynapse et The Priority Academy.",
 		url: "https://aurelia-desvaux.fr/a-propos",
 		siteName: "Aurélia Desvaux",
 		locale: "fr_FR",
@@ -61,9 +112,9 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "À propos – Aurélia Desvaux | Valbonne",
+		title: "Aurélia Desvaux – Hypnothérapeute, PNL & EFT à Valbonne",
 		description:
-			"Parcours et certifications d'Aurélia Desvaux, praticienne en hypnose, PNL et EFT à Valbonne.",
+			"Praticienne certifiée en hypnose, PNL et EFT à Valbonne. Spécialisée arrêt du tabac, perte de poids, stress.",
 		images: ["https://aurelia-desvaux.fr/og-image.jpg"],
 	},
 };
