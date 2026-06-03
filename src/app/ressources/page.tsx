@@ -1,6 +1,4 @@
 import { Metadata } from "next";
-import { Suspense } from "react";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
 import Content from "./content";
 
 export const metadata: Metadata = {
@@ -40,12 +38,5 @@ export const metadata: Metadata = {
 };
 
 export default function RessourcesPage() {
-	return (
-		<>
-			<Suspense fallback={<div className="h-12" />}>
-				<Breadcrumbs items={[{ label: "Ressources & Ateliers", href: "/ressources" }]} />
-			</Suspense>
-			<Content />
-		</>
-	);
+	return <Content />;
 }
