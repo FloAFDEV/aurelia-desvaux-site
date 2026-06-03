@@ -338,21 +338,11 @@ export default function AProposContent() {
 							Découvrez les accompagnements proposés
 						</p>
 						<div className="flex flex-wrap justify-center gap-4">
-							{[
-								{ href: "/hypnose", label: "Hypnose Ericksonienne" },
-								{ href: "/hypnose-arret-tabac", label: "Arrêt du Tabac" },
-								{ href: "/pnl", label: "PNL" },
-								{ href: "/eft", label: "EFT" },
-								{ href: "/preparation-mentale", label: "Préparation Mentale" },
-							].map(({ href, label }) => (
-								<Link
-									key={href}
-									href={href}
-									className="font-body text-sm text-primary underline underline-offset-2 hover:text-foreground transition-colors"
-								>
-									{label}
-								</Link>
-							))}
+							<Link href="/hypnose" className="font-body text-sm text-primary underline underline-offset-2 hover:text-foreground transition-colors">Hypnose Ericksonienne</Link>
+							<Link href="/hypnose-arret-tabac" className="font-body text-sm text-primary underline underline-offset-2 hover:text-foreground transition-colors">Arrêt du Tabac</Link>
+							<Link href="/pnl" className="font-body text-sm text-primary underline underline-offset-2 hover:text-foreground transition-colors">PNL</Link>
+							<Link href="/eft" className="font-body text-sm text-primary underline underline-offset-2 hover:text-foreground transition-colors">EFT</Link>
+							<Link href="/preparation-mentale" className="font-body text-sm text-primary underline underline-offset-2 hover:text-foreground transition-colors">Préparation Mentale</Link>
 						</div>
 					</div>
 				</div>
