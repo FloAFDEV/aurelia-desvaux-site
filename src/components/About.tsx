@@ -108,7 +108,7 @@ export const About = () => {
 								href="/a-propos"
 								className="text-primary underline underline-offset-2 hover:text-foreground transition-colors duration-200"
 							>
-								Découvrir le parcours d'Aurélia Desvaux
+								Découvrir mon parcours
 							</Link>
 							{" "}— formations, certifications et approche thérapeutique.
 						</p>
