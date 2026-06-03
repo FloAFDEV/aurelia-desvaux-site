@@ -7,11 +7,7 @@ const serviceSchema = {
 	name: "Préparation Mentale à Valbonne",
 	description:
 		"Accompagnement en préparation mentale à Valbonne Sophia-Antipolis. Hypnose, PNL et EFT pour examens, compétitions sportives, prises de parole et développement de la confiance en soi.",
-	provider: {
-		"@type": "LocalBusiness",
-		name: "Aurélia Desvaux",
-		url: "https://aurelia-desvaux.fr",
-	},
+	provider: { "@id": "https://aurelia-desvaux.fr/#business" },
 	areaServed: [
 		{ "@type": "City", name: "Valbonne" },
 		{ "@type": "City", name: "Sophia-Antipolis" },

@@ -7,11 +7,7 @@ const serviceSchema = {
 	name: "PNL – Programmation Neuro-Linguistique à Valbonne",
 	description:
 		"Séances de PNL pour développement personnel, confiance en soi, évolution professionnelle. Accompagnement personnalisé à Valbonne Sophia-Antipolis.",
-	provider: {
-		"@type": "LocalBusiness",
-		name: "Aurélia Desvaux",
-		url: "https://aurelia-desvaux.fr",
-	},
+	provider: { "@id": "https://aurelia-desvaux.fr/#business" },
 	areaServed: [
 		{ "@type": "City", name: "Valbonne" },
 		{ "@type": "City", name: "Sophia-Antipolis" },
@@ -19,6 +15,7 @@ const serviceSchema = {
 		{ "@type": "City", name: "Biot" },
 	],
 	url: "https://aurelia-desvaux.fr/pnl",
+	serviceType: "PNL – Programmation Neuro-Linguistique",
 };
 
 export const metadata: Metadata = {

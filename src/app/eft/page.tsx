@@ -7,11 +7,7 @@ const serviceSchema = {
 	name: "EFT – Emotional Freedom Techniques à Valbonne",
 	description:
 		"Séances d'EFT pour libération émotionnelle, gestion du stress et de l'anxiété. Accompagnement personnalisé à Valbonne Sophia-Antipolis.",
-	provider: {
-		"@type": "LocalBusiness",
-		name: "Aurélia Desvaux",
-		url: "https://aurelia-desvaux.fr",
-	},
+	provider: { "@id": "https://aurelia-desvaux.fr/#business" },
 	areaServed: [
 		{ "@type": "City", name: "Valbonne" },
 		{ "@type": "City", name: "Sophia-Antipolis" },
@@ -19,6 +15,7 @@ const serviceSchema = {
 		{ "@type": "City", name: "Biot" },
 	],
 	url: "https://aurelia-desvaux.fr/eft",
+	serviceType: "EFT – Emotional Freedom Techniques",
 };
 
 export const metadata: Metadata = {
