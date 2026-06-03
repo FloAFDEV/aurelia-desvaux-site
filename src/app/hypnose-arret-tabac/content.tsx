@@ -71,6 +71,7 @@ export default function HypnoseArretTabacContent() {
 	const { ref: sessionsRef, isInView: sessionsInView } = useInView();
 	const { ref: benefitsRef, isInView: benefitsInView } = useInView();
 	const { ref: faqRef, isInView: faqInView } = useInView();
+	const { ref: paaRef, isInView: paaInView } = useInView();
 
 	return (
 		<>
@@ -156,6 +157,18 @@ export default function HypnoseArretTabacContent() {
 				</div>
 			</section>
 
+			{/* Featured snippet – position 0 */}
+			<div className="bg-background py-8 border-b border-border">
+				<div className="container mx-auto px-4 md:px-6 lg:px-8">
+					<div className="max-w-2xl mx-auto text-center">
+						<p className="font-body text-lg text-muted-foreground leading-relaxed">
+							L'hypnose pour arrêter de fumer permet d'agir sur les automatismes inconscients liés à la cigarette.
+							En 1 à 2 séances, il est possible de réduire les envies, gérer les compulsions et faciliter le sevrage tabagique.
+						</p>
+					</div>
+				</div>
+			</div>
+
 			{/* Contenu principal */}
 			<section ref={contentRef} className="py-12 md:py-20 bg-background">
 				<div className="container mx-auto px-4 md:px-6 lg:px-8">
@@ -196,6 +209,11 @@ export default function HypnoseArretTabacContent() {
 									Au cabinet de Valbonne, à deux pas de Sophia-Antipolis et accessible depuis Antibes,
 									Biot et Mougins, je vous accompagne dans un espace calme et bienveillant pour
 									libérer définitivement ce lien à la cigarette.
+								</p>
+								<p>
+									Hypnothérapeute à Valbonne Sophia-Antipolis spécialisée en arrêt du tabac et gestion des addictions, je
+									m'appuie sur une formation certifiée (<Link href="/a-propos" className="text-primary underline underline-offset-2 hover:text-foreground transition-colors">voir mon parcours</Link>) et sur des techniques
+									complémentaires comme la <Link href="/pnl" className="text-primary underline underline-offset-2 hover:text-foreground transition-colors">PNL</Link> ou l'<Link href="/eft" className="text-primary underline underline-offset-2 hover:text-foreground transition-colors">EFT</Link> pour renforcer les résultats à long terme.
 								</p>
 							</div>
 
@@ -405,6 +423,59 @@ export default function HypnoseArretTabacContent() {
 				</div>
 			</section>
 
+			{/* PAA – Questions fréquentes H3 pour featured snippets */}
+			<section ref={paaRef} className="py-16 bg-background border-t border-border">
+				<div className="container mx-auto px-4 md:px-6 lg:px-8">
+					<div className="max-w-3xl mx-auto">
+						<h2
+							className={`font-script text-3xl md:text-4xl text-foreground mb-4 text-center transition-all duration-500 ${
+								paaInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+							}`}
+						>
+							Questions fréquentes sur l'hypnose pour arrêter de fumer
+						</h2>
+						<div
+							className={`w-20 h-px bg-primary mx-auto mb-10 transition-all duration-500 delay-75 ${
+								paaInView ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
+							}`}
+						/>
+						<div
+							className={`space-y-8 transition-all duration-500 delay-100 ${
+								paaInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+							}`}
+						>
+							{[
+								{
+									q: "Comment l'hypnose aide-t-elle à arrêter de fumer ?",
+									a: "L'hypnose Ericksonienne agit sur les automatismes inconscients liés à la cigarette et modifie les comportements associés au tabac : stress, ennui, habitudes sociales. Elle travaille sur les déclencheurs émotionnels là où les substituts nicotiniques ne peuvent pas agir.",
+								},
+								{
+									q: "Combien de séances sont nécessaires pour arrêter de fumer ?",
+									a: "En 1 à 2 séances d'hypnose, il est possible d'amorcer un sevrage tabagique durable. La première séance de 1h30 suffit souvent. Une seconde séance de consolidation peut être proposée selon le profil.",
+								},
+								{
+									q: "Est-ce efficace pour tout le monde ?",
+									a: "L'efficacité dépend de la réceptivité et de l'implication de la personne dans le processus. Une motivation sincère est le premier facteur de réussite. L'hypnose amplifie et ancre cette motivation au niveau inconscient.",
+								},
+								{
+									q: "L'hypnose aide-t-elle à gérer le stress du sevrage tabagique ?",
+									a: "Oui. L'hypnose agit directement sur le stress, les compulsions et les déclencheurs émotionnels liés au tabac. Elle peut aussi être complétée par des techniques d'EFT pour renforcer la gestion des envies.",
+								},
+								{
+									q: "Où se déroule la séance d'hypnose arrêt du tabac ?",
+									a: "Les séances ont lieu au cabinet de Valbonne Sophia-Antipolis (1 Place Joseph Bermond, Bât Ophira 1), accessible depuis Antibes, Biot, Mougins et Cannes. Les séances en visioconférence sont également disponibles.",
+								},
+							].map((item, i) => (
+								<div key={i}>
+									<h3 className="font-display text-lg text-foreground font-medium mb-2">{item.q}</h3>
+									<p className="font-body text-muted-foreground leading-relaxed">{item.a}</p>
+								</div>
+							))}
+						</div>
+					</div>
+				</div>
+			</section>
+
 			{/* Maillage interne */}
 			<section className="py-12 bg-background border-t border-border">
 				<div className="container mx-auto px-4 md:px-6 lg:px-8">
@@ -418,6 +489,12 @@ export default function HypnoseArretTabacContent() {
 								className="font-body text-sm text-primary underline underline-offset-2 hover:text-foreground transition-colors"
 							>
 								Hypnose Ericksonienne
+							</Link>
+							<Link
+								href="/a-propos"
+								className="font-body text-sm text-primary underline underline-offset-2 hover:text-foreground transition-colors"
+							>
+								À propos
 							</Link>
 							<Link
 								href="/pnl"

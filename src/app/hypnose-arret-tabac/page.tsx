@@ -59,18 +59,34 @@ const faqSchema = {
 	mainEntity: [
 		{
 			"@type": "Question",
-			name: "Combien de séances faut-il pour arrêter de fumer par l'hypnose ?",
+			name: "Comment l'hypnose aide-t-elle à arrêter de fumer ?",
 			acceptedAnswer: {
 				"@type": "Answer",
-				text: "La plupart des personnes arrêtent de fumer en 1 à 2 séances d'hypnose Ericksonienne. La première séance de 1h30 est généralement suffisante. Une séance de suivi peut être programmée si nécessaire.",
+				text: "L'hypnose Ericksonienne agit sur les automatismes inconscients liés à la cigarette et modifie les comportements associés au tabac : stress, ennui, habitudes sociales. Elle travaille sur les déclencheurs émotionnels là où les substituts nicotiniques ne peuvent pas agir.",
 			},
 		},
 		{
 			"@type": "Question",
-			name: "L'hypnose est-elle vraiment efficace pour arrêter de fumer ?",
+			name: "Combien de séances faut-il pour arrêter de fumer par l'hypnose ?",
 			acceptedAnswer: {
 				"@type": "Answer",
-				text: "L'hypnose Ericksonienne agit sur les mécanismes inconscients liés à la dépendance au tabac. Elle modifie le rapport émotionnel à la cigarette et renforce la motivation profonde à arrêter. Les résultats varient selon les personnes, mais l'hypnose reste l'une des méthodes les plus efficaces pour un arrêt durable.",
+				text: "En 1 à 2 séances d'hypnose, il est possible d'amorcer un sevrage tabagique durable. La première séance de 1h30 est généralement suffisante. Une séance de suivi peut être programmée selon le profil.",
+			},
+		},
+		{
+			"@type": "Question",
+			name: "L'hypnose est-elle efficace pour tout le monde ?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "L'efficacité dépend de la réceptivité et de l'implication de la personne dans le processus. Une motivation sincère est le premier facteur de réussite. L'hypnose amplifie et ancre cette motivation au niveau inconscient.",
+			},
+		},
+		{
+			"@type": "Question",
+			name: "L'hypnose aide-t-elle à gérer le stress du sevrage tabagique ?",
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: "Oui, l'hypnose agit directement sur le stress, les compulsions et les déclencheurs émotionnels liés au tabac.",
 			},
 		},
 		{
