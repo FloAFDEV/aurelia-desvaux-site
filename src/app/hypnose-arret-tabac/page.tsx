@@ -7,10 +7,10 @@ const serviceSchema = {
 	"@type": "Service",
 	name: "Hypnose pour Arrêter de Fumer à Valbonne",
 	description:
-		"Programme d'hypnose Ericksonienne pour l'arrêt du tabac à Valbonne Sophia-Antipolis. 1 à 2 séances pour arrêter durablement de fumer.",
+		"Programme d'hypnose Ericksonienne pour le sevrage tabagique à Valbonne Sophia-Antipolis. Arrêt du tabac, gestion des compulsions et addiction cigarette en 1 à 2 séances. Praticienne certifiée Psynapse.",
 	provider: {
 		"@type": "LocalBusiness",
-		name: "Aurélia Desvaux",
+		name: "Aurélia Desvaux – Hypnothérapeute à Valbonne Sophia-Antipolis",
 		url: "https://aurelia-desvaux.fr",
 	},
 	offers: {
@@ -18,6 +18,28 @@ const serviceSchema = {
 		price: "120",
 		priceCurrency: "EUR",
 		description: "Programme arrêt du tabac par hypnose – 1 à 2 séances",
+	},
+	hasOfferCatalog: {
+		"@type": "OfferCatalog",
+		name: "Programme hypnose arrêt du tabac",
+		itemListElement: [
+			{
+				"@type": "Offer",
+				name: "Séance 1 – Bilan et hypnose arrêt du tabac",
+				price: "120",
+				priceCurrency: "EUR",
+				description:
+					"Séance de 1h30 : bilan approfondi, identification des déclencheurs émotionnels, induction hypnotique personnalisée.",
+			},
+			{
+				"@type": "Offer",
+				name: "Séance 2 – Consolidation (si besoin)",
+				price: "70",
+				priceCurrency: "EUR",
+				description:
+					"Séance de 1h : consolidation des changements, gestion des situations à risque, ancrage identitaire non-fumeur.",
+			},
+		],
 	},
 	areaServed: [
 		{ "@type": "City", name: "Valbonne" },
@@ -72,17 +94,17 @@ const faqSchema = {
 
 export const metadata: Metadata = {
 	title: {
-		absolute: "Hypnose Arrêt du Tabac à Valbonne – 1 à 2 séances | Aurélia Desvaux",
+		absolute: "Hypnose Arrêt du Tabac Valbonne – Sevrage Tabagique | Aurélia Desvaux",
 	},
 	description:
-		"Arrêtez de fumer définitivement grâce à l'hypnose Ericksonienne à Valbonne Sophia-Antipolis. Programme personnalisé en 1 à 2 séances. 120€. Hypnothérapeute certifiée.",
+		"Arrêtez de fumer par l'hypnose Ericksonienne à Valbonne. Sevrage tabagique, addiction à la cigarette, gestion du stress : programme en 1 à 2 séances. 120€. Praticienne certifiée Psynapse.",
 	alternates: {
 		canonical: "/hypnose-arret-tabac",
 	},
 	openGraph: {
-		title: "Hypnose pour Arrêter de Fumer à Valbonne | Aurélia Desvaux",
+		title: "Hypnose Arrêt du Tabac à Valbonne – Sevrage Tabagique | Aurélia Desvaux",
 		description:
-			"Arrêtez de fumer par l'hypnose à Valbonne Sophia-Antipolis. Programme en 1 à 2 séances. Hypnothérapeute certifiée. 120€.",
+			"Sevrage tabagique par hypnose Ericksonienne à Valbonne. Addiction cigarette, stress, compulsions : accompagnement personnalisé en 1 à 2 séances. 120€.",
 		url: "https://aurelia-desvaux.fr/hypnose-arret-tabac",
 		siteName: "Aurélia Desvaux",
 		locale: "fr_FR",
@@ -99,7 +121,7 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Hypnose Arrêt du Tabac à Valbonne | Aurélia Desvaux",
+		title: "Hypnose Arrêt du Tabac & Sevrage Tabagique à Valbonne | Aurélia Desvaux",
 		description:
 			"Arrêtez de fumer définitivement en 1 à 2 séances d'hypnose à Valbonne. 120€.",
 		images: ["https://aurelia-desvaux.fr/og-image.jpg"],
