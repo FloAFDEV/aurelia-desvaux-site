@@ -58,9 +58,9 @@ export const Hero = () => {
 
 						<div className="flex items-center gap-4 justify-center lg:justify-start mb-2 animate-fade-in-up opacity-0 delay-200">
 							<div className="hidden lg:block w-12 h-px bg-primary-light/60" aria-hidden="true" />
-							<p className="font-display text-2xl md:text-3xl lg:text-4xl text-muted-foreground break-words max-w-full">
-								Thérapies Brèves
-							</p>
+							<h2 className="font-display text-2xl md:text-3xl lg:text-4xl text-muted-foreground break-words max-w-full">
+								Hypnothérapeute à Valbonne Sophia-Antipolis
+							</h2>
 							<div className="hidden lg:block w-12 h-px bg-primary-light/60" aria-hidden="true" />
 						</div>
 

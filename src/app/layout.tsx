@@ -61,11 +61,11 @@ export const metadata: Metadata = {
 		siteName: "Aurélia Desvaux",
 		images: [
 			{
-				url: "https://aurelia-desvaux.fr/og-image.webp",
+				url: "https://aurelia-desvaux.fr/og-image.jpg",
 				width: 1200,
 				height: 630,
 				alt: "Aurélia Desvaux - Praticienne en Hypnose, PNL et EFT à Valbonne",
-				type: "image/webp",
+				type: "image/jpeg",
 			},
 		],
 	},
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
 		title: "Aurélia Desvaux | Hypnose, PNL et EFT",
 		description:
 			"Praticienne en thérapies brèves à Valbonne. Accompagnement pour stress, anxiété et développement personnel.",
-		images: ["https://aurelia-desvaux.fr/og-image.webp"],
+		images: ["https://aurelia-desvaux.fr/og-image.jpg"],
 		creator: "@aurelia_desvaux",
 	},
 	alternates: {
