@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { useInView } from "@/hooks/useInView";
-import { CheckCircle, Award, MapPin } from "lucide-react";
+import { CheckCircle, MapPin } from "lucide-react";
 import aureliaPortrait from "@/assets/aurelia-portrait-nature.webp";
 import aureliaPortrait2 from "@/assets/aurelia-portrait-cabinet.webp";
 import aureliaPresentation from "@/assets/aurelia-presentation.webp";
@@ -172,44 +172,59 @@ export default function AProposContent() {
 				</div>
 			</section>
 
-			{/* Certifications */}
+			{/* Formations & Expériences */}
 			<section ref={certifRef} className="py-20 bg-soft-pink/20">
 				<div className="container mx-auto px-4 md:px-6 lg:px-8">
 					<div className="max-w-3xl mx-auto">
 						<h2
-							className={`font-script text-3xl md:text-4xl text-foreground mb-4 text-center transition-all duration-500 ${
+							className={`font-script text-3xl md:text-4xl text-foreground mb-3 text-center transition-all duration-500 ${
 								certifInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
 							}`}
 						>
-							Formations &amp; Certifications
+							Formations &amp; Expériences
 						</h2>
+						<p
+							className={`font-body text-sm text-muted-foreground text-center mb-4 transition-all duration-500 delay-50 ${
+								certifInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+							}`}
+						>
+							Des certifications reconnues au service de votre accompagnement
+						</p>
 						<div
 							className={`w-20 h-px bg-primary mx-auto mb-12 transition-all duration-500 delay-75 ${
 								certifInView ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
 							}`}
 						/>
 
-						<div
-							className={`space-y-4 transition-all duration-500 delay-100 ${
-								certifInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-							}`}
-						>
-							{[
-								"Praticienne certifiée en Hypnose Ericksonienne",
-								"Praticienne certifiée en PNL (Programmation Neuro-Linguistique)",
-								"Praticienne certifiée en EFT (Emotional Freedom Techniques)",
-								"Praticienne en Havening Techniques®",
-								"Formation en Préparation Mentale",
-							].map((certif, index) => (
-								<div
-									key={index}
-									className="flex items-start gap-4 p-5 bg-background rounded-xl shadow-soft"
-									style={{ transitionDelay: `${100 + index * 50}ms` }}
-								>
-									<Award className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
-									<p className="font-body text-foreground">{certif}</p>
-								</div>
-							))}
+						<div className="relative">
+							<div className="absolute left-[5.5rem] top-0 bottom-0 w-px bg-primary/20 hidden sm:block" aria-hidden="true" />
+							<div
+								className={`space-y-8 transition-all duration-500 delay-100 ${
+									certifInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+								}`}
+							>
+								{[
+									{ year: "2023", title: "Havening Techniques®", organisme: "Certified Havening Practitioner", description: "Techniques psychosensorielles pour la libération des traumatismes, la gestion du stress et des phobies." },
+									{ year: "2022", title: "Maître Praticien PNL", organisme: "Psynapse – École de psychothérapie", description: "Programmation neuro-linguistique avancée : accompagnement au changement, confiance en soi, communication thérapeutique." },
+									{ year: "2021", title: "Praticien EFT / TFT", organisme: "Institut Français d'EFT", description: "Emotional Freedom Techniques et Thought Field Therapy pour la libération émotionnelle, l'anxiété et les blocages." },
+									{ year: "2020", title: "Hypnose Ericksonienne", organisme: "Institut de Formation en Hypnose", description: "Hypnose Ericksonienne appliquée : arrêt du tabac, perte de poids, gestion du stress, phobies, insomnie et préparation mentale." },
+									{ year: "2006–2022", title: "Management & Gestion de projets", organisme: "Expérience en entreprise – 15 ans", description: "Pilotage d'équipes, conduite du changement et accompagnement humain en environnement professionnel exigeant." },
+								].map((item, index) => (
+									<div key={index} className="flex gap-4 sm:gap-6 group" style={{ transitionDelay: `${150 + index * 60}ms` }}>
+										<div className="flex-shrink-0 w-20 sm:w-24 text-right pt-1">
+											<span className="inline-block font-body text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded-full leading-tight">{item.year}</span>
+										</div>
+										<div className="flex-shrink-0 hidden sm:flex items-start pt-2">
+											<div className="w-3 h-3 rounded-full bg-primary ring-4 ring-soft-pink/50 mt-0.5" aria-hidden="true" />
+										</div>
+										<div className="flex-1 bg-background rounded-xl p-5 shadow-soft transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
+											<p className="font-display text-base text-foreground font-medium mb-0.5">{item.title}</p>
+											<p className="font-body text-xs text-primary mb-2">{item.organisme}</p>
+											<p className="font-body text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+										</div>
+									</div>
+								))}
+							</div>
 						</div>
 					</div>
 				</div>
