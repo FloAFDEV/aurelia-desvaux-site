@@ -9,14 +9,17 @@ import { ClientPortal } from "@/components/ClientPortal";
 import treeLogo from "@/assets/tree-logo.webp";
 
 // Helper pour le label de menu
-const MenuLabel = ({ label }: { label: string }) => (
-	<span className="inline-flex items-baseline">
-		<span className={`font-script text-[1.4em] leading-none ${label.charAt(1) === " " ? "" : "-mr-0.5"}`}>
-			{label.charAt(0)}
+const MenuLabel = ({ label }: { label: string }) => {
+	const hasSpaceAfterFirst = label.charAt(1) === " ";
+	return (
+		<span className={`inline-flex items-baseline ${hasSpaceAfterFirst ? "gap-[0.3em]" : ""}`}>
+			<span className={`font-script text-[1.4em] leading-none ${hasSpaceAfterFirst ? "" : "-mr-0.5"}`}>
+				{label.charAt(0)}
+			</span>
+			<span>{hasSpaceAfterFirst ? label.slice(2) : label.slice(1)}</span>
 		</span>
-		<span>{label.slice(1)}</span>
-	</span>
-);
+	);
+};
 
 const therapiesSubmenu = [
 	{ label: "Hypnose", href: "/hypnose" as const },
