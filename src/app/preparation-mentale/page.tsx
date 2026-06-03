@@ -1,4 +1,3 @@
-// app/preparation-mentale/page.tsx
 import { Metadata } from "next";
 import PreparationMentaleContent from "./content";
 
@@ -31,20 +30,9 @@ export const metadata: Metadata = {
 	},
 	description:
 		"Mobilisez vos ressources internes pour vos examens, compétitions ou entretiens. Transformez le stress en énergie positive grâce à l'hypnose, la PNL et l'EFT. Cabinet à Valbonne.",
-	keywords: [
-		"préparation mentale",
-		"gestion du stress",
-		"confiance en soi",
-		"performance sportive",
-		"examens",
-		"entretiens d'embauche",
-		"prise de parole",
-		"hypnose",
-		"PNL",
-		"EFT",
-		"concentration",
-		"mémorisation",
-	],
+	alternates: {
+		canonical: "/preparation-mentale",
+	},
 	openGraph: {
 		title: "Préparation Mentale | Aurélia Desvaux",
 		description:
@@ -52,25 +40,23 @@ export const metadata: Metadata = {
 		type: "website",
 		url: "https://aurelia-desvaux.fr/preparation-mentale",
 		locale: "fr_FR",
-		siteName: "Aurélia Desvaux – Thérapies Brèves",
+		siteName: "Aurélia Desvaux",
 		images: [
 			{
-				url: "https://aurelia-desvaux.fr/og-image.webp",
+				url: "https://aurelia-desvaux.fr/og-image.jpg",
 				width: 1200,
 				height: 630,
 				alt: "Préparation Mentale – Aurélia Desvaux à Valbonne",
+				type: "image/jpeg",
 			},
 		],
-	},
-	alternates: {
-		canonical: "https://aurelia-desvaux.fr/preparation-mentale",
 	},
 	twitter: {
 		card: "summary_large_image",
 		title: "Préparation Mentale | Aurélia Desvaux",
 		description:
 			"Transformez le stress en énergie positive et ancrez une confiance durable.",
-		images: ["https://aurelia-desvaux.fr/og-image.webp"],
+		images: ["https://aurelia-desvaux.fr/og-image.jpg"],
 	},
 };
 

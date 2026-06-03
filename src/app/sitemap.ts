@@ -2,33 +2,19 @@ import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
 	const baseUrl = "https://aurelia-desvaux.fr";
+	const now = new Date();
 
-	// Date de dernière mise à jour réelle du contenu (à mettre à jour manuellement lors d'une modification)
-	const contentLastUpdated = new Date("2026-04-24");
-	const legalLastUpdated = new Date("2025-01-01");
-
-	const primaryPages = [
-		{ path: "", changefreq: "monthly", priority: 1.0 },
-		{ path: "/tarifs", changefreq: "monthly", priority: 0.9 },
-		{ path: "/contact", changefreq: "yearly", priority: 0.9 },
-		// /therapies et /pratiques redirigent vers / — exclues du sitemap
-		{ path: "/hypnose", changefreq: "monthly", priority: 0.9 },
-		{ path: "/pnl", changefreq: "monthly", priority: 0.9 },
-		{ path: "/eft", changefreq: "monthly", priority: 0.9 },
-		{ path: "/preparation-mentale", changefreq: "monthly", priority: 0.9 },
-		{ path: "/dream-machine", changefreq: "yearly", priority: 0.7 },
-		{ path: "/ressources", changefreq: "monthly", priority: 0.7 },
+	return [
+		{ url: baseUrl,                                     lastModified: now, changeFrequency: "monthly", priority: 1.0 },
+		{ url: `${baseUrl}/hypnose`,                        lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+		{ url: `${baseUrl}/hypnose-arret-tabac`,            lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+		{ url: `${baseUrl}/tarifs`,                         lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+		{ url: `${baseUrl}/contact`,                        lastModified: now, changeFrequency: "yearly",  priority: 0.9 },
+		{ url: `${baseUrl}/pnl`,                            lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+		{ url: `${baseUrl}/eft`,                            lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+		{ url: `${baseUrl}/preparation-mentale`,            lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+		{ url: `${baseUrl}/a-propos`,                       lastModified: now, changeFrequency: "yearly",  priority: 0.7 },
+		{ url: `${baseUrl}/ressources`,                     lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+		{ url: `${baseUrl}/dream-machine`,                  lastModified: now, changeFrequency: "yearly",  priority: 0.3 },
 	];
-
-	// Pages légales exclues : elles ont robots noindex, les inclure dans le sitemap
-	// créerait une contradiction et gaspillerait le crawl budget.
-	// Aucune page locale ajoutée : le SEO local est géré via le schema LocalBusiness
-	// (areaServed), le contenu des pages existantes et Google Business Profile.
-
-	return primaryPages.map((page) => ({
-		url: `${baseUrl}${page.path}`,
-		lastModified: contentLastUpdated,
-		changeFrequency: page.changefreq as "monthly" | "yearly",
-		priority: page.priority,
-	}));
 }

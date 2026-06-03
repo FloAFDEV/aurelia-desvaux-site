@@ -45,27 +45,8 @@ const faqs = [
 export const FAQ = () => {
 	const { ref, isInView } = useInView();
 
-	const structuredData = {
-		"@context": "https://schema.org",
-		"@type": "FAQPage",
-		mainEntity: faqs.map((faq) => ({
-			"@type": "Question",
-			name: faq.question,
-			acceptedAnswer: {
-				"@type": "Answer",
-				text: faq.answer,
-			},
-		})),
-	};
-
 	return (
 		<>
-			{/* JSON-LD FAQPage — SSR, visible dans view-source */}
-			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-			/>
-
 			<section
 				id="faq"
 				aria-labelledby="faq-title"

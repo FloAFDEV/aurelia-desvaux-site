@@ -32,18 +32,8 @@ export const metadata: Metadata = {
 	},
 	description:
 		"Séances d'hypnose Ericksonienne à Valbonne Sophia-Antipolis. Libérez-vous du stress, de l'anxiété et des phobies. Hypnothérapeute certifiée, accompagnement bienveillant.",
-	keywords: [
-		"hypnose ericksonienne",
-		"hypnothérapeute",
-		"Valbonne",
-		"Sophia-Antipolis",
-		"stress",
-		"anxiété",
-		"phobies",
-		"confiance en soi",
-	],
 	alternates: {
-		canonical: "https://aurelia-desvaux.fr/hypnose",
+		canonical: "/hypnose",
 	},
 	openGraph: {
 		title: "Hypnose à Valbonne – Stress, anxiété, phobies | Aurélia Desvaux",
@@ -52,13 +42,14 @@ export const metadata: Metadata = {
 		type: "website",
 		url: "https://aurelia-desvaux.fr/hypnose",
 		locale: "fr_FR",
-		siteName: "Aurélia Desvaux - Thérapies Brèves",
+		siteName: "Aurélia Desvaux",
 		images: [
 			{
-				url: "https://aurelia-desvaux.fr/og-image.webp",
+				url: "https://aurelia-desvaux.fr/og-image.jpg",
 				width: 1200,
 				height: 630,
 				alt: "Aurélia Desvaux - Hypnose Ericksonienne à Valbonne",
+				type: "image/jpeg",
 			},
 		],
 	},
@@ -67,7 +58,7 @@ export const metadata: Metadata = {
 		title: "Hypnose Ericksonienne à Valbonne | Aurélia Desvaux",
 		description:
 			"Séances d'hypnose Ericksonienne. Libérez-vous du stress et des blocages à Valbonne Sophia-Antipolis.",
-		images: ["https://aurelia-desvaux.fr/og-image.webp"],
+		images: ["https://aurelia-desvaux.fr/og-image.jpg"],
 	},
 };
 
@@ -78,7 +69,7 @@ export default function HypnosePage() {
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
 			/>
-			<Suspense fallback={<div>Chargement...</div>}>
+			<Suspense fallback={<div className="min-h-screen" aria-hidden="true" />}>
 				<HypnoseContent />
 			</Suspense>
 		</>

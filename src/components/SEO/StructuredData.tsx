@@ -1,5 +1,5 @@
 /**
- * StructuredData — Source de vérité unique pour le JSON-LD LocalBusiness.
+ * StructuredData — Source de vérité unique pour les JSON-LD LocalBusiness + Person.
  *
  * Rendu SSR via <script dangerouslySetInnerHTML> : visible dans view-source
  * dès le premier octet, sans aucun chargement JavaScript différé.
@@ -9,13 +9,13 @@
 
 const localBusiness = {
 	"@context": "https://schema.org",
-	"@type": "LocalBusiness",
+	"@type": ["LocalBusiness", "HealthAndBeautyBusiness"],
 	name: "Aurélia Desvaux",
 	description:
 		"Praticienne en Hypnose Ericksonienne, PNL et EFT à Valbonne Sophia-Antipolis. Accompagnement bienveillant pour stress, anxiété, traumas et développement personnel.",
 	url: "https://aurelia-desvaux.fr",
 	logo: "https://aurelia-desvaux.fr/favicon-apple.png",
-	image: "https://aurelia-desvaux.fr/og-image.webp",
+	image: "https://aurelia-desvaux.fr/og-image.jpg",
 	telephone: "+33620145306",
 	email: "desvauxaurelia@gmail.com",
 	priceRange: "€€",
@@ -68,11 +68,39 @@ const localBusiness = {
 	],
 };
 
+const person = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: "Aurélia Desvaux",
+	jobTitle: "Praticienne en Hypnose Ericksonienne, PNL et EFT",
+	url: "https://aurelia-desvaux.fr",
+	image: "https://aurelia-desvaux.fr/og-image.jpg",
+	email: "desvauxaurelia@gmail.com",
+	telephone: "+33620145306",
+	worksFor: {
+		"@type": "LocalBusiness",
+		name: "Aurélia Desvaux",
+		url: "https://aurelia-desvaux.fr",
+	},
+	sameAs: [
+		"https://www.facebook.com/AureliaDesvauxPsychopraticienne/",
+		"https://www.instagram.com/aurelia_desvaux_therapiebreve/",
+		"https://www.linkedin.com/in/aur%C3%A9lia-desvaux-876459a/?originalSubdomain=fr",
+		"https://www.medoucine.com/consultation/valbonne/aurelia-desvaux/1951",
+	],
+};
+
 export function StructuredData() {
 	return (
-		<script
-			type="application/ld+json"
-			dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }}
-		/>
+		<>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }}
+			/>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }}
+			/>
+		</>
 	);
 }
