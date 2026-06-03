@@ -234,6 +234,12 @@ export const Footer = () => {
 							Confidentialité
 						</a>
 						<Link
+							href="/a-propos"
+							className="font-body text-sm text-muted-foreground hover:text-primary transition-colors"
+						>
+							À propos d'Aurélia Desvaux
+						</Link>
+						<Link
 							href="/tarifs"
 							className="font-body text-sm text-muted-foreground hover:text-primary transition-colors"
 						>

@@ -30,6 +30,7 @@ const therapiesSubmenu = [
 const mainNavLinks = [
 	{ label: "Accueil", href: "/" as const, hasSubmenu: false },
 	{ label: "Thérapies", href: "#" as const, hasSubmenu: true },
+	{ label: "À propos", href: "/a-propos" as const, hasSubmenu: false },
 	{ label: "Tarifs", href: "/tarifs" as const, hasSubmenu: false },
 	{ label: "Contact", href: "/#contact" as const, hasSubmenu: false },
 ] as const;
@@ -406,6 +407,24 @@ export const Header = () => {
 								</div>
 							</div>
 
+							{/* À propos */}
+							<Link
+								href="/a-propos"
+								onClick={() => setIsMobileMenuOpen(false)}
+								className="font-body text-base text-foreground hover:text-primary hover:translate-x-2 active:scale-95 py-3 transition-all duration-300"
+								style={{
+									opacity: isMobileMenuOpen ? 1 : 0,
+									transform: isMobileMenuOpen
+										? "translateX(0)"
+										: "translateX(2rem)",
+									transitionDelay: isMobileMenuOpen
+										? "150ms"
+										: "0ms",
+								}}
+							>
+								<MenuLabel label="À propos" />
+							</Link>
+
 							{/* Tarifs */}
 							<Link
 								href="/tarifs"
@@ -417,7 +436,7 @@ export const Header = () => {
 										? "translateX(0)"
 										: "translateX(2rem)",
 									transitionDelay: isMobileMenuOpen
-										? "150ms"
+										? "200ms"
 										: "0ms",
 								}}
 							>
@@ -437,7 +456,7 @@ export const Header = () => {
 										? "translateX(0)"
 										: "translateX(2rem)",
 									transitionDelay: isMobileMenuOpen
-										? "200ms"
+										? "250ms"
 										: "0ms",
 								}}
 							>
@@ -456,7 +475,7 @@ export const Header = () => {
 										? "translateY(0)"
 										: "translateY(1rem)",
 									transitionDelay: isMobileMenuOpen
-										? "250ms"
+										? "300ms"
 										: "0ms",
 								}}
 							>
