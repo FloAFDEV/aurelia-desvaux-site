@@ -54,7 +54,7 @@ export default function Hypnose() {
 			{/* Hero Section with Parallax */}
 			<section
 				ref={heroRef}
-				className="pt-32 pb-20 bg-soft-pink/30 relative overflow-hidden"
+				className="pt-28 pb-12 bg-soft-pink/30 relative overflow-hidden"
 			>
 				<div
 					className="absolute inset-0 opacity-10"
@@ -69,9 +69,9 @@ export default function Hypnose() {
 				<div className="absolute bottom-20 right-20 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
 
 				<div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
-					<div className="max-w-4xl mx-auto text-center bg-gradient-to-b from-white/70 via-white/50 to-white/0 p-8 rounded-3xl shadow-xl backdrop-blur-sm">
+					<div className="max-w-4xl mx-auto text-center bg-gradient-to-b from-white/70 via-white/50 to-white/0 px-6 py-8 md:p-10 rounded-3xl shadow-xl backdrop-blur-sm">
 						<div
-							className={`inline-flex items-center justify-center gap-4 mb-6 transition-all duration-500 ${
+							className={`inline-flex items-center justify-center gap-4 mb-3 transition-all duration-500 ${
 								heroInView
 									? "opacity-100 translate-y-0"
 									: "opacity-0 translate-y-4"
@@ -85,12 +85,12 @@ export default function Hypnose() {
 								height={80}
 								priority
 								quality={85}
-								className="w-20 h-20 rounded-full shadow-md"
+								className="w-14 h-14 rounded-full shadow-md"
 							/>
 						</div>
 
 						<h1
-							className={`font-script text-5xl md:text-6xl lg:text-7xl text-foreground mb-6 transition-all duration-500 delay-75 ${
+							className={`font-script text-5xl md:text-6xl lg:text-7xl text-foreground mb-3 transition-all duration-500 delay-75 ${
 								heroInView
 									? "opacity-100 translate-y-0"
 									: "opacity-0 translate-y-4"
@@ -100,7 +100,7 @@ export default function Hypnose() {
 						</h1>
 
 						<p
-							className={`font-body text-xl text-muted-foreground max-w-2xl mx-auto mb-4 transition-all duration-500 delay-100 ${
+							className={`font-body text-xl text-muted-foreground max-w-2xl mx-auto mb-2 transition-all duration-500 delay-100 ${
 								heroInView
 									? "opacity-100 translate-y-0"
 									: "opacity-0 translate-y-4"
@@ -110,7 +110,7 @@ export default function Hypnose() {
 						</p>
 
 						<p
-							className={`font-body text-lg text-muted-foreground/80 max-w-xl mx-auto mb-8 transition-all duration-500 delay-150 ${
+							className={`font-body text-lg text-muted-foreground/80 max-w-xl mx-auto mb-6 transition-all duration-500 delay-150 ${
 								heroInView
 									? "opacity-100 translate-y-0"
 									: "opacity-0 translate-y-4"
