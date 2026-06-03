@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 import Image, { StaticImageData } from "next/image";
 import aureliaPortrait from "@/assets/aurelia-portrait-cabinet.webp";
@@ -100,6 +101,16 @@ export const About = () => {
 							cabinet est situé à Valbonne Sophia-Antipolis,
 							accessible depuis Antibes, Biot et les communes
 							voisines.
+						</p>
+
+						<p className="font-body text-sm text-muted-foreground mb-5 md:mb-6">
+							<Link
+								href="/a-propos"
+								className="text-primary underline underline-offset-2 hover:text-foreground transition-colors duration-200"
+							>
+								Découvrir le parcours d'Aurélia Desvaux
+							</Link>
+							{" "}— formations, certifications et approche thérapeutique.
 						</p>
 
 						<ul
