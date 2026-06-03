@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 		template: "%s | Aurélia Desvaux",
 	},
 	description:
-		"Aurélia Desvaux, praticienne en Hypnose Ericksonienne, PNL et EFT à Valbonne Sophia-Antipolis (06). Thérapies brèves pour stress, anxiété, phobies et développement personnel. Consultations sur rendez-vous.",
+		"Aurélia Desvaux, hypnothérapeute à Valbonne Sophia-Antipolis. Arrêt du tabac, perte de poids, stress, anxiété, phobies. Hypnose Ericksonienne, PNL, EFT. Praticienne certifiée, consultations sur rendez-vous.",
 	keywords: [
 		"hypnose Valbonne",
 		"PNL Sophia-Antipolis",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
 		locale: "fr_FR",
 		title: "Aurélia Desvaux | Hypnose, PNL et EFT à Valbonne",
 		description:
-			"Praticienne en Hypnose Ericksonienne, PNL et EFT. Accompagnement thérapeutique pour stress, anxiété et bien-être à Valbonne Sophia-Antipolis.",
+			"Hypnothérapeute à Valbonne – Arrêt du tabac, perte de poids, stress, anxiété, phobies. Hypnose Ericksonienne, PNL, EFT. Praticienne certifiée.",
 		url: "https://aurelia-desvaux.fr",
 		siteName: "Aurélia Desvaux",
 		images: [

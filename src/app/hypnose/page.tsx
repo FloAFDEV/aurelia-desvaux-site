@@ -8,11 +8,7 @@ const serviceSchema = {
 	name: "Hypnose Ericksonienne à Valbonne",
 	description:
 		"Séances d'hypnose Ericksonienne à Valbonne Sophia-Antipolis. Accompagnement pour stress, anxiété, phobies, insomnie, arrêt du tabac, confiance en soi et gestion de la douleur.",
-	provider: {
-		"@type": "LocalBusiness",
-		name: "Aurélia Desvaux",
-		url: "https://aurelia-desvaux.fr",
-	},
+	provider: { "@id": "https://aurelia-desvaux.fr/#business" },
 	areaServed: [
 		{ "@type": "City", name: "Valbonne" },
 		{ "@type": "City", name: "Sophia-Antipolis" },
@@ -22,23 +18,35 @@ const serviceSchema = {
 	],
 	url: "https://aurelia-desvaux.fr/hypnose",
 	serviceType: "Hypnose Ericksonienne",
+	availableChannel: {
+		"@type": "ServiceChannel",
+		serviceLocation: {
+			"@type": "Place",
+			address: {
+				"@type": "PostalAddress",
+				addressLocality: "Valbonne",
+				postalCode: "06560",
+				addressCountry: "FR",
+			},
+		},
+	},
 	termsOfService: "https://aurelia-desvaux.fr/cgu",
 };
 
 export const metadata: Metadata = {
 	title: {
 		absolute:
-			"Hypnose à Valbonne – Stress, anxiété, phobies | Aurélia Desvaux",
+			"Hypnose Ericksonienne à Valbonne – Arrêt du tabac, perte de poids, stress | Aurélia Desvaux",
 	},
 	description:
-		"Séances d'hypnose Ericksonienne à Valbonne Sophia-Antipolis. Libérez-vous du stress, de l'anxiété et des phobies. Hypnothérapeute certifiée, accompagnement bienveillant.",
+		"Séances d'hypnose Ericksonienne à Valbonne Sophia-Antipolis. Arrêt du tabac, perte de poids, stress, anxiété, phobies, insomnie. Praticienne certifiée Psynapse.",
 	alternates: {
 		canonical: "/hypnose",
 	},
 	openGraph: {
-		title: "Hypnose à Valbonne – Stress, anxiété, phobies | Aurélia Desvaux",
+		title: "Hypnose Ericksonienne à Valbonne – Arrêt du tabac, stress, phobies | Aurélia Desvaux",
 		description:
-			"Séances d'hypnose Ericksonienne à Valbonne. Libérez-vous du stress, de l'anxiété et des phobies. Hypnothérapeute certifiée.",
+			"Arrêt du tabac, perte de poids, stress, anxiété, phobies par hypnose à Valbonne. Praticienne certifiée Psynapse.",
 		type: "website",
 		url: "https://aurelia-desvaux.fr/hypnose",
 		locale: "fr_FR",

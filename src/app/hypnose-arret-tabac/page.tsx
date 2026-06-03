@@ -8,11 +8,7 @@ const serviceSchema = {
 	name: "Hypnose pour Arrêter de Fumer à Valbonne",
 	description:
 		"Programme d'hypnose Ericksonienne pour le sevrage tabagique à Valbonne Sophia-Antipolis. Arrêt du tabac, gestion des compulsions et addiction cigarette en 1 à 2 séances. Praticienne certifiée Psynapse.",
-	provider: {
-		"@type": "LocalBusiness",
-		name: "Aurélia Desvaux – Hypnothérapeute à Valbonne Sophia-Antipolis",
-		url: "https://aurelia-desvaux.fr",
-	},
+	provider: { "@id": "https://aurelia-desvaux.fr/#business" },
 	offers: {
 		"@type": "Offer",
 		price: "120",

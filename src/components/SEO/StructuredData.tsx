@@ -5,20 +5,34 @@
  * dès le premier octet, sans aucun chargement JavaScript différé.
  *
  * NE PAS utiliser next/script ici : il différerait l'injection hors SSR.
+ *
+ * @id permet à Google de résoudre l'entité cross-pages sans dupliquer les données.
  */
 
 const localBusiness = {
 	"@context": "https://schema.org",
 	"@type": ["LocalBusiness", "HealthAndBeautyBusiness"],
+	"@id": "https://aurelia-desvaux.fr/#business",
 	name: "Aurélia Desvaux",
 	description:
-		"Praticienne en Hypnose Ericksonienne, PNL et EFT à Valbonne Sophia-Antipolis. Accompagnement bienveillant pour stress, anxiété, traumas et développement personnel.",
+		"Aurélia Desvaux, hypnothérapeute à Valbonne Sophia-Antipolis. Spécialisée en arrêt du tabac, perte de poids, gestion du stress et des phobies. Hypnose Ericksonienne, PNL et EFT.",
 	url: "https://aurelia-desvaux.fr",
 	logo: "https://aurelia-desvaux.fr/favicon-apple.png",
 	image: "https://aurelia-desvaux.fr/og-image.jpg",
 	telephone: "+33620145306",
 	email: "desvauxaurelia@gmail.com",
 	priceRange: "€€",
+	knowsAbout: [
+		"Hypnose Ericksonienne",
+		"PNL – Programmation Neuro-Linguistique",
+		"EFT – Emotional Freedom Techniques",
+		"Arrêt du tabac",
+		"Perte de poids",
+		"Gestion du stress",
+		"Phobies",
+		"Préparation mentale",
+		"Thérapies brèves",
+	],
 	address: {
 		"@type": "PostalAddress",
 		streetAddress: "1 Place Joseph BERMOND, Bat OPHIRA 1 - 2e étage",
@@ -71,17 +85,24 @@ const localBusiness = {
 const person = {
 	"@context": "https://schema.org",
 	"@type": "Person",
+	"@id": "https://aurelia-desvaux.fr/#person",
 	name: "Aurélia Desvaux",
-	jobTitle: "Praticienne en Hypnose Ericksonienne, PNL et EFT",
+	jobTitle: "Hypnothérapeute certifiée – Hypnose Ericksonienne, PNL et EFT",
 	url: "https://aurelia-desvaux.fr",
 	image: "https://aurelia-desvaux.fr/og-image.jpg",
 	email: "desvauxaurelia@gmail.com",
 	telephone: "+33620145306",
-	worksFor: {
-		"@type": "LocalBusiness",
-		name: "Aurélia Desvaux",
-		url: "https://aurelia-desvaux.fr",
-	},
+	knowsAbout: [
+		"Hypnose Ericksonienne",
+		"PNL – Programmation Neuro-Linguistique",
+		"EFT – Emotional Freedom Techniques",
+		"Arrêt du tabac",
+		"Perte de poids",
+		"Gestion du stress",
+		"Phobies",
+		"Préparation mentale",
+	],
+	worksFor: { "@id": "https://aurelia-desvaux.fr/#business" },
 	sameAs: [
 		"https://www.facebook.com/AureliaDesvauxPsychopraticienne/",
 		"https://www.instagram.com/aurelia_desvaux_therapiebreve/",
