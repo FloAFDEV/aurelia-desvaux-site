@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { DecorativeBlob } from "@/components/ui/DecorativeBlob";
 import { useInView } from "@/hooks/useInView";
 import treeLogo from "@/assets/tree-logo.webp";
 
@@ -21,8 +22,8 @@ export default function NotFound() {
 					className="relative text-center max-w-3xl w-full py-32 md:py-40"
 				>
 					{/* Blobs décoratifs */}
-					<div className="absolute top-10 left-10 w-32 h-32 bg-blush/30 rounded-full blur-3xl animate-blob-slow motion-reduce:animate-none" />
-					<div className="absolute bottom-10 right-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl animate-blob-slow-reverse motion-reduce:animate-none" />
+					<DecorativeBlob className="top-10 left-10 w-32 h-32 bg-blush/30 animate-blob-slow motion-reduce:animate-none" />
+					<DecorativeBlob className="bottom-10 right-10 w-48 h-48 bg-primary/10 animate-blob-slow-reverse motion-reduce:animate-none" />
 
 					{/* Card */}
 					<div

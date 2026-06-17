@@ -104,7 +104,7 @@ export async function GET() {
 		if (process.env.NODE_ENV !== "production") {
 		}
 
-		const response = await fetch(csvUrl, { cache: "no-store" });
+		const response = await fetch(csvUrl, { next: { revalidate: 3600 } });
 
 		if (!response.ok) {
 			throw new Error(`HTTP ${response.status}`);

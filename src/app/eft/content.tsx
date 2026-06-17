@@ -6,6 +6,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { useInView } from "@/hooks/useInView";
 import { useParallax } from "@/hooks/useParallax";
 import { CheckCircle, ArrowRight, Clock } from "lucide-react";
+import { DecorativeBlob } from "@/components/ui/DecorativeBlob";
 
 import eftNatureImg from "@/assets/eft-nature.webp";
 import eftTappingImg from "@/assets/eft-tapping.webp";
@@ -82,8 +83,8 @@ export default function EFTContent() {
 						...parallax,
 					}}
 				/>
-				<div className="absolute top-20 left-10 w-32 h-32 bg-blush/30 rounded-full blur-3xl" />
-				<div className="absolute bottom-20 right-20 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
+				<DecorativeBlob className="top-20 left-10 w-32 h-32 bg-blush/30" />
+				<DecorativeBlob className="bottom-20 right-20 w-48 h-48 bg-primary/10" />
 
 				<div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
 					<div className="max-w-4xl mx-auto text-center bg-gradient-to-b from-white/70 via-white/50 to-white/0 p-8 rounded-3xl shadow-xl backdrop-blur-sm">

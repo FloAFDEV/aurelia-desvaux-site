@@ -1,6 +1,7 @@
 "use client";
 
 import { useScrollPosition } from "@/hooks/useScrollPosition";
+import { DecorativeBlob } from "@/components/ui/DecorativeBlob";
 import Image from "next/image";
 import aureliaPortrait from "@/assets/aurelia-portrait-nature.webp";
 import treeLogo from "@/assets/tree-logo.webp";
@@ -21,30 +22,10 @@ export const Hero = () => {
 	>
 			{/* Blobs décoratifs - Optimisés avec transform: translate3d et will-change limité */}
 			<div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
-				<div
-					className="hidden sm:block absolute top-20 left-10 w-40 h-40 bg-blush/40 rounded-full blur-3xl transition-transform duration-300 ease-out"
-					style={{
-						transform: `translate3d(0, ${parallaxOffset * 0.1}px, 0)`,
-					}}
-				/>
-				<div
-					className="absolute bottom-40 right-20 w-40 h-40 sm:w-56 sm:h-56 bg-soft-pink/50 rounded-full blur-3xl transition-transform duration-300 ease-out"
-					style={{
-						transform: `translate3d(0, ${parallaxOffset * -0.15}px, 0)`,
-					}}
-				/>
-				<div
-					className="hidden md:block absolute top-1/3 right-1/4 w-32 h-32 bg-rose-gold/30 rounded-full blur-2xl transition-transform duration-300 ease-out"
-					style={{
-						transform: `translate3d(0, ${parallaxOffset * 0.08}px, 0)`,
-					}}
-				/>
-				<div
-					className="hidden sm:block absolute bottom-1/4 left-1/4 w-28 h-28 bg-primary/20 rounded-full blur-2xl transition-transform duration-300 ease-out"
-					style={{
-						transform: `translate3d(0, ${parallaxOffset * -0.12}px, 0)`,
-					}}
-				/>
+				<DecorativeBlob className="hidden sm:block top-20 left-10 w-40 h-40 bg-blush/40 transition-transform duration-300 ease-out" style={{ transform: `translate3d(0, ${parallaxOffset * 0.1}px, 0)` }} />
+				<DecorativeBlob className="bottom-40 right-20 w-40 h-40 sm:w-56 sm:h-56 bg-soft-pink/50 transition-transform duration-300 ease-out" style={{ transform: `translate3d(0, ${parallaxOffset * -0.15}px, 0)` }} />
+				<DecorativeBlob className="hidden md:block top-1/3 right-1/4 w-32 h-32 bg-rose-gold/30 blur-2xl transition-transform duration-300 ease-out" style={{ transform: `translate3d(0, ${parallaxOffset * 0.08}px, 0)` }} />
+				<DecorativeBlob className="hidden sm:block bottom-1/4 left-1/4 w-28 h-28 bg-primary/20 blur-2xl transition-transform duration-300 ease-out" style={{ transform: `translate3d(0, ${parallaxOffset * -0.12}px, 0)` }} />
 			</div>
 
 			<div className="container mx-auto px-4 md:px-6 lg:px-8 py-12 lg:py-20">

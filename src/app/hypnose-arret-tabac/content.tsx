@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { useInView } from "@/hooks/useInView";
 import { CheckCircle, Clock, Euro } from "lucide-react";
+import { DecorativeBlob } from "@/components/ui/DecorativeBlob";
 import aureliaPortrait from "@/assets/aurelia-portrait-cabinet.webp";
 import hypnoseSeanceImg from "@/assets/hypnose-seance.webp";
 import hypnosePenduleImg from "@/assets/hypnose-pendule.webp";
@@ -82,8 +83,8 @@ export default function HypnoseArretTabacContent() {
 				ref={heroRef}
 				className="pt-32 pb-20 bg-soft-pink/30 relative overflow-hidden"
 			>
-				<div className="absolute top-20 left-10 w-32 h-32 bg-blush/30 rounded-full blur-3xl" />
-				<div className="absolute bottom-20 right-20 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
+				<DecorativeBlob className="top-20 left-10 w-32 h-32 bg-blush/30" />
+				<DecorativeBlob className="bottom-20 right-20 w-48 h-48 bg-primary/10" />
 
 				<div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
 					<div className="max-w-4xl mx-auto text-center bg-gradient-to-b from-white/70 via-white/50 to-white/0 p-8 rounded-3xl shadow-xl backdrop-blur-sm">

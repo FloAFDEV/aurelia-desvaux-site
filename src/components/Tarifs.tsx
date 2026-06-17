@@ -2,10 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Header } from "@/components/Header";
+import { DecorativeBlob } from "@/components/ui/DecorativeBlob";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { FloatingCTA } from "@/components/FloatingCTA";
-import { CookieBanner } from "@/components/CookieBanner";
 import { useInView } from "@/hooks/useInView";
 import {
 	Clock,
@@ -126,14 +124,13 @@ export default function Tarifs() {
 
 	return (
 		<>
-			<Header />
 			<Breadcrumbs items={[{ label: "Tarifs", href: "/tarifs" }]} />
 
-			<main>
+			<div>
 				{/* Hero Section */}
 				<section className="py-20 gradient-hero relative overflow-hidden">
-					<div className="absolute top-20 left-10 w-32 h-32 bg-blush/30 rounded-full blur-3xl animate-pulse-soft" />
-					<div className="absolute bottom-20 right-20 w-48 h-48 bg-soft-pink/40 rounded-full blur-3xl animate-pulse-soft delay-300" />
+					<DecorativeBlob className="top-20 left-10 w-32 h-32 bg-blush/30 animate-pulse-soft" />
+					<DecorativeBlob className="bottom-20 right-20 w-48 h-48 bg-soft-pink/40 animate-pulse-soft delay-300" />
 
 					<div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
 						<div className="inline-flex items-center gap-3 mb-6 animate-fade-in-up opacity-0">
@@ -339,10 +336,7 @@ export default function Tarifs() {
 						</div>
 					</div>
 				</section>
-			</main>
-
-			<FloatingCTA />
-			<CookieBanner />
+			</div>
 		</>
 	);
 }

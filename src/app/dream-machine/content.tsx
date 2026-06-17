@@ -17,6 +17,7 @@ import {
 	Lightbulb,
 	Shield,
 } from "lucide-react";
+import { DecorativeBlob } from "@/components/ui/DecorativeBlob";
 import treeLogo from "@/assets/tree-logo.webp";
 import dreamMachineImg from "@/assets/dream-machine.webp";
 
@@ -113,9 +114,9 @@ export default function DreamMachine() {
 					}}
 				/>
 				{/* Decorative circles */}
-				<div className="absolute top-20 left-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl animate-pulse-soft" />
-				<div className="absolute bottom-20 right-20 w-56 h-56 bg-blush/30 rounded-full blur-3xl animate-pulse-soft delay-300" />
-				<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-soft-pink/20 rounded-full blur-3xl animate-float" />
+				<DecorativeBlob className="top-20 left-10 w-40 h-40 bg-primary/20 animate-pulse-soft" />
+				<DecorativeBlob className="bottom-20 right-20 w-56 h-56 bg-blush/30 animate-pulse-soft delay-300" />
+				<DecorativeBlob className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-soft-pink/20 animate-float" />
 
 				<div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
 					<div className="max-w-3xl mx-auto text-center bg-gradient-to-b from-white/70 via-white/50 to-white/0 p-8 rounded-3xl shadow-xl backdrop-blur-sm">
