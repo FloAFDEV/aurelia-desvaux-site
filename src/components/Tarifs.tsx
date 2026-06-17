@@ -2,10 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Header } from "@/components/Header";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { FloatingCTA } from "@/components/FloatingCTA";
-import { CookieBanner } from "@/components/CookieBanner";
 import { useInView } from "@/hooks/useInView";
 import {
 	Clock,
@@ -126,10 +123,9 @@ export default function Tarifs() {
 
 	return (
 		<>
-			<Header />
 			<Breadcrumbs items={[{ label: "Tarifs", href: "/tarifs" }]} />
 
-			<main>
+			<div>
 				{/* Hero Section */}
 				<section className="py-20 gradient-hero relative overflow-hidden">
 					<div className="absolute top-20 left-10 w-32 h-32 bg-blush/30 rounded-full blur-3xl animate-pulse-soft" />
@@ -339,10 +335,7 @@ export default function Tarifs() {
 						</div>
 					</div>
 				</section>
-			</main>
-
-			<FloatingCTA />
-			<CookieBanner />
+			</div>
 		</>
 	);
 }
