@@ -49,63 +49,11 @@ const nextConfig = {
 			"@radix-ui/react-icons",
 			"@radix-ui/react-dialog",
 			"@radix-ui/react-accordion",
-			"recharts",
 		],
 	},
 
 	// Cibler ES2020+ pour éviter les polyfills inutiles
 	transpilePackages: [],
-
-	webpack: (config, { isServer }) => {
-		// Configuration pour éviter les polyfills inutiles
-		config.resolve.alias = {
-			...config.resolve.alias,
-		};
-
-		if (!isServer) {
-			config.optimization = {
-				...config.optimization,
-				splitChunks: {
-					chunks: "all",
-					cacheGroups: {
-						default: false,
-						vendors: false,
-						// CORRECTION: Renommé "framework" en "react-framework" pour éviter conflit MIME avec framework.css
-						"react-framework": {
-							name: "react-framework",
-							test: /[\\/]node_modules[\\/](react|react-dom|next|scheduler)[\\/]/,
-							priority: 40,
-							enforce: true,
-						},
-						radixui: {
-							name: "radix",
-							test: /[\\/]node_modules[\\/]@radix-ui[\\/]/,
-							priority: 30,
-							enforce: true,
-						},
-						vendor: {
-							name: "vendor",
-							chunks: "all",
-							test: /node_modules/,
-							priority: 20,
-							minSize: 20000,
-							maxSize: 150000,
-						},
-						common: {
-							name: "common",
-							minChunks: 2,
-							chunks: "all",
-							priority: 10,
-							reuseExistingChunk: true,
-							enforce: true,
-						},
-					},
-				},
-				minimize: true,
-			};
-		}
-		return config;
-	},
 
 	async headers() {
 		return [
