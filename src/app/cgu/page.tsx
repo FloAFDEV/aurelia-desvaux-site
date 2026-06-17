@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 		follow: true,
 	},
 	alternates: {
-		canonical: "https://aurelia-desvaux.fr/cgu",
+		canonical: "/cgu",
 	},
 };
 

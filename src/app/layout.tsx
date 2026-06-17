@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import Script from "next/script";
 import { Inter } from "next/font/google";
 import { StructuredData } from "@/components/SEO/StructuredData";
+import { SEO } from "@/lib/seo";
 import "./globals.css";
 import { Providers } from "./providers";
 import { Header } from "@/components/Header";
@@ -28,7 +29,7 @@ const GA_MEASUREMENT_ID =
 
 // ----- Metadata SEO -----
 export const metadata: Metadata = {
-	metadataBase: new URL("https://aurelia-desvaux.fr"),
+	metadataBase: new URL(SEO.siteUrl),
 	title: {
 		default: "Aurélia Desvaux – Hypnose, PNL et EFT à Valbonne",
 		template: "%s | Aurélia Desvaux",
@@ -57,28 +58,20 @@ export const metadata: Metadata = {
 		title: "Aurélia Desvaux | Hypnose, PNL et EFT à Valbonne",
 		description:
 			"Hypnothérapeute à Valbonne – Arrêt du tabac, perte de poids, stress, anxiété, phobies. Hypnose Ericksonienne, PNL, EFT. Praticienne certifiée.",
-		url: "https://aurelia-desvaux.fr",
-		siteName: "Aurélia Desvaux",
-		images: [
-			{
-				url: "https://aurelia-desvaux.fr/og-image.jpg",
-				width: 1200,
-				height: 630,
-				alt: "Aurélia Desvaux - Praticienne en Hypnose, PNL et EFT à Valbonne",
-				type: "image/jpeg",
-			},
-		],
+		url: "/",
+		siteName: SEO.siteName,
+		images: [SEO.ogImage],
 	},
 	twitter: {
 		card: "summary_large_image",
 		title: "Aurélia Desvaux | Hypnose, PNL et EFT",
 		description:
 			"Praticienne en thérapies brèves à Valbonne. Accompagnement pour stress, anxiété et développement personnel.",
-		images: ["https://aurelia-desvaux.fr/og-image.jpg"],
-		creator: "@aurelia_desvaux",
+		images: [SEO.ogImage.url],
+		creator: SEO.twitterHandle,
 	},
 	alternates: {
-		canonical: "https://aurelia-desvaux.fr",
+		canonical: "/",
 	},
 	// Optimisation pour les moteurs de recherche
 	robots: {
