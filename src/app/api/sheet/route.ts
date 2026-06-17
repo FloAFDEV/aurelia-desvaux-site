@@ -101,8 +101,6 @@ export async function GET() {
 			? `https://docs.google.com/spreadsheets/d/e/${sheetId}/pub?output=csv`
 			: `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=0`;
 
-		if (process.env.NODE_ENV !== "production") {
-		}
 
 		const response = await fetch(csvUrl, { next: { revalidate: 3600 } });
 
