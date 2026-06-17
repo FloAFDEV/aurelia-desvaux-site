@@ -2,6 +2,7 @@
 
 import { useInView } from "@/hooks/useInView";
 import { useParallax } from "@/hooks/useParallax";
+import { DecorativeBlob } from "@/components/ui/DecorativeBlob";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
@@ -36,16 +37,8 @@ export const Contact = () => {
 			className="py-24 bg-background relative overflow-hidden scroll-mt-16 md:scroll-mt-20 lg:scroll-mt-24"
 		>
 			{/* Parallax décoratif */}
-			<div
-				className="absolute top-10 left-10 w-40 h-40 bg-soft-pink/30 rounded-full blur-3xl pointer-events-none motion-safe:will-change-transform"
-				style={parallaxDeco}
-				aria-hidden="true"
-			/>
-			<div
-				className="absolute bottom-20 right-20 w-56 h-56 bg-blush/20 rounded-full blur-3xl pointer-events-none motion-safe:will-change-transform"
-				style={parallaxDeco}
-				aria-hidden="true"
-			/>
+			<DecorativeBlob className="top-10 left-10 w-40 h-40 bg-soft-pink/30 motion-safe:will-change-transform" style={parallaxDeco} />
+			<DecorativeBlob className="bottom-20 right-20 w-56 h-56 bg-blush/20 motion-safe:will-change-transform" style={parallaxDeco} />
 
 			<div className="container mx-auto px-4 md:px-6 lg:px-8" ref={ref}>
 				<div className="grid lg:grid-cols-2 gap-16">

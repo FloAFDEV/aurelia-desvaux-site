@@ -13,6 +13,7 @@ import {
 	Clock,
 	Phone,
 } from "lucide-react";
+import { DecorativeBlob } from "@/components/ui/DecorativeBlob";
 
 import treeLogo from "@/assets/tree-logo.webp";
 import liberationNatureImg from "@/assets/liberation-nature.webp";
@@ -47,8 +48,8 @@ const Content = () => {
 						transform: `translateY(${scrollY * 0.3}px)`,
 					}}
 				/>
-				<div className="absolute top-20 left-10 w-32 h-32 bg-blush/30 rounded-full blur-3xl animate-pulse-soft" />
-				<div className="absolute bottom-20 right-20 w-48 h-48 bg-soft-pink/40 rounded-full blur-3xl animate-pulse-soft delay-300" />
+				<DecorativeBlob className="top-20 left-10 w-32 h-32 bg-blush/30 animate-pulse-soft" />
+				<DecorativeBlob className="bottom-20 right-20 w-48 h-48 bg-soft-pink/40 animate-pulse-soft delay-300" />
 
 				<div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
 					<div className="max-w-3xl mx-auto text-center bg-gradient-to-b from-white/70 via-white/50 to-white/0 p-8 rounded-3xl shadow-xl backdrop-blur-sm">

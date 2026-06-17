@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 import Image, { StaticImageData } from "next/image";
+import { DecorativeBlob } from "@/components/ui/DecorativeBlob";
 import aureliaPortrait from "@/assets/aurelia-portrait-cabinet.webp";
 
 const VALUE_BADGES = [
@@ -33,8 +34,8 @@ export const About = () => {
 			aria-labelledby="about-title"
 		>
 			{/* Decorative backgrounds */}
-			<div className="absolute top-20 right-0 w-48 md:w-64 h-48 md:h-64 bg-blush/20 rounded-full blur-3xl pointer-events-none" />
-			<div className="absolute bottom-20 left-0 w-36 md:w-48 h-36 md:h-48 bg-soft-pink/30 rounded-full blur-3xl pointer-events-none" />
+			<DecorativeBlob className="top-20 right-0 w-48 md:w-64 h-48 md:h-64 bg-blush/20" />
+			<DecorativeBlob className="bottom-20 left-0 w-36 md:w-48 h-36 md:h-48 bg-soft-pink/30" />
 
 			<div className="container mx-auto px-4 md:px-6 lg:px-8" ref={ref}>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-16 items-center">

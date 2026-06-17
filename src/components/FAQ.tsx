@@ -1,6 +1,7 @@
 "use client";
 
 import { useInView } from "@/hooks/useInView";
+import { DecorativeBlob } from "@/components/ui/DecorativeBlob";
 import {
 	Accordion,
 	AccordionContent,
@@ -53,14 +54,8 @@ export const FAQ = () => {
 				className="py-24 bg-background relative overflow-hidden"
 			>
 				{/* Decorative blobs */}
-				<div
-					aria-hidden="true"
-					className="absolute top-20 left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl pointer-events-none"
-				/>
-				<div
-					aria-hidden="true"
-					className="absolute bottom-20 right-10 w-56 h-56 bg-blush/20 rounded-full blur-3xl pointer-events-none"
-				/>
+				<DecorativeBlob className="top-20 left-10 w-40 h-40 bg-primary/10" />
+				<DecorativeBlob className="bottom-20 right-10 w-56 h-56 bg-blush/20" />
 
 				<div
 					ref={ref}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useInView } from "@/hooks/useInView";
+import { DecorativeBlob } from "@/components/ui/DecorativeBlob";
 import { Star, Quote, ArrowRight } from "lucide-react";
 import { MedoucineBadge } from "@/components/MedoucineBadge";
 import {
@@ -59,8 +60,8 @@ export const Testimonials = () => {
 			className="py-24 bg-soft-pink/30 relative overflow-hidden"
 		>
 			{/* Décorations flottantes parallax */}
-			<div className="absolute top-20 right-20 w-56 h-56 bg-blush/30 rounded-full blur-3xl pointer-events-none motion-safe:animate-float-slow" />
-			<div className="absolute bottom-10 left-20 w-40 h-40 bg-rose-gold/20 rounded-full blur-3xl pointer-events-none motion-safe:animate-float-slow" />
+			<DecorativeBlob className="top-20 right-20 w-56 h-56 bg-blush/30 motion-safe:animate-float-slow" />
+			<DecorativeBlob className="bottom-10 left-20 w-40 h-40 bg-rose-gold/20 motion-safe:animate-float-slow" />
 
 			<div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
