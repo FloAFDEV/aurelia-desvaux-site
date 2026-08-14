@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Mentions Légales | Aurélia Desvaux - Thérapeute à Valbonne",
+	title: {
+		absolute: "Mentions Légales | Aurélia Desvaux - Thérapeute à Valbonne",
+	},
 	description:
 		"Mentions légales du site aurelia-desvaux.fr - Informations sur l'éditeur et l'hébergeur du site.",
 	robots: {

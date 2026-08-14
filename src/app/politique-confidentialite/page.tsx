@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Politique de Confidentialité | Aurélia Desvaux",
+	title: {
+		absolute: "Politique de Confidentialité | Aurélia Desvaux",
+	},
 	description:
 		"Politique de confidentialité et gestion des cookies du site Aurélia Desvaux - Thérapies Brèves à Valbonne.",
 	robots: {

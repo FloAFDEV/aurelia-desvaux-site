@@ -30,9 +30,16 @@ const therapiesSubmenu = [
 	{ label: "Ressources et Ateliers", href: "/ressources" as const },
 ] as const;
 
+const problematiqueSubmenu = [
+	{ label: "Stress & Anxiété", href: "/stress-anxiete" as const },
+	{ label: "Confiance en soi", href: "/confiance-en-soi" as const },
+	{ label: "Arrêt du tabac", href: "/arret-tabac" as const },
+] as const;
+
 const mainNavLinks = [
 	{ label: "Accueil", href: "/" as const, hasSubmenu: false },
 	{ label: "Thérapies", href: "#" as const, hasSubmenu: true },
+	{ label: "Problématiques", href: "#" as const, hasSubmenu: true },
 	{ label: "À propos", href: "/a-propos" as const, hasSubmenu: false },
 	{ label: "Tarifs", href: "/tarifs" as const, hasSubmenu: false },
 	{ label: "Contact", href: "/#contact" as const, hasSubmenu: false },
@@ -43,8 +50,11 @@ export const Header = () => {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [isTherapiesOpen, setIsTherapiesOpen] = useState(false);
 	const [isMobileTherapiesOpen, setIsMobileTherapiesOpen] = useState(false);
+	const [isProblematiquesOpen, setIsProblematiquesOpen] = useState(false);
+	const [isMobileProblematiquesOpen, setIsMobileProblematiquesOpen] = useState(false);
 	const [mounted, setMounted] = useState(false);
 	const dropdownRef = useRef<HTMLDivElement>(null);
+	const dropdownProblematiquesRef = useRef<HTMLDivElement>(null);
 
 	const pathname = usePathname();
 	const router = useRouter();
@@ -64,6 +74,12 @@ export const Header = () => {
 			) {
 				setIsTherapiesOpen(false);
 			}
+			if (
+				dropdownProblematiquesRef.current &&
+				!dropdownProblematiquesRef.current.contains(event.target as Node)
+			) {
+				setIsProblematiquesOpen(false);
+			}
 		};
 		document.addEventListener("mousedown", handleClickOutside);
 		return () =>
@@ -73,6 +89,7 @@ export const Header = () => {
 	useEffect(() => {
 		setIsMobileMenuOpen(false);
 		setIsMobileTherapiesOpen(false);
+		setIsMobileProblematiquesOpen(false);
 	}, [pathname]);
 
 	useEffect(() => {
@@ -146,18 +163,14 @@ export const Header = () => {
 					{/* Desktop Nav */}
 					<nav className="hidden lg:flex items-center gap-8">
 						{mainNavLinks.map((link) => {
-							if (link.hasSubmenu) {
+							if (link.hasSubmenu && link.label === "Thérapies") {
 								return (
 									<div
 										key={link.label}
 										className="relative"
 										ref={dropdownRef}
-										onMouseEnter={() =>
-											setIsTherapiesOpen(true)
-										}
-										onMouseLeave={() =>
-											setIsTherapiesOpen(false)
-										}
+										onMouseEnter={() => setIsTherapiesOpen(true)}
+										onMouseLeave={() => setIsTherapiesOpen(false)}
 									>
 										<button
 											className="flex items-center gap-1 font-body text-base tracking-wide text-muted-foreground hover:text-primary transition-colors duration-300"
@@ -167,15 +180,11 @@ export const Header = () => {
 										>
 											<MenuLabel label={link.label} />
 											<ChevronDown
-												className={`w-4 h-4 transition-transform duration-300 ${
-													isTherapiesOpen
-														? "rotate-180"
-														: ""
-												}`}
+												className={`w-4 h-4 transition-transform duration-300 ${isTherapiesOpen ? "rotate-180" : ""}`}
 											/>
 										</button>
 										<div
-											className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 w-48 transition-all duration-500 ease-&lsqb;cubic-bezier(0.25,0.46,0.45,0.94)&rsqb; ${
+											className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 w-48 transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
 												isTherapiesOpen
 													? "opacity-100 visible translate-y-0 scale-100"
 													: "opacity-0 invisible -translate-y-3 scale-95 pointer-events-none"
@@ -183,43 +192,72 @@ export const Header = () => {
 										>
 											<div className="bg-soft-pink/95 rounded-xl shadow-card border border-primary/20 overflow-hidden">
 												<div className="py-2">
-													{therapiesSubmenu.map(
-														(item, index) => (
-															<Link
-																key={item.href}
-																href={item.href}
-																aria-label={
-																	item.label
-																}
-																scroll={false}
-																className="block pl-3 pr-4 py-3 font-body text-sm text-foreground/80 hover:text-primary hover:bg-soft-pink/40 transition-all duration-300"
-																style={{
-																	opacity:
-																		isTherapiesOpen
-																			? 1
-																			: 0,
-																	transform:
-																		isTherapiesOpen
-																			? "translateX(0)"
-																			: "translateX(-8px)",
-																	transitionDelay:
-																		isTherapiesOpen
-																			? `${
-																					index *
-																						50 +
-																					100
-																			  }ms`
-																			: "0ms",
-																}}
-															>
-																<MenuLabel
-																	label={
-																		item.label
-																	}
-																/>
-															</Link>
-														)
-													)}
+													{therapiesSubmenu.map((item, index) => (
+														<Link
+															key={item.href}
+															href={item.href}
+															aria-label={item.label}
+															scroll={false}
+															className="block pl-3 pr-4 py-3 font-body text-sm text-foreground/80 hover:text-primary hover:bg-soft-pink/40 transition-all duration-300"
+															style={{
+																opacity: isTherapiesOpen ? 1 : 0,
+																transform: isTherapiesOpen ? "translateX(0)" : "translateX(-8px)",
+																transitionDelay: isTherapiesOpen ? `${index * 50 + 100}ms` : "0ms",
+															}}
+														>
+															<MenuLabel label={item.label} />
+														</Link>
+													))}
+												</div>
+											</div>
+										</div>
+									</div>
+								);
+							} else if (link.hasSubmenu && link.label === "Problématiques") {
+								return (
+									<div
+										key={link.label}
+										className="relative"
+										ref={dropdownProblematiquesRef}
+										onMouseEnter={() => setIsProblematiquesOpen(true)}
+										onMouseLeave={() => setIsProblematiquesOpen(false)}
+									>
+										<button
+											className="flex items-center gap-1 font-body text-base tracking-wide text-muted-foreground hover:text-primary transition-colors duration-300"
+											aria-haspopup="true"
+											aria-expanded={isProblematiquesOpen}
+											aria-label="Menu Problématiques"
+										>
+											<MenuLabel label={link.label} />
+											<ChevronDown
+												className={`w-4 h-4 transition-transform duration-300 ${isProblematiquesOpen ? "rotate-180" : ""}`}
+											/>
+										</button>
+										<div
+											className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 w-48 transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
+												isProblematiquesOpen
+													? "opacity-100 visible translate-y-0 scale-100"
+													: "opacity-0 invisible -translate-y-3 scale-95 pointer-events-none"
+											}`}
+										>
+											<div className="bg-soft-pink/95 rounded-xl shadow-card border border-primary/20 overflow-hidden">
+												<div className="py-2">
+													{problematiqueSubmenu.map((item, index) => (
+														<Link
+															key={item.href}
+															href={item.href}
+															aria-label={item.label}
+															scroll={false}
+															className="block pl-3 pr-4 py-3 font-body text-sm text-foreground/80 hover:text-primary hover:bg-soft-pink/40 transition-all duration-300"
+															style={{
+																opacity: isProblematiquesOpen ? 1 : 0,
+																transform: isProblematiquesOpen ? "translateX(0)" : "translateX(-8px)",
+																transitionDelay: isProblematiquesOpen ? `${index * 50 + 100}ms` : "0ms",
+															}}
+														>
+															<MenuLabel label={item.label} />
+														</Link>
+													))}
 												</div>
 											</div>
 										</div>
@@ -401,6 +439,58 @@ export const Header = () => {
 																	100
 															  }ms`
 															: "0ms",
+												}}
+											>
+												<MenuLabel label={item.label} />
+											</Link>
+										))}
+									</div>
+								</div>
+							</div>
+
+							{/* Mobile Problématiques Accordion */}
+							<div
+								className="transition-all duration-300"
+								style={{
+									opacity: isMobileMenuOpen ? 1 : 0,
+									transform: isMobileMenuOpen
+										? "translateX(0)"
+										: "translateX(2rem)",
+									transitionDelay: isMobileMenuOpen
+										? "125ms"
+										: "0ms",
+								}}
+							>
+								<button
+									onClick={() => setIsMobileProblematiquesOpen(!isMobileProblematiquesOpen)}
+									className="w-full flex items-center justify-between font-body text-base text-foreground hover:text-primary hover:translate-x-2 active:scale-95 py-3 transition-all duration-300"
+									aria-label="Ouvrir le sous-menu Problématiques"
+									aria-expanded={isMobileProblematiquesOpen}
+								>
+									<MenuLabel label="Problématiques" />
+									<ChevronDown
+										className={`w-5 h-5 transition-transform duration-300 ${isMobileProblematiquesOpen ? "rotate-180" : ""}`}
+									/>
+								</button>
+
+								<div
+									className={`overflow-hidden transition-all duration-500 ease-out ${
+										isMobileProblematiquesOpen
+											? "max-h-60 opacity-100"
+											: "max-h-0 opacity-0"
+									}`}
+								>
+									<div className="pl-4 py-2 space-y-1 border-l-2 border-primary/30 ml-2">
+										{problematiqueSubmenu.map((item, index) => (
+											<Link
+												key={item.href}
+												href={item.href}
+												onClick={() => setIsMobileMenuOpen(false)}
+												className="block font-body text-sm text-foreground/80 hover:text-foreground hover:bg-soft-pink/50 hover:translate-x-1 active:scale-95 rounded-lg px-3 py-2 transition-all duration-300"
+												style={{
+													opacity: isMobileProblematiquesOpen ? 1 : 0,
+													transform: isMobileProblematiquesOpen ? "translateX(0)" : "translateX(1rem)",
+													transitionDelay: isMobileProblematiquesOpen ? `${index * 80 + 100}ms` : "0ms",
 												}}
 											>
 												<MenuLabel label={item.label} />

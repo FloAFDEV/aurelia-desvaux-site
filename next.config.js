@@ -1,3 +1,25 @@
+// En développement, Next.js s'appuie sur eval() pour le Fast Refresh et sur un
+// websocket pour le HMR. Sans ces autorisations, la CSP bloque le bundle React :
+// la page est servie mais ne s'hydrate jamais (écran blanc trompeur).
+// La production reste strictement inchangée : ni 'unsafe-eval', ni ws:.
+const isDev = process.env.NODE_ENV !== "production";
+
+const contentSecurityPolicy = [
+	"default-src 'self'",
+	`script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com`,
+	`connect-src 'self'${isDev ? " ws: wss:" : ""} https://*.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net`,
+	"img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net",
+	"style-src 'self' 'unsafe-inline'",
+	"font-src 'self' data:",
+	"frame-src 'self' https://www.google.com https://www.googletagmanager.com",
+	"object-src 'none'",
+	"base-uri 'self'",
+	"form-action 'self'",
+	"frame-ancestors 'self'",
+	// upgrade-insecure-requests casserait le http://localhost du serveur de dev
+	...(isDev ? [] : ["upgrade-insecure-requests"]),
+].join("; ") + ";";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	typedRoutes: true,
@@ -109,21 +131,10 @@ const nextConfig = {
 						value: "same-origin",
 					},
 					// CSP - Content Security Policy stricte
+					// (assouplie uniquement en dev : voir contentSecurityPolicy en haut)
 					{
 						key: "Content-Security-Policy",
-						value:
-							"default-src 'self'; " +
-							"script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; " +
-							"connect-src 'self' https://*.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net; " +
-							"img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net; " +
-							"style-src 'self' 'unsafe-inline'; " +
-							"font-src 'self' data:; " +
-							"frame-src 'self' https://www.google.com https://www.googletagmanager.com; " +
-							"object-src 'none'; " +
-							"base-uri 'self'; " +
-							"form-action 'self'; " +
-							"frame-ancestors 'self'; " +
-							"upgrade-insecure-requests;",
+						value: contentSecurityPolicy,
 					},
 				],
 			},

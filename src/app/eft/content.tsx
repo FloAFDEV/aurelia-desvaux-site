@@ -461,6 +461,7 @@ export default function EFTContent() {
 								src={eftLiberteImg}
 								alt="Symbole de liberté émotionnelle"
 								fill
+								sizes="128px"
 								quality={85}
 								className="object-cover transition-transform duration-500 hover:scale-110"
 							/>

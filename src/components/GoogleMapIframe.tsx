@@ -67,7 +67,10 @@ export function GoogleMapIframe({ src, title, className = '' }: GoogleMapIframeP
 				</div>
 			)}
 
-			{/* Google Maps iframe */}
+			{/* Google Maps iframe
+			    h-[300px] est nécessaire : la règle globale `iframe { height: auto }`
+			    de globals.css écrase l'attribut height="300", ce qui réduisait la carte
+			    et créait un décalage avec les 300px réservés par le fallback. */}
 			{shouldLoad && (
 				<iframe
 					src={src}
@@ -79,7 +82,7 @@ export function GoogleMapIframe({ src, title, className = '' }: GoogleMapIframeP
 					referrerPolicy="no-referrer-when-downgrade"
 					title={title}
 					onLoad={() => setIsLoaded(true)}
-					className={`rounded-2xl transition-opacity duration-500 ${
+					className={`rounded-2xl h-[300px] transition-opacity duration-500 ${
 						isLoaded ? 'opacity-100' : 'opacity-0'
 					}`}
 				/>

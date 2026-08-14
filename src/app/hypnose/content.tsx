@@ -163,6 +163,7 @@ export default function Hypnose() {
 										alt=""
 										aria-hidden="true"
 										fill
+										sizes="(max-width: 768px) 40px, 48px"
 										quality={85}
 										className="object-cover"
 										priority
@@ -197,6 +198,7 @@ export default function Hypnose() {
 												src={hypnosePenduleImg}
 												alt="Pendule hypnose"
 												fill
+												sizes="56px"
 												quality={85}
 												className="object-cover"
 											/>
@@ -451,6 +453,14 @@ export default function Hypnose() {
 								</div>
 							))}
 						</div>
+
+						<p className="font-body text-sm text-muted-foreground mt-6">
+							Pour l&apos;arrêt du tabac, un{" "}
+							<Link href="/hypnose-arret-tabac" className="underline underline-offset-2 hover:text-foreground transition-colors duration-200">
+								programme dédié en 1 à 2 séances
+							</Link>
+							{" "}est proposé.
+						</p>
 					</div>
 				</div>
 			</section>
@@ -479,6 +489,7 @@ export default function Hypnose() {
 							src={aureliaPortrait}
 							alt="Aurélia Desvaux, hypnothérapeute certifiée à Valbonne"
 							fill
+							sizes="128px"
 							quality={90}
 							className="object-cover transition-transform duration-500 group-hover:scale-110"
 							loading="lazy"

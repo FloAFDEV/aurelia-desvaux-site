@@ -407,6 +407,7 @@ export default function HypnoseArretTabacContent() {
 							src={aureliaPortrait}
 							alt="Aurélia Desvaux, hypnothérapeute certifiée à Valbonne"
 							fill
+							sizes="128px"
 							quality={90}
 							className="object-cover transition-transform duration-500 group-hover:scale-110"
 							loading="lazy"
@@ -485,6 +486,12 @@ export default function HypnoseArretTabacContent() {
 							Découvrez aussi les autres accompagnements proposés au cabinet
 						</p>
 						<div className="flex flex-wrap justify-center gap-4">
+							<Link
+								href="/arret-tabac"
+								className="font-body text-sm text-primary underline underline-offset-2 hover:text-foreground transition-colors"
+							>
+								Arrêt du tabac
+							</Link>
 							<Link
 								href="/hypnose"
 								className="font-body text-sm text-primary underline underline-offset-2 hover:text-foreground transition-colors"

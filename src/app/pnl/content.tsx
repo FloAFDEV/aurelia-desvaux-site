@@ -71,6 +71,7 @@ export default function Content() {
 									src={treeLogo}
 									alt=""
 									fill
+									sizes="80px"
 									quality={85}
 									className="object-cover rounded-full"
 									aria-hidden="true"
@@ -144,6 +145,7 @@ export default function Content() {
 										src={treeLogo}
 										alt=""
 										fill
+										sizes="(max-width: 768px) 40px, 48px"
 										quality={85}
 										className="object-cover rounded-full"
 										aria-hidden="true"
@@ -176,6 +178,7 @@ export default function Content() {
 												src={pnlBilanImg}
 												alt="Bilan PNL"
 												fill
+												sizes="56px"
 												quality={85}
 												className="object-cover"
 											/>
@@ -213,6 +216,7 @@ export default function Content() {
 												src={img}
 												alt=""
 												fill
+												sizes="(max-width: 768px) 64px, 80px"
 												quality={85}
 												className="object-cover"
 											/>
@@ -425,6 +429,7 @@ export default function Content() {
 								src={pnlCerveauArtImg}
 								alt="Représentation artistique du cerveau"
 								fill
+								sizes="128px"
 								quality={85}
 								className="object-cover transition-transform duration-500 hover:scale-110"
 							/>

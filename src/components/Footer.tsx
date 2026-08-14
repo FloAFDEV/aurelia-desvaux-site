@@ -32,9 +32,7 @@ export const Footer = () => {
 							</span>
 						</Link>
 						<p className="font-body text-sm text-muted-foreground leading-relaxed">
-							Thérapeute en Hypnose, PNL et EFT à Valbonne
-							Sophia-Antipolis. Accompagnement bienveillant vers
-							votre bien-être.
+								Thérapeute en thérapies brèves à Valbonne — Hypnose, PNL et EFT. Cabinet accessible depuis Antibes, Sophia-Antipolis, Biot, Mougins et Cannes.
 						</p>
 					</div>
 
@@ -93,6 +91,36 @@ export const Footer = () => {
 								</Link>
 							</li>
 						</ul>
+
+						<h3 className="font-display text-lg text-foreground mt-6 mb-4">
+							Problématiques
+						</h3>
+						<ul className="space-y-2">
+							<li>
+								<Link
+									href="/stress-anxiete"
+									className="font-body text-sm text-muted-foreground hover:text-primary transition-colors"
+								>
+									Stress & Anxiété
+								</Link>
+							</li>
+							<li>
+								<Link
+									href="/confiance-en-soi"
+									className="font-body text-sm text-muted-foreground hover:text-primary transition-colors"
+								>
+									Confiance en soi
+								</Link>
+							</li>
+							<li>
+								<Link
+									href="/arret-tabac"
+									className="font-body text-sm text-muted-foreground hover:text-primary transition-colors"
+								>
+									Arrêt du tabac
+								</Link>
+							</li>
+						</ul>
 					</div>
 
 					{/* Contact */}
@@ -144,8 +172,7 @@ export const Footer = () => {
 							</li>
 							<li>
 								<p className="font-body text-xs text-muted-foreground/60 pl-6">
-									Consultations à Valbonne, accessible depuis
-									Antibes, Biot et Sophia-Antipolis.
+									Cabinet à Valbonne, à 15 min d'Antibes, Sophia-Antipolis, Biot, Mougins et Cannes.
 								</p>
 							</li>
 						</ul>

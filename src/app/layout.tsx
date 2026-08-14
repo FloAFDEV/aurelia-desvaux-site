@@ -5,7 +5,6 @@ import { Inter } from "next/font/google";
 import { StructuredData } from "@/components/SEO/StructuredData";
 import { SEO } from "@/lib/seo";
 import "./globals.css";
-import { Providers } from "./providers";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingCTA } from "@/components/FloatingCTA";
@@ -165,22 +164,20 @@ export default function RootLayout({
 				{/* Core Web Vitals tracking */}
 				<WebVitals />
 
-				<Providers>
-					{/* Header avec Suspense et fallback optimisé */}
-					<Suspense
-						fallback={
-							<div className="h-20 bg-background/80 fixed top-0 left-0 right-0 z-50" />
-						}
-					>
-						<Header />
-					</Suspense>
+				{/* Header avec Suspense et fallback optimisé */}
+				<Suspense
+					fallback={
+						<div className="h-20 bg-background/80 fixed top-0 left-0 right-0 z-50" />
+					}
+				>
+					<Header />
+				</Suspense>
 
-					{/* Main content */}
-					<main id="main-content">{children}</main>
+				{/* Main content */}
+				<main id="main-content">{children}</main>
 
-					{/* Footer sans Suspense car non critique */}
-					<Footer />
-				</Providers>
+				{/* Footer sans Suspense car non critique */}
+				<Footer />
 
 				{/* TOUS LES COMPOSANTS FIXED EN DEHORS DE PROVIDERS */}
 				{/* CTA flottant */}

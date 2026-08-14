@@ -14,6 +14,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		{ url: `${base}/pnl`,                                 lastModified: now, changeFrequency: "monthly", priority: 0.8 },
 		{ url: `${base}/eft`,                                 lastModified: now, changeFrequency: "monthly", priority: 0.8 },
 		{ url: `${base}/preparation-mentale`,                 lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+		{ url: `${base}/stress-anxiete`,                      lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+		{ url: `${base}/confiance-en-soi`,                    lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+		// Page d'entrée émotionnelle sur l'arrêt du tabac : priorité volontairement
+		// inférieure à /hypnose-arret-tabac, qui reste la page de référence (FAQ, tarif, schémas).
+		{ url: `${base}/arret-tabac`,                         lastModified: now, changeFrequency: "monthly", priority: 0.8 },
 		{ url: `${base}/a-propos`,                            lastModified: now, changeFrequency: "monthly", priority: 0.8 },
 		{ url: `${base}/ressources`,                          lastModified: now, changeFrequency: "monthly", priority: 0.6 },
 		{ url: `${base}/dream-machine`,                       lastModified: now, changeFrequency: "yearly",  priority: 0.3 },

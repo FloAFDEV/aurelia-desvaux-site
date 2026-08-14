@@ -1,0 +1,12 @@
+# Normalise les fins de ligne pour les futurs commits (LF partout).
+# N'affecte pas les fichiers déjà commités tant qu'ils ne sont pas ré-écrits.
+* text=auto eol=lf
+
+# Binaires : jamais de conversion de fin de ligne.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary

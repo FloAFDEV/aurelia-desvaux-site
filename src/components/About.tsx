@@ -13,12 +13,12 @@ const VALUE_BADGES = [
 		hoverClass: "group-hover:text-primary",
 	},
 	{
-		label: "Écoute",
+		label: "Sans jugement",
 		colorClass: "bg-accent",
 		hoverClass: "group-hover:text-accent",
 	},
 	{
-		label: "Expertise",
+		label: "Résultats concrets",
 		colorClass: "bg-rose-gold",
 		hoverClass: "group-hover:text-rose-gold",
 	},
@@ -88,20 +88,15 @@ export const About = () => {
 						</h3>
 
 						<p className="font-body text-muted-foreground leading-relaxed mb-4 md:mb-6 text-sm sm:text-base">
-							Après plus de 15 ans à travailler en entreprise dans
-							la gestion de projets et le management, j'ai décidé
-							de changer de cap, et de recentrer mon activité
-							professionnelle sur des valeurs qui me font vibrer :
-							la bienveillance et l'accompagnement.
+							Pendant près de 15 ans en entreprise, j'ai moi aussi tout donné — jusqu'à l'épuisement, jusqu'à deux burn-outs. J'ai connu ce que c'est de s'oublier pour être à la hauteur, de chercher dans le regard des autres une validation qu'on n'arrivait pas à se donner soi-même.
+						</p>
+
+						<p className="font-body text-muted-foreground leading-relaxed mb-4 md:mb-6 text-sm sm:text-base">
+							C'est cette expérience, autant que mes formations, qui m'a amenée à ce métier.
 						</p>
 
 						<p className="font-body text-muted-foreground leading-relaxed mb-6 md:mb-8 text-sm sm:text-base">
-							Quel que soit votre besoin, je me tiens à votre
-							disposition pour effectuer ce chemin à vos côtés, en
-							vous apportant mon expertise et ma bienveillance. Mon
-							cabinet est situé à Valbonne Sophia-Antipolis,
-							accessible depuis Antibes, Biot et les communes
-							voisines.
+							Ce qui me touche profondément dans ce travail : voir quelqu'un repartir avec l'œil qui pétille, se tenir un peu plus droite, avoir osé poser une limite — et réaliser que le monde ne s'est pas effondré pour autant. Je crois que chacun fait du mieux qu'il peut avec ce qu'il a. Mon rôle n'est pas de juger d'où vous venez — c'est de vous accompagner, à votre rythme, vers qui vous avez envie d'être. Mon cabinet est à Valbonne, à quelques minutes d'Antibes, Sophia-Antipolis, Biot et Mougins.
 						</p>
 
 						<p className="font-body text-sm text-muted-foreground mb-5 md:mb-6">

@@ -110,9 +110,7 @@ export const Practices = () => {
 							}`}
 							style={{ transitionDelay: "400ms" }}
 						>
-							Quel que soit votre besoin, je me tiens à votre
-							disposition pour effectuer ce chemin à vos côtés, en
-							vous apportant mon expertise et ma bienveillance.
+							Les thérapies brèves ne cherchent pas à analyser indéfiniment pourquoi vous en êtes arrivée là. Elles cherchent comment vous accompagner vers là où vous voulez aller — en douceur, mais durablement.
 						</p>
 					</div>
 
@@ -207,9 +205,7 @@ export const Practices = () => {
 							}`}
 							style={{ transitionDelay: "400ms" }}
 						>
-							Des approches complémentaires pour répondre à vos
-							besoins spécifiques et explorer de nouvelles
-							dimensions.
+							Pour aller plus loin dans votre accompagnement, ou explorer d'autres dimensions de votre mieux-être.
 						</p>
 					</div>
 

@@ -3,6 +3,7 @@
 import { useInView } from "@/hooks/useInView";
 import { LazyImage } from "@/components/LazyImage";
 import Image from "next/image";
+import Link from "next/link";
 import cabinetImg from "@/assets/cabinet.webp";
 import eftSessionImg from "@/assets/eft-session.webp";
 import aureliaPortrait2 from "@/assets/aurelia-portrait-2.webp";
@@ -52,8 +53,7 @@ export const Therapies = () => {
 								: "opacity-0 translate-y-3"
 						}`}
 					>
-						Libérez-vous de ce qui vous pèse et atteignez vos
-						objectifs sereinement et rapidement.
+						Vous portez beaucoup. Peut-être depuis longtemps. Et si vous n'aviez plus à porter ça seule ?
 					</p>
 				</div>
 
@@ -117,48 +117,49 @@ export const Therapies = () => {
 						<div className="absolute -inset-4 md:-inset-6 bg-background/80 backdrop-blur-sm rounded-2xl -z-10" />
 
 						<h3 className="font-display text-3xl text-foreground">
-							Hypnose et PNL pour votre bien-être
+							Avancer, plutôt que ressasser.
 						</h3>
 
 						<p className="font-body text-muted-foreground leading-relaxed">
-							Vous avez peut-être, dans votre histoire de vie, des
-							événements qui vous ont impacté(e) et qui vous
-							empêchent de vous épanouir pleinement aujourd'hui ?
+							Les thérapies brèves — Hypnose Ericksonienne, PNL, EFT — ne cherchent pas à analyser indéfiniment pourquoi vous en êtes arrivée là. Elles cherchent comment vous accompagner vers là où vous voulez aller.
 						</p>
 
 						<p className="font-body text-muted-foreground leading-relaxed">
-							Ou alors, vous vous sentez bloqué(e) à un certain
-							stade de votre vie, et souhaitez être accompagné(e)
-							afin d'atteindre l'objectif que vous vous êtes fixé
-							?
+							Ensemble, nous travaillons sur vos mécanismes inconscients — ces schémas qui tournent en boucle et qui vous épuisent — pour les transformer en douceur, mais durablement.
 						</p>
 
 						<p className="font-body text-muted-foreground leading-relaxed">
-							Ou peut-être encore, vous avez simplement envie de
-							vous ouvrir au développement personnel et découvrir
-							ces pratiques liées aux thérapies brèves que sont
-							l'Hypnose Ericksonienne, la PNL, ou l'EFT (Emotional
-							Freedom Technique) ?
+							En moyenne, entre 3 et 5 séances suffisent, espacées d'environ 3 semaines. Pas de miracle — mais des changements réels, souvent plus rapidement que vous ne l'imaginez.
 						</p>
 
 						{/* Tags */}
 						<div className="flex flex-wrap gap-3 pt-4">
-							{[
-								"Stress",
-								"Anxiété",
-								"Traumas",
-								"Poids",
-								"Tabac",
-								"Douleurs",
-								"Évolution professionnelle",
-								"Préparation aux examens",
-							].map((tag) => (
-								<span
-									key={tag}
-									className="px-4 py-2 bg-soft-pink text-foreground font-body text-sm rounded-full"
-								>
-									{tag}
-								</span>
+							{([
+								{ label: "Stress & anxiété", href: "/stress-anxiete" },
+								{ label: "Confiance en soi", href: "/confiance-en-soi" },
+								{ label: "Arrêt du tabac", href: "/arret-tabac" },
+								{ label: "Histoire de vie", href: null },
+								{ label: "Estime de soi", href: null },
+								{ label: "Épuisement", href: null },
+								{ label: "Préparation mentale", href: "/preparation-mentale" },
+								{ label: "Phobies", href: null },
+							] as const).map((tag) => (
+								tag.href ? (
+									<Link
+										key={tag.label}
+										href={tag.href}
+										className="px-4 py-2 bg-soft-pink text-foreground font-body text-sm rounded-full hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
+									>
+										{tag.label}
+									</Link>
+								) : (
+									<span
+										key={tag.label}
+										className="px-4 py-2 bg-soft-pink text-foreground font-body text-sm rounded-full"
+									>
+										{tag.label}
+									</span>
+								)
 							))}
 						</div>
 					</div>

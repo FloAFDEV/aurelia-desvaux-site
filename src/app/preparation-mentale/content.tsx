@@ -363,6 +363,7 @@ export default function PreparationMentaleContent() {
 									src={aureliaPresentationImg}
 									alt="Flyer Atelier Self-Love - Aurélia Desvaux"
 									fill
+									sizes="(max-width: 768px) 192px, 224px"
 									className="object-cover rounded-2xl border-2 border-white/50 shadow-card rotate-3 group-hover:rotate-0 transition-transform duration-500"
 								/>
 							</div>
