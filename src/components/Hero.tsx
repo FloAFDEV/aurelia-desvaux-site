@@ -34,13 +34,13 @@ export const Hero = () => {
 					<div className="relative z-10 order-2 lg:order-1 text-center lg:text-left lg:pl-8 xl:pl-12 overflow-visible">
 						<h1 className="relative z-50 font-script antialiased text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-foreground mb-4 animate-fade-in-up opacity-0 tracking-tight leading-[1.6] lg:leading-[1.5] xl:leading-[1.5] py-6 break-words max-w-full">
 							Aurélia Desvaux
-							<span className="sr-only"> – Thérapeute en Thérapies Brèves à Valbonne, Antibes et Sophia-Antipolis</span>
+							<span className="sr-only"> – Thérapeute en Hypnose, PNL et EFT à Valbonne, Antibes et Sophia-Antipolis</span>
 						</h1>
 
 						<div className="flex items-center gap-4 justify-center lg:justify-start mb-2 animate-fade-in-up opacity-0 delay-200">
 							<div className="hidden lg:block w-12 h-px bg-primary-light/60" aria-hidden="true" />
 							<h2 className="font-display text-2xl md:text-3xl lg:text-4xl text-muted-foreground break-words max-w-full">
-								Thérapeute en Thérapies Brèves — Valbonne · Antibes · Sophia-Antipolis
+								Thérapeute en Hypnose, PNL et EFT — Valbonne · Antibes · Sophia-Antipolis
 							</h2>
 							<div className="hidden lg:block w-12 h-px bg-primary-light/60" aria-hidden="true" />
 						</div>
@@ -127,7 +127,7 @@ export const Hero = () => {
 							<div className="relative w-full h-full rounded-full overflow-hidden shadow-card transition-all duration-500 group-hover:shadow-glow">
 								<Image
 									src={aureliaPortrait}
-									alt="Portrait d'Aurélia Desvaux, thérapeute en thérapies brèves à Valbonne"
+									alt="Portrait d'Aurélia Desvaux, thérapeute en Hypnose, PNL et EFT à Valbonne"
 									fill
 									priority
 									fetchPriority="high"
