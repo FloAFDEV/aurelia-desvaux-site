@@ -9,10 +9,11 @@ import { Contact } from "@/components/Contact";
 
 export const metadata: Metadata = {
 	title: {
-		absolute: "Aurélia Desvaux | Thérapeute Hypnose, PNL & EFT — Antibes, Sophia-Antipolis, Valbonne",
+		absolute:
+			"Aurélia Desvaux | Thérapeute Hypnose, PNL & EFT — Antibes, Sophia-Antipolis, Valbonne",
 	},
 	description:
-		"Hypnothérapeute à Valbonne, Antibes et Sophia-Antipolis – Hypnose Ericksonienne, PNL et EFT. Arrêt du tabac, stress, anxiété, phobies. Praticienne certifiée Psynapse.",
+		"Thérapeute en thérapies brèves à Valbonne — Hypnose Ericksonienne, PNL et EFT. Stress, anxiété, confiance en soi, histoire de vie, arrêt du tabac. Cabinet à 15 min d'Antibes et Sophia-Antipolis. 1ère séance 1h30.",
 	alternates: {
 		canonical: "/",
 	},
