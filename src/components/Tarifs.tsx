@@ -310,7 +310,7 @@ export default function Tarifs() {
 												Adresse
 											</p>
 											<p className="font-body text-muted-foreground">
-												1, Place Joseph BERMOND
+												1, Place Joseph Bermond
 												<br />
 												Bat OPHIRA 1 - 2e étage
 												<br />

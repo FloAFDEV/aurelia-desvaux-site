@@ -2,10 +2,10 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
 	return {
-		name: "Aurélia Desvaux - Thérapies Brèves",
+		name: "Aurélia Desvaux — Thérapies brèves",
 		short_name: "Aurélia Desvaux",
 		description:
-			"Thérapeute en Hypnose Ericksonienne, PNL et EFT à Valbonne Sophia-Antipolis",
+			"Thérapeute en thérapies brèves à Valbonne, Antibes et Sophia-Antipolis — Hypnose Ericksonienne, PNL et EFT.",
 		start_url: "/",
 		display: "standalone",
 		background_color: "#F8F4F4",

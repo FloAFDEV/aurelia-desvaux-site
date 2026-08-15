@@ -15,7 +15,7 @@ const localBusiness = {
 	"@id": "https://aurelia-desvaux.fr/#business",
 	name: "Aurélia Desvaux",
 	description:
-		"Aurélia Desvaux, hypnothérapeute à Valbonne Sophia-Antipolis. Spécialisée en arrêt du tabac, perte de poids, gestion du stress et des phobies. Hypnose Ericksonienne, PNL et EFT.",
+		"Aurélia Desvaux, hypnothérapeute à Valbonne, Antibes et Sophia-Antipolis. Spécialisée en arrêt du tabac, perte de poids, gestion du stress et des phobies. Hypnose Ericksonienne, PNL et EFT.",
 	url: "https://aurelia-desvaux.fr",
 	logo: "https://aurelia-desvaux.fr/favicon-apple.png",
 	image: "https://aurelia-desvaux.fr/og-image.jpg",
@@ -35,7 +35,7 @@ const localBusiness = {
 	],
 	address: {
 		"@type": "PostalAddress",
-		streetAddress: "1 Place Joseph BERMOND, Bat OPHIRA 1 - 2e étage",
+		streetAddress: "1 Place Joseph Bermond, Bat OPHIRA 1 - 2e étage",
 		addressLocality: "Valbonne",
 		addressRegion: "Alpes-Maritimes",
 		postalCode: "06560",
@@ -71,8 +71,6 @@ const localBusiness = {
 		{ "@type": "City", name: "Cannes" },
 		{ "@type": "City", name: "Nice" },
 		{ "@type": "City", name: "Grasse" },
-		{ "@type": "City", name: "Villeneuve-Loubet" },
-		{ "@type": "City", name: "Roquefort-les-Pins" },
 	],
 	sameAs: [
 		"https://www.facebook.com/AureliaDesvauxPsychopraticienne/",

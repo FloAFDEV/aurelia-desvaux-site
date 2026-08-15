@@ -30,6 +30,13 @@ export const metadata: Metadata = {
 			},
 		],
 	},
+	twitter: {
+		card: "summary_large_image",
+		title: "Arrêter de Fumer — Accompagnement à Antibes, Sophia-Antipolis",
+		description:
+			"Arrêtez de fumer en 1 à 2 séances d'hypnose à Valbonne, accessible depuis Antibes et Sophia-Antipolis. Sans volonté à toute épreuve, sans lutte intérieure.",
+		images: ["https://aurelia-desvaux.fr/og-image.jpg"],
+	},
 };
 
 export default async function ArretTabacPage() {

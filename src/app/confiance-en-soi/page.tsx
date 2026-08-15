@@ -30,6 +30,13 @@ export const metadata: Metadata = {
 			},
 		],
 	},
+	twitter: {
+		card: "summary_large_image",
+		title: "Retrouver Confiance en Soi & Estime de Soi — Antibes, Sophia-Antipolis",
+		description:
+			"Vous ne savez plus qui vous êtes, ce que vous valez ? Thérapie brève à Valbonne, accessible depuis Antibes et Sophia-Antipolis. Retrouvez votre place — la vraie.",
+		images: ["https://aurelia-desvaux.fr/og-image.jpg"],
+	},
 };
 
 export default async function ConfidenceEnSoiPage() {

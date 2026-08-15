@@ -2,17 +2,21 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 import AProposContent from "./content";
 
+// Même @id que l'entité Person de StructuredData.tsx : ce bloc enrichit l'entité
+// globale (hasCredential, alumniOf) au lieu d'en déclarer une seconde. jobTitle
+// aligné sur l'entité globale pour éviter deux intitulés contradictoires.
 const personSchema = {
 	"@context": "https://schema.org",
 	"@type": "Person",
+	"@id": "https://aurelia-desvaux.fr/#person",
 	name: "Aurélia Desvaux",
-	jobTitle: "Praticienne en Hypnose Ericksonienne, PNL et EFT",
+	jobTitle: "Hypnothérapeute certifiée – Hypnose Ericksonienne, PNL et EFT",
 	url: "https://aurelia-desvaux.fr",
 	image: "https://aurelia-desvaux.fr/og-image.jpg",
 	email: "desvauxaurelia@gmail.com",
 	telephone: "+33620145306",
 	description:
-		"Aurélia Desvaux est praticienne certifiée en Hypnose Ericksonienne, PNL et EFT à Valbonne Sophia-Antipolis. Spécialisée dans l'arrêt du tabac, la perte de poids et la gestion du stress, elle accompagne adultes et sportifs grâce aux thérapies brèves.",
+		"Aurélia Desvaux est praticienne certifiée en Hypnose Ericksonienne, PNL et EFT à Valbonne, Antibes et Sophia-Antipolis. Spécialisée dans l'arrêt du tabac, la perte de poids et la gestion du stress, elle accompagne adultes et sportifs grâce aux thérapies brèves.",
 	knowsAbout: [
 		"Hypnose Ericksonienne",
 		"PNL – Programmation Neuro-Linguistique",
@@ -64,17 +68,9 @@ const personSchema = {
 		{ "@type": "Organization", name: "Psynapse – École de psychothérapie" },
 		{ "@type": "Organization", name: "The Priority Academy" },
 	],
-	worksFor: {
-		"@type": "LocalBusiness",
-		name: "Aurélia Desvaux – Thérapies Brèves",
-		address: {
-			"@type": "PostalAddress",
-			streetAddress: "1 Place Joseph BERMOND, Bat OPHIRA 1 - 2e étage",
-			addressLocality: "Valbonne",
-			postalCode: "06560",
-			addressCountry: "FR",
-		},
-	},
+	// Référence l'entité LocalBusiness globale (StructuredData.tsx) plutôt que d'en
+	// redéclarer une copie partielle : évite un second établissement pour Google.
+	worksFor: { "@id": "https://aurelia-desvaux.fr/#business" },
 	sameAs: [
 		"https://www.facebook.com/AureliaDesvauxPsychopraticienne/",
 		"https://www.instagram.com/aurelia_desvaux_therapiebreve/",

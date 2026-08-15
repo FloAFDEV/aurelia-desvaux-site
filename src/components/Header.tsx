@@ -21,8 +21,13 @@ const MenuLabel = ({ label }: { label: string }) => {
 	);
 };
 
+// « Thérapies » regroupe les modalités et programmes d'accompagnement.
+// /hypnose-arret-tabac y figure en tant que programme de référence (tarif, FAQ,
+// Service schema) — distinct de l'entrée « Arrêt du tabac » du menu
+// Problématiques, qui pointe vers la page d'accroche émotionnelle /arret-tabac.
 const therapiesSubmenu = [
 	{ label: "Hypnose", href: "/hypnose" as const },
+	{ label: "Hypnose & arrêt du tabac", href: "/hypnose-arret-tabac" as const },
 	{ label: "PNL", href: "/pnl" as const },
 	{ label: "EFT", href: "/eft" as const },
 	{ label: "Préparation mentale", href: "/preparation-mentale" as const },

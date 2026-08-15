@@ -115,7 +115,7 @@ export const Contact = () => {
 										Adresse
 									</p>
 									<p className="font-display text-lg text-foreground">
-										1, Place Joseph BERMOND
+										1, Place Joseph Bermond
 										<br />
 										Bat OPHIRA 1 - 2e étage
 										<br />

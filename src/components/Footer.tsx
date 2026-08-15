@@ -60,6 +60,14 @@ export const Footer = () => {
 							</li>
 							<li>
 								<Link
+									href="/hypnose-arret-tabac"
+									className="font-body text-sm text-muted-foreground hover:text-primary transition-colors"
+								>
+									Hypnose &amp; arrêt du tabac
+								</Link>
+							</li>
+							<li>
+								<Link
 									href="/pnl"
 									className="font-body text-sm text-muted-foreground hover:text-primary transition-colors"
 								>
@@ -164,7 +172,7 @@ export const Footer = () => {
 								>
 									<MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
 									<span>
-										1, Place Joseph BERMOND
+										1, Place Joseph Bermond
 										<br />
 										06560 Valbonne
 									</span>

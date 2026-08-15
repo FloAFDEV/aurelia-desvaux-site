@@ -30,6 +30,13 @@ export const metadata: Metadata = {
 			},
 		],
 	},
+	twitter: {
+		card: "summary_large_image",
+		title: "Hypnose & Thérapie pour le Stress et l'Anxiété — Antibes, Sophia-Antipolis",
+		description:
+			"Crises d'angoisse, anxiété chronique, épuisement émotionnel. Thérapie brève à Valbonne, accessible depuis Antibes et Sophia-Antipolis. 3 à 5 séances suffisent.",
+		images: ["https://aurelia-desvaux.fr/og-image.jpg"],
+	},
 };
 
 export default async function StressAnxietePage() {
