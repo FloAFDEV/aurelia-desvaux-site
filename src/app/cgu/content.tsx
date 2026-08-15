@@ -202,13 +202,63 @@ export default function CGUContent() {
 								<h2 className="font-display text-2xl text-foreground mb-4">
 									Article 9 - Droit applicable
 								</h2>
-								<div className="bg-card rounded-xl p-6 shadow-soft transition-all duration-300 hover:shadow-lg">
+								<div className="bg-card rounded-xl p-6 mb-8 shadow-soft transition-all duration-300 hover:shadow-lg">
 									<p className="font-body text-muted-foreground">
 										Les présentes CGU sont soumises au droit
 										français. Tout litige relatif à
 										l'interprétation ou à l'exécution des
 										présentes sera de la compétence
 										exclusive des tribunaux français.
+									</p>
+								</div>
+
+								{/* Article 10 */}
+								<h2 className="font-display text-2xl text-foreground mb-4">
+									Article 10 - Médiation de la consommation
+								</h2>
+								<div className="bg-card rounded-xl p-6 shadow-soft transition-all duration-300 hover:shadow-lg">
+									<p className="font-body text-muted-foreground">
+										Conformément aux dispositions du Code de
+										la consommation concernant « le processus
+										de médiation des litiges de la
+										consommation », après nous avoir
+										sollicités et à défaut de réponse vous
+										satisfaisant, vous avez la possibilité de
+										recourir gratuitement à une procédure de
+										médiation de la consommation auprès de :
+									</p>
+									<p className="font-body text-muted-foreground mt-4">
+										CM2C
+										<br />
+										49 rue de Ponthieu
+										<br />
+										75 008 PARIS
+										<br />
+										Tel :{" "}
+										<a
+											href="tel:0189470014"
+											className="text-primary underline underline-offset-2 hover:text-foreground transition-colors"
+										>
+											01 89 47 00 14
+										</a>
+										<br />
+										Site internet :{" "}
+										<a
+											href="https://www.cm2c.net/declarer-un-litige.php"
+											target="_blank"
+											rel="noopener noreferrer"
+											className="text-primary underline underline-offset-2 hover:text-foreground transition-colors"
+										>
+											https://www.cm2c.net/declarer-un-litige.php
+										</a>
+										<br />
+										Mail :{" "}
+										<a
+											href="mailto:litiges@cm2c.net"
+											className="text-primary underline underline-offset-2 hover:text-foreground transition-colors"
+										>
+											litiges@cm2c.net
+										</a>
 									</p>
 								</div>
 							</div>
