@@ -6,7 +6,6 @@
 		"dev": "next dev",
 		"build": "next build",
 		"build:analyze": "ANALYZE=true next build",
-		"build:dev": "vite build --mode development",
 		"lint": "next lint",
 		"start": "next start",
 		"type-check": "tsc --noEmit"
