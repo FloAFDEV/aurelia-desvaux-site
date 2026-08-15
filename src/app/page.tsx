@@ -9,7 +9,7 @@ import { Contact } from "@/components/Contact";
 
 export const metadata: Metadata = {
 	title: {
-		absolute: "Aurélia Desvaux | Hypnose, PNL & EFT à Valbonne Sophia-Antipolis",
+		absolute: "Aurélia Desvaux | Thérapeute Hypnose, PNL & EFT — Antibes, Sophia-Antipolis, Valbonne",
 	},
 	description:
 		"Hypnothérapeute à Valbonne Sophia-Antipolis – Hypnose Ericksonienne, PNL et EFT. Arrêt du tabac, perte de poids, stress, anxiété, phobies. Praticienne certifiée Psynapse.",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 		canonical: "/",
 	},
 	openGraph: {
-		title: "Aurélia Desvaux | Hypnose, PNL & EFT à Valbonne",
+		title: "Aurélia Desvaux | Thérapeute Hypnose, PNL & EFT — Antibes, Sophia-Antipolis, Valbonne",
 		description:
 			"Hypnose Ericksonienne, PNL et EFT à Valbonne. Arrêt du tabac, perte de poids, stress, anxiété, phobies. Praticienne certifiée, cabinet à Sophia-Antipolis.",
 		url: "https://aurelia-desvaux.fr",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Aurélia Desvaux | Hypnose, PNL & EFT à Valbonne",
+		title: "Aurélia Desvaux | Thérapeute Hypnose, PNL & EFT — Antibes, Sophia-Antipolis, Valbonne",
 		description:
 			"Thérapeute en Hypnose, PNL & EFT. Accompagnement bienveillant pour votre bien-être à Valbonne Sophia-Antipolis.",
 		images: ["https://aurelia-desvaux.fr/og-image.jpg"],
