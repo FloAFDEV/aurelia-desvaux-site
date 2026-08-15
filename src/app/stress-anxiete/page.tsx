@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import StressAnxieteContent from "./content";
+import { getSheetData, findTarif } from "@/lib/sheetData";
 
 export const metadata: Metadata = {
 	title: {
@@ -31,6 +32,9 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function StressAnxietePage() {
-	return <StressAnxieteContent />;
+export default async function StressAnxietePage() {
+	const { tarifs } = await getSheetData();
+	const tarifSeanceStandard = findTarif(tarifs, "Accompagnement Thérapeutique");
+
+	return <StressAnxieteContent tarifSeanceStandard={tarifSeanceStandard} />;
 }

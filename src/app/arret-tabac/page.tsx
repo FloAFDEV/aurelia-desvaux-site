@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ArretTabacContent from "./content";
+import { getSheetData, findTarif } from "@/lib/sheetData";
 
 export const metadata: Metadata = {
 	title: {
@@ -31,6 +32,15 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function ArretTabacPage() {
-	return <ArretTabacContent />;
+export default async function ArretTabacPage() {
+	const { tarifs } = await getSheetData();
+	const tarifArretTabac = findTarif(tarifs, "Arrêt du Tabac");
+	const tarifSeanceStandard = findTarif(tarifs, "Accompagnement Thérapeutique");
+
+	return (
+		<ArretTabacContent
+			tarifArretTabac={tarifArretTabac}
+			tarifSeanceStandard={tarifSeanceStandard}
+		/>
+	);
 }

@@ -45,7 +45,13 @@ const results = [
 	"Vous retrouvez confiance en votre corps",
 ];
 
-export default function StressAnxieteContent() {
+interface StressAnxieteContentProps {
+	tarifSeanceStandard: number;
+}
+
+export default function StressAnxieteContent({
+	tarifSeanceStandard,
+}: StressAnxieteContentProps) {
 	return (
 		<>
 			<BreadcrumbsWrapper />
@@ -245,7 +251,7 @@ export default function StressAnxieteContent() {
 					</a>
 					<div className="flex items-center justify-center gap-2 mt-6 text-primary-foreground/55 font-body text-sm">
 						<MapPin className="w-4 h-4" />
-						<span>Cabinet à Valbonne · 15 min d'Antibes et Sophia-Antipolis · Séance 70€</span>
+						<span>Cabinet à Valbonne · 15 min d'Antibes et Sophia-Antipolis · Séance {tarifSeanceStandard}€</span>
 					</div>
 				</div>
 			</section>

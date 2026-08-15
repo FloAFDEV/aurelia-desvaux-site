@@ -45,7 +45,15 @@ const results = [
 	"Vous êtes fière de vous — vraiment",
 ];
 
-export default function ArretTabacContent() {
+interface ArretTabacContentProps {
+	tarifArretTabac: number;
+	tarifSeanceStandard: number;
+}
+
+export default function ArretTabacContent({
+	tarifArretTabac,
+	tarifSeanceStandard,
+}: ArretTabacContentProps) {
 	return (
 		<>
 			<BreadcrumbsWrapper />
@@ -180,11 +188,11 @@ export default function ArretTabacContent() {
 						<div className="space-y-2">
 							<div className="flex justify-between items-center font-body text-sm">
 								<span className="text-foreground">1ère séance arrêt du tabac (1h30)</span>
-								<span className="font-semibold text-primary">120€</span>
+								<span className="font-semibold text-primary">{tarifArretTabac}€</span>
 							</div>
 							<div className="flex justify-between items-center font-body text-sm">
 								<span className="text-muted-foreground">Séance de renforcement si besoin (1h)</span>
-								<span className="text-muted-foreground">70€</span>
+								<span className="text-muted-foreground">{tarifSeanceStandard}€</span>
 							</div>
 						</div>
 						<p className="font-body text-xs text-muted-foreground mt-4">
@@ -262,7 +270,7 @@ export default function ArretTabacContent() {
 					</a>
 					<div className="flex items-center justify-center gap-2 mt-6 text-primary-foreground/55 font-body text-sm">
 						<MapPin className="w-4 h-4" />
-						<span>Cabinet à Valbonne · 15 min d'Antibes et Sophia-Antipolis · 1ère séance 120€</span>
+						<span>Cabinet à Valbonne · 15 min d'Antibes et Sophia-Antipolis · 1ère séance {tarifArretTabac}€</span>
 					</div>
 				</div>
 			</section>

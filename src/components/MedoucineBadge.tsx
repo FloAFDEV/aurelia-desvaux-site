@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Star, ExternalLink } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import { useCountUp } from "@/hooks/useCountUp";
+import { FALLBACK_MEDOUCINE } from "@/lib/sheetData";
 
 interface MedoucineBadgeProps {
 	variant?: "default" | "compact" | "full";
@@ -16,11 +17,9 @@ interface MedoucineData {
 	lastUpdated: string;
 }
 
-const FALLBACK_DATA: MedoucineData = {
-	rating: 4.95,
-	reviewCount: 178,
-	lastUpdated: "16/01/2025",
-};
+// Filet de sécurité si la requête vers /api/sheet échoue au niveau réseau.
+// Valeur unique du projet pour cette donnée, définie dans src/lib/sheetData.ts.
+const FALLBACK_DATA: MedoucineData = FALLBACK_MEDOUCINE;
 
 export const MedoucineBadge = ({
 	variant = "default",
