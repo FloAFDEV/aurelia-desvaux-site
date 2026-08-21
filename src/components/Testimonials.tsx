@@ -4,6 +4,15 @@ import { useInView } from "@/hooks/useInView";
 import { DecorativeBlob } from "@/components/ui/DecorativeBlob";
 import { Star, Quote, ArrowRight } from "lucide-react";
 import { MedoucineBadge } from "@/components/MedoucineBadge";
+import type { SheetData } from "@/lib/sheetData";
+
+type MedoucineData = SheetData["medoucine"];
+
+interface TestimonialsProps {
+	/** Note et volume d'avis Médoucine, résolus côté serveur depuis le Sheet. */
+	medoucine?: MedoucineData;
+}
+
 import {
 	Carousel,
 	CarouselContent,
@@ -34,7 +43,7 @@ const testimonials = [
 	},
 ];
 
-export const Testimonials = () => {
+export const Testimonials = ({ medoucine }: TestimonialsProps) => {
 	const { ref, isInView } = useInView();
 	const [api, setApi] = useState<CarouselApi>();
 	const [current, setCurrent] = useState(0);
@@ -106,7 +115,7 @@ export const Testimonials = () => {
 						}`}
 						style={{ transitionDelay: isInView ? "450ms" : "0ms" }}
 					>
-						<MedoucineBadge variant="full" />
+						<MedoucineBadge variant="full" initial={medoucine} />
 					</div>
 				</div>
 
