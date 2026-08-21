@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Star, ExternalLink } from "lucide-react";
-import { useInView } from "@/hooks/useInView";
 import { useCountUp } from "@/hooks/useCountUp";
 import { FALLBACK_MEDOUCINE } from "@/lib/sheetData";
 
@@ -37,7 +36,7 @@ export const MedoucineBadge = ({
 }: MedoucineBadgeProps) => {
 	const [data, setData] = useState<MedoucineData | null>(initial ?? null);
 	const [isLoading, setIsLoading] = useState(!initial);
-	const { ref, isInView } = useInView<HTMLAnchorElement>(0.1);
+	const ref = useRef<HTMLAnchorElement>(null);
 
 	// Utiliser data ou fallback selon la réussite du fetch
 	const displayData = data || FALLBACK_DATA;
@@ -46,20 +45,33 @@ export const MedoucineBadge = ({
 	// dans le HTML servi aux robots et aux visiteurs sans JavaScript — d'où la
 	// vraie valeur tant que l'animation n'a pas démarré. Serveur et première
 	// hydratation affichent donc la même chose : aucun écart d'hydratation.
-	const [shouldAnimate, setShouldAnimate] = useState(false);
+	const [animate, setAnimate] = useState(false);
 
-	// Un badge déjà à l'écran au chargement garde sa valeur : la relancer à zéro
-	// sous les yeux du visiteur produirait un ressaut. Celui qu'on découvre en
-	// défilant s'anime, puisque son nombre n'a pas encore été lu.
 	useEffect(() => {
 		const el = ref.current;
 		if (!el) return;
-		const box = el.getBoundingClientRect();
-		const visibleAuChargement = box.top < window.innerHeight && box.bottom > 0;
-		if (!visibleAuChargement) setShouldAnimate(true);
-	}, [ref]);
 
-	const animate = shouldAnimate && isInView;
+		// Badge déjà à l'écran au chargement : son nombre a été lu, le remettre
+		// à zéro serait un ressaut. On le laisse tel quel.
+		const box = el.getBoundingClientRect();
+		if (box.top < window.innerHeight && box.bottom > 0) return;
+
+		// Sinon on arme le décompte AVANT l'entrée dans le champ de vision : la
+		// marge fait démarrer l'animation pendant que le badge est encore sous
+		// la ligne de flottaison. Le visiteur ne voit donc jamais la valeur
+		// finale retomber à zéro — il arrive sur un décompte déjà en cours.
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				if (!entry.isIntersecting) return;
+				setAnimate(true);
+				observer.disconnect(); // une seule fois, définitivement
+			},
+			{ rootMargin: "0px 0px 240px 0px" },
+		);
+
+		observer.observe(el);
+		return () => observer.disconnect();
+	}, []);
 	const animatedCount = useCountUp(displayData.reviewCount, 2000, animate);
 	const reviewCount = animate ? animatedCount : displayData.reviewCount;
 
