@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
+import { getSheetData } from "@/lib/sheetData";
 import { Therapies } from "@/components/Therapies";
 import { Practices } from "@/components/Practices";
 import { About } from "@/components/About";
@@ -119,18 +120,21 @@ const faqSchema = {
 	],
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+	// Lecture serveur du Sheet, partagée par les badges de la page.
+	const { medoucine } = await getSheetData();
+
 	return (
 		<>
 			<script
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
 			/>
-			<Hero />
+			<Hero medoucine={medoucine} />
 			<Therapies />
 			<Practices />
 			<About />
-			<Testimonials />
+			<Testimonials medoucine={medoucine} />
 			<FAQ />
 			<Contact />
 		</>

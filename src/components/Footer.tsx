@@ -11,8 +11,11 @@ import {
 	Instagram,
 } from "lucide-react";
 import { MedoucineBadge } from "@/components/MedoucineBadge";
+import { getSheetData } from "@/lib/sheetData";
 
-export const Footer = () => {
+export const Footer = async () => {
+	// Résolu au rendu serveur : le badge porte la vraie note dès le HTML initial.
+	const { medoucine } = await getSheetData();
 	return (
 		<footer className="py-16 bg-secondary/50 border-t border-border">
 			<div className="container mx-auto px-4 md:px-6 lg:px-8">
@@ -231,7 +234,7 @@ export const Footer = () => {
 						</div>
 
 						<div className="animate-fade-in-up opacity-0 delay-500 mb-4">
-							<MedoucineBadge variant="compact" />
+							<MedoucineBadge variant="compact" initial={medoucine} />
 						</div>
 
 						<a

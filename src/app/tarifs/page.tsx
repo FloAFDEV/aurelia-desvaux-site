@@ -1,81 +1,66 @@
 import type { Metadata } from "next";
 import Tarifs from "@/components/Tarifs";
+import { getSheetData, findTarif } from "@/lib/sheetData";
 
-const priceSchema = {
-	"@context": "https://schema.org",
-	"@type": "ItemList",
-	name: "Tarifs des séances – Aurélia Desvaux",
-	description:
-		"Tarifs des séances de thérapies brèves (hypnose, PNL, EFT, préparation mentale) à Valbonne Sophia-Antipolis.",
-	url: "https://aurelia-desvaux.fr/tarifs",
-	itemListElement: [
-		{
+/**
+ * Offres décrites dans les données structurées.
+ *
+ * Le libellé, la description et l'URL sont éditoriaux et vivent ici ; le prix,
+ * lui, est toujours lu dans le Google Sheet. C'est ce bloc que Google utilise
+ * pour ses résultats enrichis : un tarif figé ici aurait été indexé à la place
+ * du vrai dès la première mise à jour d'Aurélia.
+ */
+const OFFERS = [
+	{
+		name: "Accompagnement Thérapeutique",
+		description: "Séance individuelle – Stress, anxiété, phobies, sommeil, perte de poids…",
+		url: "https://aurelia-desvaux.fr/tarifs",
+	},
+	{
+		name: "Arrêt du Tabac",
+		description: "Programme personnalisé pour arrêter de fumer durablement",
+		url: "https://aurelia-desvaux.fr/tarifs",
+	},
+	{
+		name: "Package 5 séances",
+		description: "Accompagnement personnalisé sur 5 séances",
+		url: "https://aurelia-desvaux.fr/tarifs",
+	},
+	{
+		name: "Préparation Mentale",
+		description: "Séance de préparation mentale (examens, sport, entretiens)",
+		url: "https://aurelia-desvaux.fr/preparation-mentale",
+	},
+	{
+		name: "Session Dream Machine",
+		description: "Voyage intérieur par stimulation lumineuse",
+		url: "https://aurelia-desvaux.fr/dream-machine",
+	},
+] as const;
+
+function buildPriceSchema(tarifs: Awaited<ReturnType<typeof getSheetData>>["tarifs"]) {
+	return {
+		"@context": "https://schema.org",
+		"@type": "ItemList",
+		name: "Tarifs des séances – Aurélia Desvaux",
+		description:
+			"Tarifs des séances de thérapies brèves (hypnose, PNL, EFT, préparation mentale) à Valbonne Sophia-Antipolis.",
+		url: "https://aurelia-desvaux.fr/tarifs",
+		itemListElement: OFFERS.map((offer, index) => ({
 			"@type": "ListItem",
-			position: 1,
+			position: index + 1,
 			item: {
 				"@type": "Offer",
-				name: "Accompagnement Thérapeutique",
-				description: "Séance individuelle – Stress, anxiété, phobies, sommeil, perte de poids…",
-				price: "70",
+				name: offer.name,
+				description: offer.description,
+				price: String(findTarif(tarifs, offer.name)),
 				priceCurrency: "EUR",
 				seller: { "@type": "LocalBusiness", name: "Aurélia Desvaux" },
-				url: "https://aurelia-desvaux.fr/tarifs",
+				url: offer.url,
 			},
-		},
-		{
-			"@type": "ListItem",
-			position: 2,
-			item: {
-				"@type": "Offer",
-				name: "Arrêt du Tabac",
-				description: "Programme personnalisé pour arrêter de fumer durablement",
-				price: "120",
-				priceCurrency: "EUR",
-				seller: { "@type": "LocalBusiness", name: "Aurélia Desvaux" },
-				url: "https://aurelia-desvaux.fr/tarifs",
-			},
-		},
-		{
-			"@type": "ListItem",
-			position: 3,
-			item: {
-				"@type": "Offer",
-				name: "Package 5 séances",
-				description: "Accompagnement personnalisé sur 5 séances",
-				price: "300",
-				priceCurrency: "EUR",
-				seller: { "@type": "LocalBusiness", name: "Aurélia Desvaux" },
-				url: "https://aurelia-desvaux.fr/tarifs",
-			},
-		},
-		{
-			"@type": "ListItem",
-			position: 4,
-			item: {
-				"@type": "Offer",
-				name: "Préparation Mentale",
-				description: "Séance de préparation mentale (examens, sport, entretiens)",
-				price: "90",
-				priceCurrency: "EUR",
-				seller: { "@type": "LocalBusiness", name: "Aurélia Desvaux" },
-				url: "https://aurelia-desvaux.fr/tarifs",
-			},
-		},
-		{
-			"@type": "ListItem",
-			position: 5,
-			item: {
-				"@type": "Offer",
-				name: "Session Dream Machine",
-				description: "Voyage intérieur par stimulation lumineuse",
-				price: "30",
-				priceCurrency: "EUR",
-				seller: { "@type": "LocalBusiness", name: "Aurélia Desvaux" },
-				url: "https://aurelia-desvaux.fr/dream-machine",
-			},
-		},
-	],
-};
+		})),
+	};
+}
 
 export const metadata: Metadata = {
 	title: {
@@ -111,14 +96,20 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function TarifsPage() {
+export default async function TarifsPage() {
+	// Lecture serveur, mise en cache 1 h par `getSheetData` — repli automatique
+	// si la feuille est indisponible.
+	const { tarifs } = await getSheetData();
+
 	return (
 		<>
 			<script
 				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(priceSchema) }}
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(buildPriceSchema(tarifs)),
+				}}
 			/>
-			<Tarifs />
+			<Tarifs rows={tarifs} />
 		</>
 	);
 }

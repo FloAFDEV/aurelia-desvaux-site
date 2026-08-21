@@ -7,9 +7,18 @@ import aureliaPortrait from "@/assets/aurelia-portrait-nature.webp";
 import treeLogo from "@/assets/tree-logo.webp";
 import { Calendar, MapPin, Award } from "lucide-react";
 import { MedoucineBadge } from "@/components/MedoucineBadge";
+import type { SheetData } from "@/lib/sheetData";
+
+type MedoucineData = SheetData["medoucine"];
+
+interface HeroProps {
+	/** Note et volume d'avis Médoucine, résolus côté serveur depuis le Sheet. */
+	medoucine?: MedoucineData;
+}
+
 import { trackBookingClick } from "@/hooks/useGoogleAnalytics";
 
-export const Hero = () => {
+export const Hero = ({ medoucine }: HeroProps) => {
 	const scrollY = useScrollPosition();
 
 	// Optimisation: Limite la parallaxe à 100px max pour éviter les calculs inutiles
@@ -77,7 +86,7 @@ export const Hero = () => {
 							</div>
 
 							<div className="animate-fade-in-up opacity-0 delay-500">
-								<MedoucineBadge variant="compact" />
+								<MedoucineBadge variant="compact" initial={medoucine} />
 							</div>
 						</div>
 

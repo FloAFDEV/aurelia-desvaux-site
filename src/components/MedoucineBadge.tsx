@@ -3,12 +3,20 @@
 import { useState, useEffect } from "react";
 import { Star, ExternalLink } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
-import { useCountUp } from "@/hooks/useCountUp";
 import { FALLBACK_MEDOUCINE } from "@/lib/sheetData";
 
 interface MedoucineBadgeProps {
 	variant?: "default" | "compact" | "full";
 	className?: string;
+	/**
+	 * Note et volume d'avis résolus côté serveur depuis le Google Sheet.
+	 *
+	 * Fournis, ils sont rendus dans le HTML initial : les robots et les
+	 * visiteurs sans JavaScript lisent la vraie valeur, et il n'y a plus de
+	 * bascule entre un repli et la donnée du Sheet. Omis, le composant
+	 * retombe sur son ancien comportement (récupération après montage).
+	 */
+	initial?: MedoucineData;
 }
 
 interface MedoucineData {
@@ -24,17 +32,22 @@ const FALLBACK_DATA: MedoucineData = FALLBACK_MEDOUCINE;
 export const MedoucineBadge = ({
 	variant = "default",
 	className = "",
+	initial,
 }: MedoucineBadgeProps) => {
-	const [data, setData] = useState<MedoucineData | null>(null);
-	const [isLoading, setIsLoading] = useState(true);
-	const { ref, isInView } = useInView<HTMLAnchorElement>(0.1);
+	const [data, setData] = useState<MedoucineData | null>(initial ?? null);
+	const [isLoading, setIsLoading] = useState(!initial);
+	const { ref } = useInView<HTMLAnchorElement>(0.1);
 
 	// Utiliser data ou fallback selon la réussite du fetch
 	const displayData = data || FALLBACK_DATA;
-	const animatedCount = useCountUp(displayData.reviewCount, 2000, isInView);
+	// Affiché tel quel, sans compteur animé : celui-ci démarrait à zéro, et
+	// c'est ce zéro qui se retrouvait dans le HTML servi aux robots.
+	const reviewCount = displayData.reviewCount;
 
-	// Récupérer les données depuis l'API APRÈS le montage initial (pas de pénalité perf)
+	// Récupération après montage — uniquement si le serveur n'a rien fourni.
 	useEffect(() => {
+		if (initial) return;
+
 		// Utiliser setTimeout pour différer le fetch après le montage
 		const timer = setTimeout(() => {
 			fetch("/api/sheet")
@@ -58,7 +71,7 @@ export const MedoucineBadge = ({
 		}, 100); // 100ms après le montage pour ne pas bloquer le rendu initial
 
 		return () => clearTimeout(timer);
-	}, []);
+	}, [initial]);
 
 	const formattedDate = new Date(
 		displayData.lastUpdated.split("/").reverse().join("-")
@@ -73,7 +86,7 @@ export const MedoucineBadge = ({
 	// Afficher le rating tel quel depuis Google Sheets (aucun formatage)
 	const formattedRating = String(displayData.rating);
 
-	const ariaLabel = `Voir le profil Médoucine d'Aurélia Desvaux (${formattedRating} étoiles, ${animatedCount} avis)`;
+	const ariaLabel = `Voir le profil Médoucine d'Aurélia Desvaux (${formattedRating} étoiles, ${reviewCount} avis)`;
 
 	if (variant === "compact") {
 		return (
@@ -94,7 +107,7 @@ export const MedoucineBadge = ({
 					))}
 				</div>
 				<span className="font-body text-xs font-medium text-amber-900 dark:text-amber-200">
-					{formattedRating} • {animatedCount} avis
+					{formattedRating} • {reviewCount} avis
 				</span>
 				<ExternalLink className="w-3 h-3 text-amber-600 dark:text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity" />
 			</a>
@@ -121,7 +134,7 @@ export const MedoucineBadge = ({
 						))}
 					</div>
 					<span className="font-body text-xs text-amber-700 dark:text-amber-300">
-						{animatedCount} avis vérifiés
+						{reviewCount} avis vérifiés
 					</span>
 					<span className="font-body text-[10px] text-amber-600 dark:text-amber-400">
 						Dernière mise à jour : {formattedDate}
@@ -163,7 +176,7 @@ export const MedoucineBadge = ({
 					{formattedRating}
 				</span>
 				<span className="font-body text-xs text-amber-700 dark:text-amber-300">
-					{animatedCount} avis
+					{reviewCount} avis
 				</span>
 				<span className="font-body text-xs text-amber-600 dark:text-amber-400">
 					Dernière mise à jour : {formattedDate}

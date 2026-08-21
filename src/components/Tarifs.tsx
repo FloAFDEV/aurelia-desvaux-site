@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import type { SheetRow } from "@/lib/sheetData";
 import Image from "next/image";
 import { DecorativeBlob } from "@/components/ui/DecorativeBlob";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -20,7 +20,10 @@ import {
 import treeLogo from "@/assets/tree-logo.webp";
 import cabinetImage from "@/assets/cabinet.webp";
 
-// Structure simple des prestations avec données statiques
+/**
+ * Une prestation telle qu'affichée : le tarif et la description viennent du
+ * Google Sheet, l'habillage (icône, unité, badge, lien) vit ici.
+ */
 interface Prestation {
 	icon: typeof Heart;
 	title: string;
@@ -31,96 +34,84 @@ interface Prestation {
 	link?: string;
 }
 
-// Données par défaut (fallback) si le tableau Google Sheets renvoi une erreur ou est vide
-const DEFAULT_PRESTATIONS: Prestation[] = [
-	{
+/**
+ * Habillage de chaque prestation, indexé par son intitulé dans le Sheet.
+ *
+ * Ce tableau ne contient volontairement AUCUN tarif : la feuille de calcul est
+ * la seule source de vérité des prix, et son propre repli vit dans
+ * `sheetData.ts`. Dupliquer un tarif ici recréerait une deuxième vérité, qui
+ * divergerait silencieusement dès la première mise à jour d'Aurélia.
+ *
+ * Une prestation ajoutée au Sheet sans entrée ici s'affiche quand même, avec
+ * l'habillage par défaut.
+ */
+type Presentation = Pick<Prestation, "icon" | "unit"> &
+	Partial<Pick<Prestation, "description" | "badge" | "link">>;
+
+const PRESENTATION: Record<string, Presentation> = {
+	"accompagnement thérapeutique": {
 		icon: Heart,
-		title: "Accompagnement Thérapeutique",
 		description: "Stress, anxiété, phobies, sommeil, perte de poids…",
-		tarif: 70,
 		unit: "/ séance",
 	},
-	{
+	"arrêt du tabac": {
 		icon: Cigarette,
-		title: "Arrêt du Tabac",
 		description: "Programme personnalisé pour arrêter de fumer durablement",
-		tarif: 120,
 		unit: "/ séance",
 	},
-	{
+	"guérison des 5 blessures": {
 		icon: Sparkles,
-		title: "Guérison des 5 blessures",
 		description: "Rejet, Abandon, Injustice, Trahison, Humiliation",
-		tarif: 350,
 		unit: "/ 6 séances",
 		badge: "Package",
 	},
-	{
+	"package 5 séances": {
 		icon: Users,
-		title: "Package 5 séances",
 		description: "Accompagnement personnalisé sur plusieurs séances",
-		tarif: 300,
 		unit: "/ 5 séances",
 		badge: "Économisez 50€",
 	},
-	{
+	"session dream machine": {
 		icon: Lightbulb,
-		title: "Session Dream Machine",
 		description: "Voyage intérieur par stimulation lumineuse",
-		tarif: 30,
 		unit: "+ 1€/min",
 		link: "/dream-machine",
 	},
-	{
+	"préparation mentale": {
 		icon: Brain,
-		title: "Préparation Mentale",
 		description:
 			"Préparation mentale personnalisée combinant PNL, hypnose, EFT et coaching pour renforcer vos ressources internes, clarifier vos objectifs et aborder vos défis avec confiance et sérénité.",
-		tarif: 90,
 		unit: "/ séance",
 		link: "/preparation-mentale",
 	},
-];
+};
 
-export default function Tarifs() {
+const DEFAULT_PRESENTATION: Presentation = { icon: Heart, unit: "/ séance" };
+
+/** Fusionne une ligne du Sheet avec son habillage. */
+function toPrestation(row: SheetRow): Prestation {
+	const skin = PRESENTATION[row.prestation.trim().toLowerCase()] ?? DEFAULT_PRESENTATION;
+	return {
+		icon: skin.icon,
+		title: row.prestation,
+		description: row.description || skin.description || "",
+		tarif: row.tarif,
+		unit: skin.unit,
+		badge: skin.badge,
+		link: skin.link,
+	};
+}
+
+interface TarifsProps {
+	/** Lignes du Sheet, résolues côté serveur (repli inclus). */
+	rows: SheetRow[];
+}
+
+export default function Tarifs({ rows }: TarifsProps) {
 	const { ref, isInView } = useInView();
-	const [prestations, setPrestations] =
-		useState<Prestation[]>(DEFAULT_PRESTATIONS);
-
-	// Récupérer les tarifs depuis l'API
-	useEffect(() => {
-		const timestamp = new Date().getTime();
-		fetch(`/api/sheet?ts=${timestamp}`)
-			.then((res) => res.json())
-			.then((data) => {
-				if (data.tarifs && data.tarifs.length > 0) {
-					const updated: Prestation[] = data.tarifs.map(
-						(row: { prestation: string; tarif: number; description?: string }) => {
-							const defaultItem = DEFAULT_PRESTATIONS.find(
-								(d) =>
-									d.title.toLowerCase() ===
-									row.prestation.toLowerCase()
-							);
-
-							return {
-								icon: defaultItem?.icon || Heart,
-								title: row.prestation,
-								description: row.description || defaultItem?.description || "",
-								tarif: row.tarif,
-								unit: defaultItem?.unit || "/ séance",
-								badge: defaultItem?.badge,
-								link: defaultItem?.link,
-							};
-						}
-					);
-
-					setPrestations(updated);
-				}
-			})
-			.catch((err) => {
-				console.error("❌ Erreur récupération tarifs:", err);
-			});
-	}, []);
+	// Résolu au rendu serveur : le HTML initial porte déjà les tarifs du Sheet,
+	// donc aucune bascule visible, et les robots lisent les bonnes valeurs.
+	const prestations: Prestation[] = rows.map(toPrestation);
 
 	return (
 		<>
