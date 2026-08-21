@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Star, ExternalLink } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { useCountUp } from "@/hooks/useCountUp";
 import { FALLBACK_MEDOUCINE } from "@/lib/sheetData";
 
 interface MedoucineBadgeProps {
@@ -36,13 +37,31 @@ export const MedoucineBadge = ({
 }: MedoucineBadgeProps) => {
 	const [data, setData] = useState<MedoucineData | null>(initial ?? null);
 	const [isLoading, setIsLoading] = useState(!initial);
-	const { ref } = useInView<HTMLAnchorElement>(0.1);
+	const { ref, isInView } = useInView<HTMLAnchorElement>(0.1);
 
 	// Utiliser data ou fallback selon la réussite du fetch
 	const displayData = data || FALLBACK_DATA;
-	// Affiché tel quel, sans compteur animé : celui-ci démarrait à zéro, et
-	// c'est ce zéro qui se retrouvait dans le HTML servi aux robots.
-	const reviewCount = displayData.reviewCount;
+
+	// Le décompte part de zéro. Rendu tel quel, c'est ce zéro qui se retrouvait
+	// dans le HTML servi aux robots et aux visiteurs sans JavaScript — d'où la
+	// vraie valeur tant que l'animation n'a pas démarré. Serveur et première
+	// hydratation affichent donc la même chose : aucun écart d'hydratation.
+	const [shouldAnimate, setShouldAnimate] = useState(false);
+
+	// Un badge déjà à l'écran au chargement garde sa valeur : la relancer à zéro
+	// sous les yeux du visiteur produirait un ressaut. Celui qu'on découvre en
+	// défilant s'anime, puisque son nombre n'a pas encore été lu.
+	useEffect(() => {
+		const el = ref.current;
+		if (!el) return;
+		const box = el.getBoundingClientRect();
+		const visibleAuChargement = box.top < window.innerHeight && box.bottom > 0;
+		if (!visibleAuChargement) setShouldAnimate(true);
+	}, [ref]);
+
+	const animate = shouldAnimate && isInView;
+	const animatedCount = useCountUp(displayData.reviewCount, 2000, animate);
+	const reviewCount = animate ? animatedCount : displayData.reviewCount;
 
 	// Récupération après montage — uniquement si le serveur n'a rien fourni.
 	useEffect(() => {
