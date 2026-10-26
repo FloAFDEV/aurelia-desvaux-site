@@ -5,38 +5,34 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { X, Cookie, Shield, BarChart3, Megaphone } from "lucide-react";
 import treeLogo from "@/assets/tree-logo.webp";
-
-// Durée de conservation du consentement : 6 mois (conforme CNIL)
-const CONSENT_DURATION_MS = 6 * 30 * 24 * 60 * 60 * 1000;
-
-interface ConsentData {
-	choice: "all" | "essential" | "custom";
-	timestamp: number;
-	preferences?: {
-		analytics: boolean;
-		marketing: boolean;
-	};
-}
+import {
+	CONSENT_STORAGE_KEY,
+	NO_CONSENT,
+	OPEN_COOKIE_SETTINGS_EVENT,
+	PREFERENCES_STORAGE_KEY,
+	clearDeniedCookies,
+	parseStoredConsent,
+	preferencesFromConsent,
+	toGtagConsent,
+	type ConsentChoice,
+	type ConsentData,
+	type ConsentPreferences,
+} from "@/lib/consent";
 
 export const CookieBanner = () => {
 	const [isVisible, setIsVisible] = useState(false);
 	const [showDetails, setShowDetails] = useState(false);
-	const [preferences, setPreferences] = useState({
-		analytics: true,
-		marketing: true,
-	});
+	// Cases décochées par défaut (CNIL : pas de consentement pré-coché)
+	const [preferences, setPreferences] = useState<ConsentPreferences>(NO_CONSENT);
 
 	useEffect(() => {
 		try {
-			const storedConsent = localStorage.getItem("cookie-consent");
+			const storedConsent = localStorage.getItem(CONSENT_STORAGE_KEY);
 			if (storedConsent) {
-				const consentData: ConsentData = JSON.parse(storedConsent);
-				const now = Date.now();
-				const expirationDate = consentData.timestamp + CONSENT_DURATION_MS;
-
-				if (now > expirationDate) {
-					localStorage.removeItem("cookie-consent");
-					localStorage.removeItem("cookie-preferences");
+				// Le choix valide est réappliqué à GA dès l'init (layout) : rien à faire ici
+				if (!parseStoredConsent(storedConsent)) {
+					localStorage.removeItem(CONSENT_STORAGE_KEY);
+					localStorage.removeItem(PREFERENCES_STORAGE_KEY);
 					setIsVisible(true);
 				}
 			} else {
@@ -49,54 +45,54 @@ export const CookieBanner = () => {
 		}
 	}, []);
 
-	const saveConsent = (choice: "all" | "essential" | "custom", prefs?: { analytics: boolean; marketing: boolean }) => {
+	// « Gérer les cookies » (footer) : rouvre le bandeau sur les choix actuels
+	useEffect(() => {
+		const openSettings = () => {
+			let stored: ConsentData | null = null;
+			try {
+				stored = parseStoredConsent(localStorage.getItem(CONSENT_STORAGE_KEY));
+			} catch {
+				// stockage indisponible : cases décochées
+			}
+			setPreferences(preferencesFromConsent(stored));
+			setShowDetails(true);
+			setIsVisible(true);
+		};
+		window.addEventListener(OPEN_COOKIE_SETTINGS_EVENT, openSettings);
+		return () => window.removeEventListener(OPEN_COOKIE_SETTINGS_EVENT, openSettings);
+	}, []);
+
+	const applyConsent = (choice: ConsentChoice, prefs: ConsentPreferences) => {
 		const consentData: ConsentData = {
 			choice,
 			timestamp: Date.now(),
-			...(prefs && { preferences: prefs }),
+			...(choice !== "essential" && { preferences: prefs }),
 		};
 
-		localStorage.setItem("cookie-consent", JSON.stringify(consentData));
-		if (prefs) {
-			localStorage.setItem("cookie-preferences", JSON.stringify(prefs));
+		try {
+			localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(consentData));
+			if (choice === "essential") {
+				localStorage.removeItem(PREFERENCES_STORAGE_KEY);
+			} else {
+				localStorage.setItem(PREFERENCES_STORAGE_KEY, JSON.stringify(prefs));
+			}
+		} catch (e) {
+			console.error("Erreur lors de l'enregistrement du consentement:", e);
 		}
-	};
 
-	const handleAcceptAll = () => {
-		saveConsent("all", { analytics: true, marketing: true });
+		if (typeof window.gtag === "function") {
+			window.gtag("consent", "update", toGtagConsent(prefs));
+		}
+		clearDeniedCookies(prefs);
 		setIsVisible(false);
-
-		if (typeof window !== "undefined" && (window as any).gtag) {
-			(window as any).gtag("consent", "update", {
-				analytics_storage: "granted",
-				ad_storage: "granted",
-			});
-		}
+		setShowDetails(false);
 	};
 
-	const handleRejectAll = () => {
-		saveConsent("essential");
-		setIsVisible(false);
+	const handleAcceptAll = () => applyConsent("all", { analytics: true, marketing: true });
 
-		if (typeof window !== "undefined" && (window as any).gtag) {
-			(window as any).gtag("consent", "update", {
-				analytics_storage: "denied",
-				ad_storage: "denied",
-			});
-		}
-	};
+	const handleRejectAll = () => applyConsent("essential", NO_CONSENT);
 
-	const handleSavePreferences = () => {
-		saveConsent("custom", preferences);
-		setIsVisible(false);
-
-		if (typeof window !== "undefined" && (window as any).gtag) {
-			(window as any).gtag("consent", "update", {
-				analytics_storage: preferences.analytics ? "granted" : "denied",
-				ad_storage: preferences.marketing ? "granted" : "denied",
-			});
-		}
-	};
+	const handleSavePreferences = () => applyConsent("custom", preferences);
 
 	if (!isVisible) return null;
 

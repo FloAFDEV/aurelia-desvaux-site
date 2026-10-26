@@ -11,6 +11,8 @@ import { FloatingCTA } from "@/components/FloatingCTA";
 import { CookieBanner } from "@/components/CookieBanner";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { WebVitals } from "@/components/analytics/WebVitals";
+import { ClickTracking } from "@/components/analytics/ClickTracking";
+import { buildConsentRestoreScript } from "@/lib/consent";
 
 // Font optimisée avec display swap et préchargement
 const inter = Inter({
@@ -148,6 +150,9 @@ export default function RootLayout({
 									'wait_for_update': 500
 								});
 
+								// Réapplique le choix sauvegardé avant le premier hit (pages et visites suivantes)
+								${buildConsentRestoreScript()}
+
 								// Configuration GA4 avec mode de consentement V2
 								// Envoie des pings anonymes même sans consentement (pas de cookies)
 								gtag('config', '${GA_MEASUREMENT_ID}', {
@@ -163,6 +168,9 @@ export default function RootLayout({
 
 				{/* Core Web Vitals tracking */}
 				<WebVitals />
+
+				{/* Clics téléphone / Médoucine (clic_telephone, clic_medoucine) */}
+				<ClickTracking />
 
 				{/* Header avec Suspense et fallback optimisé */}
 				<Suspense

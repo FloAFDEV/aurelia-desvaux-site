@@ -7,7 +7,12 @@ const isDev = process.env.NODE_ENV !== "production";
 const contentSecurityPolicy = [
 	"default-src 'self'",
 	`script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com`,
-	`connect-src 'self'${isDev ? " ws: wss:" : ""} https://*.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net`,
+	// Google Ads (tag AW lié à GA4) : origines relevées en navigateur, toutes en fetch/beacon
+	//   pagead2.googlesyndication.com/ccm/collect — hit Ads sur chaque page vue (consentement refusé ou non)
+	//   www.google.com/ccm/collect, ad.doubleclick.net/ccm/s — hits Ads une fois ad_storage accordé
+	//   www.googleadservices.com/pagead/set_partitioned_cookie — arrivée depuis une annonce (gclid)
+	//   analytics.google.com/g/collect — hit GA4 une fois le consentement accordé
+	`connect-src 'self'${isDev ? " ws: wss:" : ""} https://*.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://ad.doubleclick.net https://www.googleadservices.com`,
 	"img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net",
 	"style-src 'self' 'unsafe-inline'",
 	"font-src 'self' data:",
