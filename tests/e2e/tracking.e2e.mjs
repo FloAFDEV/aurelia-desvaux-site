@@ -36,6 +36,9 @@ const consentCommands = (page) =>
 const events = (page, name) =>
 	page.evaluate((n) => (window.dataLayer || []).filter((e) => e[0] === "event" && e[1] === n).length, name);
 
+const googleCookies = async (page) =>
+	(await page.context().cookies()).filter((c) => /^_ga|^_gcl/.test(c.name)).map((c) => c.name);
+
 const all = (value) => Object.fromEntries(CONSENT_KEYS.map((k) => [k, value]));
 
 const browser = await chromium.launch();
@@ -85,6 +88,8 @@ const banner = (page) => page.locator("#cookie-banner-title");
 		await banner(page).waitFor({ state: "visible" });
 		assert.deepEqual(await consentState(page), all("denied"));
 		assert.deepEqual(await consentCommands(page), ["default"]);
+		await page.waitForTimeout(2000);
+		assert.deepEqual(await googleCookies(page), [], "aucun cookie Google sans consentement");
 	});
 
 	await step("personnaliser : cases décochées par défaut", async () => {
@@ -98,6 +103,8 @@ const banner = (page) => page.locator("#cookie-banner-title");
 		await page.getByRole("button", { name: "Tout accepter" }).click();
 		assert.deepEqual(await consentState(page), all("granted"));
 		assert.equal(await banner(page).isVisible(), false);
+		await page.waitForTimeout(2000);
+		assert.ok((await googleCookies(page)).some((n) => n.startsWith("_ga")), "cookie _ga déposé après acceptation");
 	});
 
 	await step("3. rechargement après acceptation : choix réappliqué avant config", async () => {
@@ -119,6 +126,20 @@ const banner = (page) => page.locator("#cookie-banner-title");
 		assert.deepEqual(await consentState(page), all("granted"));
 	});
 
+	await step("7. réouverture puis croix : fermeture sans modifier les choix", async () => {
+		const storedBefore = await page.evaluate(() => localStorage.getItem("cookie-consent"));
+		const updatesBefore = (await consentCommands(page)).length;
+		await page.getByRole("button", { name: "Gérer les cookies" }).click();
+		await banner(page).waitFor({ state: "visible" });
+		await page.getByRole("button", { name: "Fermer sans modifier mes choix" }).click();
+		assert.equal(await banner(page).isVisible(), false);
+		assert.equal((await consentCommands(page)).length, updatesBefore);
+		assert.deepEqual(await consentState(page), all("granted"));
+		assert.equal(await page.evaluate(() => localStorage.getItem("cookie-consent")), storedBefore);
+		await goto(page, "/hypnose");
+		assert.deepEqual(await consentState(page), all("granted"));
+	});
+
 	await step("7. « Gérer les cookies » rouvre le bandeau avec les choix actuels", async () => {
 		await page.getByRole("button", { name: "Gérer les cookies" }).click();
 		await banner(page).waitFor({ state: "visible" });
@@ -131,8 +152,20 @@ const banner = (page) => page.locator("#cookie-banner-title");
 		await page.locator("#marketing").uncheck();
 		await page.getByRole("button", { name: "Enregistrer mes préférences" }).click();
 		assert.deepEqual(await consentState(page), all("denied"));
-		const gaCookies = (await page.context().cookies()).filter((c) => /^_ga|^_gcl/.test(c.name));
-		assert.deepEqual(gaCookies.map((c) => c.name), []);
+		assert.deepEqual(await googleCookies(page), []);
+		await goto(page, "/");
+		assert.deepEqual(await consentState(page), all("denied"));
+	});
+
+	await step("8. réouverture : refus et acceptation restent accessibles (← Retour)", async () => {
+		await page.getByRole("button", { name: "Gérer les cookies" }).click();
+		await page.getByRole("button", { name: "← Retour" }).click();
+		await page.getByRole("button", { name: "Tout accepter" }).click();
+		assert.deepEqual(await consentState(page), all("granted"));
+		await page.getByRole("button", { name: "Gérer les cookies" }).click();
+		await page.getByRole("button", { name: "← Retour" }).click();
+		await page.getByRole("button", { name: "Tout rejeter", exact: true }).click();
+		assert.deepEqual(await consentState(page), all("denied"));
 		await goto(page, "/");
 		assert.deepEqual(await consentState(page), all("denied"));
 	});
@@ -153,8 +186,23 @@ const banner = (page) => page.locator("#cookie-banner-title");
 		assert.deepEqual(await consentState(page), all("denied"));
 		await goto(page, "/");
 		assert.deepEqual(await consentState(page), all("denied"));
-		await page.waitForTimeout(1000);
+		await page.waitForTimeout(2000);
 		assert.equal(await banner(page).isVisible(), false);
+		assert.deepEqual(await googleCookies(page), [], "aucun cookie Google après refus");
+	});
+	await page.context().close();
+}
+
+// ---------------------------------------------------------------
+{
+	const page = await newPage();
+	await step("5. première visite, croix « Tout rejeter et fermer » : refus explicite enregistré", async () => {
+		await goto(page, "/");
+		await page.getByRole("button", { name: "Tout rejeter et fermer" }).click();
+		assert.equal(await banner(page).isVisible(), false);
+		assert.deepEqual(await consentState(page), all("denied"));
+		const stored = await page.evaluate(() => JSON.parse(localStorage.getItem("cookie-consent")).choice);
+		assert.equal(stored, "essential");
 	});
 	await page.context().close();
 }

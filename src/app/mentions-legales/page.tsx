@@ -185,22 +185,23 @@ export default function MentionsLegales() {
 							</h2>
 							<div className="bg-card rounded-xl p-6 shadow-soft">
 								<p className="font-body text-muted-foreground mb-4">
-									<strong className="text-foreground">
-										Ce site ne collecte aucune donnée
-										personnelle.
-									</strong>{" "}
-									Il s'agit d'un site exclusivement
-									informatif, sans formulaire de contact, sans
-									inscription et sans création de compte
-									utilisateur.
+									Il s'agit d'un site informatif, sans
+									formulaire de contact, sans inscription et
+									sans création de compte utilisateur.
 								</p>
 								<p className="font-body text-muted-foreground mb-4">
-									Seuls des cookies techniques et analytiques
-									(Google Analytics, avec votre consentement)
-									peuvent être utilisés pour mesurer
-									l'audience du site. Ces données sont
-									anonymisées et ne permettent pas de vous
-									identifier.
+									Avec votre consentement, des cookies de
+									mesure d'audience (Google Analytics) et
+									publicitaires (Google Ads) peuvent être
+									utilisés. Le détail des données transmises
+									à Google figure dans la{" "}
+									<a
+										href="/politique-confidentialite"
+										className="text-primary hover:underline"
+									>
+										politique de confidentialité
+									</a>
+									.
 								</p>
 								<p className="font-body text-muted-foreground">
 									Pour toute question, vous pouvez contacter

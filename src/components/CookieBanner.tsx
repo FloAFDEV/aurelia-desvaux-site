@@ -24,6 +24,8 @@ export const CookieBanner = () => {
 	const [showDetails, setShowDetails] = useState(false);
 	// Cases décochées par défaut (CNIL : pas de consentement pré-coché)
 	const [preferences, setPreferences] = useState<ConsentPreferences>(NO_CONSENT);
+	// Bandeau rouvert sur un choix déjà enregistré : la croix ferme sans rien modifier
+	const [hasSavedChoice, setHasSavedChoice] = useState(false);
 
 	useEffect(() => {
 		try {
@@ -55,6 +57,7 @@ export const CookieBanner = () => {
 				// stockage indisponible : cases décochées
 			}
 			setPreferences(preferencesFromConsent(stored));
+			setHasSavedChoice(stored !== null);
 			setShowDetails(true);
 			setIsVisible(true);
 		};
@@ -135,14 +138,23 @@ export const CookieBanner = () => {
 							</div>
 							<button
 								onClick={() => {
-									if (showDetails) {
+									if (hasSavedChoice) {
+										setIsVisible(false);
+										setShowDetails(false);
+									} else if (showDetails) {
 										setShowDetails(false);
 									} else {
 										handleRejectAll();
 									}
 								}}
 								className="text-foreground/60 hover:text-foreground transition-colors p-2 hover:bg-white/30 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary flex-shrink-0"
-								aria-label={showDetails ? "Fermer les détails" : "Tout rejeter et fermer"}
+								aria-label={
+									hasSavedChoice
+										? "Fermer sans modifier mes choix"
+										: showDetails
+											? "Fermer les détails"
+											: "Tout rejeter et fermer"
+								}
 							>
 								<X className="w-5 h-5" />
 							</button>
