@@ -66,8 +66,9 @@ export default function PolitiqueConfidentialitePage() {
 									téléphone ou sur le lien de prise de
 									rendez-vous Medoucine, informations
 									techniques transmises par votre navigateur)
-									sont en revanche transmises à Google par
-									les outils de mesure décrits ci-dessous.
+									ne sont transmises à Google que si vous
+									acceptez les outils de mesure décrits
+									ci-dessous.
 								</p>
 							</div>
 
@@ -101,20 +102,29 @@ export default function PolitiqueConfidentialitePage() {
 											Cookies marketing :
 										</strong>{" "}
 										Google Ads pour mesurer l'efficacité de
-										nos campagnes publicitaires et
-										personnaliser les publicités (uniquement
-										avec votre consentement)
+										nos campagnes publicitaires (uniquement
+										avec votre consentement). Le site
+										n'active pas la personnalisation des
+										publicités (remarketing).
 									</li>
 								</ul>
 								<p className="font-body text-muted-foreground mt-4">
-									Tant que vous n'avez pas donné votre
-									consentement, ou si vous le refusez, aucun
-									cookie analytique ou marketing n'est
-									déposé. Google Analytics et Google Ads
-									reçoivent néanmoins des signaux sans cookie
-									indiquant l'état de votre consentement et
-									la page consultée (mode de consentement de
-									Google).
+									Tant que vous n'avez pas accepté les
+									cookies analytiques, aucun outil Google
+									n'est chargé et aucune donnée n'est
+									transmise à Google. Si vous acceptez les
+									cookies analytiques mais refusez les
+									cookies marketing, aucun cookie
+									publicitaire n'est déposé ; Google peut
+									néanmoins recevoir, via Google Analytics,
+									des signaux sans cookie liés à la mesure
+									des campagnes.
+								</p>
+								<p className="font-body text-muted-foreground mt-4">
+									La carte Google Maps de la section Contact
+									n'est chargée que si vous cliquez sur
+									« Afficher la carte » : votre navigateur se
+									connecte alors aux serveurs de Google.
 								</p>
 								<p className="font-body text-muted-foreground mt-4">
 									Vous pouvez modifier ou retirer votre

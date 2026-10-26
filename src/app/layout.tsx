@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
-import Script from "next/script";
 import { Inter } from "next/font/google";
 import { StructuredData } from "@/components/SEO/StructuredData";
 import { SEO } from "@/lib/seo";
@@ -12,7 +11,6 @@ import { CookieBanner } from "@/components/CookieBanner";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { WebVitals } from "@/components/analytics/WebVitals";
 import { ClickTracking } from "@/components/analytics/ClickTracking";
-import { buildConsentRestoreScript } from "@/lib/consent";
 
 // Font optimisée avec display swap et préchargement
 const inter = Inter({
@@ -22,11 +20,6 @@ const inter = Inter({
 	variable: "--font-inter",
 	adjustFontFallback: true,
 });
-
-// ----- Configuration Google Analytics 4 -----
-// 🔧 REMPLACER PAR VOTRE ID GA4 (format: G-XXXXXXXXXX)
-const GA_MEASUREMENT_ID =
-	process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-V96H9MXTZ6";
 
 // ----- Metadata SEO -----
 export const metadata: Metadata = {
@@ -125,46 +118,7 @@ export default function RootLayout({
 				{/* JSON-LD LocalBusiness — SSR, visible dans view-source */}
 				<StructuredData />
 
-				{/* Google Analytics 4 - Chargé après interaction */}
-				{GA_MEASUREMENT_ID && (
-					<>
-						<Script
-							src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-							strategy="afterInteractive"
-						/>
-						<Script
-							id="google-analytics"
-							strategy="afterInteractive"
-						>
-							{`
-								window.dataLayer = window.dataLayer || [];
-								function gtag(){dataLayer.push(arguments);}
-								gtag('js', new Date());
-
-								// Google Consent Mode V2 - Collecte de données anonymes par défaut (conforme RGPD)
-								gtag('consent', 'default', {
-									'analytics_storage': 'denied',
-									'ad_storage': 'denied',
-									'ad_user_data': 'denied',
-									'ad_personalization': 'denied',
-									'wait_for_update': 500
-								});
-
-								// Réapplique le choix sauvegardé avant le premier hit (pages et visites suivantes)
-								${buildConsentRestoreScript()}
-
-								// Configuration GA4 avec mode de consentement V2
-								// Envoie des pings anonymes même sans consentement (pas de cookies)
-								gtag('config', '${GA_MEASUREMENT_ID}', {
-									page_path: window.location.pathname,
-									'anonymize_ip': true,
-									'allow_google_signals': false,
-									'allow_ad_personalization_signals': false
-								});
-							`}
-						</Script>
-					</>
-				)}
+				{/* Google Analytics 4 : chargé par CookieBanner uniquement après consentement (src/lib/googleTag.ts) */}
 
 				{/* Core Web Vitals tracking */}
 				<WebVitals />
