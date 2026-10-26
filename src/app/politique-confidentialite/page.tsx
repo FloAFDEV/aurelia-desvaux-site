@@ -95,7 +95,8 @@ export default function PolitiqueConfidentialitePage() {
 										</strong>{" "}
 										Google Analytics pour mesurer l'audience
 										du site (uniquement avec votre
-										consentement)
+										consentement, durée de vie de 6 mois
+										maximum)
 									</li>
 									<li>
 										<strong className="text-foreground">
@@ -103,7 +104,8 @@ export default function PolitiqueConfidentialitePage() {
 										</strong>{" "}
 										Google Ads pour mesurer l'efficacité de
 										nos campagnes publicitaires (uniquement
-										avec votre consentement). Le site
+										avec votre consentement, durée de vie de
+										6 mois maximum). Le site
 										n'active pas la personnalisation des
 										publicités (remarketing).
 									</li>
@@ -168,7 +170,10 @@ export default function PolitiqueConfidentialitePage() {
 									pseudonymes stockés dans des cookies : les
 									statistiques que nous consultons sont
 									agrégées, mais les données sont traitées
-									par Google. Vous pouvez désactiver Google
+									par Google. Les données détaillées
+									associées à ces identifiants sont
+									conservées 2 mois dans Google Analytics.
+									Vous pouvez désactiver Google
 									Analytics en installant le module
 									complémentaire disponible sur{" "}
 									<a

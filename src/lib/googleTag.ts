@@ -1,6 +1,11 @@
 // Google tag (GA4, avec Google Ads lié côté Google) en Consent Mode v2 « basique » :
 // rien n'est chargé ni envoyé tant que la mesure d'audience n'est pas acceptée.
-import { clearDeniedCookies, toGtagConsent, type ConsentPreferences } from "@/lib/consent";
+import {
+	CONSENT_DURATION_MS,
+	clearDeniedCookies,
+	toGtagConsent,
+	type ConsentPreferences,
+} from "@/lib/consent";
 
 export const GA_MEASUREMENT_ID =
 	process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-V96H9MXTZ6";
@@ -22,6 +27,10 @@ const loadGoogleTag = (prefs: ConsentPreferences) => {
 	window.gtag("config", GA_MEASUREMENT_ID, {
 		allow_google_signals: false,
 		allow_ad_personalization_signals: false,
+		// Cookies Google : 6 mois maximum à compter du dépôt (même durée que le choix de
+		// consentement), sans prolongation à chaque visite
+		cookie_expires: CONSENT_DURATION_MS / 1000,
+		cookie_update: false,
 	});
 
 	const script = document.createElement("script");

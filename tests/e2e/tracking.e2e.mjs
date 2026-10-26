@@ -146,6 +146,12 @@ const banner = (page) => page.locator("#cookie-banner-title");
 		await flushHits(page);
 		assert.equal(pageViews(page, "/"), 1);
 		assert.ok((await googleCookies(page)).some((n) => n.startsWith("_ga")), "cookie _ga déposé");
+		const maxDays = Math.max(
+			...(await page.context().cookies())
+				.filter((c) => /^_ga|^_gcl/.test(c.name))
+				.map((c) => (c.expires - Date.now() / 1000) / 86400),
+		);
+		assert.ok(maxDays <= 180.1, `cookies Google : ${maxDays.toFixed(1)} jours (max 180)`);
 	});
 
 	await step("3. rechargement : choix réappliqué, 1 seule page vue", async () => {
