@@ -1,5 +1,5 @@
 // Consentement cookies — source unique partagée par le bandeau, le footer et
-// le script d'initialisation GA4 (Google Consent Mode v2).
+// le chargement du Google tag (Google Consent Mode v2, mode basique).
 // Aucun import : ce module est aussi testé directement par node --test.
 
 export const CONSENT_STORAGE_KEY = "cookie-consent";
@@ -62,41 +62,17 @@ export const preferencesFromConsent = (data: ConsentData | null): ConsentPrefere
 	return NO_CONSENT;
 };
 
-// Marketing pilote les trois signaux publicitaires, Analytics uniquement analytics_storage
+// Analytics pilote analytics_storage, Marketing la mesure publicitaire.
+// Remarketing désactivé : ad_personalization reste refusé quel que soit le choix.
 export const toGtagConsent = ({ analytics, marketing }: ConsentPreferences): GtagConsent => {
 	const signal = (granted: boolean): ConsentSignal => (granted ? "granted" : "denied");
 	return {
 		analytics_storage: signal(analytics),
 		ad_storage: signal(marketing),
 		ad_user_data: signal(marketing),
-		ad_personalization: signal(marketing),
+		ad_personalization: "denied",
 	};
 };
-
-/**
- * Script inline exécuté juste après gtag('consent', 'default', …) et avant
- * gtag('config', …) : réapplique le choix sauvegardé dès le premier hit de
- * chaque page / visite. Doit rester équivalent à
- * toGtagConsent(preferencesFromConsent(parseStoredConsent(…))) — vérifié par
- * tests/consent.test.ts.
- */
-export const buildConsentRestoreScript = (): string => `
-try {
-	var c = JSON.parse(localStorage.getItem(${JSON.stringify(CONSENT_STORAGE_KEY)}) || 'null');
-	if (c && typeof c.timestamp === 'number' && Date.now() - c.timestamp <= ${CONSENT_DURATION_MS}) {
-		var p = c.preferences || {};
-		var a = c.choice === 'all' || (c.choice === 'custom' && p.analytics === true);
-		var m = c.choice === 'all' || (c.choice === 'custom' && p.marketing === true);
-		var s = function (v) { return v ? 'granted' : 'denied'; };
-		gtag('consent', 'update', {
-			'analytics_storage': s(a),
-			'ad_storage': s(m),
-			'ad_user_data': s(m),
-			'ad_personalization': s(m)
-		});
-	}
-} catch (e) {}
-`;
 
 // Cookies déposés par Google selon la catégorie retirée
 const ANALYTICS_COOKIE_PREFIXES = ["_ga"];

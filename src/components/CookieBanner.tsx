@@ -10,14 +10,13 @@ import {
 	NO_CONSENT,
 	OPEN_COOKIE_SETTINGS_EVENT,
 	PREFERENCES_STORAGE_KEY,
-	clearDeniedCookies,
 	parseStoredConsent,
 	preferencesFromConsent,
-	toGtagConsent,
 	type ConsentChoice,
 	type ConsentData,
 	type ConsentPreferences,
 } from "@/lib/consent";
+import { applyGoogleConsent } from "@/lib/googleTag";
 
 export const CookieBanner = () => {
 	const [isVisible, setIsVisible] = useState(false);
@@ -31,8 +30,11 @@ export const CookieBanner = () => {
 		try {
 			const storedConsent = localStorage.getItem(CONSENT_STORAGE_KEY);
 			if (storedConsent) {
-				// Le choix valide est réappliqué à GA dès l'init (layout) : rien à faire ici
-				if (!parseStoredConsent(storedConsent)) {
+				const stored = parseStoredConsent(storedConsent);
+				if (stored) {
+					// Choix valide : chargement du Google tag seulement si Analytics est accepté
+					applyGoogleConsent(preferencesFromConsent(stored));
+				} else {
 					localStorage.removeItem(CONSENT_STORAGE_KEY);
 					localStorage.removeItem(PREFERENCES_STORAGE_KEY);
 					setIsVisible(true);
@@ -83,10 +85,7 @@ export const CookieBanner = () => {
 			console.error("Erreur lors de l'enregistrement du consentement:", e);
 		}
 
-		if (typeof window.gtag === "function") {
-			window.gtag("consent", "update", toGtagConsent(prefs));
-		}
-		clearDeniedCookies(prefs);
+		applyGoogleConsent(prefs);
 		setIsVisible(false);
 		setShowDetails(false);
 	};
@@ -166,7 +165,7 @@ export const CookieBanner = () => {
 								className="font-body text-sm sm:text-base text-muted-foreground leading-relaxed mb-6"
 							>
 								Nous utilisons des cookies pour améliorer votre expérience de navigation, 
-								analyser le trafic du site et personnaliser le contenu. 
+								analyser le trafic du site et mesurer l'efficacité de nos campagnes publicitaires. 
 								Votre choix sera conservé pendant <strong className="text-foreground">6 mois</strong>.{" "}
 								<Link
 								href="/politique-confidentialite"
@@ -241,7 +240,7 @@ export const CookieBanner = () => {
 												/>
 											</div>
 											<p className="text-sm text-muted-foreground">
-												Utilisés pour personnaliser les publicités et mesurer l'efficacité de nos campagnes.
+												Utilisés pour mesurer l'efficacité de nos campagnes publicitaires (Google Ads).
 											</p>
 										</div>
 									</div>
