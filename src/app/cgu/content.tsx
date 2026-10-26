@@ -20,7 +20,7 @@ export default function CGUContent() {
 							<div className="prose prose-lg max-w-none">
 								<p className="font-body text-muted-foreground mb-8">
 									<em>
-										Dernière mise à jour : Janvier 2025
+										Dernière mise à jour : Octobre 2026
 									</em>
 								</p>
 
@@ -91,8 +91,7 @@ export default function CGUContent() {
 										<strong className="text-foreground">
 											Important :
 										</strong>{" "}
-										Ce site ne collecte aucune donnée
-										personnelle. Il n'y a aucun formulaire
+										Il n'y a sur ce site aucun formulaire
 										de contact, aucune inscription ni aucun
 										compte utilisateur. La prise de
 										rendez-vous s'effectue via la plateforme
@@ -166,21 +165,19 @@ export default function CGUContent() {
 								</h2>
 								<div className="bg-card rounded-xl p-6 mb-8 shadow-soft transition-all duration-300 hover:shadow-lg">
 									<p className="font-body text-muted-foreground mb-4">
-										Ce site utilise uniquement des cookies
-										techniques nécessaires à son bon
-										fonctionnement et des cookies
-										analytiques (Google Analytics) pour
-										mesurer l'audience, sous réserve de
-										votre consentement.
+										Ce site utilise des cookies techniques
+										nécessaires à son bon fonctionnement
+										et, sous réserve de votre consentement,
+										des cookies de mesure d'audience
+										(Google Analytics) et publicitaires
+										(Google Ads).
 									</p>
 									<p className="font-body text-muted-foreground">
-										<strong className="text-foreground">
-											Aucune donnée personnelle n'est
-											collectée via ce site.
-										</strong>{" "}
-										Vous pouvez gérer vos préférences de
-										cookies via le bandeau de consentement
-										affiché lors de votre première visite.
+										Vous pouvez modifier ou retirer votre
+										consentement à tout moment via le lien
+										« Gérer les cookies » en bas de chaque
+										page. Le détail figure dans la
+										politique de confidentialité.
 									</p>
 								</div>
 

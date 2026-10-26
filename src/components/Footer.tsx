@@ -11,6 +11,7 @@ import {
 	Instagram,
 } from "lucide-react";
 import { MedoucineBadge } from "@/components/MedoucineBadge";
+import { ManageCookiesButton } from "@/components/ManageCookiesButton";
 import { getSheetData } from "@/lib/sheetData";
 
 export const Footer = async () => {
@@ -279,6 +280,7 @@ export const Footer = async () => {
 						>
 							Confidentialité
 						</a>
+						<ManageCookiesButton className="font-body text-sm text-muted-foreground hover:text-primary transition-colors" />
 						<Link
 							href="/tarifs"
 							className="font-body text-sm text-muted-foreground hover:text-primary transition-colors"
