@@ -71,7 +71,7 @@ const faqSchema = {
 		},
 		{
 			"@type": "Question",
-			name: "L'hypnose est-elle efficace pour tout le monde ?",
+			name: "Est-ce efficace pour tout le monde ?",
 			acceptedAnswer: {
 				"@type": "Answer",
 				text: "L'efficacité dépend de la réceptivité et de l'implication de la personne dans le processus. Une motivation sincère est le premier facteur de réussite. L'hypnose amplifie et ancre cette motivation au niveau inconscient.",

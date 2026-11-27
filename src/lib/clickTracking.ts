@@ -4,7 +4,7 @@
 export type TrackedClickEvent = "clic_telephone" | "clic_medoucine";
 
 // Numéros de la cliente uniquement (le numéro de l'hébergeur des CGU est exclu)
-const TRACKED_PHONE_NUMBERS = new Set(["33620145306", "33695530437"]);
+const TRACKED_PHONE_NUMBERS = new Set(["33620145306"]);
 
 const MEDOUCINE_HOST = /(^|\.)medoucine\.com$/i;
 

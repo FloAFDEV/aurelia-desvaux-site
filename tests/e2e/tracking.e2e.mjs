@@ -193,7 +193,7 @@ const banner = (page) => page.locator("#cookie-banner-title");
 	await step("9/10. numéro validé (/ressources) compté, numéro hébergeur (/cgu) ignoré", async () => {
 		await goto(page, "/ressources");
 		await waitForTag(page);
-		await clickLink(page, 'a[href="tel:+33695530437"]');
+		await clickLink(page, '#main-content a[href="tel:+33620145306"]');
 		assert.equal(await events(page, "clic_telephone"), 1);
 		await goto(page, "/cgu");
 		await waitForTag(page);

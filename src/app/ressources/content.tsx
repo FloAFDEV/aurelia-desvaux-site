@@ -240,7 +240,7 @@ const Content = () => {
 								</div>
 
 								<a
-									href="tel:+33695530437"
+									href="tel:+33620145306"
 									className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary/90 to-primary/70 text-primary-foreground rounded-full font-body shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
 								>
 									<Phone className="w-4 h-4" />

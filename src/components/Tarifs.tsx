@@ -51,7 +51,7 @@ type Presentation = Pick<Prestation, "icon" | "unit"> &
 const PRESENTATION: Record<string, Presentation> = {
 	"accompagnement thérapeutique": {
 		icon: Heart,
-		description: "Stress, anxiété, phobies, sommeil, perte de poids…",
+		description: "Stress, anxiété, phobies, sommeil…",
 		unit: "/ séance",
 	},
 	"arrêt du tabac": {

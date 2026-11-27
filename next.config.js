@@ -11,9 +11,12 @@ const contentSecurityPolicy = [
 	//   pagead2.googlesyndication.com/ccm/collect — hit Ads sur chaque page vue (consentement refusé ou non)
 	//   www.google.com/ccm/collect, ad.doubleclick.net/ccm/s — hits Ads une fois ad_storage accordé
 	//   www.googleadservices.com/pagead/set_partitioned_cookie — arrivée depuis une annonce (gclid)
-	//   analytics.google.com/g/collect — hit GA4 une fois le consentement accordé
-	`connect-src 'self'${isDev ? " ws: wss:" : ""} https://*.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://ad.doubleclick.net https://www.googleadservices.com`,
-	"img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net",
+	//   region1.google-analytics.com/g/collect — hit GA4 avec Analytics seul
+	//   region1.analytics.google.com/g/collect — hit GA4 une fois ad_storage accordé (« Tout accepter »)
+	`connect-src 'self'${isDev ? " ws: wss:" : ""} https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://ad.doubleclick.net https://www.googleadservices.com`,
+	// www.google.fr/ads/ga-audiences — pixel émis uniquement après consentement Marketing,
+	// avec ad_personalization refusé (npa=1)
+	"img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://www.google.fr",
 	"style-src 'self' 'unsafe-inline'",
 	"font-src 'self' data:",
 	"frame-src 'self' https://www.google.com https://www.googletagmanager.com",

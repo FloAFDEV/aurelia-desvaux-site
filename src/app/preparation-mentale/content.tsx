@@ -1,5 +1,6 @@
 "use client";
 
+import type { Route } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
@@ -35,7 +36,7 @@ const badges = [
 	{ icon: Target, label: "Gestion de la pression" },
 ];
 
-const techniques = [
+const techniques: { href: Route; icon: typeof Brain; title: string; description: string }[] = [
 	{
 		href: "/hypnose",
 		icon: Brain,
@@ -330,7 +331,7 @@ export default function PreparationMentaleContent() {
 								{techniques.map((technique) => (
 									<Link
 										key={technique.href}
-										href={technique.href as any}
+										href={technique.href}
 										className="group p-6 bg-soft-pink/30 rounded-2xl transition-all duration-300 hover:bg-soft-pink/50 hover:-translate-y-1 text-center"
 									>
 										<technique.icon className="w-8 h-8 text-primary mx-auto mb-4" />

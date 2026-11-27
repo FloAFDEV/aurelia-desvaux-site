@@ -13,7 +13,7 @@ import { getSheetData, findTarif } from "@/lib/sheetData";
 const OFFERS = [
 	{
 		name: "Accompagnement Thérapeutique",
-		description: "Séance individuelle – Stress, anxiété, phobies, sommeil, perte de poids…",
+		description: "Séance individuelle – Stress, anxiété, phobies, sommeil…",
 		url: "https://aurelia-desvaux.fr/tarifs",
 	},
 	{

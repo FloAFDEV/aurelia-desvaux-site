@@ -1,10 +1,11 @@
 // /components/Breadcrumbs.tsx
+import type { Route } from "next";
 import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
 
 interface BreadcrumbItem {
 	label: string;
-	href: string;
+	href: Route;
 }
 
 interface BreadcrumbsProps {
@@ -12,7 +13,7 @@ interface BreadcrumbsProps {
 }
 
 export const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
-	const allItems = [
+	const allItems: BreadcrumbItem[] = [
 		{ label: "Accueil", href: "/" },
 		...items,
 	];
@@ -69,7 +70,7 @@ export const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
 									</span>
 								) : (
 									<Link
-										href={item.href as any}
+										href={item.href}
 										className="font-body text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5"
 									>
 										{isFirst && (

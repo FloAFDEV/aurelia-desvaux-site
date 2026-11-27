@@ -16,13 +16,12 @@ const personSchema = {
 	email: "desvauxaurelia@gmail.com",
 	telephone: "+33620145306",
 	description:
-		"Aurélia Desvaux est praticienne certifiée en Hypnose Ericksonienne, PNL et EFT à Valbonne, Antibes et Sophia-Antipolis. Spécialisée dans l'arrêt du tabac, la perte de poids et la gestion du stress, elle accompagne adultes et sportifs grâce aux thérapies brèves.",
+		"Aurélia Desvaux est praticienne certifiée en Hypnose Ericksonienne, PNL et EFT à Valbonne, Antibes et Sophia-Antipolis. Spécialisée dans l'arrêt du tabac et la gestion du stress, elle accompagne adultes et sportifs grâce aux thérapies brèves.",
 	knowsAbout: [
 		"Hypnose Ericksonienne",
 		"PNL – Programmation Neuro-Linguistique",
 		"EFT / TFT – Emotional Freedom Techniques",
 		"Arrêt du tabac",
-		"Perte de poids",
 		"Gestion du stress",
 		"Phobies",
 		"Accompagnement thérapeutique",
@@ -84,14 +83,14 @@ export const metadata: Metadata = {
 		absolute: "Aurélia Desvaux – Hypnothérapeute, PNL & EFT à Valbonne Sophia-Antipolis",
 	},
 	description:
-		"Praticienne certifiée en Hypnose Ericksonienne, PNL et EFT à Valbonne. Spécialisée dans l'arrêt du tabac, la perte de poids et la gestion du stress. Découvrez son parcours et ses certifications.",
+		"Praticienne certifiée en Hypnose Ericksonienne, PNL et EFT à Valbonne. Spécialisée dans l'arrêt du tabac et la gestion du stress. Découvrez son parcours et ses certifications.",
 	alternates: {
 		canonical: "/a-propos",
 	},
 	openGraph: {
 		title: "Aurélia Desvaux – Hypnothérapeute certifiée à Valbonne Sophia-Antipolis",
 		description:
-			"Hypnose Ericksonienne, PNL, EFT à Valbonne. Spécialisée arrêt du tabac, perte de poids, gestion du stress. Praticienne certifiée, formations Psynapse et The Priority Academy.",
+			"Hypnose Ericksonienne, PNL, EFT à Valbonne. Spécialisée arrêt du tabac, gestion du stress. Praticienne certifiée, formations Psynapse et The Priority Academy.",
 		url: "https://aurelia-desvaux.fr/a-propos",
 		siteName: "Aurélia Desvaux",
 		locale: "fr_FR",
@@ -110,7 +109,7 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 		title: "Aurélia Desvaux – Hypnothérapeute, PNL & EFT à Valbonne",
 		description:
-			"Praticienne certifiée en hypnose, PNL et EFT à Valbonne. Spécialisée arrêt du tabac, perte de poids, stress.",
+			"Praticienne certifiée en hypnose, PNL et EFT à Valbonne. Spécialisée arrêt du tabac, stress.",
 		images: ["https://aurelia-desvaux.fr/og-image.jpg"],
 	},
 };

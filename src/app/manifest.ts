@@ -12,20 +12,21 @@ export default function manifest(): MetadataRoute.Manifest {
 		theme_color: "#E8D5D5",
 		orientation: "portrait-primary",
 		icons: [
+			// Dimensions et formats réels des fichiers (favicon.ico contient une image PNG)
 			{
 				src: "/favicon.ico",
-				sizes: "64x64",
-				type: "image/x-icon",
+				sizes: "143x145",
+				type: "image/png",
 			},
 			{
 				src: "/favicon-apple.png",
-				sizes: "192x192",
+				sizes: "143x145",
 				type: "image/png",
 				purpose: "maskable",
 			},
 			{
 				src: "/og-image.webp",
-				sizes: "512x512",
+				sizes: "1200x630",
 				type: "image/webp",
 				purpose: "any",
 			},

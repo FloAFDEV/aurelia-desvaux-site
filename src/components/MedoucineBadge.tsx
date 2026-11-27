@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Star, ExternalLink } from "lucide-react";
 import { useCountUp } from "@/hooks/useCountUp";
-import { FALLBACK_MEDOUCINE } from "@/lib/sheetData";
+import { FALLBACK_MEDOUCINE } from "@/lib/sheetFallback";
 
 interface MedoucineBadgeProps {
 	variant?: "default" | "compact" | "full";
@@ -26,7 +26,7 @@ interface MedoucineData {
 }
 
 // Filet de sécurité si la requête vers /api/sheet échoue au niveau réseau.
-// Valeur unique du projet pour cette donnée, définie dans src/lib/sheetData.ts.
+// Valeur unique du projet pour cette donnée, définie dans src/lib/sheetFallback.ts.
 const FALLBACK_DATA: MedoucineData = FALLBACK_MEDOUCINE;
 
 export const MedoucineBadge = ({

@@ -36,17 +36,17 @@ const serviceSchema = {
 export const metadata: Metadata = {
 	title: {
 		absolute:
-			"Hypnose Ericksonienne à Valbonne – Arrêt du tabac, perte de poids, stress | Aurélia Desvaux",
+			"Hypnose Ericksonienne à Valbonne – Arrêt du tabac, stress, anxiété | Aurélia Desvaux",
 	},
 	description:
-		"Séances d'hypnose Ericksonienne à Valbonne Sophia-Antipolis. Arrêt du tabac, perte de poids, stress, anxiété, phobies, insomnie. Praticienne certifiée Psynapse.",
+		"Séances d'hypnose Ericksonienne à Valbonne Sophia-Antipolis. Arrêt du tabac, stress, anxiété, phobies, insomnie. Praticienne certifiée Psynapse.",
 	alternates: {
 		canonical: "/hypnose",
 	},
 	openGraph: {
 		title: "Hypnose Ericksonienne à Valbonne – Arrêt du tabac, stress, phobies | Aurélia Desvaux",
 		description:
-			"Arrêt du tabac, perte de poids, stress, anxiété, phobies par hypnose à Valbonne. Praticienne certifiée Psynapse.",
+			"Arrêt du tabac, stress, anxiété, phobies par hypnose à Valbonne. Praticienne certifiée Psynapse.",
 		type: "website",
 		url: "https://aurelia-desvaux.fr/hypnose",
 		locale: "fr_FR",

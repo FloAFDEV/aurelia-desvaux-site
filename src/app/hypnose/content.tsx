@@ -23,7 +23,7 @@ const benefits = [
 	"Insomnie & sommeil",
 	"Gestion du stress",
 	"Confiance en soi",
-	"Perte de poids",
+	"Blocages & schémas répétitifs",
 	"Burn-out",
 	"Gestion de la douleur",
 	"Préparation aux examens",

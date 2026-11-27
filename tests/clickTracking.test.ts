@@ -5,17 +5,16 @@ import { getTrackedClickEvent } from "../src/lib/clickTracking.ts";
 test("numéros de la cliente : clic_telephone", () => {
 	for (const href of [
 		"tel:+33620145306",
-		"tel:+33695530437",
 		"tel:0620145306",
 		"tel:+33%206%2020%2014%2053%2006",
-		"tel:0033695530437",
+		"tel:0033620145306",
 	]) {
 		assert.equal(getTrackedClickEvent(href), "clic_telephone", href);
 	}
 });
 
 test("numéro de l'hébergeur et autres numéros : non suivis", () => {
-	for (const href of ["tel:0189470014", "tel:+33189470014", "tel:3989", "tel:%E0%A4%A"]) {
+	for (const href of ["tel:0189470014", "tel:+33189470014", "tel:3989", "tel:%E0%A4%A", "tel:+33695530437", "tel:0033695530437"]) {
 		assert.equal(getTrackedClickEvent(href), null, href);
 	}
 });

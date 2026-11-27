@@ -352,7 +352,7 @@ export const Header = () => {
 								? "translateX(0)"
 								: "translateX(100%)",
 						}}
-						className={`fixed top-0 right-0 h-full w-3/4 max-w-[320px] bg-soft-pink/95 shadow-lg border-l border-primary/20 lg:hidden z-[9999] transition-transform duration-300 ${
+						className={`fixed top-0 right-0 h-full w-3/4 max-w-[320px] bg-soft-pink/95 shadow-lg border-l border-primary/20 lg:hidden z-[9999] transition-transform duration-300 overflow-y-auto overscroll-contain ${
 							isMobileMenuOpen
 								? "animate-slide-in-drawer"
 								: "animate-slide-out-drawer"
@@ -415,7 +415,7 @@ export const Header = () => {
 								<div
 									className={`overflow-hidden transition-all duration-500 ease-out ${
 										isMobileTherapiesOpen
-											? "max-h-60 opacity-100"
+											? "max-h-96 opacity-100"
 											: "max-h-0 opacity-0"
 									}`}
 								>

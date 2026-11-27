@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: "Aurélia Desvaux | Thérapeute Hypnose, PNL & EFT — Antibes, Sophia-Antipolis, Valbonne",
 		description:
-			"Hypnose Ericksonienne, PNL et EFT à Valbonne, Antibes et Sophia-Antipolis. Arrêt du tabac, perte de poids, stress, anxiété, phobies. Praticienne certifiée.",
+			"Hypnose Ericksonienne, PNL et EFT à Valbonne, Antibes et Sophia-Antipolis. Arrêt du tabac, stress, anxiété, phobies. Praticienne certifiée.",
 		url: "https://aurelia-desvaux.fr",
 		siteName: "Aurélia Desvaux",
 		locale: "fr_FR",
